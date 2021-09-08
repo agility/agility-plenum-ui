@@ -1,6 +1,6 @@
 {
   "name": "agility-component-lib-react",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Components that are part of the Agility CMS design system.",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
