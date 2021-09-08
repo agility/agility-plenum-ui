@@ -1,6 +1,6 @@
 {
   "name": "agility-component-lib-react",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Components that are part of the Agility CMS design system.",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
@@ -29,6 +29,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rollup": "^2.56.3",
+    "rollup-plugin-dts": "^4.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.1",
     "rollup-plugin-typescript2": "^0.30.0",
