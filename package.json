@@ -1,0 +1,39 @@
+{
+  "name": "agility-component-lib-react",
+  "version": "0.1.0",
+  "description": "Components that are part of the Agility CMS design system.",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
+  "author": "Agility CMS",
+  "license": "MIT",
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/react": "^6.3.8",
+    "@types/react": "^17.0.20",
+    "babel-loader": "^8.2.2",
+    "postcss": "^8.3.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup": "^2.56.3",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.4.2"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "dependencies": {}
+}
