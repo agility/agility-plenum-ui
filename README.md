@@ -4,12 +4,6 @@
 ## Commands
 
 
-
-Build Tailwind CSS
-```
-yarn build-tw
-```
-
 Build for distribution
 ```
 yarn build
@@ -17,5 +11,5 @@ yarn build
 
 Run storybook
 ```
-yarn storybool
+yarn start-tw & yarn storybook
 ```
