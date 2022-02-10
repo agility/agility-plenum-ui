@@ -1,7 +1,7 @@
 import React, { FC, Component } from "react";
 
 import "../../tailwind.css"
-export interface ButtonProps {
+export interface CheckboxProps {
 	/**
 	 * Is this the principal call to action on the page?
 	 */
@@ -29,13 +29,13 @@ export interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button: FC<ButtonProps> = ({
+export const Checkbox: FC<CheckboxProps> = ({
 	type = "plain",
 	size = "medium",
 	onClick,
 	label,
 	icon
-}: ButtonProps) => {
+}: CheckboxProps) => {
 
 	return (
 		<button
@@ -45,9 +45,9 @@ export const Button: FC<ButtonProps> = ({
 					size === "large"  ? "px-5 py-3 font-medium rounded-md text-lg" :
 					size === "medium" ? "px-3 py-2 font-medium rounded-md text-base" :
 									    "px-3 py-1 text-sm font-medium rounded",
-					type === "primary" ?   "text-black bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800" :
-					type === "secondary" ? "text-indigo-700 bg-indigo-100 hover:bg-indigo-200 active:bg-indigo-300" :
-										   "text-gray-600 bg-gray-100 hover:bg-gray-200 border-gray-600 active:bg-gray-300"
+					type === "primary" ?   "text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800" :
+					type === "secondary" ? "text-testColor bg-indigo-100 hover:bg-indigo-200 active:bg-indigo-300" :
+										   "bg-gray-100 hover:bg-gray-200 border-gray-600 active:bg-gray-300 text-testColor"
 				].join(" ")}
 			onClick={onClick}
 		>
