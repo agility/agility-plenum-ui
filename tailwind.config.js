@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 module.exports = {
   mode: "jit",
   purge: ["./src/**/*.{js,ts,jsx,tsx}"],
