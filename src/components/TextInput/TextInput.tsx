@@ -33,20 +33,18 @@ export const TextInput: FC<TextInputProps> = ({
 }: TextInputProps) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(focused));
     const [isActive, setIsActive] = useState<boolean>(Boolean(false));
-    const [isClear, setIsClear] = useState<boolean>(Boolean(true));
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         const input = inputRef.current;
-        if (!input || isFocus === undefined) return;
-        if(isFocus) {
+        if (!input || isFocus === undefined || focused === undefined) return;
+        if (isFocus || focused) {
             input.focus();
             setIsActive(true);
         } else {
             input.blur();
         }
-       
-    }, [isFocus]);
+    }, [isFocus, focused]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange && onChange(e.currentTarget.value);
@@ -59,10 +57,10 @@ export const TextInput: FC<TextInputProps> = ({
     const handleInputBlur = () => {
         const input = inputRef.current;
         setIsFocus(false);
-        if(input && input.value === '') {
-            setIsActive(false)
-        }else {
-            setIsActive(true)
+        if (input && input.value === "") {
+            setIsActive(false);
+        } else {
+            setIsActive(true);
         }
     };
 
@@ -81,6 +79,10 @@ export const TextInput: FC<TextInputProps> = ({
         {
             "focus:ring-1 focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none":
                 isFocus,
+        },
+        {
+            "focus:ring-1 focus:ring-red-500 border-red-500 outline-red-500 shadow-none":
+                error,
         }
     );
     const labelStyles = cn(
@@ -100,7 +102,8 @@ export const TextInput: FC<TextInputProps> = ({
                 className={labelStyles}
                 onClick={handleLabelClick}
             >
-                {label}{isRequire && <span className="text-red-500"> *</span>}
+                {label}
+                {isRequire && <span className="text-red-500"> *</span>}
             </label>
             <div className="mt-1">
                 <input
