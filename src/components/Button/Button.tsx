@@ -38,14 +38,14 @@ export const Button: FC<ButtonProps> = ({
         <button
             type="button"
             className={[
-                "inline-flex space-x-2 items-center justify-center  border border-transparent transition-all",
+                "inline-flex space-x-2 items-center justify-center border border-transparent transition-all",
                 size === "large"
                     ? "px-5 py-3 font-medium rounded-md text-lg"
                     : size === "medium"
                     ? "px-3 py-2 font-medium rounded-md text-base"
                     : "px-3 py-1 text-sm font-medium rounded",
                 type === "primary"
-                    ? "text-black bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800"
+                    ? "text-green-50 bg-slate-500 hover:bg-indigo-700 active:bg-indigo-800"
                     : type === "secondary"
                     ? "text-indigo-700 bg-indigo-100 hover:bg-indigo-200 active:bg-indigo-300"
                     : "text-gray-600 bg-gray-100 hover:bg-gray-200 border-gray-600 active:bg-gray-300",

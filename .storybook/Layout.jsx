@@ -1,5 +1,5 @@
 import React from 'react';
-import '../src/tailwind.css';
+import '!style-loader!css-loader!postcss-loader!../src/tailwind.css';
 
 const Layout = ({ children }) => {
   return (

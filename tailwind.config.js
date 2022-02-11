@@ -1,17 +1,15 @@
 // eslint-disable-next-line
 module.exports = {
   mode: "jit",
-  purge: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {
-      colors: {
-        testColor: "#000000",
-      },
-    },
+    extend: {},
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+
+  ],
 };
