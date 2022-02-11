@@ -14,11 +14,12 @@ const Template: Story<TextInputProps> = (args) => <TextInput {...args}  />;
 // Reuse that template for creating different stories
 export const Default = Template.bind({});
 Default.args = { 
-  label: "Default Input",
+  label: "Default",
   focused: false,
   error: false,
 	id: "input",
 	name: "input",
-	type: "input"
+	type: "input",
+  isRequire: true,
 };
 
