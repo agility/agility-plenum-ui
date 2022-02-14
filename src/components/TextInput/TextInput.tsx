@@ -3,9 +3,24 @@ import { default as cn } from "classnames";
 
 import "../../tailwind.css";
 
+type Type =
+    | "text"
+    | "email"
+    | "number"
+    | "password"
+    | "search"
+    | "tel"
+    | "url"
+    | "date"
+    | "datetime-local"
+    | "month"
+    | "time"
+    | "week"
+    | "currency";
+
 export interface TextInputProps {
     /** Input type*/
-    type: string;
+    type: Type;
     /** Input ID */
     id: string;
     /** Input Name */
@@ -87,7 +102,7 @@ export const TextInput: FC<TextInputProps> = ({
         },
         {
             "focus:ring-1 focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none":
-                isFocus,
+                (isFocus && !isError),
         },
         {
             "focus:ring-1 focus:ring-red-500 border-red-500 outline-red-500 shadow-none":
@@ -101,7 +116,7 @@ export const TextInput: FC<TextInputProps> = ({
         },
         {
             "text-xs text-gray-700 px-1 top-4 bg-white": isActive,
-        },
+        }
     );
 
     return (

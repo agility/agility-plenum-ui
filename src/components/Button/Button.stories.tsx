@@ -15,10 +15,10 @@ const Template: Story<ButtonProps> = (args) => <Button {...args}  />;
 
 // Reuse that template for creating different stories
 export const Primary = Template.bind({});
-Primary.args = { label: "Primary", type:"primary", size: "large", icon: <FontAwesomeIcon icon={faExclamationCircle} /> };
+Primary.args = { label: "Primary", type:"primary", size: "base", icon: <FontAwesomeIcon icon={faExclamationCircle} /> };
 
 export const Secondary = Template.bind({});
 Secondary.args = { ...Primary.args, type: "secondary", label: "Secondary", icon: <FontAwesomeIcon icon={faExclamationTriangle} /> };
 
-export const Plain = Template.bind({});
-Plain.args = { label: "Plain", type:"plain", size: "large", icon: <FontAwesomeIcon icon={faInfoCircle} /> };
+export const Alternative = Template.bind({});
+Alternative.args = { label: "Alternative", type:"alternative", size: "base", icon: <FontAwesomeIcon icon={faInfoCircle} /> };
