@@ -20,4 +20,25 @@ export const parameters = {
     },
   },
   layout: 'centered',
+  backgrounds: {
+    default: 'agility white',
+    values: [
+      {
+        name: 'agility white',
+        value: '#ffffff',
+      },
+      {
+        name: 'agility yellow',
+        value: '#FFCB28',
+      },
+      {
+        name: 'agility purple',
+        value: '#4600A8',
+      },
+      {
+        name: 'agility dark blue',
+        value: '#2A3846',
+      },
+    ],
+  },
 }

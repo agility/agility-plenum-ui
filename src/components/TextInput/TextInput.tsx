@@ -15,20 +15,27 @@ export interface TextInputProps {
     /** Force the focus state on the input */
     focused?: boolean;
     /** Error state */
-    error?: boolean;
-    /** Callback on change */
+    isError?: boolean;
+    /** Show red asterisk to show required */
     isRequire?: boolean;
+    /** Disabled state */
+    isDisabled?: boolean;
+    /** Set default value */
+    defaultValue?: string;
+    /** Callback on change */
     onChange?(value: string): void;
 }
 
 export const TextInput: FC<TextInputProps> = ({
     label,
     focused,
-    error,
+    isError,
     id,
     name,
     isRequire,
     type,
+    defaultValue,
+    isDisabled,
     onChange,
 }: TextInputProps) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(focused));
@@ -46,6 +53,12 @@ export const TextInput: FC<TextInputProps> = ({
         }
     }, [isFocus, focused]);
 
+    useEffect(() => {
+        const input = inputRef.current;
+        if (!input || defaultValue === undefined || defaultValue === "") return;
+        setIsActive(true);
+    }, [defaultValue]);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange && onChange(e.currentTarget.value);
     };
@@ -57,11 +70,7 @@ export const TextInput: FC<TextInputProps> = ({
     const handleInputBlur = () => {
         const input = inputRef.current;
         setIsFocus(false);
-        if (input && input.value === "") {
-            setIsActive(false);
-        } else {
-            setIsActive(true);
-        }
+        setIsActive(!(input && input.value === ""));
     };
 
     const handleLabelClick = () => {
@@ -82,21 +91,21 @@ export const TextInput: FC<TextInputProps> = ({
         },
         {
             "focus:ring-1 focus:ring-red-500 border-red-500 outline-red-500 shadow-none":
-                error,
+                isError,
         }
     );
     const labelStyles = cn(
         "block inline-block font-medium ml-2 relative transition-all",
         {
-            "text-sm text-gray-500 px-2 top-9": !isActive,
+            "text-sm text-gray-400 px-2 top-9": !isActive,
         },
         {
             "text-xs text-gray-700 px-1 top-4 bg-white": isActive,
-        }
+        },
     );
 
     return (
-        <div className="font-muli">
+        <div className={["font-muli", isDisabled ? "opacity-50" : "opacity-100"].join(" ")}>
             <label
                 htmlFor="email"
                 className={labelStyles}
@@ -115,6 +124,8 @@ export const TextInput: FC<TextInputProps> = ({
                     name={name}
                     id={id}
                     className={inputStyles}
+                    disabled={isDisabled}
+                    defaultValue={defaultValue}
                 />
             </div>
         </div>
