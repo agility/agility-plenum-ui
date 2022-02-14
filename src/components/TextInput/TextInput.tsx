@@ -35,7 +35,7 @@ export interface TextInputProps {
     onChange?(value: string): void;
 }
 
-export const TextInput: FC<TextInputProps> = ({ label, focused, isError, id, name, isRequire, type, defaultValue, isDisabled, message, showCounter, maxLength = 100, onChange }: TextInputProps) => {
+export const TextInput: FC<TextInputProps> = ({ label, focused, isError, id, name, isRequire, type, defaultValue, isDisabled, message, showCounter, maxLength = 100 , onChange }: TextInputProps) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(focused));
     const [isActive, setIsActive] = useState<boolean>(false);
     const [value, setValue] = useState<string | null | undefined>(defaultValue);
@@ -90,15 +90,15 @@ export const TextInput: FC<TextInputProps> = ({ label, focused, isError, id, nam
     };
 
     const inputStyles = cn(
-        'border-2 py-2 px-3 rounded-md text-sm leading-5 font-normal w-full',
+        'border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full',
         {
             'border-gray-300 shadow-sm': !isFocus
         },
         {
-            'focus:ring-1 focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none': isFocus
+            'focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none': isFocus
         },
         {
-            'focus:ring-1 focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
+            'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
         }
     );
     const labelStyles = cn(
