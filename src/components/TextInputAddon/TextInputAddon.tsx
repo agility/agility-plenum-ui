@@ -109,7 +109,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
         'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
     });
     const labelStyles = cn('block inline-block font-medium transition-all text-sm text-gray-700', {
-        'text-xs text-red-500 px-1 bg-white': isError
+        'text-red-500 bg-white': isError
     });
 
     const discriptionStyles = cn('text-sm mt-1 block', { 'text-gray-500': !isError }, { 'text-red-500': isError });

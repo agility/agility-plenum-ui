@@ -18,8 +18,8 @@ export default {
         id: HIDE,
         focused: HIDE,
         onChange: HIDE,
-        isError: HIDE,
-        isDisabled: HIDE,
+        // isError: HIDE,
+        // isDisabled: HIDE,
         defaultValue: HIDE
     }
 } as Meta;
