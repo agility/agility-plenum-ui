@@ -1,16 +1,16 @@
-import React, { FC } from "react";
-import { default as cn } from "classnames";
+import React, { FC } from 'react';
+import { default as cn } from 'classnames';
 
-import "../../tailwind.css";
+import '../../tailwind.css';
 export interface ButtonProps {
     /**
      * Is this the principal call to action on the page?
      */
-    type?: "primary" | "secondary" | "alternative";
+    type?: 'primary' | 'secondary' | 'alternative';
     /**
      * How large should the button be?
      */
-    size?: "sm" | "base" | "lg";
+    size?: 'sm' | 'base' | 'lg';
     /**
      * Button contents
      */
@@ -28,32 +28,26 @@ export interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button: FC<ButtonProps> = ({
-    type = "primary",
-    size = "base",
-    onClick,
-    label,
-    icon,
-}: ButtonProps) => {
+export const Button: FC<ButtonProps> = ({ type = 'primary', size = 'base', onClick, label, icon }: ButtonProps) => {
     const btnStyles = cn(
-        "inline-flex space-x-2 items-center justify-center border border-transparent transition-all min-w-[200px] shadow-sm",
+        'inline-flex space-x-2 items-center justify-center border border-transparent transition-all min-w-[200px] shadow-sm',
         {
-            "text-sm": size === "sm",
+            'text-sm': size === 'sm'
         },
         {
-            "text-base px-4 py-2 rounded-md": size === "base",
+            'text-base px-4 py-2 rounded-md': size === 'base'
         },
         {
-            "text-lg": size === "lg",
+            'text-lg': size === 'lg'
         },
         {
-            "text-white bg-purple-600 hover:bg-purple-700": type === "primary",
+            'text-white bg-purple-600 hover:bg-purple-700': type === 'primary'
         },
         {
-            "text-purple-700 bg-purple-100 hover:text-purple-700 hover:bg-purple-200": type === "secondary",
+            'text-purple-700 bg-purple-100 hover:text-purple-700 hover:bg-purple-200': type === 'secondary'
         },
         {
-            "text-gray-700 bg-white hover:gray-700 hover:bg-gray-50 border-gray-300": type === "alternative",
+            'text-gray-700 bg-white hover:gray-700 hover:bg-gray-50 border-gray-300': type === 'alternative'
         }
     );
 

@@ -1,22 +1,10 @@
-import React, { FC, useEffect, useRef, useState } from "react";
-import { default as cn } from "classnames";
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { default as cn } from 'classnames';
 
-import "../../tailwind.css";
+import '../../tailwind.css';
+import { InputCounter } from '../InputCounter';
 
-type Type =
-    | "text"
-    | "email"
-    | "number"
-    | "password"
-    | "search"
-    | "tel"
-    | "url"
-    | "date"
-    | "datetime-local"
-    | "month"
-    | "time"
-    | "week"
-    | "currency";
+type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week' | 'currency';
 
 export interface TextInputProps {
     /** Input type*/
@@ -37,29 +25,27 @@ export interface TextInputProps {
     isDisabled?: boolean;
     /** Set default value */
     defaultValue?: string;
+    /** Message shown under the text field */
+    message?: string;
+    /** Input character counter */
+    showCounter?: boolean;
+    /** Max length of input character  */
+    maxLength?: number;
     /** Callback on change */
     onChange?(value: string): void;
 }
 
-export const TextInput: FC<TextInputProps> = ({
-    label,
-    focused,
-    isError,
-    id,
-    name,
-    isRequire,
-    type,
-    defaultValue,
-    isDisabled,
-    onChange,
-}: TextInputProps) => {
+export const TextInput: FC<TextInputProps> = ({ label, focused, isError, id, name, isRequire, type, defaultValue, isDisabled, message, showCounter, maxLength = 100, onChange }: TextInputProps) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(focused));
-    const [isActive, setIsActive] = useState<boolean>(Boolean(false));
+    const [isActive, setIsActive] = useState<boolean>(false);
+    const [value, setValue] = useState<string | null | undefined>(defaultValue);
+    const [charCount, setCharCount] = useState<number>(0);
     const inputRef = useRef<HTMLInputElement>(null);
 
+    // set force focus
     useEffect(() => {
         const input = inputRef.current;
-        if (!input || isFocus === undefined || focused === undefined) return;
+        if (!input || isFocus === undefined || focused === undefined || isDisabled) return;
         if (isFocus || focused) {
             input.focus();
             setIsActive(true);
@@ -68,64 +54,71 @@ export const TextInput: FC<TextInputProps> = ({
         }
     }, [isFocus, focused]);
 
+    // set label as active if default value is set
     useEffect(() => {
         const input = inputRef.current;
-        if (!input || defaultValue === undefined || defaultValue === "") return;
+        if (!input || defaultValue === undefined || defaultValue === '') return;
         setIsActive(true);
     }, [defaultValue]);
 
+    // set character count on value change
+    useEffect(() => {
+        setCharCount(Number(value?.length));
+    }, [value]);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const targetValue = e.currentTarget.value;
         onChange && onChange(e.currentTarget.value);
+        setValue(targetValue);
     };
 
-    const handleInputFocus = () => {
+    const handleInputFocus = (): void => {
         setIsFocus(true);
     };
 
-    const handleInputBlur = () => {
+    const handleInputBlur = (): void => {
         const input = inputRef.current;
         setIsFocus(false);
-        setIsActive(!(input && input.value === ""));
+        setIsActive(!(input && input.value === ''));
     };
 
-    const handleLabelClick = () => {
+    const handleLabelClick = (): void => {
         setIsFocus(() => {
-            if (!isFocus) return true;
+            if (!isFocus && !isDisabled) return true;
             return isFocus;
         });
     };
 
     const inputStyles = cn(
-        "border-2 py-2 px-3 rounded-md text-sm leading-5 font-normal w-full",
+        'border-2 py-2 px-3 rounded-md text-sm leading-5 font-normal w-full',
         {
-            "border-gray-300 shadow-sm": !isFocus,
+            'border-gray-300 shadow-sm': !isFocus
         },
         {
-            "focus:ring-1 focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none":
-                (isFocus && !isError),
+            'focus:ring-1 focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none': isFocus
         },
         {
-            "focus:ring-1 focus:ring-red-500 border-red-500 outline-red-500 shadow-none":
-                isError,
+            'focus:ring-1 focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
         }
     );
     const labelStyles = cn(
-        "block inline-block font-medium ml-2 relative transition-all",
+        'block inline-block font-medium ml-2 relative transition-all',
         {
-            "text-sm text-gray-400 px-2 top-9": !isActive,
+            'text-sm text-gray-400 px-2 top-9': !isActive
         },
         {
-            "text-xs text-gray-700 px-1 top-4 bg-white": isActive,
+            'text-xs text-gray-700 px-1 top-4 bg-white': isActive
+        },
+        {
+            'text-xs text-red-500 px-1 top-4 bg-white': isError
         }
     );
 
+    const discriptionStyles = cn('text-sm text-red-500 mt-1 block', { 'text-gray-500': !isError });
+
     return (
-        <div className={[isDisabled ? "opacity-50" : "opacity-100"].join(" ")}>
-            <label
-                htmlFor="email"
-                className={labelStyles}
-                onClick={handleLabelClick}
-            >
+        <div className={[isDisabled ? 'opacity-50' : 'opacity-100'].join(' ')}>
+            <label htmlFor="email" className={labelStyles} onClick={handleLabelClick}>
                 {label}
                 {isRequire && <span className="text-red-500"> *</span>}
             </label>
@@ -133,7 +126,9 @@ export const TextInput: FC<TextInputProps> = ({
                 <input
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => {
+                        handleChange(e);
+                    }}
                     ref={inputRef}
                     type={type}
                     name={name}
@@ -141,7 +136,12 @@ export const TextInput: FC<TextInputProps> = ({
                     className={inputStyles}
                     disabled={isDisabled}
                     defaultValue={defaultValue}
+                    maxLength={maxLength}
                 />
+                <div className="flex flex-row">
+                    <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>
+                    <div className="shrink-0">{showCounter && <InputCounter current={charCount} limit={maxLength} />}</div>
+                </div>
             </div>
         </div>
     );

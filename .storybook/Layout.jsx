@@ -3,11 +3,7 @@ import '../src/tailwind.css';
 import '../src/font.css';
 
 const Layout = ({ children }) => {
-  return (
-    <div className="px-20 py-10 min-w-[400px] font-muli">
-      {children}
-    </div>
-  )
-}
+    return <div className="p5 min-w-[320px] font-muli">{children}</div>;
+};
 
 export default Layout;
