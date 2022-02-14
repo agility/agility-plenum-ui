@@ -114,7 +114,7 @@ export const TextInput: FC<TextInputProps> = ({ label, focused, isError, id, nam
         }
     );
 
-    const discriptionStyles = cn('text-sm text-red-500 mt-1 block', { 'text-gray-500': !isError });
+    const discriptionStyles = cn('text-sm mt-1 block', { 'text-gray-500': !isError }, {'text-red-500': isError});
 
     return (
         <div className={[isDisabled ? 'opacity-50' : 'opacity-100'].join(' ')}>
