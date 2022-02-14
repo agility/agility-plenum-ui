@@ -1,9 +1,10 @@
 import React from 'react';
-import '!style-loader!css-loader!postcss-loader!../src/tailwind.css';
+import '../src/tailwind.css';
+import '../src/font.css';
 
 const Layout = ({ children }) => {
   return (
-    <div className="px-20 py-10 min-w-[300px]">
+    <div className="px-20 py-10 min-w-[400px] font-muli">
       {children}
     </div>
   )

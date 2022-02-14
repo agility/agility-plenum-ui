@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faExclamationCircle, faExclamationTriangle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 export default {
-  title: "Components/Button",
+  title: "Design System/Components/Button",
   component: Button,
 } as Meta;
 

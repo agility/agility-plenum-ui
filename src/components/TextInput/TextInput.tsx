@@ -16,7 +16,7 @@ export interface TextInputProps {
     focused?: boolean;
     /** Error state */
     isError?: boolean;
-    /** Show red asterisk to show required */
+    /** If field is required */
     isRequire?: boolean;
     /** Disabled state */
     isDisabled?: boolean;
@@ -105,7 +105,7 @@ export const TextInput: FC<TextInputProps> = ({
     );
 
     return (
-        <div className={["font-muli", isDisabled ? "opacity-50" : "opacity-100"].join(" ")}>
+        <div className={[isDisabled ? "opacity-50" : "opacity-100"].join(" ")}>
             <label
                 htmlFor="email"
                 className={labelStyles}

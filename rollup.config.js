@@ -26,7 +26,8 @@ const config = [{
 		commonjs(),
 		typescript({ useTsconfigDeclarationDir: true }),
 		postcss({
-			extensions: ['.css']
+			extensions: ['.css'],
+			exclude: 'src/font.css',
 		}),
 
 	]

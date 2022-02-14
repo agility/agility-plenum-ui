@@ -10,12 +10,12 @@ const HIDE = {
 };
 
 export default {
-    title: "Components/TextInput",
+    title: "Design System/Components/TextInput",
     component: TextInput,
     argTypes: {
         type: {
             options: ["text", "number", "password"],
-            control: { type: "radio" }, // Automatically inferred when 'options' is defined
+            control: { type: "radio" },
         },
         name: HIDE,
         id: HIDE,
