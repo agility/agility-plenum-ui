@@ -43,7 +43,7 @@ export const Default = Template.bind({});
 Default.args = {
     ...baseArgs,
     label: 'Email',
-    primaryIcon: 'Camera',
+    primaryIcon: 'MailIcon',
     placeholder: 'you@example.com'
 };
 Default.storyName = 'Leading Icon'
