@@ -89,13 +89,6 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
         // add other focus effects here
     };
 
-    const handleLabelClick = (): void => {
-        setIsFocus(() => {
-            if (!isFocus && !isDisabled) return true;
-            return isFocus;
-        });
-    };
-
     const inputStyles = cn('border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full border-gray-300 shadow-sm pl-10', {
         'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
     });
@@ -107,7 +100,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
 
     return (
         <div>
-            <label htmlFor="email" className={labelStyles} onClick={handleLabelClick}>
+            <label htmlFor={id} className={labelStyles}>
                 {label}
                 {isRequired && <span className="text-red-500"> *</span>}
             </label>
@@ -123,7 +116,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                     onChange={onChange}
                     onValueChange={setValue}
                     ref={inputRef}
-                    type={type}
+                    type="text"
                     name={name}
                     id={id}
                     inputStyles={inputStyles}

@@ -72,13 +72,6 @@ export const TextInput: FC<TextInputProps> = ({ label, isFocused, isError, id, n
         setIsActive(!(input && input.value === ''));
     };
 
-    const handleLabelClick = (): void => {
-        setIsFocus(() => {
-            if (!isFocus && !isDisabled) return true;
-            return isFocus;
-        });
-    };
-
     const inputStyles = cn(
         'border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full',
         {
@@ -111,7 +104,7 @@ export const TextInput: FC<TextInputProps> = ({ label, isFocused, isError, id, n
 
     return (
         <div>
-            <label htmlFor="email" className={labelStyles} onClick={handleLabelClick}>
+            <label htmlFor={id} className={labelStyles}>
                 {label}
                 {isRequired && <span className="text-red-500"> *</span>}
             </label>
