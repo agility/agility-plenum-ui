@@ -19,10 +19,10 @@ export default {
         },
         name: HIDE,
         id: HIDE,
-        // isFocused: HIDE,
+        isFocused: HIDE,
         onChange: HIDE,
         isError: HIDE,
-        isDisabled: HIDE,
+        // isDisabled: HIDE,
         defaultValue: HIDE
     }
 } as Meta;
