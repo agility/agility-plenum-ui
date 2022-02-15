@@ -5,15 +5,11 @@ import React, { FC } from 'react';
 import { default as cn } from 'classnames';
 
 export interface <%= h.capitalize(name) %>Props {
-    /**
-     * Prop comment
-     */
+    /** Prop comment */
     prop: string;
 }
 
-/**
- * Comment
- */
+/** Comment */
 export const <%= h.capitalize(name) %>: FC<<%= h.capitalize(name) %>Props> = ({prop}: <%= h.capitalize(name) %>Props) => {
 
     return (
