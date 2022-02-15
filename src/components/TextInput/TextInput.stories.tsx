@@ -19,7 +19,7 @@ export default {
         },
         name: HIDE,
         id: HIDE,
-        focused: HIDE,
+        // isFocused: HIDE,
         onChange: HIDE,
         isError: HIDE,
         isDisabled: HIDE,
@@ -31,13 +31,13 @@ export default {
 const Template: Story<TextInputProps> = (args) => <TextInput {...args} />;
 const baseArgs = {
     label: 'Default',
-    focused: false,
+    isFocused: false,
     isError: false,
     id: 'input',
     name: 'input',
     type: 'text',
     defaultValue: '',
-    isRequire: false,
+    isRequired: false,
     isDisabled: false,
     showCounter: false
 } as TextInputProps;
@@ -58,7 +58,7 @@ Counter.storyName='With Counter'
 export const Required = Template.bind({});
 Required.args = {
     ...baseArgs,
-    isRequire: true
+    isRequired: true
 };
 
 export const Error = Template.bind({});
@@ -66,7 +66,7 @@ Error.args = {
     ...baseArgs,
     defaultValue: 'Error state',
     isError: true,
-    isRequire: true,
+    isRequired: true,
     message: 'What a bummer. We all make mistakes.'
 };
 

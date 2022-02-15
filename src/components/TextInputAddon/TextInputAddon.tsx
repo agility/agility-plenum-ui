@@ -17,13 +17,13 @@ export interface TextInputAddonProps {
     /** Label for the input */
     label: string;
     /** placeholder for the input */
-    placeholder: string;
+    placeholder?: string;
     /** Force the focus state on the input */
-    focused?: boolean;
+    isFocused?: boolean;
     /** Error state */
     isError?: boolean;
     /** If field is required */
-    isRequire?: boolean;
+    isRequired?: boolean;
     /** Disabled state */
     isDisabled?: boolean;
     /** Set default value */
@@ -42,11 +42,11 @@ export interface TextInputAddonProps {
 
 export const TextInputAddon: FC<TextInputAddonProps> = ({
     label,
-    focused,
+    isFocused,
     isError,
     id,
     name,
-    isRequire,
+    isRequired,
     type,
     defaultValue,
     isDisabled,
@@ -57,7 +57,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
     primaryIcon,
     onChange
 }: TextInputAddonProps) => {
-    const [isFocus, setIsFocus] = useState<boolean>(Boolean(focused));
+    const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
     const [value, setValue] = useState<string | null | undefined>(defaultValue);
     const [charCount, setCharCount] = useState<number>(0);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -65,13 +65,13 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
     // set force focus
     useEffect(() => {
         const input = inputRef.current;
-        if (!input || isFocus === undefined || focused === undefined || isDisabled) return;
-        if (isFocus || focused) {
+        if (!input || isFocus === undefined || isFocused === undefined || isDisabled) return;
+        if (isFocus || isFocused) {
             input.focus();
         } else {
             input.blur();
         }
-    }, [isFocus, focused]);
+    }, [isFocus, isFocused]);
 
     // set label as active if default value is set
     useEffect(() => {
@@ -118,7 +118,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
         <div className={[isDisabled ? 'opacity-50' : 'opacity-100'].join(' ')}>
             <label htmlFor="email" className={labelStyles} onClick={handleLabelClick}>
                 {label}
-                {isRequire && <span className="text-red-500"> *</span>}
+                {isRequired && <span className="text-red-500"> *</span>}
             </label>
             <div className="mt-1 relative">
                 {primaryIcon && (

@@ -16,11 +16,11 @@ export interface TextInputProps {
     /** Label for the input */
     label: string;
     /** Force the focus state on the input */
-    focused?: boolean;
+    isFocused?: boolean;
     /** Error state */
     isError?: boolean;
     /** If field is required */
-    isRequire?: boolean;
+    isRequired?: boolean;
     /** Disabled state */
     isDisabled?: boolean;
     /** Set default value */
@@ -35,8 +35,8 @@ export interface TextInputProps {
     onChange?(value: string): void;
 }
 
-export const TextInput: FC<TextInputProps> = ({ label, focused, isError, id, name, isRequire, type, defaultValue, isDisabled, message, showCounter, maxLength = 100 , onChange }: TextInputProps) => {
-    const [isFocus, setIsFocus] = useState<boolean>(Boolean(focused));
+export const TextInput: FC<TextInputProps> = ({ label, isFocused, isError, id, name, isRequired, type, defaultValue, isDisabled, message, showCounter, maxLength = 100 , onChange }: TextInputProps) => {
+    const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
     const [isActive, setIsActive] = useState<boolean>(false);
     const [value, setValue] = useState<string | null | undefined>(defaultValue);
     const [charCount, setCharCount] = useState<number>(0);
@@ -45,14 +45,14 @@ export const TextInput: FC<TextInputProps> = ({ label, focused, isError, id, nam
     // set force focus
     useEffect(() => {
         const input = inputRef.current;
-        if (!input || isFocus === undefined || focused === undefined || isDisabled) return;
-        if (isFocus || focused) {
+        if (!input || isFocus === undefined || isFocused === undefined || isDisabled) return;
+        if (isFocus || isFocused) {
             input.focus();
             setIsActive(true);
         } else {
             input.blur();
         }
-    }, [isFocus, focused]);
+    }, [isFocus, isFocused]);
 
     // set label as active if default value is set
     useEffect(() => {
@@ -120,7 +120,7 @@ export const TextInput: FC<TextInputProps> = ({ label, focused, isError, id, nam
         <div className={[isDisabled ? 'opacity-50' : 'opacity-100'].join(' ')}>
             <label htmlFor="email" className={labelStyles} onClick={handleLabelClick}>
                 {label}
-                {isRequire && <span className="text-red-500"> *</span>}
+                {isRequired && <span className="text-red-500"> *</span>}
             </label>
             <div className="mt-1">
                 <input

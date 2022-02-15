@@ -16,7 +16,7 @@ export default {
         type: HIDE,
         name: HIDE,
         id: HIDE,
-        focused: HIDE,
+        // isFocused: HIDE,
         onChange: HIDE,
         // isError: HIDE,
         // isDisabled: HIDE,
@@ -28,13 +28,13 @@ export default {
 const Template: Story<TextInputAddonProps> = (args) => <TextInputAddon {...args} />;
 const baseArgs = {
     label: 'Default',
-    focused: false,
+    isFocused: false,
     isError: false,
     id: 'input',
     name: 'input',
     type: 'text',
     defaultValue: '',
-    isRequire: false,
+    isRequired: false,
     isDisabled: false,
     showCounter: false
 } as TextInputAddonProps;
@@ -43,7 +43,7 @@ export const Default = Template.bind({});
 Default.args = {
     ...baseArgs,
     label: 'Email',
-    primaryIcon: 'MailIcon',
+    primaryIcon: 'Camera',
     placeholder: 'you@example.com'
 };
 Default.storyName = 'Leading Icon'
