@@ -4,7 +4,8 @@ import { DynamicIcons, IconName } from '../../util/DynamicIcons';
 
 import '../../tailwind.css';
 import { InputCounter } from '../InputCounter';
-import { BaseField } from "../BaseField";
+import { BaseField } from '../BaseField';
+import { InputCta } from '../InputCta';
 
 type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week' | 'currency';
 
@@ -35,8 +36,12 @@ export interface TextInputAddonProps {
     showCounter?: boolean;
     /** Max length of input character  */
     maxLength?: number;
-    /** Icon to use in the text field  */
-    primaryIcon?: IconName;
+    /** Leading icon displayed within the input  */
+    leadIcon?: IconName;
+    /** Trailing icon displayed within the input  */
+    trailIcon?: IconName;
+    /** Label for input CTA  */
+    ctaLabel?: string;
     /** Callback on change */
     onChange?(value: string): void;
 }
@@ -55,7 +60,9 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
     showCounter,
     maxLength = 100,
     placeholder,
-    primaryIcon,
+    leadIcon,
+    trailIcon,
+    ctaLabel,
     onChange
 }: TextInputAddonProps) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
@@ -89,10 +96,15 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
         // add other focus effects here
     };
 
-    const inputStyles = cn('border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full border-gray-300 shadow-sm pl-10', {
-        'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
-    });
-    const labelStyles = cn('block inline-block font-medium transition-all text-sm text-gray-700', {
+    const inputStyles = cn(
+        'border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full border-gray-300 shadow-sm',
+        {
+            'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
+        },
+        { 'pl-10': leadIcon },
+        {'rounded-none rounded-l-md': ctaLabel}
+    );
+    const labelStyles = cn('block inline-block font-medium transition-all text-sm text-gray-700 mb-1', {
         'text-red-500 bg-white': isError
     });
 
@@ -104,27 +116,35 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                 {label}
                 {isRequired && <span className="text-red-500"> *</span>}
             </label>
-            <div className="mt-1 relative">
-                {primaryIcon && (
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <DynamicIcons icon={primaryIcon} className="h-5 w-5 text-gray-400" outline={false} />
-                    </div>
-                )}
-                <BaseField
-                    onFocus={handleInputFocus}
-                    onBlur={handleInputBlur}
-                    onChange={onChange}
-                    onValueChange={setValue}
-                    ref={inputRef}
-                    type="text"
-                    name={name}
-                    id={id}
-                    inputStyles={inputStyles}
-                    isDisabled={isDisabled}
-                    defaultValue={defaultValue}
-                    maxLength={maxLength}
-                    placeholder={placeholder}
-                />
+            <div className="flex">
+                <div className="relative flex-grow">
+                    {leadIcon && (
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <DynamicIcons icon={leadIcon} className="h-5 w-5 text-gray-400" outline={false} />
+                        </div>
+                    )}
+                    {(trailIcon && !ctaLabel) && (
+                        <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <DynamicIcons icon={trailIcon} className="h-5 w-5 text-gray-400" outline={false} />
+                        </div>
+                    )}
+                    <BaseField
+                        onFocus={handleInputFocus}
+                        onBlur={handleInputBlur}
+                        onChange={onChange}
+                        onValueChange={setValue}
+                        ref={inputRef}
+                        type={type}
+                        name={name}
+                        id={id}
+                        inputStyles={inputStyles}
+                        isDisabled={isDisabled}
+                        defaultValue={defaultValue}
+                        maxLength={maxLength}
+                        placeholder={placeholder}
+                    />
+                </div>
+                {(trailIcon && ctaLabel) && <InputCta icon={trailIcon} ctaLabel={ctaLabel} />}
             </div>
             <div className="flex flex-row">
                 <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>

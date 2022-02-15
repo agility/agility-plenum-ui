@@ -41,7 +41,37 @@ export const Default = Template.bind({});
 Default.args = {
     ...baseArgs,
     label: 'Email',
-    primaryIcon: 'MailIcon',
+    leadIcon: 'MailIcon',
     placeholder: 'you@example.com'
 };
 Default.storyName = 'Leading Icon'
+
+export const TrailAction = Template.bind({});
+TrailAction.args = {
+    ...baseArgs,
+    label: 'Copy',
+    trailIcon: 'DuplicateIcon',
+    placeholder: 'class="flex-shrink-0',
+    ctaLabel: 'copy'
+};
+TrailAction.storyName = 'Trailing Action'
+
+export const TrailAndLeadIcons = Template.bind({});
+TrailAndLeadIcons.args = {
+    ...baseArgs,
+    label: 'Person',
+    trailIcon: 'SortAscendingIcon',
+    leadIcon: 'UserIcon',
+    placeholder: 'John Doe',
+    ctaLabel: 'Sort'
+};
+TrailAndLeadIcons.storyName = 'Trail/Lead Action'
+
+export const TrailIcon = Template.bind({});
+TrailIcon.args = {
+    ...baseArgs,
+    label: 'API Key',
+    trailIcon: 'QuestionMarkCircleIcon',
+    placeholder: '000-00-0000',
+};
+TrailIcon.storyName = 'Trailing Icon'
