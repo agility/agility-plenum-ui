@@ -63,6 +63,7 @@ export const TextInput: FC<TextInputProps> = ({ label, isFocused, isError, id, n
 
     const handleInputFocus = (): void => {
         setIsFocus(true);
+        // add other focus effects here
     };
 
     const handleInputBlur = (): void => {

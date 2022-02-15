@@ -22,7 +22,6 @@ export default {
         isFocused: HIDE,
         onChange: HIDE,
         isError: HIDE,
-        // isDisabled: HIDE,
         defaultValue: HIDE
     }
 } as Meta;

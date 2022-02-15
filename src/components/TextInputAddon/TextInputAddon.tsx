@@ -4,6 +4,7 @@ import { DynamicIcons, IconName } from '../../util/DynamicIcons';
 
 import '../../tailwind.css';
 import { InputCounter } from '../InputCounter';
+import { BaseField } from "../BaseField";
 
 type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week' | 'currency';
 
@@ -59,7 +60,6 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
 }: TextInputAddonProps) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
     const [value, setValue] = useState<string | null | undefined>(defaultValue);
-    const [charCount, setCharCount] = useState<number>(0);
     const inputRef = useRef<HTMLInputElement>(null);
 
     // set force focus
@@ -79,23 +79,14 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
         if (!input || defaultValue === undefined || defaultValue === '') return;
     }, [defaultValue]);
 
-    // set character count on value change
-    useEffect(() => {
-        setCharCount(Number(value?.length));
-    }, [value]);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const targetValue = e.currentTarget.value;
-        onChange && onChange(e.currentTarget.value);
-        setValue(targetValue);
-    };
-
     const handleInputFocus = (): void => {
         setIsFocus(true);
+        // add other focus effects here
     };
 
     const handleInputBlur = (): void => {
         setIsFocus(false);
+        // add other focus effects here
     };
 
     const handleLabelClick = (): void => {
@@ -115,7 +106,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
     const discriptionStyles = cn('text-sm mt-1 block', { 'text-gray-500': !isError }, { 'text-red-500': isError });
 
     return (
-        <div className={[isDisabled ? 'opacity-50' : 'opacity-100'].join(' ')}>
+        <div>
             <label htmlFor="email" className={labelStyles} onClick={handleLabelClick}>
                 {label}
                 {isRequired && <span className="text-red-500"> *</span>}
@@ -126,26 +117,25 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                         <DynamicIcons icon={primaryIcon} className="h-5 w-5 text-gray-400" outline={false} />
                     </div>
                 )}
-                <input
+                <BaseField
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
-                    onChange={(e) => {
-                        handleChange(e);
-                    }}
-                    placeholder={placeholder}
+                    onChange={onChange}
+                    onValueChange={setValue}
                     ref={inputRef}
                     type={type}
                     name={name}
                     id={id}
-                    className={inputStyles}
-                    disabled={isDisabled}
+                    inputStyles={inputStyles}
+                    isDisabled={isDisabled}
                     defaultValue={defaultValue}
                     maxLength={maxLength}
+                    placeholder={placeholder}
                 />
             </div>
             <div className="flex flex-row">
                 <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>
-                <div className="shrink-0">{showCounter && <InputCounter current={charCount} limit={maxLength} />}</div>
+                <div className="shrink-0">{showCounter && <InputCounter current={Number(value?.length)} limit={maxLength} />}</div>
             </div>
         </div>
     );

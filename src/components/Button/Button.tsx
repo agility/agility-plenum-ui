@@ -30,7 +30,7 @@ export interface ButtonProps {
  */
 export const Button: FC<ButtonProps> = ({ type = 'primary', size = 'base', onClick, label, icon }: ButtonProps) => {
     const btnStyles = cn(
-        'inline-flex space-x-2 items-center justify-center border border-transparent transition-all min-w-[200px] shadow-sm',
+        'inline-flex space-x-2 items-center justify-center border transition-all min-w-[200px] shadow-sm',
         {
             'text-sm': size === 'sm'
         },
