@@ -38,21 +38,22 @@ const baseArgs = {
 } as TextInputAddonProps;
 
 export const AllVariations = Template.bind({});
-AllVariations.decorators=[
-    ()=> {
-        return(
+AllVariations.decorators = [
+    () => {
+        return (
             <div className="grid-flow-row gap-4 grid">
-                <TextInputAddon {...Default.args as TextInputAddonProps} />
-                <TextInputAddon {...LeadIcon.args as TextInputAddonProps} />
-                <TextInputAddon {...TrailAction.args as TextInputAddonProps} />
-                <TextInputAddon {...TrailAndLeadIcons.args as TextInputAddonProps} />
-                <TextInputAddon {...TrailIcon.args as TextInputAddonProps} />
-                <TextInputAddon {...LeadLabel.args as TextInputAddonProps} />
+                <TextInputAddon {...(Default.args as TextInputAddonProps)} />
+                <TextInputAddon {...(LeadIcon.args as TextInputAddonProps)} />
+                <TextInputAddon {...(TrailAction.args as TextInputAddonProps)} />
+                <TextInputAddon {...(TrailAndLeadIcons.args as TextInputAddonProps)} />
+                <TextInputAddon {...(TrailIcon.args as TextInputAddonProps)} />
+                <TextInputAddon {...(LeadLabel.args as TextInputAddonProps)} />
+                <TextInputAddon {...(Currency.args as TextInputAddonProps)} />
                 <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
             </div>
-        )
+        );
     }
-]
+];
 
 export const Default = Template.bind({});
 Default.args = {
@@ -60,7 +61,7 @@ Default.args = {
     label: 'Label',
     placeholder: 'Placeholder'
 };
-Default.storyName = 'Minimum'
+Default.storyName = 'Minimum';
 
 export const LeadIcon = Template.bind({});
 LeadIcon.args = {
@@ -69,8 +70,7 @@ LeadIcon.args = {
     inlineIcon: 'MailIcon',
     placeholder: 'you@example.com'
 };
-LeadIcon.storyName = 'Leading Icon'
-
+LeadIcon.storyName = 'Leading Icon';
 
 export const TrailAction = Template.bind({});
 TrailAction.args = {
@@ -80,18 +80,18 @@ TrailAction.args = {
     trailIcon: 'DuplicateIcon',
     trailLabel: 'copy'
 };
-TrailAction.storyName = 'Trailing Action'
+TrailAction.storyName = 'Trailing Action';
 
 export const TrailAndLeadIcons = Template.bind({});
 TrailAndLeadIcons.args = {
     ...baseArgs,
     label: 'Person',
     trailIcon: 'SortAscendingIcon',
-    leadIcon: 'UserIcon',
+    inlineIcon: 'UserIcon',
     placeholder: 'John Doe',
     trailLabel: 'Sort'
 };
-TrailAndLeadIcons.storyName = 'Trail/Lead Action'
+TrailAndLeadIcons.storyName = 'Trail/Lead Action';
 
 export const TrailIcon = Template.bind({});
 TrailIcon.args = {
@@ -101,14 +101,24 @@ TrailIcon.args = {
     placeholder: '000-00-0000',
     clearCta: 'right'
 };
-TrailIcon.storyName = 'Trailing Icon'
+TrailIcon.storyName = 'Trailing Icon';
 
 export const LeadLabel = Template.bind({});
 LeadLabel.args = {
     ...baseArgs,
     label: 'URL',
     leadLabel: 'http://',
-    placeholder: 'agilitycms.com',
+    placeholder: 'agilitycms.com'
 };
-LeadLabel.storyName = 'Leading label'
+LeadLabel.storyName = 'Leading label';
 
+export const Currency = Template.bind({});
+Currency.args = {
+    ...baseArgs,
+    label: 'Price',
+    leadLabel: '$',
+    placeholder: '159.99',
+    trailLabel: 'USD',
+    clearCta: 'both'
+};
+Currency.storyName = 'Currency';

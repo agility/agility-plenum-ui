@@ -129,7 +129,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
             </label>
             <div className="flex">
                 {(leadIcon || leadLabel) && <InputCta icon={leadIcon} ctaLabel={leadLabel} align="left" isClear={clearCta === 'left' || clearCta === 'both'} />}
-                <div className="flex-grow focus-within:z-10 relative">
+                <div className="flex-grow focus-within:z-20 relative">
                     {inlineIcon && (
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <DynamicIcons icon={inlineIcon} className="h-5 w-5 text-gray-400" outline={false} />
