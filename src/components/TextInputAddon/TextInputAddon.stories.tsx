@@ -37,6 +37,21 @@ const baseArgs = {
     showCounter: false
 } as TextInputAddonProps;
 
+export const AllVariations = Template.bind({});
+AllVariations.decorators=[
+    ()=> {
+        return(
+            <div className="grid-flow-row gap-4 grid">
+                <TextInputAddon {...Default.args as TextInputAddonProps} />
+                <TextInputAddon {...TrailAction.args as TextInputAddonProps} />
+                <TextInputAddon {...TrailAndLeadIcons.args as TextInputAddonProps} />
+                <TextInputAddon {...TrailIcon.args as TextInputAddonProps} />
+                <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
+            </div>
+        )
+    }
+]
+
 export const Default = Template.bind({});
 Default.args = {
     ...baseArgs,
@@ -75,3 +90,4 @@ TrailIcon.args = {
     placeholder: '000-00-0000',
 };
 TrailIcon.storyName = 'Trailing Icon'
+
