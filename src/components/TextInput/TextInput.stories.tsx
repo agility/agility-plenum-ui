@@ -13,15 +13,10 @@ export default {
     title: 'Design System/Components/TextInput',
     component: TextInput,
     argTypes: {
-        type: {
-            options: ['text', 'number', 'password'],
-            control: { type: 'radio' }
-        },
         name: HIDE,
         id: HIDE,
         isFocused: HIDE,
         onChange: HIDE,
-        isError: HIDE,
         defaultValue: HIDE
     }
 } as Meta;
@@ -30,15 +25,15 @@ export default {
 const Template: Story<TextInputProps> = (args) => <TextInput {...args} />;
 const baseArgs = {
     label: 'Default',
-    isFocused: false,
-    isError: false,
     id: 'input',
     name: 'input',
     type: 'text',
     defaultValue: '',
     isRequired: false,
     isDisabled: false,
-    showCounter: false
+    isFocused: false,
+    isError: false,
+    showCounter: false,
 } as TextInputProps;
 
 export const AllVariations = Template.bind({});
@@ -47,10 +42,11 @@ AllVariations.decorators=[
         return(
             <div className="grid-flow-row gap-3 grid">
                 <TextInput {...Default.args as TextInputProps} />
-                <TextInput {...Counter.args as TextInputProps} />
                 <TextInput {...Required.args as TextInputProps} />
-                <TextInput {...Error.args as TextInputProps} />
                 <TextInput {...Disabled.args as TextInputProps} />
+                <TextInput {...Error.args as TextInputProps} />
+                <TextInput {...Message.args as TextInputProps} />
+                <TextInput {...Counter.args as TextInputProps} />
                 <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
             </div>
         )
@@ -59,10 +55,13 @@ AllVariations.decorators=[
 
 export const Default = Template.bind({});
 Default.args = {
+    ...baseArgs
+};
+export const Message = Template.bind({});
+Message.args = {
     ...baseArgs,
     message: 'Write a few sentences about yourself.'
 };
-
 export const Counter = Template.bind({});
 Counter.args = {
     ...baseArgs,
