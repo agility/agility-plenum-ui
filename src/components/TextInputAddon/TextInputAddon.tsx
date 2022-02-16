@@ -7,7 +7,7 @@ import { InputCounter } from '../InputCounter';
 import { BaseField } from '../BaseField';
 import { InputCta } from '../InputCta';
 
-type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week' | 'currency';
+export type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week' | 'currency';
 
 export interface TextInputAddonProps {
     /** Input type*/
@@ -17,7 +17,7 @@ export interface TextInputAddonProps {
     /** Input Name */
     name: string;
     /** Label for the input */
-    label: string;
+    label?: string;
     /** placeholder for the input */
     placeholder?: string;
     /** Force the focus state on the input */

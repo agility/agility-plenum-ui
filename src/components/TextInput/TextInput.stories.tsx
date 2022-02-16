@@ -41,6 +41,22 @@ const baseArgs = {
     showCounter: false
 } as TextInputProps;
 
+export const AllVariations = Template.bind({});
+AllVariations.decorators=[
+    ()=> {
+        return(
+            <div className="grid-flow-row gap-3 grid">
+                <TextInput {...Default.args as TextInputProps} />
+                <TextInput {...Counter.args as TextInputProps} />
+                <TextInput {...Required.args as TextInputProps} />
+                <TextInput {...Error.args as TextInputProps} />
+                <TextInput {...Disabled.args as TextInputProps} />
+                <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
+            </div>
+        )
+    }
+]
+
 export const Default = Template.bind({});
 Default.args = {
     ...baseArgs,
