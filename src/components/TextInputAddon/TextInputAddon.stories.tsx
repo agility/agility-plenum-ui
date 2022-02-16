@@ -43,6 +43,7 @@ AllVariations.decorators=[
         return(
             <div className="grid-flow-row gap-4 grid">
                 <TextInputAddon {...Default.args as TextInputAddonProps} />
+                <TextInputAddon {...LeadIcon.args as TextInputAddonProps} />
                 <TextInputAddon {...TrailAction.args as TextInputAddonProps} />
                 <TextInputAddon {...TrailAndLeadIcons.args as TextInputAddonProps} />
                 <TextInputAddon {...TrailIcon.args as TextInputAddonProps} />
@@ -56,18 +57,27 @@ AllVariations.decorators=[
 export const Default = Template.bind({});
 Default.args = {
     ...baseArgs,
+    label: 'Label',
+    placeholder: 'Placeholder'
+};
+Default.storyName = 'Minimum'
+
+export const LeadIcon = Template.bind({});
+LeadIcon.args = {
+    ...baseArgs,
     label: 'Email',
-    leadIcon: 'MailIcon',
+    inlineIcon: 'MailIcon',
     placeholder: 'you@example.com'
 };
-Default.storyName = 'Leading Icon'
+LeadIcon.storyName = 'Leading Icon'
+
 
 export const TrailAction = Template.bind({});
 TrailAction.args = {
     ...baseArgs,
     label: 'Copy',
-    trailIcon: 'DuplicateIcon',
     placeholder: 'class="flex-shrink-0',
+    trailIcon: 'DuplicateIcon',
     trailLabel: 'copy'
 };
 TrailAction.storyName = 'Trailing Action'
@@ -89,6 +99,7 @@ TrailIcon.args = {
     label: 'API Key',
     trailIcon: 'QuestionMarkCircleIcon',
     placeholder: '000-00-0000',
+    clearCta: 'right'
 };
 TrailIcon.storyName = 'Trailing Icon'
 

@@ -4,7 +4,7 @@ import { InputCta } from './InputCta'
 
 test('InputCta component', () => {
     // setup
-    const inputcta = shallow(<InputCta  icon="QuestionMarkCircleIcon" ctaLabel="Label" align="left" />);
+    const inputcta = shallow(<InputCta  icon="QuestionMarkCircleIcon" ctaLabel="Label" align="left" isClear />);
     // test
     expect(inputcta.text()).toEqual('');
 })

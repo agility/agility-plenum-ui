@@ -44,6 +44,10 @@ export interface TextInputAddonProps {
     trailLabel?: string;
     /** Leading label for input CTA  */
     leadLabel?: string;
+    /** Remove bg and border from CTA  */
+    clearCta?: 'left' | 'right' | 'both' | 'none';
+    /** Icon within the input field  */
+    inlineIcon?: IconName;
     /** Callback on change */
     onChange?(value: string): void;
 }
@@ -66,6 +70,8 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
     trailIcon,
     trailLabel,
     leadLabel,
+    clearCta = 'none',
+    inlineIcon,
     onChange
 }: TextInputAddonProps) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
@@ -104,9 +110,10 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
         {
             'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
         },
-        { 'pl-10': leadIcon },
-        {'rounded-none rounded-l-md': trailLabel},
-        {'rounded-none rounded-r-md': leadLabel}
+        { 'pl-10': inlineIcon },
+        { 'rounded-none rounded-l-md': (trailIcon || trailLabel) && !(leadIcon || leadLabel) },
+        { 'rounded-none rounded-r-md': !(trailIcon || trailLabel) && (leadIcon || leadLabel) },
+        { 'rounded-none': (trailIcon || trailLabel) && (leadIcon || leadLabel) }
     );
     const labelStyles = cn('block inline-block font-medium transition-all text-sm text-gray-700 mb-1', {
         'text-red-500 bg-white': isError
@@ -121,16 +128,11 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                 {isRequired && <span className="text-red-500"> *</span>}
             </label>
             <div className="flex">
-                {(leadLabel) && <InputCta ctaLabel={leadLabel} align="left" />}
-                <div className="relative flex-grow focus-within:z-10">
-                    {leadIcon && (
+                {(leadIcon || leadLabel) && <InputCta icon={leadIcon} ctaLabel={leadLabel} align="left" isClear={clearCta === 'left' || clearCta === 'both'} />}
+                <div className="flex-grow focus-within:z-10 relative">
+                    {inlineIcon && (
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <DynamicIcons icon={leadIcon} className="h-5 w-5 text-gray-400" outline={false} />
-                        </div>
-                    )}
-                    {(trailIcon && !trailLabel) && (
-                        <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <DynamicIcons icon={trailIcon} className="h-5 w-5 text-gray-400" outline={false} />
+                            <DynamicIcons icon={inlineIcon} className="h-5 w-5 text-gray-400" outline={false} />
                         </div>
                     )}
                     <BaseField
@@ -149,7 +151,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                         placeholder={placeholder}
                     />
                 </div>
-                {(trailIcon && trailLabel) && <InputCta icon={trailIcon} ctaLabel={trailLabel} align="right" />}
+                {(trailIcon || trailLabel) && <InputCta icon={trailIcon} ctaLabel={trailLabel} align="right" isClear={clearCta === 'right' || clearCta === 'both'} />}
             </div>
             <div className="flex flex-row">
                 <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>

@@ -9,18 +9,20 @@ export interface InputCtaProps {
     ctaLabel?: string;
     /** Alignment */
     align: 'left' | 'right';
+    /** Show the CTA without Background color and a border seperator */
+    isClear?: boolean;
     /** Onclick callback */
     onClickHandler?(): void;
 }
 
 
 /** Comment */
-export const InputCta: FC<InputCtaProps> = ({ icon, ctaLabel, align='right', onClickHandler }: InputCtaProps): JSX.Element => {
+export const InputCta: FC<InputCtaProps> = ({ icon, ctaLabel, align='right', isClear=false, onClickHandler }: InputCtaProps): JSX.Element => {
     const handleClick = () => {
         onClickHandler && onClickHandler();
     };
     const buttonStyle = cn(
-        'relative inline-flex items-center space-x-2 px-4 py-2 border border-gray-300 text-sm font-medium bg-gray-50 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500',
+        'relative inline-flex items-center space-x-2 px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500',
         {
             'rounded-r-md text-gray-700 -ml-px': (align === 'right')
         },
@@ -32,12 +34,22 @@ export const InputCta: FC<InputCtaProps> = ({ icon, ctaLabel, align='right', onC
         },
         {
             'hover:bg-gray-100': onClickHandler
-        }
+        },
+        {
+            'border-l-white': (isClear && align === 'right')
+        },
+        {
+            'border-r-white': (isClear && align === 'left')
+        },
+        {
+            'bg-gray-50': !isClear
+        },
+
     );
     return (
         <button type="button" className={buttonStyle} onClick={handleClick}>
             <DynamicIcons icon={icon} className="h-5 w-5 text-gray-400" outline={false} />
-            <span>{ctaLabel}</span>
+            {ctaLabel && <span>{ctaLabel}</span>}
         </button>
     );
 };
