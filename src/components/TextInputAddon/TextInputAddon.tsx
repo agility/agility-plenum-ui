@@ -117,7 +117,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                 {isRequired && <span className="text-red-500"> *</span>}
             </label>
             <div className="flex">
-                <div className="relative flex-grow">
+                <div className="relative flex-grow focus-within:z-10">
                     {leadIcon && (
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <DynamicIcons icon={leadIcon} className="h-5 w-5 text-gray-400" outline={false} />
