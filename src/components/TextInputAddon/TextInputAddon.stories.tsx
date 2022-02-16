@@ -97,7 +97,7 @@ LeadLabel.args = {
     ...baseArgs,
     label: 'URL',
     leadLabel: 'http://',
-    placeholder: '000-00-0000',
+    placeholder: 'agilitycms.com',
 };
 LeadLabel.storyName = 'Leading label'
 
