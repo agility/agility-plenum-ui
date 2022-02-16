@@ -46,6 +46,7 @@ AllVariations.decorators=[
                 <TextInputAddon {...TrailAction.args as TextInputAddonProps} />
                 <TextInputAddon {...TrailAndLeadIcons.args as TextInputAddonProps} />
                 <TextInputAddon {...TrailIcon.args as TextInputAddonProps} />
+                <TextInputAddon {...LeadLabel.args as TextInputAddonProps} />
                 <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
             </div>
         )
@@ -67,7 +68,7 @@ TrailAction.args = {
     label: 'Copy',
     trailIcon: 'DuplicateIcon',
     placeholder: 'class="flex-shrink-0',
-    ctaLabel: 'copy'
+    trailLabel: 'copy'
 };
 TrailAction.storyName = 'Trailing Action'
 
@@ -78,7 +79,7 @@ TrailAndLeadIcons.args = {
     trailIcon: 'SortAscendingIcon',
     leadIcon: 'UserIcon',
     placeholder: 'John Doe',
-    ctaLabel: 'Sort'
+    trailLabel: 'Sort'
 };
 TrailAndLeadIcons.storyName = 'Trail/Lead Action'
 
@@ -90,4 +91,13 @@ TrailIcon.args = {
     placeholder: '000-00-0000',
 };
 TrailIcon.storyName = 'Trailing Icon'
+
+export const LeadLabel = Template.bind({});
+LeadLabel.args = {
+    ...baseArgs,
+    label: 'URL',
+    leadLabel: 'http://',
+    placeholder: '000-00-0000',
+};
+LeadLabel.storyName = 'Leading label'
 

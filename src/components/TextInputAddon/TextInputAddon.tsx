@@ -40,8 +40,10 @@ export interface TextInputAddonProps {
     leadIcon?: IconName;
     /** Trailing icon displayed within the input  */
     trailIcon?: IconName;
-    /** Label for input CTA  */
-    ctaLabel?: string;
+    /** Trailing label for the input CTA */
+    trailLabel?: string;
+    /** Leading label for input CTA  */
+    leadLabel?: string;
     /** Callback on change */
     onChange?(value: string): void;
 }
@@ -62,7 +64,8 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
     placeholder,
     leadIcon,
     trailIcon,
-    ctaLabel,
+    trailLabel,
+    leadLabel,
     onChange
 }: TextInputAddonProps) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
@@ -102,7 +105,8 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
             'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
         },
         { 'pl-10': leadIcon },
-        {'rounded-none rounded-l-md': ctaLabel}
+        {'rounded-none rounded-l-md': trailLabel},
+        {'rounded-none rounded-r-md': leadLabel}
     );
     const labelStyles = cn('block inline-block font-medium transition-all text-sm text-gray-700 mb-1', {
         'text-red-500 bg-white': isError
@@ -117,13 +121,14 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                 {isRequired && <span className="text-red-500"> *</span>}
             </label>
             <div className="flex">
+                {(leadLabel) && <InputCta ctaLabel={leadLabel} align="left" />}
                 <div className="relative flex-grow focus-within:z-10">
                     {leadIcon && (
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <DynamicIcons icon={leadIcon} className="h-5 w-5 text-gray-400" outline={false} />
                         </div>
                     )}
-                    {(trailIcon && !ctaLabel) && (
+                    {(trailIcon && !trailLabel) && (
                         <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                             <DynamicIcons icon={trailIcon} className="h-5 w-5 text-gray-400" outline={false} />
                         </div>
@@ -144,7 +149,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                         placeholder={placeholder}
                     />
                 </div>
-                {(trailIcon && ctaLabel) && <InputCta icon={trailIcon} ctaLabel={ctaLabel} />}
+                {(trailIcon && trailLabel) && <InputCta icon={trailIcon} ctaLabel={trailLabel} align="right" />}
             </div>
             <div className="flex flex-row">
                 <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>

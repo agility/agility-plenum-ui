@@ -1,27 +1,41 @@
 import React, { FC } from 'react';
 import { default as cn } from 'classnames';
-import { DynamicIcons, IconName } from "../../util/DynamicIcons";
+import { DynamicIcons, IconName } from '../../util/DynamicIcons';
 
 export interface InputCtaProps {
     /** Icon name */
-    icon: IconName,
+    icon?: IconName;
     /** CTA label */
-    ctaLabel?: string,
-    /** CTA label */
-    onClickHandler?(): void,
+    ctaLabel?: string;
+    /** Alignment */
+    align: 'left' | 'right';
+    /** Onclick callback */
+    onClickHandler?(): void;
 }
 
+
 /** Comment */
-export const InputCta: FC<InputCtaProps> = ({ icon, ctaLabel, onClickHandler }: InputCtaProps): JSX.Element => {
+export const InputCta: FC<InputCtaProps> = ({ icon, ctaLabel, align='right', onClickHandler }: InputCtaProps): JSX.Element => {
     const handleClick = () => {
         onClickHandler && onClickHandler();
-    }
+    };
+    const buttonStyle = cn(
+        'relative inline-flex items-center space-x-2 px-4 py-2 border border-gray-300 text-sm font-medium bg-gray-50 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500',
+        {
+            'rounded-r-md text-gray-700 -ml-px': (align === 'right')
+        },
+        {
+            'rounded-l-md text-gray-500 -mr-px focus-within:z-10': (align === 'left')
+        },
+        {
+            'cursor-default': !onClickHandler
+        },
+        {
+            'hover:bg-gray-100': onClickHandler
+        }
+    );
     return (
-        <button
-            type="button"
-            className="-ml-px relative inline-flex items-center space-x-2 px-4 py-2 border border-gray-300 text-sm font-medium rounded-r-md text-gray-700 bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
-            onClick={handleClick}
-        >
+        <button type="button" className={buttonStyle} onClick={handleClick}>
             <DynamicIcons icon={icon} className="h-5 w-5 text-gray-400" outline={false} />
             <span>{ctaLabel}</span>
         </button>
