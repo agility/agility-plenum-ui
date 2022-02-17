@@ -42,7 +42,6 @@ AllVariations.decorators = [
     () => {
         return (
             <div className="grid-flow-row gap-4 grid">
-                <TextInputSelect {...(Default.args as TextInputSelectProps)} />
                 <TextInputSelect {...(LeadSelect.args as TextInputSelectProps)} />
                 <TextInputSelect {...(TrailSelect.args as TextInputSelectProps)} />
                 <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
@@ -51,22 +50,31 @@ AllVariations.decorators = [
     }
 ];
 
-export const Default = Template.bind({});
-Default.args = {
-    ...baseArgs,
-    label: 'Label',
-    placeholder: 'Placeholder'
-};
-Default.storyName = 'Minimum';
-
 export const LeadSelect = Template.bind({});
 LeadSelect.args = {
     ...baseArgs,
+    label: 'Currency',
+    placeholder: '420.69',
+    type: 'currency',
+    inputOptions: [
+        { label: 'USD', value: 'USD' },
+        { label: 'CAD', value: 'CAD' },
+        { label: 'EUR', value: 'EUR' }
+    ],
+    prefix: '$'
 };
-LeadSelect.storyName = 'Leading Icon';
+LeadSelect.storyName = 'Leading Action';
 
 export const TrailSelect = Template.bind({});
 TrailSelect.args = {
     ...baseArgs,
+    label: 'Phone',
+    selectLocation: 'left',
+    placeholder: '+1 (555) 987-6543',
+    inputOptions: [
+        { label: 'US', value: 'US' },
+        { label: 'CA', value: 'CA' },
+        { label: 'EU', value: 'EU' }
+    ]
 };
 TrailSelect.storyName = 'Trailing Action';

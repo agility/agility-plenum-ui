@@ -12,7 +12,7 @@ export default {
     title: 'Design System/Atoms',
     component: InputSelect,
     argTypes: {
-        onClickHandler: HIDE
+        onSelectOption: HIDE
     }
 } as Meta;
 
@@ -20,9 +20,9 @@ const Template: Story<InputSelectProps> = (args) => <InputSelect {...args} />;
 
 export const InputSelectComponent = Template.bind({});
 InputSelectComponent.args = {
-    icon: 'SortAscendingIcon',
-    ctaLabel: 'Sort',
-    isClear: false,
-    align: 'left'
+    align: 'left',
+    inputOptions: [
+        { label: 'Select', value: 'Select' },
+    ]
 };
 InputSelectComponent.storyName = 'Input Select';

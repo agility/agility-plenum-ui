@@ -48,7 +48,6 @@ AllVariations.decorators = [
                 <TextInputAddon {...(TrailAndLeadIcons.args as TextInputAddonProps)} />
                 <TextInputAddon {...(TrailIcon.args as TextInputAddonProps)} />
                 <TextInputAddon {...(LeadLabel.args as TextInputAddonProps)} />
-                <TextInputAddon {...(Currency.args as TextInputAddonProps)} />
                 <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
             </div>
         );
@@ -111,13 +110,3 @@ LeadLabel.args = {
     placeholder: 'agilitycms.com'
 };
 LeadLabel.storyName = 'Leading label';
-
-export const Currency = Template.bind({});
-Currency.args = {
-    ...baseArgs,
-    label: 'Price',
-    placeholder: '$ 159.99',
-    trailLabel: 'USD',
-    clearCta: 'both'
-};
-Currency.storyName = 'Currency';

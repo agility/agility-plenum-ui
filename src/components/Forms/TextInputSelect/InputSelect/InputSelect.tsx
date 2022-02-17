@@ -20,21 +20,11 @@ export const InputSelect: FC<InputSelectProps> = ({ inputOptions, onSelectOption
     };
     const selectStyle = cn(
         'relative z-10 inline-flex items-center space-x-2 bg-white px-4 py-2 pr-7 border border-gray-300 text-sm font-medium focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500',
-        {
-            'rounded-r-md text-gray-700 -ml-px': (align === 'right')
-        },
-        {
-            'rounded-l-md text-gray-500 -mr-px focus-within:z-10': (align === 'left')
-        },
-        {
-            'cursor-default': !onSelectOption
-        },
-        {
-            'border-l-white': (align === 'right')
-        },
-        {
-            'border-r-white': (align === 'left')
-        }
+        { 'rounded-r-md text-gray-700 -ml-px': align === 'right' },
+        { 'rounded-l-md text-gray-500 -mr-px focus-within:z-10': align === 'left' },
+        { 'cursor-default': !onSelectOption },
+        { 'border-l-white': align === 'right' },
+        { 'border-r-white': align === 'left' }
     );
 
     if (!inputOptions?.length) return null;
