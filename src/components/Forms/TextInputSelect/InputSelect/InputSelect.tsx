@@ -11,7 +11,7 @@ export interface InputSelectProps {
 }
 
 /** Comment */
-export const InputSelect: FC<InputSelectProps> = ({ inputOptions, onSelectOption, align='right'}: InputSelectProps): JSX.Element | null => {
+export const InputSelect: FC<InputSelectProps> = ({ inputOptions, onSelectOption, align = 'right' }: InputSelectProps): JSX.Element | null => {
     const [selectedOption, setSelectedOption] = useState<string>(inputOptions[0].value);
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const targetValue = e.target.value;
@@ -19,19 +19,32 @@ export const InputSelect: FC<InputSelectProps> = ({ inputOptions, onSelectOption
         setSelectedOption(targetValue);
     };
     const selectStyle = cn(
-        'focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-3 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md',
+        'relative z-10 inline-flex items-center space-x-2 bg-white px-4 py-2 pr-7 border border-gray-300 text-sm font-medium focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500',
+        {
+            'rounded-r-md text-gray-700 -ml-px': (align === 'right')
+        },
+        {
+            'rounded-l-md text-gray-500 -mr-px focus-within:z-10': (align === 'left')
+        },
+        {
+            'cursor-default': !onSelectOption
+        },
+        {
+            'border-l-white': (align === 'right')
+        },
+        {
+            'border-r-white': (align === 'left')
+        }
     );
-    if(!inputOptions?.length) return null;
+
+    if (!inputOptions?.length) return null;
     return (
-        <div className="absolute inset-y-0 left-0 flex items-center">
-            <select
-                className={selectStyle}
-                onChange={handleChange}
-                value={selectedOption}
-            >
-                {inputOptions.map((option) => (<option key={option.value} value={option.value}>{option.label}</option>))
-            }
-            </select>
-        </div>
+        <select className={selectStyle} onChange={handleChange} value={selectedOption}>
+            {inputOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                    {option.label}
+                </option>
+            ))}
+        </select>
     );
 };

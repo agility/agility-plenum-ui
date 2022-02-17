@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { default as cn } from 'classnames';
-import { DynamicIcons, IconName } from '../../../util/DynamicIcons';
 
 import '../../../tailwind.css';
 import { InputCounter } from '../InputCounter';
@@ -42,8 +41,8 @@ export interface TextInputSelectProps {
     maxLength?: number;
     /** Select input location  */
     selectLocation?: 'left' | 'right';
-    /** Icon within the input field  */
-    inlineIcon?: IconName;
+    /** Prefix  */
+    prefix?: string;
     /** List of options to show on the select field  */
     inputOptions?: SelectOptions[];
     /** Callback on base input */
@@ -68,6 +67,7 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
     placeholder,
     inputOptions,
     selectLocation = 'right',
+    prefix,
     onChange,
     onSelectOption
 }: TextInputSelectProps) => {
@@ -107,6 +107,9 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
         {
             'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
         },
+        {
+            'pl-7': prefix
+        },
         { 'rounded-none rounded-l-md': selectLocation === 'right' },
         { 'rounded-none rounded-r-md': selectLocation === 'left' }
     );
@@ -125,8 +128,13 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
                 </label>
             )}
             <div className="flex">
+                {inputOptions?.length && selectLocation === 'left' && <InputSelect inputOptions={inputOptions} align="left" onSelectOption={onSelectOption} />}
                 <div className="flex-grow focus-within:z-20 relative">
-                    {inputOptions?.length && <InputSelect inputOptions={inputOptions} align="left" onSelectOption={onSelectOption} />}
+                    {prefix && (
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span className="text-gray-500 sm:text-sm">$</span>
+                        </div>
+                    )}
                     <BaseField
                         onFocus={handleInputFocus}
                         onBlur={handleInputBlur}
@@ -142,8 +150,8 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
                         maxLength={maxLength}
                         placeholder={placeholder}
                     />
-                    {inputOptions?.length && <InputSelect inputOptions={inputOptions} align={'right'} onSelectOption={onSelectOption} />}
                 </div>
+                {inputOptions?.length && selectLocation === 'right' && <InputSelect inputOptions={inputOptions} align={'right'} onSelectOption={onSelectOption} />}
             </div>
             <div className="flex flex-row space-x-3">
                 <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>
