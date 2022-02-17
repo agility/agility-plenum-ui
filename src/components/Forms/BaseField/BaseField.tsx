@@ -71,6 +71,7 @@ const BaseField = (
             disabled={isDisabled}
             defaultValue={defaultValue}
             maxLength={maxLength}
+            autoComplete="off"
         />
     );
 };

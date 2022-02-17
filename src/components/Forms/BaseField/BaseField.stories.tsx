@@ -34,7 +34,6 @@ const baseArgs = {
     placeholder: 'Base Input Field',
     defaultValue: '',
     isDisabled: false,
-    showCounter: false
 } as BaseFieldProps;
 
 export const BaseFieldComponent = Template.bind({});
