@@ -34,7 +34,7 @@ const baseArgs = {
     defaultValue: '',
     isRequired: false,
     isDisabled: false,
-    showCounter: false
+    isShowCounter: false
 } as TextInputAddonProps;
 
 export const AllVariations = Template.bind({});
@@ -116,8 +116,7 @@ export const Currency = Template.bind({});
 Currency.args = {
     ...baseArgs,
     label: 'Price',
-    leadLabel: '$',
-    placeholder: '159.99',
+    placeholder: '$ 159.99',
     trailLabel: 'USD',
     clearCta: 'both'
 };

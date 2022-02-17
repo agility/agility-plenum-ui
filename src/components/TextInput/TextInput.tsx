@@ -29,14 +29,14 @@ export interface TextInputProps {
     /** Message shown under the text field */
     message?: string;
     /** Input character counter */
-    showCounter?: boolean;
+    isShowCounter?: boolean;
     /** Max length of input character  */
     maxLength?: number;
     /** Callback on change */
     onChange?(value: string): void;
 }
 
-export const TextInput: FC<TextInputProps> = ({ label, isFocused, isError, id, name, isRequired, type, defaultValue, isDisabled, message, showCounter, maxLength = 100 , onChange }: TextInputProps) => {
+export const TextInput: FC<TextInputProps> = ({ label, isFocused, isError, id, name, isRequired, type, defaultValue, isDisabled, message, isShowCounter, maxLength = 100 , onChange }: TextInputProps) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
     const [isActive, setIsActive] = useState<boolean>(false);
     const [value, setValue] = useState<string | null | undefined>(defaultValue);
@@ -125,7 +125,7 @@ export const TextInput: FC<TextInputProps> = ({ label, isFocused, isError, id, n
                 />
                 <div className="flex flex-row">
                     <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>
-                    <div className="shrink-0">{showCounter && <InputCounter current={Number(value?.length)} limit={maxLength} />}</div>
+                    <div className="shrink-0">{isShowCounter && <InputCounter current={Number(value?.length)} limit={maxLength} />}</div>
                 </div>
             </div>
         </div>

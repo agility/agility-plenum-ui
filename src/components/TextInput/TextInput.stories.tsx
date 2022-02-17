@@ -33,7 +33,7 @@ const baseArgs = {
     isDisabled: false,
     isFocused: false,
     isError: false,
-    showCounter: false,
+    isShowCounter: false,
 } as TextInputProps;
 
 export const AllVariations = Template.bind({});
@@ -65,7 +65,7 @@ Message.args = {
 export const Counter = Template.bind({});
 Counter.args = {
     ...baseArgs,
-    showCounter: true,
+    isShowCounter: true,
 };
 Counter.storyName='With Counter'
 

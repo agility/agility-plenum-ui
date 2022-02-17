@@ -33,7 +33,7 @@ export interface TextInputAddonProps {
     /** Message shown under the text field */
     message?: string;
     /** Input character counter */
-    showCounter?: boolean;
+    isShowCounter?: boolean;
     /** Max length of input character  */
     maxLength?: number;
     /** Leading icon displayed within the input  */
@@ -63,7 +63,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
     defaultValue,
     isDisabled,
     message,
-    showCounter,
+    isShowCounter,
     maxLength = 100,
     placeholder,
     leadIcon,
@@ -123,10 +123,12 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
 
     return (
         <div>
-            <label htmlFor={id} className={labelStyles}>
-                {label}
-                {isRequired && <span className="text-red-500"> *</span>}
-            </label>
+            {label && (
+                <label htmlFor={id} className={labelStyles}>
+                    {label}
+                    {isRequired && <span className="text-red-500"> *</span>}
+                </label>
+            )}
             <div className="flex">
                 {(leadIcon || leadLabel) && <InputCta icon={leadIcon} ctaLabel={leadLabel} align="left" isClear={clearCta === 'left' || clearCta === 'both'} />}
                 <div className="flex-grow focus-within:z-20 relative">
@@ -155,7 +157,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
             </div>
             <div className="flex flex-row">
                 <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>
-                <div className="shrink-0">{showCounter && <InputCounter current={Number(value?.length)} limit={maxLength} />}</div>
+                <div className="shrink-0">{isShowCounter && <InputCounter current={Number(value?.length)} limit={maxLength} />}</div>
             </div>
         </div>
     );
