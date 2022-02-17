@@ -5,7 +5,7 @@ import { DynamicIcons, IconName } from '../../../util/DynamicIcons';
 import '../../../tailwind.css';
 import { InputCounter } from '../InputCounter';
 import { BaseField } from '../BaseField';
-import { InputCta } from '../InputCta';
+import { InputCta } from './InputCta';
 
 export type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week' | 'currency';
 

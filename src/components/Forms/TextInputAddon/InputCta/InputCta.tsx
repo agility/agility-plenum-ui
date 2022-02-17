@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { default as cn } from 'classnames';
-import { DynamicIcons, IconName } from '../../../util/DynamicIcons';
+import { DynamicIcons, IconName } from '../../../../util/DynamicIcons';
 
 export interface InputCtaProps {
     /** Icon name */
