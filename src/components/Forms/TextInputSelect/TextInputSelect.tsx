@@ -8,6 +8,10 @@ import { BaseField } from '../BaseField';
 import { InputSelect } from './InputSelect';
 
 export type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week' | 'currency';
+export type SelectOptions = {
+    label: string;
+    value: string;
+};
 
 export interface TextInputSelectProps {
     /** Input type*/
@@ -36,22 +40,16 @@ export interface TextInputSelectProps {
     isShowCounter?: boolean;
     /** Max length of input character  */
     maxLength?: number;
-    /** Leading icon displayed within the input  */
-    leadIcon?: IconName;
-    /** Trailing icon displayed within the input  */
-    trailIcon?: IconName;
-    /** Trailing label for the input CTA */
-    trailLabel?: string;
-    /** Leading label for input CTA  */
-    leadLabel?: string;
-    /** Remove bg and border from CTA  */
-    clearCta?: 'left' | 'right' | 'both' | 'none';
+    /** Select input location  */
+    selectLocation?: 'left' | 'right';
     /** Icon within the input field  */
     inlineIcon?: IconName;
-    /** Callback on change */
+    /** List of options to show on the select field  */
+    inputOptions?: SelectOptions[];
+    /** Callback on base input */
     onChange?(value: string): void;
-    /** Callback on Cta click */
-    onCtaClick?(): void;
+    /** Callback on input select field */
+    onSelectOption?(value: string): void;
 }
 
 export const TextInputSelect: FC<TextInputSelectProps> = ({
@@ -68,14 +66,10 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
     isShowCounter,
     maxLength = 100,
     placeholder,
-    leadIcon,
-    trailIcon,
-    trailLabel,
-    leadLabel,
-    clearCta = 'none',
-    inlineIcon,
+    inputOptions,
+    selectLocation = 'right',
     onChange,
-    onCtaClick,
+    onSelectOption
 }: TextInputSelectProps) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
     const [value, setValue] = useState<string | null | undefined>(defaultValue);
@@ -113,10 +107,8 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
         {
             'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
         },
-        { 'pl-10': inlineIcon },
-        { 'rounded-none rounded-l-md': (trailIcon || trailLabel) && !(leadIcon || leadLabel) },
-        { 'rounded-none rounded-r-md': !(trailIcon || trailLabel) && (leadIcon || leadLabel) },
-        { 'rounded-none': (trailIcon || trailLabel) && (leadIcon || leadLabel) }
+        { 'rounded-none rounded-l-md': selectLocation === 'right' },
+        { 'rounded-none rounded-r-md': selectLocation === 'left' }
     );
     const labelStyles = cn('block inline-block font-medium transition-all text-sm text-gray-700 mb-1', {
         'text-red-500 bg-white': isError
@@ -133,13 +125,8 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
                 </label>
             )}
             <div className="flex">
-                {(leadIcon || leadLabel) && <InputSelect icon={leadIcon} ctaLabel={leadLabel} align="left" isClear={clearCta === 'left' || clearCta === 'both'} />}
                 <div className="flex-grow focus-within:z-20 relative">
-                    {inlineIcon && (
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <DynamicIcons icon={inlineIcon} className="h-5 w-5 text-gray-400" outline={false} />
-                        </div>
-                    )}
+                    {inputOptions?.length && <InputSelect inputOptions={inputOptions} align="left" onSelectOption={onSelectOption} />}
                     <BaseField
                         onFocus={handleInputFocus}
                         onBlur={handleInputBlur}
@@ -155,8 +142,8 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
                         maxLength={maxLength}
                         placeholder={placeholder}
                     />
+                    {inputOptions?.length && <InputSelect inputOptions={inputOptions} align={'right'} onSelectOption={onSelectOption} />}
                 </div>
-                {(trailIcon || trailLabel) && <InputSelect icon={trailIcon} ctaLabel={trailLabel} align="right" isClear={clearCta === 'right' || clearCta === 'both'} onClickHandler={onCtaClick} />}
             </div>
             <div className="flex flex-row space-x-3">
                 <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>
