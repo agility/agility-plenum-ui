@@ -50,6 +50,8 @@ export interface TextInputAddonProps {
     inlineIcon?: IconName;
     /** Callback on change */
     onChange?(value: string): void;
+    /** Callback on Cta click */
+    onCtaClick?(): void;
 }
 
 export const TextInputAddon: FC<TextInputAddonProps> = ({
@@ -72,7 +74,8 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
     leadLabel,
     clearCta = 'none',
     inlineIcon,
-    onChange
+    onChange,
+    onCtaClick,
 }: TextInputAddonProps) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
     const [value, setValue] = useState<string | null | undefined>(defaultValue);
@@ -153,7 +156,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                         placeholder={placeholder}
                     />
                 </div>
-                {(trailIcon || trailLabel) && <InputCta icon={trailIcon} ctaLabel={trailLabel} align="right" isClear={clearCta === 'right' || clearCta === 'both'} />}
+                {(trailIcon || trailLabel) && <InputCta icon={trailIcon} ctaLabel={trailLabel} align="right" isClear={clearCta === 'right' || clearCta === 'both'} onClickHandler={onCtaClick} />}
             </div>
             <div className="flex flex-row space-x-3">
                 <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>

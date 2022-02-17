@@ -19,8 +19,10 @@ export default {
 const Template: Story<InputCtaProps> = (args) => <InputCta {...args} />;
 
 export const InputCtaComponent = Template.bind({});
-InputCtaComponent.args = { 
+InputCtaComponent.args = {
     icon: 'SortAscendingIcon',
     ctaLabel: 'Sort',
- };
+    isClear: false,
+    align: 'left'
+};
 InputCtaComponent.storyName = 'Input CTA';

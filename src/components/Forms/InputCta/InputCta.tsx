@@ -15,7 +15,6 @@ export interface InputCtaProps {
     onClickHandler?(): void;
 }
 
-
 /** Comment */
 export const InputCta: FC<InputCtaProps> = ({ icon, ctaLabel, align='right', isClear=false, onClickHandler }: InputCtaProps): JSX.Element => {
     const handleClick = () => {
@@ -33,7 +32,7 @@ export const InputCta: FC<InputCtaProps> = ({ icon, ctaLabel, align='right', isC
             'cursor-default': !onClickHandler
         },
         {
-            'hover:bg-gray-100': onClickHandler
+            'hover:bg-gray-100': (onClickHandler && !isClear)
         },
         {
             'border-l-white': (isClear && align === 'right')
@@ -47,7 +46,6 @@ export const InputCta: FC<InputCtaProps> = ({ icon, ctaLabel, align='right', isC
         {
             'bg-white': isClear
         },
-
     );
     return (
         <button type="button" className={buttonStyle} onClick={handleClick}>

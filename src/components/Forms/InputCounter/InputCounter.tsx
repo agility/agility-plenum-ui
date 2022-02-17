@@ -10,7 +10,7 @@ export interface InputCounterProps {
 /** Primary UI component for user interaction */
 export const InputCounter: FC<InputCounterProps> = ({ current = 0, limit }: InputCounterProps) => {
     return (
-        <span className="text-gray-500 text-sm mt-1 block">
+        <span className="text-gray-500 text-sm mt-1 block text-center">
             {current} / {limit}
         </span>
     );
