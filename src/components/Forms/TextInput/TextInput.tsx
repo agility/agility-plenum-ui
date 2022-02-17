@@ -88,30 +88,16 @@ export const TextInput: FC<TextInputProps> = ({
 
     const inputStyles = cn(
         'border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full',
-        {
-            'border-gray-300 shadow-sm': !isFocus
-        },
-        {
-            'focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none': isFocus
-        },
-        {
-            'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError
-        }
+        {'border-gray-300 shadow-sm': !isFocus},
+        {'focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none': isFocus},
+        {'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError}
     );
     const labelStyles = cn(
         'block inline-block font-medium ml-2 relative transition-all',
-        {
-            'text-sm text-gray-400 px-2 top-9': !isActive
-        },
-        {
-            'text-xs text-gray-700 px-1 top-4 bg-white': isActive
-        },
-        {
-            'text-xs text-red-500 px-1 top-4 bg-white': isError
-        },
-        {
-            'z-10 text-gray-700/[.5]': isDisabled
-        }
+        {'text-sm text-gray-400 px-2 top-9': !isActive},
+        {'text-xs text-gray-700 px-1 top-4 bg-white': isActive},
+        {'text-xs text-red-500 px-1 top-4 bg-white': isError},
+        {'z-10 text-gray-700/[.5]': isDisabled}
     );
 
     const discriptionStyles = cn('text-sm mt-1 block', { 'text-gray-500': !isError }, { 'text-red-500': isError });
