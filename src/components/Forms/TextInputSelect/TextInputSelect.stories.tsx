@@ -63,7 +63,7 @@ LeadSelect.args = {
     ],
     prefix: '$'
 };
-LeadSelect.storyName = 'Leading Action';
+LeadSelect.storyName = 'Trailing Action';
 
 export const TrailSelect = Template.bind({});
 TrailSelect.args = {
@@ -77,4 +77,4 @@ TrailSelect.args = {
         { label: 'EU', value: 'EU' }
     ]
 };
-TrailSelect.storyName = 'Trailing Action';
+TrailSelect.storyName = 'Leading Action';
