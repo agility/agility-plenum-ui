@@ -40,14 +40,14 @@ export interface TextInputAddonProps {
     leadIcon?: IconName;
     /** Trailing icon displayed within the input  */
     trailIcon?: IconName;
+    /** Icon within the input field  */
+    inlineIcon?: IconName;
     /** Trailing label for the input CTA */
     trailLabel?: string;
     /** Leading label for input CTA  */
     leadLabel?: string;
     /** Remove bg and border from CTA  */
     clearCta?: 'left' | 'right' | 'both' | 'none';
-    /** Icon within the input field  */
-    inlineIcon?: IconName;
     /** Callback on change */
     onChange?(value: string): void;
     /** Callback on Cta click */
@@ -70,10 +70,10 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
     placeholder,
     leadIcon,
     trailIcon,
+    inlineIcon,
     trailLabel,
     leadLabel,
     clearCta = 'none',
-    inlineIcon,
     onChange,
     onCtaClick
 }: TextInputAddonProps) => {

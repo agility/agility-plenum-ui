@@ -47,7 +47,7 @@ export const Button: FC<ButtonProps> = ({ type = 'primary', size = 'base', onCli
             'text-purple-700 bg-purple-100 hover:text-purple-700 hover:bg-purple-200': type === 'secondary'
         },
         {
-            'text-gray-700 bg-white hover:gray-700 hover:bg-gray-50 border-gray-300': type === 'alternative'
+            'text-gray-700 bg-white hover:text-gray-700 hover:bg-gray-50 border-gray-300': type === 'alternative'
         }
     );
 
