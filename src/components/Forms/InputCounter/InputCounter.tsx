@@ -11,7 +11,9 @@ export interface InputCounterProps {
 export const InputCounter: FC<InputCounterProps> = ({ current = 0, limit }: InputCounterProps) => {
     return (
         <span className="text-gray-500 text-sm mt-1 block text-center">
-            {current} / {limit}
+            <span className="currentCount">{current > limit ? limit : current} </span>
+             / 
+             <span className="limitCount"> {limit}</span>
         </span>
     );
 };
