@@ -49,7 +49,7 @@ export const Button: FC<ButtonProps> = ({ type = 'primary', size = 'base', onCli
 
     return (
         <button type="button" className={btnStyles} onClick={onClick}>
-            <DynamicIcons icon={icon} className={iconStyles} outline={false} />
+            {icon && <DynamicIcons icon={icon} className={iconStyles} outline={false} />}
             <span>{label}</span>
         </button>
     );

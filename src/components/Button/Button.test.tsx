@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { shallow, ShallowWrapper, mount, ReactWrapper } from 'enzyme';
 import { Button } from './Button';
 
 describe('Button', () => {
@@ -64,6 +64,20 @@ describe('Button', () => {
         });
         it('should have the correct hover color class', () => {
             expect(button.hasClass('hover:bg-gray-50')).toBe(true);
+        });
+    });
+
+    describe('On click callback', () => {
+        let buttonWrapper: ReactWrapper;
+        const testState = { value: 0 };
+        beforeEach(() => {
+            buttonWrapper = mount(<Button label="Alternative" type="alternative" onClick={() => {testState.value = 100 }} />);
+        });
+        it('should change the state value', () => {
+            // setup
+            buttonWrapper.find('button').at(0).simulate('click', {});
+            // test
+            expect(testState.value).toEqual(100);
         });
     });
 });
