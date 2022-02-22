@@ -20,14 +20,23 @@ export interface CheckboxProps {
 
 /** Comment */
 export const Checkbox: FC<CheckboxProps> = ({ label, id, isDisabled, isChecked, isRequired, isError, message }: CheckboxProps) => {
+    const checboxStyles = cn(
+        'focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded',
+        { 'border-red-500 shadow-none': isError }
+    );
+    const wrapperStyles = cn(
+        'relative flex items-start',
+        { 'opacity-50': isDisabled }
+    )
     return (
-        <div className="relative flex items-start">
+        <div className={wrapperStyles}>
             <div className="flex items-center h-5">
-                <input id={id} aria-describedby={`${id}-description`} name={id} type="checkbox" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+                <input id={id} aria-describedby={`${id}-description`} name={id} type="checkbox" className={checboxStyles} disabled={isDisabled} defaultChecked={isChecked} />
             </div>
             <div className="ml-3 text-sm">
                 <label htmlFor={id} className="font-medium text-gray-700">
                     {label}
+                    {isRequired && <span className="text-red-500"> *</span>}
                 </label>
                 {message && (
                     <p id={`${id}-description`} className="text-gray-500">
