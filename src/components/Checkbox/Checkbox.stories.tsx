@@ -54,7 +54,7 @@ export const Checked = Template.bind({});
 Checked.args = {
     ...baseArgs as CheckboxProps,
     isChecked: true,
-    message: 'Checkbox in checked by default',
+    message: 'Checkbox is checked by default',
 };
 Checked.storyName = 'Checked by Default'
 
