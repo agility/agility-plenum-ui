@@ -42,12 +42,14 @@ Default.args = {...baseArgs as CheckboxProps};
 export const Description = Template.bind({});
 Description.args = {...baseArgs as CheckboxProps,
     message: 'Checkbox with message or description',
+    id: 'checkboxId2',
 };
 
 export const Required = Template.bind({});
 Required.args = {...baseArgs as CheckboxProps, 
     isRequired: true,
     message: 'Checkbox is a required field',
+    id: 'checkboxId3',
 };
 
 export const Checked = Template.bind({});
@@ -55,6 +57,7 @@ Checked.args = {
     ...baseArgs as CheckboxProps,
     isChecked: true,
     message: 'Checkbox is checked by default',
+    id: 'checkboxId4',
 };
 Checked.storyName = 'Checked by Default'
 
@@ -62,10 +65,12 @@ export const ErrorState = Template.bind({});
 ErrorState.args = {...baseArgs as CheckboxProps, 
     isError: true,
     message: 'Checkbox in error state',
+    id: 'checkboxId5',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {...baseArgs as CheckboxProps,
     isDisabled: true,
     message: 'This checkbox is disabled',
+    id: 'checkboxId6',
 };
