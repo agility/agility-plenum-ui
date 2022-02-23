@@ -22,7 +22,7 @@ export interface RadioProps {
 }
 
 /** Comment */
-export const Radio: FC<RadioProps> = ({ label, id, name, isDisabled, isChecked, isRequired, isError, message }: RadioProps) => {
+export const Radio: FC<RadioProps> = ({ label, id, name, isDisabled = false, isChecked = false, isRequired = false, isError = false, message }: RadioProps) => {
     const checboxStyles = cn(
         'focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300',
         { 'border-red-500 shadow-none': isError }
