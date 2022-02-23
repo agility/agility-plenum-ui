@@ -31,6 +31,5 @@ describe('InputSelect component', () => {
         const InputSelectComponent: ReactWrapper = mount(<InputSelect align="left" inputOptions={inputOptions} onSelectOption={(targetValue) => {value = targetValue}} />);
         InputSelectComponent.simulate('change');
         expect(value).toEqual('expectedValue');
-
     });
 });
