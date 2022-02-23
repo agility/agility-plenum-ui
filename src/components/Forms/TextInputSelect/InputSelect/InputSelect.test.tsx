@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { shallow, ShallowWrapper, mount, ReactWrapper } from 'enzyme';
 import { InputSelect } from './InputSelect';
 
 describe('InputSelect component', () => {
@@ -23,5 +23,14 @@ describe('InputSelect component', () => {
         const InputSelectComponent: ShallowWrapper = shallow(<InputSelect align="left" inputOptions={inputOptions} />);
         // test
         expect(InputSelectComponent.text().includes('label')).toEqual(true);
+    });
+    it('should trigger the callback on change event', () => {
+        // setup
+        let value = '';
+        const inputOptions = [{label: 'label', value: 'expectedValue'}];
+        const InputSelectComponent: ReactWrapper = mount(<InputSelect align="left" inputOptions={inputOptions} onSelectOption={(targetValue) => {value = targetValue}} />);
+        InputSelectComponent.simulate('change');
+        expect(value).toEqual('expectedValue');
+
     });
 });

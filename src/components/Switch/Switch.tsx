@@ -5,11 +5,13 @@ import { Switch as HeadlessUISwitch } from '@headlessui/react';
 export interface SwitchProps {
     /** onChange callback */
     onChange(value:boolean): void
+    /** default state */
+    defaultValue?: boolean;
 }
 
 /** Comment */
-export const Switch: FC<SwitchProps> = ({ onChange }: SwitchProps) => {
-    const [enabled, setEnabled] = useState<boolean>(false);
+export const Switch: FC<SwitchProps> = ({ defaultValue = false, onChange }: SwitchProps) => {
+    const [enabled, setEnabled] = useState<boolean>(defaultValue);
     useEffect(() => {
         onChange && onChange(enabled);
     },[enabled])
