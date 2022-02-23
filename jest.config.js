@@ -1,8 +1,8 @@
 module.exports = {
-  transform: { "^.+\\.tsx?$": "ts-jest" },
-  moduleNameMapper: { "\\.(css|less)$": "<rootDir>/styleMock.js" },
-  setupFilesAfterEnv: [
-    "<rootDir>/setupTests.js"
-  ],
-  testEnvironment: "jsdom"
+    transform: { '^.+\\.tsx?$': 'ts-jest' },
+    moduleNameMapper: { '\\.(css|less)$': '<rootDir>/styleMock.js' },
+    setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
+    testEnvironment: 'jsdom',
+    collectCoverage: true,
+    coverageReporters: ['json', 'html']
 };
