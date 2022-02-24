@@ -42,7 +42,7 @@ export const Dropdown: FC<DropdownProps> = ({ items }: DropdownProps): JSX.Eleme
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className={menuStyles}>
+                <Menu.Items className={menuStyles} slot=''>
                     {items.map((itemStack) => {
                         return (
                             <div className="py-1">
