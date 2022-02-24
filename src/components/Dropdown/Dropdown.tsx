@@ -16,50 +16,14 @@ export interface DropdownProps {
     items: ItemProp[][];
 }
 
-const itemSample: ItemProp[][] = [
-    [
-        {
-            label: 'Copy',
-            onClick: () => {
-                console.log('Copy action');
-            }
-        }
-    ],
-    [
-        {
-            icon: 'FolderAddIcon',
-            label: 'Add to Batch',
-            onClick: () => {
-                console.log('Add to Batch action');
-            }
-        },
-        {
-            icon: 'EyeIcon',
-            label: 'View Batch',
-            onClick: () => {
-                console.log('View Batch action');
-            }
-        }
-    ],
-    [
-        {
-            icon: 'TrashIcon',
-            label: 'Delete',
-            onClick: () => {
-                console.log('Delete action');
-            },
-            isEmphasized: true
-        }
-    ]
-];
-
 /** Comment */
-export const Dropdown: FC<DropdownProps> = ({ items = itemSample }: DropdownProps) => {
+export const Dropdown: FC<DropdownProps> = ({ items }: DropdownProps): JSX.Element | null => {
     const buttonStyles = cn(
         'bg-gray-100 self-end rounded-full flex items-center text-gray-400 hover:text-gray-600',
         'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-purple-500'
     );
     const menuStyles = cn('rigin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5', 'divide-y divide-gray-100 focus:outline-none');
+    if(!items?.length) return null
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
