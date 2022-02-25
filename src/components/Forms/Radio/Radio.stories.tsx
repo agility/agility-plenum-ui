@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { Radio, RadioProps } from './Radio';
-import { BRAND_CONFIG } from "../../common";
+import { BRAND_CONFIG } from "../../../common";
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Components/Radio`,
