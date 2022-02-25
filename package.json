@@ -1,5 +1,5 @@
 {
-  "name": "agility-component-lib-react",
+  "name": "@agility/plenum-ui",
   "version": "0.1.13",
   "description": "Components that are part of the Agility CMS design system.",
   "main": "lib/index.js",
