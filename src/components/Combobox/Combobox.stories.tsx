@@ -5,7 +5,7 @@ import { Combobox, ComboboxProps } from './Combobox';
 import { BRAND_CONFIG } from "../../common";
 
 export default {
-    title: `${BRAND_CONFIG.brandTitle}/Combobox`,
+    title: `${BRAND_CONFIG.brandTitle}/Components/Combobox`,
     component: Combobox
 } as Meta;
 

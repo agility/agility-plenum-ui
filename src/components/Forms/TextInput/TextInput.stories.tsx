@@ -5,7 +5,7 @@ import { TextInput, TextInputProps } from './TextInput';
 import { BRAND_CONFIG, HIDE_CONTROL } from "../../../common";
 
 export default {
-    title: `${BRAND_CONFIG.brandTitle}/TextInput`,
+    title: `${BRAND_CONFIG.brandTitle}/Components/TextInput`,
     component: TextInput,
     argTypes: {
         name: HIDE_CONTROL,
