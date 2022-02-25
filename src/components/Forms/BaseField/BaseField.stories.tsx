@@ -2,28 +2,22 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { BaseField, BaseFieldProps } from './BaseField';
-import { BRAND_CONFIG } from "../../../common/brand";
-
-const HIDE = {
-    table: {
-        disable: true
-    }
-};
+import { BRAND_CONFIG, HIDE_CONTROL } from "../../../common";
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Atoms`,
     component: BaseField,
     argTypes: {
-        name: HIDE,
-        id: HIDE,
-        isFocused: HIDE,
-        onChange: HIDE,
-        isError: HIDE,
-        defaultValue: HIDE,
-        maxLength: HIDE,
-        inputStyles: HIDE,
-        onFocus: HIDE,
-        onBlur: HIDE,
+        name: HIDE_CONTROL,
+        id: HIDE_CONTROL,
+        isFocused: HIDE_CONTROL,
+        onChange: HIDE_CONTROL,
+        isError: HIDE_CONTROL,
+        defaultValue: HIDE_CONTROL,
+        maxLength: HIDE_CONTROL,
+        inputStyles: HIDE_CONTROL,
+        onFocus: HIDE_CONTROL,
+        onBlur: HIDE_CONTROL,
     }
 } as Meta;
 

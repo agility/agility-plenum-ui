@@ -2,23 +2,17 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { TextInput, TextInputProps } from './TextInput';
-import { BRAND_CONFIG } from "../../../common/brand";
-
-const HIDE = {
-    table: {
-        disable: true
-    }
-};
+import { BRAND_CONFIG, HIDE_CONTROL } from "../../../common";
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/TextInput`,
     component: TextInput,
     argTypes: {
-        name: HIDE,
-        id: HIDE,
-        isFocused: HIDE,
-        onChange: HIDE,
-        defaultValue: HIDE
+        name: HIDE_CONTROL,
+        id: HIDE_CONTROL,
+        isFocused: HIDE_CONTROL,
+        onChange: HIDE_CONTROL,
+        defaultValue: HIDE_CONTROL
     }
 } as Meta;
 

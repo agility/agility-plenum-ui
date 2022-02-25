@@ -5,9 +5,10 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { <%= h.capitalize(name) %>, <%= h.capitalize(name) %>Props } from './<%= h.capitalize(name) %>';
+import { BRAND_CONFIG } from "../../common";
 
 export default {
-    title: 'Design System/Components/<%= h.capitalize(name) %>',
+    title: `${BRAND_CONFIG.brandTitle}/Components/<%= h.capitalize(name) %>`,
     component: <%= h.capitalize(name) %>
 } as Meta;
 

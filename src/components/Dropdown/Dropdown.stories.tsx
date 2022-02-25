@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { Dropdown, DropdownProps } from './Dropdown';
 import { dropdownDataBase, dropdownDataWithIcons } from "./data";
-import { BRAND_CONFIG } from "../../common/brand";
+import { BRAND_CONFIG } from "../../common";
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Components/Dropdown`,
