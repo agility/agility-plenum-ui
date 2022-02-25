@@ -2,9 +2,10 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { Button, ButtonProps } from './Button';
+import { BRAND_CONFIG } from "../../common/brand";
 
 export default {
-    title: 'Design System/Components/Button',
+    title: `${BRAND_CONFIG.brandTitle}/Components/Button`,
     component: Button
 } as Meta;
 

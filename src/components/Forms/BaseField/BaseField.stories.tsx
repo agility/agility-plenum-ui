@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { BaseField, BaseFieldProps } from './BaseField';
+import { BRAND_CONFIG } from "../../../common/brand";
 
 const HIDE = {
     table: {
@@ -10,7 +11,7 @@ const HIDE = {
 };
 
 export default {
-    title: 'Design System/Atoms',
+    title: `${BRAND_CONFIG.brandTitle}/Atoms`,
     component: BaseField,
     argTypes: {
         name: HIDE,

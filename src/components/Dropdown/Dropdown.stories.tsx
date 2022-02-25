@@ -3,9 +3,10 @@ import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { Dropdown, DropdownProps } from './Dropdown';
 import { dropdownDataBase, dropdownDataWithIcons } from "./data";
+import { BRAND_CONFIG } from "../../common/brand";
 
 export default {
-    title: 'Design System/Components/Dropdown',
+    title: `${BRAND_CONFIG.brandTitle}/Components/Dropdown`,
     component: Dropdown
 } as Meta;
 

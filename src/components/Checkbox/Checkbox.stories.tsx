@@ -2,9 +2,10 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { Checkbox, CheckboxProps } from './Checkbox';
+import { BRAND_CONFIG } from "../../common/brand";
 
 export default {
-    title: 'Design System/Components/Checkbox',
+    title: `${BRAND_CONFIG.brandTitle}/Components/Checkbox`,
     component: Checkbox
 } as Meta;
 

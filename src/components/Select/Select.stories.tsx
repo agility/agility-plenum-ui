@@ -2,9 +2,10 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { Select, SelectProps } from './Select';
+import { BRAND_CONFIG } from "../../common/brand";
 
 export default {
-    title: 'Design System/Components/Select',
+    title: `${BRAND_CONFIG.brandTitle}/Components/Select`,
     component: Select
 } as Meta;
 

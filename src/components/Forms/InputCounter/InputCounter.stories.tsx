@@ -2,9 +2,10 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { InputCounter, InputCounterProps } from './InputCounter';
+import { BRAND_CONFIG } from "../../../common/brand";
 
 export default {
-    title: 'Design System/Atoms',
+    title: `${BRAND_CONFIG.brandTitle}/Atoms`,
     component: InputCounter
 } as Meta;
 

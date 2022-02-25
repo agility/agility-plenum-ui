@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { TextInputAddon, TextInputAddonProps } from './TextInputAddon';
+import { BRAND_CONFIG } from "../../../common/brand";
 
 const HIDE = {
     table: {
@@ -10,7 +11,7 @@ const HIDE = {
 };
 
 export default {
-    title: 'Design System/Components/TextInputAddon',
+    title: `${BRAND_CONFIG.brandTitle}/TextInputAddon`,
     component: TextInputAddon,
     argTypes: {
         type: HIDE,

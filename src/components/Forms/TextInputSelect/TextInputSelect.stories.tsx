@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { TextInputSelect, TextInputSelectProps } from './TextInputSelect';
+import { BRAND_CONFIG } from "../../../common/brand";
 
 const HIDE = {
     table: {
@@ -10,7 +11,7 @@ const HIDE = {
 };
 
 export default {
-    title: 'Design System/Components/TextInputSelect',
+    title: `${BRAND_CONFIG.brandTitle}/Components/TextInputSelect`,
     component: TextInputSelect,
     argTypes: {
         type: HIDE,
