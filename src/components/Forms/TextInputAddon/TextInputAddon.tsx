@@ -7,7 +7,20 @@ import { InputCounter } from '../InputCounter';
 import { BaseField } from '../BaseField';
 import { InputCta } from './InputCta';
 
-export type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week' | 'currency';
+export type Type =
+    | 'text'
+    | 'email'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'url'
+    | 'date'
+    | 'datetime-local'
+    | 'month'
+    | 'time'
+    | 'week'
+    | 'currency';
 
 export interface TextInputAddonProps {
     /** Input type*/
@@ -110,17 +123,24 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
 
     const inputStyles = cn(
         'border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full border-gray-300 shadow-sm',
-        {'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError},
+        { 'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError },
         { 'pl-10': inlineIcon },
         { 'rounded-none rounded-l-md': (trailIcon || trailLabel) && !(leadIcon || leadLabel) },
         { 'rounded-none rounded-r-md': !(trailIcon || trailLabel) && (leadIcon || leadLabel) },
         { 'rounded-none': (trailIcon || trailLabel) && (leadIcon || leadLabel) }
     );
-    const labelStyles = cn('block inline-block font-medium transition-all text-sm text-gray-700 mb-1', {
-        'text-red-500 bg-white': isError
-    });
+    const labelStyles = cn(
+        'block inline-block font-medium transition-all text-sm text-gray-700 mb-1',
+        {
+            'text-red-500 bg-white': isError
+        }
+    );
 
-    const discriptionStyles = cn('text-sm mt-1 block', { 'text-gray-500': !isError }, { 'text-red-500': isError });
+    const discriptionStyles = cn(
+        'text-sm mt-1 block',
+        { 'text-gray-500': !isError },
+        { 'text-red-500': isError }
+    );
 
     return (
         <div>
@@ -131,11 +151,22 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                 </label>
             )}
             <div className="flex">
-                {(leadIcon || leadLabel) && <InputCta icon={leadIcon} ctaLabel={leadLabel} align="left" isClear={clearCta === 'left' || clearCta === 'both'} />}
+                {(leadIcon || leadLabel) && (
+                    <InputCta
+                        icon={leadIcon}
+                        ctaLabel={leadLabel}
+                        align="left"
+                        isClear={clearCta === 'left' || clearCta === 'both'}
+                    />
+                )}
                 <div className="flex-grow focus-within:z-20 relative">
                     {inlineIcon && (
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <DynamicIcons icon={inlineIcon} className="h-5 w-5 text-gray-400" outline={false} />
+                            <DynamicIcons
+                                icon={inlineIcon}
+                                className="h-5 w-5 text-gray-400"
+                                outline={false}
+                            />
                         </div>
                     )}
                     <BaseField
@@ -154,10 +185,20 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                         placeholder={placeholder}
                     />
                 </div>
-                {(trailIcon || trailLabel) && <InputCta icon={trailIcon} ctaLabel={trailLabel} align="right" isClear={clearCta === 'right' || clearCta === 'both'} onClickHandler={onCtaClick} />}
+                {(trailIcon || trailLabel) && (
+                    <InputCta
+                        icon={trailIcon}
+                        ctaLabel={trailLabel}
+                        align="right"
+                        isClear={clearCta === 'right' || clearCta === 'both'}
+                        onClickHandler={onCtaClick}
+                    />
+                )}
             </div>
             <div className="flex flex-row space-x-3">
-                <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>
+                <div className="grow">
+                    {message && <span className={discriptionStyles}>{message}</span>}
+                </div>
                 {isShowCounter && (
                     <div className="shrink-0">
                         <InputCounter current={Number(value?.length)} limit={maxLength} />
