@@ -9,15 +9,15 @@ describe('Button', () => {
             button = shallow(<Button label="Primary" type="primary" />);
         });
         it('should have large font using lg size prop', () => {
-            button.setProps({ size: 'lg' })
+            button.setProps({ size: 'lg' });
             expect(button.hasClass('text-lg')).toBe(true);
         });
         it('should have base font using base size prop', () => {
-            button.setProps({ size: 'base' })
+            button.setProps({ size: 'base' });
             expect(button.hasClass('text-base')).toBe(true);
         });
         it('should have small font using sm size prop', () => {
-            button.setProps({ size: 'sm' })
+            button.setProps({ size: 'sm' });
             expect(button.hasClass('text-sm')).toBe(true);
         });
     });
@@ -39,7 +39,7 @@ describe('Button', () => {
     describe('Secondary Button', () => {
         let button: ShallowWrapper;
         beforeEach(() => {
-            button = shallow(<Button label="Secondary" type="secondary"/>);
+            button = shallow(<Button label="Secondary" type="secondary" />);
         });
         it('should have a label', () => {
             expect(button.text()).toEqual('Secondary');
@@ -71,7 +71,15 @@ describe('Button', () => {
         let buttonWrapper: ReactWrapper;
         const testState = { value: 0 };
         beforeEach(() => {
-            buttonWrapper = mount(<Button label="Alternative" type="alternative" onClick={() => {testState.value = 100 }} />);
+            buttonWrapper = mount(
+                <Button
+                    label="Alternative"
+                    type="alternative"
+                    onClick={() => {
+                        testState.value = 100;
+                    }}
+                />
+            );
         });
         it('should change the state value', () => {
             // setup

@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme'
-import { Combobox } from './Combobox'
+import { shallow } from 'enzyme';
+import { Combobox } from './Combobox';
 
 describe('Combobox component', () => {
     it('should', () => {
@@ -9,4 +9,4 @@ describe('Combobox component', () => {
         // // test
         // expect(combobox.text()).toEqual('');
     });
-})
+});

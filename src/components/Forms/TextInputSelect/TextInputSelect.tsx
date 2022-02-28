@@ -6,7 +6,20 @@ import { InputCounter } from '../InputCounter';
 import { BaseField } from '../BaseField';
 import { InputSelect } from './InputSelect';
 
-export type Type = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'datetime-local' | 'month' | 'time' | 'week' | 'currency';
+export type Type =
+    | 'text'
+    | 'email'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'url'
+    | 'date'
+    | 'datetime-local'
+    | 'month'
+    | 'time'
+    | 'week'
+    | 'currency';
 export type SelectOptions = {
     label: string;
     value: string;
@@ -104,16 +117,23 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
 
     const inputStyles = cn(
         'border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full border-gray-300 shadow-sm',
-        {'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError},
-        {'pl-7': prefix},
+        { 'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError },
+        { 'pl-7': prefix },
         { 'rounded-none rounded-l-md': selectLocation === 'right' },
         { 'rounded-none rounded-r-md': selectLocation === 'left' }
     );
-    const labelStyles = cn('block inline-block font-medium transition-all text-sm text-gray-700 mb-1', {
-        'text-red-500 bg-white': isError
-    });
+    const labelStyles = cn(
+        'block inline-block font-medium transition-all text-sm text-gray-700 mb-1',
+        {
+            'text-red-500 bg-white': isError
+        }
+    );
 
-    const discriptionStyles = cn('text-sm mt-1 block', { 'text-gray-500': !isError }, { 'text-red-500': isError });
+    const discriptionStyles = cn(
+        'text-sm mt-1 block',
+        { 'text-gray-500': !isError },
+        { 'text-red-500': isError }
+    );
 
     return (
         <div>
@@ -124,7 +144,13 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
                 </label>
             )}
             <div className="flex">
-                {inputOptions?.length && selectLocation === 'left' && <InputSelect inputOptions={inputOptions} align="left" onSelectOption={onSelectOption} />}
+                {inputOptions?.length && selectLocation === 'left' && (
+                    <InputSelect
+                        inputOptions={inputOptions}
+                        align="left"
+                        onSelectOption={onSelectOption}
+                    />
+                )}
                 <div className="flex-grow focus-within:z-20 relative">
                     {prefix && (
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -147,10 +173,18 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
                         placeholder={placeholder}
                     />
                 </div>
-                {inputOptions?.length && selectLocation === 'right' && <InputSelect inputOptions={inputOptions} align={'right'} onSelectOption={onSelectOption} />}
+                {inputOptions?.length && selectLocation === 'right' && (
+                    <InputSelect
+                        inputOptions={inputOptions}
+                        align={'right'}
+                        onSelectOption={onSelectOption}
+                    />
+                )}
             </div>
             <div className="flex flex-row space-x-3">
-                <div className="grow">{message && <span className={discriptionStyles}>{message}</span>}</div>
+                <div className="grow">
+                    {message && <span className={discriptionStyles}>{message}</span>}
+                </div>
                 {isShowCounter && (
                     <div className="shrink-0">
                         <InputCounter current={Number(value?.length)} limit={maxLength} />

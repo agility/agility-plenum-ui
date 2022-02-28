@@ -4,7 +4,7 @@ import { Switch as HeadlessUISwitch } from '@headlessui/react';
 
 export interface SwitchProps {
     /** onChange callback */
-    onChange(value:boolean): void
+    onChange(value: boolean): void;
     /** default state */
     defaultValue?: boolean;
 }
@@ -14,7 +14,7 @@ export const Switch: FC<SwitchProps> = ({ defaultValue = false, onChange }: Swit
     const [enabled, setEnabled] = useState<boolean>(defaultValue);
     useEffect(() => {
         onChange && onChange(enabled);
-    },[enabled])
+    }, [enabled]);
 
     const switchStyles = cn(
         'relative inline-flex flex-shrink-0 h-[38px] w-[74px]',
@@ -36,10 +36,7 @@ export const Switch: FC<SwitchProps> = ({ defaultValue = false, onChange }: Swit
         <div className="py-16 text-center">
             <HeadlessUISwitch checked={enabled} onChange={setEnabled} className={switchStyles}>
                 <span className="sr-only">Use setting</span>
-                <span
-                    aria-hidden="true"
-                    className={toggleStyles}
-                />
+                <span aria-hidden="true" className={toggleStyles} />
             </HeadlessUISwitch>
         </div>
     );

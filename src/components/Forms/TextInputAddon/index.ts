@@ -1,1 +1,1 @@
-export * from "./TextInputAddon";
+export * from './TextInputAddon';

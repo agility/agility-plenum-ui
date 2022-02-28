@@ -1,3 +1,1 @@
-export * from './InputCta'
-
-
+export * from './InputCta';

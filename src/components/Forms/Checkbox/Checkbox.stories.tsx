@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { Checkbox, CheckboxProps } from './Checkbox';
-import { BRAND_CONFIG } from "../../../common";
+import { BRAND_CONFIG } from '../../../common';
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Components/Checkbox`,
@@ -17,8 +17,8 @@ const baseArgs = {
     isChecked: false,
     isRequired: false,
     isError: false,
-    message: '',
-}
+    message: ''
+};
 
 export const AllVariations = Template.bind({});
 AllVariations.decorators = [
@@ -31,47 +31,53 @@ AllVariations.decorators = [
                 <Checkbox {...(Checked.args as CheckboxProps)} />
                 <Checkbox {...(ErrorState.args as CheckboxProps)} />
                 <Checkbox {...(Disabled.args as CheckboxProps)} />
-                <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
+                <span className="text-xs block mt-5 text-gray-400">
+                    Note: controls are disabled on this view
+                </span>
             </div>
         );
     }
 ];
 
 export const Default = Template.bind({});
-Default.args = {...baseArgs as CheckboxProps};
+Default.args = { ...(baseArgs as CheckboxProps) };
 
 export const Description = Template.bind({});
-Description.args = {...baseArgs as CheckboxProps,
+Description.args = {
+    ...(baseArgs as CheckboxProps),
     message: 'Checkbox with message or description',
-    id: 'checkboxId2',
+    id: 'checkboxId2'
 };
 
 export const Required = Template.bind({});
-Required.args = {...baseArgs as CheckboxProps, 
+Required.args = {
+    ...(baseArgs as CheckboxProps),
     isRequired: true,
     message: 'Checkbox is a required field',
-    id: 'checkboxId3',
+    id: 'checkboxId3'
 };
 
 export const Checked = Template.bind({});
 Checked.args = {
-    ...baseArgs as CheckboxProps,
+    ...(baseArgs as CheckboxProps),
     isChecked: true,
     message: 'Checkbox is checked by default',
-    id: 'checkboxId4',
+    id: 'checkboxId4'
 };
-Checked.storyName = 'Checked by Default'
+Checked.storyName = 'Checked by Default';
 
 export const ErrorState = Template.bind({});
-ErrorState.args = {...baseArgs as CheckboxProps, 
+ErrorState.args = {
+    ...(baseArgs as CheckboxProps),
     isError: true,
     message: 'Checkbox in error state',
-    id: 'checkboxId5',
+    id: 'checkboxId5'
 };
 
 export const Disabled = Template.bind({});
-Disabled.args = {...baseArgs as CheckboxProps,
+Disabled.args = {
+    ...(baseArgs as CheckboxProps),
     isDisabled: true,
     message: 'This checkbox is disabled',
-    id: 'checkboxId6',
+    id: 'checkboxId6'
 };

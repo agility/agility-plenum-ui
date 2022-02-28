@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme'
-import { Dropdown } from './Dropdown'
+import { shallow } from 'enzyme';
+import { Dropdown } from './Dropdown';
 
 describe('Dropdown component', () => {
     // it('should', () => {
@@ -9,4 +9,4 @@ describe('Dropdown component', () => {
     //     // test
     //     expect(dropdown.text()).toEqual('');
     // });
-})
+});

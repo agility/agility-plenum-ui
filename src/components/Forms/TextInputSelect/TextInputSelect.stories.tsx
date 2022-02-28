@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { TextInputSelect, TextInputSelectProps } from './TextInputSelect';
-import { BRAND_CONFIG, HIDE_CONTROL } from "../../../common";
+import { BRAND_CONFIG, HIDE_CONTROL } from '../../../common';
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Components/TextInputSelect`,
@@ -39,7 +39,9 @@ AllVariations.decorators = [
             <div className="grid-flow-row gap-4 grid">
                 <TextInputSelect {...(LeadSelect.args as TextInputSelectProps)} />
                 <TextInputSelect {...(TrailSelect.args as TextInputSelectProps)} />
-                <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
+                <span className="text-xs block mt-5 text-gray-400">
+                    Note: controls are disabled on this view
+                </span>
             </div>
         );
     }

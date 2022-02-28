@@ -5,7 +5,9 @@ import { Radio } from './Radio';
 describe('Radio component', () => {
     let radioWrapper: ShallowWrapper;
     beforeEach(() => {
-        radioWrapper = shallow(<Radio name="radioComponent" label="Radio Component" id="radioID" />);
+        radioWrapper = shallow(
+            <Radio name="radioComponent" label="Radio Component" id="radioID" />
+        );
     });
     it('should set the label', () => {
         // test
@@ -21,31 +23,31 @@ describe('Radio component', () => {
     });
     it('should have the disabled class when isDisabled param is true', () => {
         // setup
-        radioWrapper.setProps({isDisabled : true})
+        radioWrapper.setProps({ isDisabled: true });
         // test
         expect(radioWrapper.hasClass('opacity-50')).toEqual(true);
     });
     it('should be checked on init when isChecked param is true', () => {
         // setup
-        radioWrapper.setProps({isChecked : true})
+        radioWrapper.setProps({ isChecked: true });
         // test
         expect(radioWrapper.find('input').prop('defaultChecked')).toEqual(true);
     });
     it('should have a red asterisk when required is set to true', () => {
         // setup
-        radioWrapper.setProps({isRequired : true})
+        radioWrapper.setProps({ isRequired: true });
         // test
         expect(radioWrapper.find('span.text-red-500').text()).toEqual(' *');
     });
     it('should have a red border when isError is set to true', () => {
         // setup
-        radioWrapper.setProps({isError : true})
+        radioWrapper.setProps({ isError: true });
         // test
         expect(radioWrapper.find('input').hasClass('border-red-500')).toEqual(true);
     });
     it('should display the message when message is set', () => {
         // setup
-        radioWrapper.setProps({message : 'message'})
+        radioWrapper.setProps({ message: 'message' });
         // test
         expect(radioWrapper.find('#radioID-description').exists()).toEqual(true);
         expect(radioWrapper.find('#radioID-description').text()).toEqual('message');

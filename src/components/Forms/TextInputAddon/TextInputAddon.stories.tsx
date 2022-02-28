@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { TextInputAddon, TextInputAddonProps } from './TextInputAddon';
-import { BRAND_CONFIG, HIDE_CONTROL } from "../../../common";
+import { BRAND_CONFIG, HIDE_CONTROL } from '../../../common';
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Components/TextInputAddon`,
@@ -43,7 +43,9 @@ AllVariations.decorators = [
                 <TextInputAddon {...(TrailAndLeadIcons.args as TextInputAddonProps)} />
                 <TextInputAddon {...(TrailIcon.args as TextInputAddonProps)} />
                 <TextInputAddon {...(LeadLabel.args as TextInputAddonProps)} />
-                <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
+                <span className="text-xs block mt-5 text-gray-400">
+                    Note: controls are disabled on this view
+                </span>
             </div>
         );
     }

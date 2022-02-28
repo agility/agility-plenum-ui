@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { Textarea, TextareaProps } from './Textarea';
-import { BRAND_CONFIG } from "../../../common";
+import { BRAND_CONFIG } from '../../../common';
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Components/Textarea`,
@@ -19,29 +19,31 @@ const baseArgs = {
     isRequired: false,
     isDisabled: false,
     isError: false,
-    isShowCounter: false,
+    isShowCounter: false
 } as TextareaProps;
 
 export const AllVariations = Template.bind({});
-AllVariations.decorators=[
-    ()=> {
-        return(
+AllVariations.decorators = [
+    () => {
+        return (
             <div className="grid-flow-row gap-3 grid">
-                <Textarea {...Default.args as TextareaProps} />
-                <Textarea {...Required.args as TextareaProps} />
-                <Textarea {...Message.args as TextareaProps} />
-                <Textarea {...Counter.args as TextareaProps} />
-                <Textarea {...Error.args as TextareaProps} />
-                <Textarea {...Disabled.args as TextareaProps} />
-                <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
+                <Textarea {...(Default.args as TextareaProps)} />
+                <Textarea {...(Required.args as TextareaProps)} />
+                <Textarea {...(Message.args as TextareaProps)} />
+                <Textarea {...(Counter.args as TextareaProps)} />
+                <Textarea {...(Error.args as TextareaProps)} />
+                <Textarea {...(Disabled.args as TextareaProps)} />
+                <span className="text-xs block mt-5 text-gray-400">
+                    Note: controls are disabled on this view
+                </span>
             </div>
-        )
+        );
     }
-]
+];
 
 export const Default = Template.bind({});
 Default.args = {
-    ...baseArgs,
+    ...baseArgs
 };
 export const Message = Template.bind({});
 Message.args = {
@@ -53,9 +55,9 @@ export const Counter = Template.bind({});
 Counter.args = {
     ...baseArgs,
     label: 'With Counter',
-    isShowCounter: true,
+    isShowCounter: true
 };
-Counter.storyName='With Counter'
+Counter.storyName = 'With Counter';
 
 export const Required = Template.bind({});
 Required.args = {

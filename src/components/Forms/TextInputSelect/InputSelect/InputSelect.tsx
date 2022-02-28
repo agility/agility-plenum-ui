@@ -11,7 +11,11 @@ export interface InputSelectProps {
 }
 
 /** Comment */
-export const InputSelect: FC<InputSelectProps> = ({ inputOptions, onSelectOption, align = 'right' }: InputSelectProps): JSX.Element | null => {
+export const InputSelect: FC<InputSelectProps> = ({
+    inputOptions,
+    onSelectOption,
+    align = 'right'
+}: InputSelectProps): JSX.Element | null => {
     const [selectedOption, setSelectedOption] = useState<string>(inputOptions[0].value);
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const targetValue = e.target.value;

@@ -18,23 +18,35 @@ export interface RadioProps {
     isError?: boolean;
     /** Message or description */
     message?: string;
-    
 }
 
 /** Comment */
-export const Radio: FC<RadioProps> = ({ label, id, name, isDisabled = false, isChecked = false, isRequired = false, isError = false, message }: RadioProps) => {
-    const checboxStyles = cn(
-        'focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300',
-        { 'border-red-500 shadow-none': isError }
-    );
-    const wrapperStyles = cn(
-        'relative flex items-start',
-        { 'opacity-50': isDisabled }
-    )
+export const Radio: FC<RadioProps> = ({
+    label,
+    id,
+    name,
+    isDisabled = false,
+    isChecked = false,
+    isRequired = false,
+    isError = false,
+    message
+}: RadioProps) => {
+    const checboxStyles = cn('focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300', {
+        'border-red-500 shadow-none': isError
+    });
+    const wrapperStyles = cn('relative flex items-start', { 'opacity-50': isDisabled });
     return (
         <div className={wrapperStyles}>
             <div className="flex items-center h-5">
-                <input id={id} aria-describedby={`${id}-description`} name={name} type="radio" className={checboxStyles} disabled={isDisabled} defaultChecked={isChecked} />
+                <input
+                    id={id}
+                    aria-describedby={`${id}-description`}
+                    name={name}
+                    type="radio"
+                    className={checboxStyles}
+                    disabled={isDisabled}
+                    defaultChecked={isChecked}
+                />
             </div>
             <div className="ml-3 text-sm">
                 <label htmlFor={id} className="font-medium text-gray-700">

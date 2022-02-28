@@ -1,4 +1,4 @@
-import { ItemProp } from ".";
+import { ItemProp } from '.';
 
 export const dropdownDataBase: ItemProp[][] = [
     [

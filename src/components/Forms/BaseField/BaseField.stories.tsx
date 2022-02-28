@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { BaseField, BaseFieldProps } from './BaseField';
-import { BRAND_CONFIG, HIDE_CONTROL } from "../../../common";
+import { BRAND_CONFIG, HIDE_CONTROL } from '../../../common';
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Atoms`,
@@ -17,7 +17,7 @@ export default {
         maxLength: HIDE_CONTROL,
         inputStyles: HIDE_CONTROL,
         onFocus: HIDE_CONTROL,
-        onBlur: HIDE_CONTROL,
+        onBlur: HIDE_CONTROL
     }
 } as Meta;
 
@@ -28,9 +28,9 @@ const baseArgs = {
     type: 'text',
     placeholder: 'Base Input Field',
     defaultValue: '',
-    isDisabled: false,
+    isDisabled: false
 } as BaseFieldProps;
 
 export const BaseFieldComponent = Template.bind({});
-BaseFieldComponent.args = {...baseArgs};
-BaseFieldComponent.storyName="Base Field"
+BaseFieldComponent.args = { ...baseArgs };
+BaseFieldComponent.storyName = 'Base Field';

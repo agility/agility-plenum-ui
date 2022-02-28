@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { TextInput, TextInputProps } from './TextInput';
-import { BRAND_CONFIG, HIDE_CONTROL } from "../../../common";
+import { BRAND_CONFIG, HIDE_CONTROL } from '../../../common';
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Components/TextInput`,
@@ -28,25 +28,27 @@ const baseArgs = {
     isDisabled: false,
     isFocused: false,
     isError: false,
-    isShowCounter: false,
+    isShowCounter: false
 } as TextInputProps;
 
 export const AllVariations = Template.bind({});
-AllVariations.decorators=[
-    ()=> {
-        return(
+AllVariations.decorators = [
+    () => {
+        return (
             <div className="grid-flow-row gap-3 grid">
-                <TextInput {...Default.args as TextInputProps} />
-                <TextInput {...Required.args as TextInputProps} />
-                <TextInput {...Disabled.args as TextInputProps} />
-                <TextInput {...Error.args as TextInputProps} />
-                <TextInput {...Message.args as TextInputProps} />
-                <TextInput {...Counter.args as TextInputProps} />
-                <span className="text-xs block mt-5 text-gray-400">Note: controls are disabled on this view</span>
+                <TextInput {...(Default.args as TextInputProps)} />
+                <TextInput {...(Required.args as TextInputProps)} />
+                <TextInput {...(Disabled.args as TextInputProps)} />
+                <TextInput {...(Error.args as TextInputProps)} />
+                <TextInput {...(Message.args as TextInputProps)} />
+                <TextInput {...(Counter.args as TextInputProps)} />
+                <span className="text-xs block mt-5 text-gray-400">
+                    Note: controls are disabled on this view
+                </span>
             </div>
-        )
+        );
     }
-]
+];
 
 export const Default = Template.bind({});
 Default.args = {
@@ -60,9 +62,9 @@ Message.args = {
 export const Counter = Template.bind({});
 Counter.args = {
     ...baseArgs,
-    isShowCounter: true,
+    isShowCounter: true
 };
-Counter.storyName='With Counter'
+Counter.storyName = 'With Counter';
 
 export const Required = Template.bind({});
 Required.args = {

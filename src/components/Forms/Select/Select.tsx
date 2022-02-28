@@ -26,11 +26,20 @@ export interface SelectProps {
 }
 
 /** Comment */
-export const Select: FC<SelectProps> = ({ label, id, name, options, onChange, isDisabled, isError, isRequired }: SelectProps) => {
+export const Select: FC<SelectProps> = ({
+    label,
+    id,
+    name,
+    options,
+    onChange,
+    isDisabled,
+    isError,
+    isRequired
+}: SelectProps) => {
     const [selectedOption, setSelectedOption] = useState<string>(options[0].value);
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const targetValue = e.target.value;
-        (typeof onChange == 'function') && onChange(targetValue);
+        typeof onChange == 'function' && onChange(targetValue);
         setSelectedOption(targetValue);
     };
     const selectStyles = cn(
@@ -48,7 +57,14 @@ export const Select: FC<SelectProps> = ({ label, id, name, options, onChange, is
                     {label} {isRequired && <span className="text-red-500"> *</span>}
                 </label>
             )}
-            <select id={id} name={name} className={selectStyles} onChange={handleChange} disabled={isDisabled} value={selectedOption}>
+            <select
+                id={id}
+                name={name}
+                className={selectStyles}
+                onChange={handleChange}
+                disabled={isDisabled}
+                value={selectedOption}
+            >
                 {options.map(({ value, label }) => {
                     return (
                         <option key={value} value={value}>

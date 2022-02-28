@@ -1,1 +1,1 @@
-export * from "./InputCounter";
+export * from './InputCounter';

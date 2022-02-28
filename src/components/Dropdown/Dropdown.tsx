@@ -22,8 +22,11 @@ export const Dropdown: FC<DropdownProps> = ({ items }: DropdownProps): JSX.Eleme
         'bg-gray-100 self-end rounded-full flex items-center text-gray-400 hover:text-gray-600',
         'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-purple-500'
     );
-    const menuStyles = cn('rigin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5', 'divide-y divide-gray-100 focus:outline-none');
-    if(!items?.length) return null
+    const menuStyles = cn(
+        'rigin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5',
+        'divide-y divide-gray-100 focus:outline-none'
+    );
+    if (!items?.length) return null;
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
@@ -42,7 +45,7 @@ export const Dropdown: FC<DropdownProps> = ({ items }: DropdownProps): JSX.Eleme
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className={menuStyles} slot=''>
+                <Menu.Items className={menuStyles} slot="">
                     {items.map((itemStack) => {
                         return (
                             <div className="py-1">
@@ -50,17 +53,28 @@ export const Dropdown: FC<DropdownProps> = ({ items }: DropdownProps): JSX.Eleme
                                     return (
                                         <Menu.Item key={index}>
                                             {({ active }) => {
-                                                const anchorStyles = cn('group flex items-center px-4 py-2 text-sm cursor-pointer',
-                                                    {'text-red-500': item.isEmphasized},
-                                                    {'text-gray-900': !item.isEmphasized},
-                                                    {'bg-gray-100 text-gray-900': active},
-                                                    {'bg-gray-100 text-red-500 hover:text-red-500': active && item.isEmphasized}
+                                                const anchorStyles = cn(
+                                                    'group flex items-center px-4 py-2 text-sm cursor-pointer',
+                                                    { 'text-red-500': item.isEmphasized },
+                                                    { 'text-gray-900': !item.isEmphasized },
+                                                    { 'bg-gray-100 text-gray-900': active },
+                                                    {
+                                                        'bg-gray-100 text-red-500 hover:text-red-500':
+                                                            active && item.isEmphasized
+                                                    }
                                                 );
-                                                const iconStyles = cn('mr-3 h-5 w-5',
-                                                    {'text-red-500': item.isEmphasized},
-                                                    {'text-gray-400 group-hover:text-gray-500': !item.isEmphasized},
-                                                    {'bg-gray-100 text-gray-900': active},
-                                                    {'bg-gray-100 text-red-500 group-hover:text-red-500': active && item.isEmphasized}
+                                                const iconStyles = cn(
+                                                    'mr-3 h-5 w-5',
+                                                    { 'text-red-500': item.isEmphasized },
+                                                    {
+                                                        'text-gray-400 group-hover:text-gray-500':
+                                                            !item.isEmphasized
+                                                    },
+                                                    { 'bg-gray-100 text-gray-900': active },
+                                                    {
+                                                        'bg-gray-100 text-red-500 group-hover:text-red-500':
+                                                            active && item.isEmphasized
+                                                    }
                                                 );
                                                 return (
                                                     <a

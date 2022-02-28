@@ -17,31 +17,31 @@ describe('Checkbox component', () => {
     });
     it('should have the disabled class when isDisabled param is true', () => {
         // setup
-        checkboxWrapper.setProps({isDisabled : true})
+        checkboxWrapper.setProps({ isDisabled: true });
         // test
         expect(checkboxWrapper.hasClass('opacity-50')).toEqual(true);
     });
     it('should be checked on init when isChecked param is true', () => {
         // setup
-        checkboxWrapper.setProps({isChecked : true})
+        checkboxWrapper.setProps({ isChecked: true });
         // test
         expect(checkboxWrapper.find('input').prop('defaultChecked')).toEqual(true);
     });
     it('should have a red asterisk when required is set to true', () => {
         // setup
-        checkboxWrapper.setProps({isRequired : true})
+        checkboxWrapper.setProps({ isRequired: true });
         // test
         expect(checkboxWrapper.find('span.text-red-500').text()).toEqual(' *');
     });
     it('should have a red border when isError is set to true', () => {
         // setup
-        checkboxWrapper.setProps({isError : true})
+        checkboxWrapper.setProps({ isError: true });
         // test
         expect(checkboxWrapper.find('input').hasClass('border-red-500')).toEqual(true);
     });
     it('should display the message when message is set', () => {
         // setup
-        checkboxWrapper.setProps({message : 'message'})
+        checkboxWrapper.setProps({ message: 'message' });
         // test
         expect(checkboxWrapper.find('#checkboxID-description').exists()).toEqual(true);
         expect(checkboxWrapper.find('#checkboxID-description').text()).toEqual('message');
