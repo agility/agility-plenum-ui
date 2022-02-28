@@ -6,6 +6,7 @@ import '../../../tailwind.css';
 import { InputCounter } from '../InputCounter';
 import { BaseField } from '../BaseField';
 import { InputCta } from './InputCta';
+import { InputLabel } from '../InputLabel';
 
 export type Type =
     | 'text'
@@ -129,12 +130,6 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
         { 'rounded-none rounded-r-md': !(trailIcon || trailLabel) && (leadIcon || leadLabel) },
         { 'rounded-none': (trailIcon || trailLabel) && (leadIcon || leadLabel) }
     );
-    const labelStyles = cn(
-        'block inline-block font-medium transition-all text-sm text-gray-700 mb-1',
-        {
-            'text-red-500 bg-white': isError
-        }
-    );
 
     const discriptionStyles = cn(
         'text-sm mt-1 block',
@@ -145,10 +140,14 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
     return (
         <div>
             {label && (
-                <label htmlFor={id} className={labelStyles}>
-                    {label}
-                    {isRequired && <span className="text-red-500"> *</span>}
-                </label>
+                <InputLabel
+                    isPlaceholder={false}
+                    label={label}
+                    isRequired={isRequired}
+                    id={id}
+                    isError={isError}
+                    isDisabled={isDisabled}
+                />
             )}
             <div className="flex">
                 {(leadIcon || leadLabel) && (

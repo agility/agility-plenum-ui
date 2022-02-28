@@ -4,7 +4,7 @@ import { default as cn } from 'classnames';
 import '../../../tailwind.css';
 import { InputCounter } from '../InputCounter';
 import { BaseField } from '../BaseField';
-import { InputLabel } from "../InputLabel";
+import { InputLabel } from '../InputLabel';
 
 type Type =
     | 'text'
@@ -115,7 +115,15 @@ export const TextInput: FC<TextInputProps> = ({
 
     return (
         <div>
-            <InputLabel isPlaceholder label={label} isRequired={isRequired} id={id} isError={isError} isActive={isActive} isDisabled={isDisabled} />
+            <InputLabel
+                isPlaceholder
+                label={label}
+                isRequired={isRequired}
+                id={id}
+                isError={isError}
+                isActive={isActive}
+                isDisabled={isDisabled}
+            />
             <div className="mt-1">
                 <BaseField
                     onFocus={handleInputFocus}
