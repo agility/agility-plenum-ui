@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Checkbox } from './Checkbox';
+import { InputLabel } from '../InputLabel';
 
 describe('Checkbox component', () => {
     let checkboxWrapper: ShallowWrapper;
@@ -9,7 +10,11 @@ describe('Checkbox component', () => {
     });
     it('should set the label', () => {
         // test
-        expect(checkboxWrapper.find('label').text()).toEqual('Checkbox Component');
+        expect(checkboxWrapper.find(InputLabel)).toHaveLength(1);
+        expect(checkboxWrapper.find(InputLabel).dive().find('label')).toHaveLength(1);
+        expect(checkboxWrapper.find(InputLabel).dive().find('label').text()).toEqual(
+            'Checkbox Component'
+        );
     });
     it('should set the id', () => {
         // test
@@ -31,7 +36,11 @@ describe('Checkbox component', () => {
         // setup
         checkboxWrapper.setProps({ isRequired: true });
         // test
-        expect(checkboxWrapper.find('span.text-red-500').text()).toEqual(' *');
+        expect(checkboxWrapper.find(InputLabel)).toHaveLength(1);
+        expect(checkboxWrapper.find(InputLabel).dive().find('label')).toHaveLength(1);
+        expect(checkboxWrapper.find(InputLabel).dive().find('span.text-red-500').text()).toEqual(
+            ' *'
+        );
     });
     it('should have a red border when isError is set to true', () => {
         // setup

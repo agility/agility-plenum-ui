@@ -124,7 +124,7 @@ export const TextInput: FC<TextInputProps> = ({
                 isActive={isActive}
                 isDisabled={isDisabled}
             />
-            <div className="mt-1">
+            <div>
                 <BaseField
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}

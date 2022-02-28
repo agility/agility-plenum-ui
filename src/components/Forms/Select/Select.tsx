@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { default as cn } from 'classnames';
+import { InputLabel } from '../InputLabel';
 
 export type SelectOptions = {
     label: string;
@@ -43,19 +44,24 @@ export const Select: FC<SelectProps> = ({
         setSelectedOption(targetValue);
     };
     const selectStyles = cn(
-        'mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none',
+        'block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none',
         'focus:ring-purple-500 focus:border-purple-500 sm:text-sm rounded-md',
         { 'border-red-500': isError },
         { 'border-gray-300': !isError }
     );
-    const labelStyles = cn('block text-sm font-medium text-gray-700');
     const wrapperStyle = cn({ 'opacity-50': isDisabled });
     return (
         <div className={wrapperStyle}>
             {label && (
-                <label htmlFor={id} className={labelStyles}>
-                    {label} {isRequired && <span className="text-red-500"> *</span>}
-                </label>
+                <InputLabel
+                    isPlaceholder
+                    isActive
+                    label={label}
+                    isRequired={isRequired}
+                    id={id}
+                    isError={isError}
+                    isDisabled={isDisabled}
+                />
             )}
             <select
                 id={id}

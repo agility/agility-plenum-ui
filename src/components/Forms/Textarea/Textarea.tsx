@@ -1,6 +1,7 @@
 import React, { forwardRef, useState } from 'react';
 import { default as cn } from 'classnames';
 import { InputCounter } from '../InputCounter';
+import { InputLabel } from "../InputLabel";
 
 export interface TextareaProps {
     /** Input ID */
@@ -57,7 +58,6 @@ const Textarea = (
         { 'border-gray-300 ': !isError },
         { 'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError }
     );
-    const labelStyles = cn('block text-sm font-medium text-gray-700');
     const discriptionStyles = cn(
         'text-sm mt-1 block',
         { 'text-gray-500': !isError },
@@ -67,12 +67,17 @@ const Textarea = (
     return (
         <div className={wrapperStyles}>
             {label && (
-                <label htmlFor={id} className={labelStyles}>
-                    {label}
-                    {isRequired && <span className="text-red-500"> *</span>}
-                </label>
+                <InputLabel
+                    isPlaceholder
+                    isActive
+                    label={label}
+                    isRequired={isRequired}
+                    id={id}
+                    isError={isError}
+                    isDisabled={isDisabled}
+                />
             )}
-            <div className="mt-1">
+            <div>
                 <textarea
                     ref={ref}
                     maxLength={maxLength}

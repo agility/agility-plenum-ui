@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from 'react';
 import { default as cn } from 'classnames';
 import { Combobox as HeadlessUICombobox } from '@headlessui/react';
 import { DynamicIcons } from '../../util/DynamicIcons';
+import { InputLabel } from '../Forms/InputLabel';
 
 export type ComboboxItemProps = {
     value: string;
@@ -10,12 +11,20 @@ export type ComboboxItemProps = {
 export interface ComboboxProps {
     /** Label */
     label?: string;
+    /** ID */
+    id: string;
     /** Array of items to display */
     items: ComboboxItemProps[];
     /** Placeholder */
     placeholder?: string;
     /** Callback to trigger on change */
     onChange?(value: string): void;
+    /** Select disabled state */
+    isDisabled?: boolean;
+    /** Select error state */
+    isError?: boolean;
+    /** Select required state */
+    isRequired?: boolean;
 }
 
 function classNames(...classes: string[]) {
@@ -26,7 +35,11 @@ export const Combobox: FC<ComboboxProps> = ({
     label,
     items,
     onChange,
-    placeholder
+    placeholder,
+    isDisabled,
+    isError,
+    isRequired,
+    id
 }: ComboboxProps) => {
     const [query, setQuery] = useState<string>('');
     const [selectedItem, setSelectedItem] = useState<string | undefined>();
@@ -42,8 +55,10 @@ export const Combobox: FC<ComboboxProps> = ({
                   return item.value.toLowerCase().includes(query.toLowerCase());
               });
     const inputStyles = cn(
-        'w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm sm:text-sm',
-        'focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500'
+        'w-full rounded-md border bg-white py-2 pl-3 pr-10 shadow-sm sm:text-sm',
+        'focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500',
+        { 'border-red-500': isError },
+        { 'border-gray-300': !isError }
     );
     const labelStyles = cn('block text-sm font-medium text-gray-700');
     const buttonStyles = cn(
@@ -53,11 +68,21 @@ export const Combobox: FC<ComboboxProps> = ({
         'absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'
     );
     return (
-        <HeadlessUICombobox as="div" value={selectedItem} onChange={setSelectedItem}>
+        <HeadlessUICombobox as="div" value={selectedItem} onChange={setSelectedItem} disabled={isDisabled}>
             {label && (
-                <HeadlessUICombobox.Label className={labelStyles}>{label}</HeadlessUICombobox.Label>
+                <HeadlessUICombobox.Label className={labelStyles}>
+                    <InputLabel
+                        isPlaceholder
+                        isActive
+                        label={label}
+                        isRequired={isRequired}
+                        id={id}
+                        isError={isError}
+                        isDisabled={isDisabled}
+                    />
+                </HeadlessUICombobox.Label>
             )}
-            <div className="relative mt-1">
+            <div className="relative">
                 <HeadlessUICombobox.Input
                     className={inputStyles}
                     onChange={(event) => setQuery(event.target.value)}

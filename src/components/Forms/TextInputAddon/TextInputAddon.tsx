@@ -141,7 +141,6 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
         <div>
             {label && (
                 <InputLabel
-                    isPlaceholder={false}
                     label={label}
                     isRequired={isRequired}
                     id={id}

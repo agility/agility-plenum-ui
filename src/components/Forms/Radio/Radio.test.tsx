@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Radio } from './Radio';
+import { InputLabel } from '../InputLabel';
 
 describe('Radio component', () => {
     let radioWrapper: ShallowWrapper;
@@ -11,7 +12,11 @@ describe('Radio component', () => {
     });
     it('should set the label', () => {
         // test
-        expect(radioWrapper.find('label').text()).toEqual('Radio Component');
+        expect(radioWrapper.find(InputLabel)).toHaveLength(1);
+        expect(radioWrapper.find(InputLabel).dive().find('label')).toHaveLength(1);
+        expect(radioWrapper.find(InputLabel).dive().find('label').text()).toEqual(
+            'Radio Component'
+        );
     });
     it('should set the id', () => {
         // test
@@ -37,7 +42,11 @@ describe('Radio component', () => {
         // setup
         radioWrapper.setProps({ isRequired: true });
         // test
-        expect(radioWrapper.find('span.text-red-500').text()).toEqual(' *');
+        expect(radioWrapper.find(InputLabel)).toHaveLength(1);
+        expect(radioWrapper.find(InputLabel).dive().find('label')).toHaveLength(1);
+        expect(radioWrapper.find(InputLabel).dive().find('span.text-red-500').text()).toEqual(
+            ' *'
+        );
     });
     it('should have a red border when isError is set to true', () => {
         // setup

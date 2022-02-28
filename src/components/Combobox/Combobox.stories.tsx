@@ -27,7 +27,11 @@ const Template: Story<ComboboxProps> = (args) => <Combobox {...args} />;
 const baseArgs = {
     label: 'Label',
     items: comboboxlist,
-    placeholder: 'Select'
+    placeholder: 'Select',
+    id: 'combobox',
+    isRequired: false,
+    isError: false,
+    isDisabled: false
 } as ComboboxProps;
 
 export const AllVariations = Template.bind({});
@@ -37,6 +41,9 @@ AllVariations.decorators = [
             <div className="grid-flow-row gap-4 grid">
                 <Combobox {...(Default.args as ComboboxProps)} />
                 <Combobox {...(Label.args as ComboboxProps)} />
+                <Combobox {...(Required.args as ComboboxProps)} />
+                <Combobox {...(Error.args as ComboboxProps)} />
+                <Combobox {...(Disabled.args as ComboboxProps)} />
                 <span className="text-xs block mt-5 text-gray-400">
                     Note: controls are disabled on this view
                 </span>
@@ -50,3 +57,12 @@ Default.args = { ...baseArgs, label: '', placeholder: 'Select' };
 
 export const Label = Template.bind({});
 Label.args = { ...baseArgs, label: 'Combobox Label', placeholder: 'Select' };
+
+export const Disabled = Template.bind({});
+Disabled.args = { ...baseArgs, isDisabled: true, label: 'Disabled' };
+
+export const Required = Template.bind({});
+Required.args = { ...baseArgs, isRequired: true, label: 'Required'  };
+
+export const Error = Template.bind({});
+Error.args = { ...baseArgs, isError: true, label: 'Error' };

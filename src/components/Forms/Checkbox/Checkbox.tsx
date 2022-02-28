@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { default as cn } from 'classnames';
+import { InputLabel } from '../InputLabel';
 
 export interface CheckboxProps {
     /** Checkbox label */
@@ -48,8 +49,11 @@ export const Checkbox: FC<CheckboxProps> = ({
             </div>
             <div className="ml-3 text-sm">
                 <label htmlFor={id} className="font-medium text-gray-700">
-                    {label}
-                    {isRequired && <span className="text-red-500"> *</span>}
+                    <InputLabel
+                        label={label}
+                        isRequired={isRequired}
+                        id={id}
+                    />
                 </label>
                 {message && (
                     <p id={`${id}-description`} className="text-gray-500">

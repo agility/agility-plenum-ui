@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper, mount, ReactWrapper } from 'enzyme';
 import { Select } from './Select';
+import { InputLabel } from "../InputLabel";
 
 const options = [{ label: 'label', value: 'value' }];
 describe('Select component', () => {
@@ -10,7 +11,11 @@ describe('Select component', () => {
             <Select options={options} id="select" name="select" label="label" />
         );
         // test
-        expect(SelectComponent.find('label').text().includes('label')).toBeTruthy;
+        expect(SelectComponent.find(InputLabel)).toHaveLength(1);
+        expect(SelectComponent.find(InputLabel).dive().find('label')).toHaveLength(1);
+        expect(SelectComponent.find(InputLabel).dive().find('label').text()).toEqual(
+            'label'
+        );
     });
     it('should not show label when label prop is empty', () => {
         // setup
@@ -34,8 +39,11 @@ describe('Select component', () => {
             <Select options={options} id="select" name="select" label="label" isRequired />
         );
         // test
-        expect(SelectComponent.find('label')).toBeTruthy;
-        expect(SelectComponent.find('.text-red-500').text().includes('*')).toBeTruthy;
+        expect(SelectComponent.find(InputLabel)).toHaveLength(1);
+        expect(SelectComponent.find(InputLabel).dive().find('label')).toHaveLength(1);
+        expect(SelectComponent.find(InputLabel).dive().find('.text-red-500').text()).toEqual(
+            ' *'
+        );
     });
     it('should have the correct class when in an error state', () => {
         // setup
