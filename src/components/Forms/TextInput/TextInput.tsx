@@ -4,6 +4,7 @@ import { default as cn } from 'classnames';
 import '../../../tailwind.css';
 import { InputCounter } from '../InputCounter';
 import { BaseField } from '../BaseField';
+import { InputLabel } from "../InputLabel";
 
 type Type =
     | 'text'
@@ -105,13 +106,6 @@ export const TextInput: FC<TextInputProps> = ({
         { 'focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none': isFocus },
         { 'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError }
     );
-    const labelStyles = cn(
-        'block inline-block font-medium ml-2 relative transition-all',
-        { 'text-sm text-gray-400 px-2 top-9': !isActive },
-        { 'text-xs text-gray-700 px-1 top-4 bg-white': isActive },
-        { 'text-xs text-red-500 px-1 top-4 bg-white': isError },
-        { 'z-10 text-gray-700/[.5]': isDisabled }
-    );
 
     const discriptionStyles = cn(
         'text-sm mt-1 block',
@@ -121,10 +115,7 @@ export const TextInput: FC<TextInputProps> = ({
 
     return (
         <div>
-            <label htmlFor={id} className={labelStyles}>
-                {label}
-                {isRequired && <span className="text-red-500"> *</span>}
-            </label>
+            <InputLabel isPlaceholder label={label} isRequired={isRequired} id={id} isError={isError} isActive={isActive} isDisabled={isDisabled} />
             <div className="mt-1">
                 <BaseField
                     onFocus={handleInputFocus}

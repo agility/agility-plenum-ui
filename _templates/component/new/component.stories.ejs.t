@@ -13,6 +13,9 @@ export default {
 } as Meta;
 
 const Template: Story<<%= h.capitalize(name) %>Props> = (args) => <<%= h.capitalize(name) %> {...args} />;
+const baseArgs = {
+    
+} as <%= h.capitalize(name) %>Props;
 
 export const <%= h.capitalize(name) %>Component = Template.bind({});
 <%= h.capitalize(name) %>Component.args = {prop: 'prop'};
