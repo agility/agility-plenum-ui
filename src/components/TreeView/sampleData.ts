@@ -12,7 +12,7 @@ export const data = [
       "galleryFolderID": 0,
       "assetID": 1056,
       "folderID": 0,
-      "children": null
+      "childNodes": null
     },
     {
       "key": "f-4134",
@@ -27,7 +27,7 @@ export const data = [
       "galleryFolderID": 0,
       "assetID": 4134,
       "folderID": 0,
-      "children": [
+      "childNodes": [
         {
           "key": "f-4135",
           "type": "Asset",
@@ -41,7 +41,7 @@ export const data = [
           "galleryFolderID": 0,
           "assetID": 4135,
           "folderID": 0,
-          "children": null
+          "childNodes": null
         }
       ]
     },
@@ -58,7 +58,7 @@ export const data = [
       "galleryFolderID": 0,
       "assetID": 5480,
       "folderID": 0,
-      "children": null
+      "childNodes": null
     },
     {
       "key": "f-1",
@@ -73,7 +73,7 @@ export const data = [
       "galleryFolderID": 0,
       "assetID": 1,
       "folderID": 0,
-      "children": null
+      "childNodes": null
     },
     {
       "key": "f-5486",
@@ -88,7 +88,7 @@ export const data = [
       "galleryFolderID": 0,
       "assetID": 5486,
       "folderID": 0,
-      "children": null
+      "childNodes": null
     },
     {
       "key": "f-4229",
@@ -103,7 +103,7 @@ export const data = [
       "galleryFolderID": 0,
       "assetID": 4229,
       "folderID": 0,
-      "children": null
+      "childNodes": null
     },
     {
       "key": "f-4286",
@@ -118,7 +118,7 @@ export const data = [
       "galleryFolderID": 0,
       "assetID": 4286,
       "folderID": 0,
-      "children": [
+      "childNodes": [
         {
           "key": "f-4290",
           "type": "Asset",
@@ -132,7 +132,7 @@ export const data = [
           "galleryFolderID": 0,
           "assetID": 4290,
           "folderID": 0,
-          "children": [
+          "childNodes": [
             {
               "key": "f-4291",
               "type": "Asset",
@@ -146,7 +146,7 @@ export const data = [
               "galleryFolderID": 0,
               "assetID": 4291,
               "folderID": 0,
-              "children": null
+              "childNodes": null
             }
           ]
         },
@@ -163,7 +163,7 @@ export const data = [
           "galleryFolderID": 0,
           "assetID": 4775,
           "folderID": 0,
-          "children": null
+          "childNodes": null
         },
         {
           "key": "f-4979",
@@ -178,7 +178,7 @@ export const data = [
           "galleryFolderID": 0,
           "assetID": 4979,
           "folderID": 0,
-          "children": null
+          "childNodes": null
         },
         {
           "key": "f-5118",
@@ -193,7 +193,7 @@ export const data = [
           "galleryFolderID": 0,
           "assetID": 5118,
           "folderID": 0,
-          "children": null
+          "childNodes": null
         }
       ]
     },
@@ -210,6 +210,6 @@ export const data = [
       "galleryFolderID": 0,
       "assetID": 4112,
       "folderID": 0,
-      "children": null
+      "childNodes": null
     }
   ]

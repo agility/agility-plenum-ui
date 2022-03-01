@@ -5,13 +5,13 @@ import { TreeItemChildrenProps } from '../types/tree.types';
 
 export interface TreeItemProps {
     /** Selected or current state */
-    isCurrent: boolean;
+    isCurrent?: boolean;
     /** title of the tree item */
-    title: string;
+    title?: string;
     /** If tree item is expanded */
-    isExpanded: boolean;
+    isExpanded?: boolean;
     /** inner nodes within the tree item */
-    childNodes?: TreeItemChildrenProps[] | null;
+    childNodes?: Partial<TreeItemChildrenProps[] | null>;
     /** A Check to know if item is a root value */
     isRoot?: boolean;
 }

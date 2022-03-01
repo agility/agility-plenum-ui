@@ -1,4 +1,6 @@
-export type TreeItemChildrenProps = {
+import { Dispatch, SetStateAction } from 'react';
+
+export interface TreeItemChildrenProps {
     key: string;
     type: string;
     title: string;
@@ -11,5 +13,12 @@ export type TreeItemChildrenProps = {
     galleryFolderID: number;
     assetID: number;
     folderID: number;
-    childNodes?: TreeItemChildrenProps[] | null;
+    childNodes?: TreeListProp;
+}
+
+export type TreeListProp = Partial<TreeItemChildrenProps[] | null>
+
+export interface TreeViewContextProps {
+    treeList: TreeListProp;
+    setTreeList: Dispatch<SetStateAction<TreeListProp>>;
 }
