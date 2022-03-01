@@ -12,7 +12,7 @@ export const data = [
       "galleryFolderID": 0,
       "assetID": 1056,
       "folderID": 0,
-      "childNodes": null
+      "childNodes": null,
     },
     {
       "key": "f-4134",
