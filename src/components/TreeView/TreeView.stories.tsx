@@ -9,7 +9,7 @@ export default {
     component: TreeView
 } as Meta;
 
-const Template: Story<TreeViewProps> = (args) => <TreeView {...args} />;
+const Template: Story<TreeViewProps> = (args) => <div className="h-[500px]"><TreeView {...args} /></div>;
 const baseArgs = {
     
 } as TreeViewProps;

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { default as cn } from 'classnames';
 import { DynamicIcons } from '../../../util/DynamicIcons';
 import { TreeItemChildrenProps } from '../types/tree.types';
@@ -24,10 +24,13 @@ export const TreeItem: FC<TreeItemProps> = ({
     childNodes,
     isRoot = true
 }: TreeItemProps) => {
-    const unOrderedListStyles = cn(
-        {'pl-2 ml-3 border-l-gray-300 border-l': !isRoot}
+    const [toggle, setToggle] = useState<boolean | undefined>(isExpanded);
+    const unOrderedListStyles = cn({ 'pl-2 ml-3 border-l-gray-300 border-l': !isRoot });
+    const listStyles = cn(
+        'flex text-sm font-medium rounded-md flex-col',
+        { 'h-auto': toggle },
+        { 'h-7 overflow-hidden': !toggle }
     );
-    const listStyles = cn('flex text-sm font-medium rounded-md flex-col');
     const iconStyles = cn(
         'mr-1 flex-shrink-0 h-4 w-4 self-center',
         { 'text-purple-500': isCurrent },
@@ -44,15 +47,21 @@ export const TreeItem: FC<TreeItemProps> = ({
                 <div className={listContent}>
                     {/* TODO: Abstract the icons to its own components */}
                     {childNodes && childNodes.length && (
-                        <DynamicIcons
-                            icon={isExpanded ? 'ChevronDownIcon' : 'ChevronRightIcon'}
-                            aria-hidden="true"
-                            className={iconStyles}
-                            outline
-                        />
+                        <button
+                            onClick={() => {
+                                setToggle(!toggle);
+                            }}
+                        >
+                            <DynamicIcons
+                                icon={toggle ? 'ChevronDownIcon' : 'ChevronRightIcon'}
+                                aria-hidden="true"
+                                className={iconStyles}
+                                outline
+                            />
+                        </button>
                     )}
                     <DynamicIcons
-                        icon={isExpanded ? 'FolderOpenIcon' : 'FolderIcon'}
+                        icon={toggle ? 'FolderOpenIcon' : 'FolderIcon'}
                         aria-hidden="true"
                         className={iconStyles}
                         outline
