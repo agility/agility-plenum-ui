@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
-import { TreeView, TreeViewProps } from './TreeView';
 import { BRAND_CONFIG } from "../../common";
+import {  TreeView, TreeViewProps } from ".";
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Components/TreeView`,

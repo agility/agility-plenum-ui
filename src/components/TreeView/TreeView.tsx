@@ -1,42 +1,31 @@
-import React, { ComponentType, FC } from 'react';
+import React, { useState, FC } from 'react';
 import { default as cn } from 'classnames';
-import { TreeItem } from './TreeItem';
-import { useTreeViewContext } from './context';
-import { TreeViewContextProps } from './types/tree.types';
-import { TreeViewProvider } from './context';
+import { Tree, NodeModel } from "@minoru/react-dnd-treeview";
+import initialData from "./fixtures/lists.json";
 
 export interface TreeViewProps {
     /** Prop comment */
     prop: string;
 }
 
-const _TreeView = ({ prop }: TreeViewProps) => {
-    const { treeList } = useTreeViewContext() as TreeViewContextProps;
-    if (treeList && !treeList.length) return null;
+export const TreeView = ({ prop }: TreeViewProps) => {
+    const [treeData, setTreeData] = useState<NodeModel[]>(initialData);
+    const handleDrop = (newTree: NodeModel[]) => setTreeData(newTree);
+
     return (
-        <div>
-            {treeList?.map((item) => {
-                return (
-                    <TreeItem
-                        title={item?.title}
-                        isExpanded={item?.expanded}
-                        childNodes={item?.childNodes}
-                        isRoot
-                    />
-                );
-            })}
-        </div>
-    );
+        <Tree
+          tree={treeData}
+          rootId={0}
+          onDrop={handleDrop}
+          render={(node, { depth, isOpen, onToggle }) => (
+            <div style={{ marginLeft: depth * 10 }}>
+              {node.droppable && (
+                <span onClick={onToggle}>{isOpen ? "[-]" : "[+]"}</span>
+              )}
+              {node.text}
+            </div>
+          )}
+        />
+      );
 };
 
-const withContext = <T,>(WrappedComponent: ComponentType<T>) => {
-    return (hocProps: Omit<T, 'prop'>) => {
-        return (
-            <TreeViewProvider>
-                <WrappedComponent prop="prop" {...(hocProps as T)} />
-            </TreeViewProvider>
-        );
-    };
-};
-
-export const TreeView = withContext(_TreeView);
