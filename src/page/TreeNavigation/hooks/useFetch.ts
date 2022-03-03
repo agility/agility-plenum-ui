@@ -6,7 +6,7 @@ export interface useFetchProps {
     payload: any;
 }
 
-export const useFetch = ({ urlData, method, payload }: useFetchProps) => {
+export const useFetch = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<{ show: boolean; msg: any } | null>({
         show: false,
@@ -14,11 +14,11 @@ export const useFetch = ({ urlData, method, payload }: useFetchProps) => {
     });
     const [data, setData] = useState([]);
 
-    const fetchData = async (url: string) => {
+    const fetchData = async ({ urlData, method, payload }: useFetchProps) => {
         setError({ show: false, msg: null });
         setIsLoading(true);
         try {
-            const responseData = await fetch(url, {
+            const responseData = await fetch(urlData, {
                 method,
                 headers: {
                     Accept: 'application/json',
@@ -36,8 +36,6 @@ export const useFetch = ({ urlData, method, payload }: useFetchProps) => {
             setError({ show: true, msg: e });
         }
     };
-    useEffect(() => {
-        fetchData(urlData);
-    },[urlData]);
+    
     return { isLoading, error, data, fetchData };
 };

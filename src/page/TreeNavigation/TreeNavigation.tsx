@@ -11,7 +11,7 @@ export interface TreeNavigationProps {
     pageType?: 'pages' | 'assets' | 'gallery';
 }
 
-const Spinner = () => {
+export const Spinner = () => {
     return (
         
         <svg
@@ -36,12 +36,17 @@ const Spinner = () => {
 
 /** Comment */
 export const TreeNavigation = ({ pageType = 'pages' }: TreeNavigationProps) => {
-    const urlParams = { urlData: endpoint, method: 'POST', payload: { pageType, action: 'all' } };
-    const { isLoading, error, data, fetchData } = useFetch(urlParams);
+    const mainUrlParams = { urlData: endpoint, method: 'POST', payload: { pageType, action: 'all' } };
+    const partialUrlParams = { urlData: endpoint, method: 'POST', payload: { pageType, action: 'partial' } };
+    const { isLoading, error, data, fetchData } = useFetch();
+
+    useEffect(() => {
+        fetchData(mainUrlParams);
+    },[]);
     return (
         <>
             <Button
-                onClick={() => fetchData(urlParams.urlData)}
+                onClick={() => fetchData(mainUrlParams)}
                 label="Refresh"
                 type="alternative"
                 size="sm"
@@ -53,7 +58,7 @@ export const TreeNavigation = ({ pageType = 'pages' }: TreeNavigationProps) => {
                     </div>
                 )}
                 {error?.show && !isLoading && <p className="text-sm text-gray-500">{error.msg}</p>}
-                {!isLoading && data?.length > 0 && !error?.show && <TreeView treeData={data} />}
+                {!isLoading && data?.length > 0 && !error?.show && <TreeView treeData={data} onLazyFetch={() => fetchData(partialUrlParams)} />}
             </div>
         </>
     );

@@ -1,12 +1,12 @@
 import React, { useState, FC } from 'react';
-import { default as cn } from 'classnames';
 import { Tree, NodeModel } from '@minoru/react-dnd-treeview';
 
-import { DynamicIcons } from '../../util/DynamicIcons';
+import { TreeItem } from "./TreeItem";
 
 export interface TreeViewProps {
     /** Prop comment */
     treeData: NodeModel<DataProps>[];
+    onLazyFetch(id: string): void;
 }
 
 export interface DataProps {
@@ -39,34 +39,8 @@ export const TreeView = ({ treeData }: TreeViewProps) => {
             }}
             rootId={0}
             onDrop={handleDrop}
-            render={(node, { depth, isOpen, onToggle }) => {
-                const iconStyles = cn(
-                    'mr-1 flex-shrink-0 h-4 w-4 self-center text-gray-500 hover:text-gray-700'
-                );
-                const listContent = cn(
-                    'flex flex-row cursor-pointer p-1 text-gray-500 hover:text-gray-700'
-                );
-                return (
-                    <div className={listContent}>
-                        {(node.data?.lazy || node.data?.expanded) && (
-                            <button onClick={onToggle}>
-                                <DynamicIcons
-                                    icon={isOpen ? 'ChevronDownIcon' : 'ChevronRightIcon'}
-                                    aria-hidden="true"
-                                    className={iconStyles}
-                                    outline
-                                />
-                            </button>
-                        )}
-                        <DynamicIcons
-                            icon={isOpen ? 'FolderOpenIcon' : 'FolderIcon'}
-                            aria-hidden="true"
-                            className={iconStyles}
-                            outline
-                        />
-                        {node.text}
-                    </div>
-                );
+            render={(node: NodeModel<DataProps>, { depth, isOpen, onToggle }) => {
+                return <TreeItem node={node} depth={depth} isOpen={isOpen} onToggle={onToggle} />;
             }}
         />
     );

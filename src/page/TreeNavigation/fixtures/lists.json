@@ -166,7 +166,7 @@
         "id": "f-4291",
         "droppable": true,
         "parent": "f-4290",
-        "text": "Min",
+        "text": "Minimum Min",
         "data": {
             "type": "Asset",
             "lazy": true,
