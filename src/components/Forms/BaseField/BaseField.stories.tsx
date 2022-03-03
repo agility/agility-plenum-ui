@@ -5,7 +5,7 @@ import { BaseField, BaseFieldProps } from './BaseField';
 import { BRAND_CONFIG, HIDE_CONTROL } from '../../../common';
 
 export default {
-    title: `${BRAND_CONFIG.brandTitle}/Atoms`,
+    title: `${BRAND_CONFIG.brandTitle}/Components/Atoms`,
     component: BaseField,
     argTypes: {
         name: HIDE_CONTROL,

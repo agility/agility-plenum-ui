@@ -5,7 +5,7 @@ import { TreeView, TreeViewProps } from './TreeView';
 import { BRAND_CONFIG } from "../../common";
 
 export default {
-    title: `${BRAND_CONFIG.brandTitle}/Agility Manager/TreeView-V1`,
+    title: `${BRAND_CONFIG.brandTitle}/Components/TreeView-V1`,
     component: TreeView
 } as Meta;
 

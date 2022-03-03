@@ -5,7 +5,7 @@ import { InputLabel, InputLabelProps } from './InputLabel';
 import { BRAND_CONFIG } from "../../../common";
 
 export default {
-    title: `${BRAND_CONFIG.brandTitle}/Atoms`,
+    title: `${BRAND_CONFIG.brandTitle}/Components/Atoms`,
     component: InputLabel
 } as Meta;
 

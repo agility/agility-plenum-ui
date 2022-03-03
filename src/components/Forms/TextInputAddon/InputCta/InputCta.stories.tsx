@@ -5,7 +5,7 @@ import { InputCta, InputCtaProps } from './InputCta';
 import { BRAND_CONFIG, HIDE_CONTROL } from '../../../../common';
 
 export default {
-    title: `${BRAND_CONFIG.brandTitle}/Atoms`,
+    title: `${BRAND_CONFIG.brandTitle}/Components/Atoms`,
     component: InputCta,
     argTypes: {
         onClickHandler: HIDE_CONTROL

@@ -5,7 +5,7 @@ import { InputSelect, InputSelectProps } from './InputSelect';
 import { BRAND_CONFIG, HIDE_CONTROL } from '../../../../common';
 
 export default {
-    title: `${BRAND_CONFIG.brandTitle}/Atoms`,
+    title: `${BRAND_CONFIG.brandTitle}/Components/Atoms`,
     component: InputSelect,
     argTypes: {
         onSelectOption: HIDE_CONTROL

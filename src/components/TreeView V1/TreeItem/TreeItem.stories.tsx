@@ -6,7 +6,7 @@ import { BRAND_CONFIG } from "../../../common";
 import { data } from "../sampleData";
 
 export default {
-    title: `${BRAND_CONFIG.brandTitle}/Agility Manager/TreeView-V1/TreeItem`,
+    title: `${BRAND_CONFIG.brandTitle}/Components/TreeView-V1/TreeItem`,
     component: TreeItem
 } as Meta;
 

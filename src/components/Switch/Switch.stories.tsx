@@ -5,7 +5,7 @@ import { Switch, SwitchProps } from './Switch';
 import { BRAND_CONFIG } from '../../common';
 
 export default {
-    title: `${BRAND_CONFIG.brandTitle}/Atoms`,
+    title: `${BRAND_CONFIG.brandTitle}/Components/Atoms`,
     component: Switch
 } as Meta;
 

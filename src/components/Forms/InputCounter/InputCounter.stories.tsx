@@ -5,7 +5,7 @@ import { InputCounter, InputCounterProps } from './InputCounter';
 import { BRAND_CONFIG } from '../../../common';
 
 export default {
-    title: `${BRAND_CONFIG.brandTitle}/Atoms`,
+    title: `${BRAND_CONFIG.brandTitle}/Components/Atoms`,
     component: InputCounter
 } as Meta;
 
