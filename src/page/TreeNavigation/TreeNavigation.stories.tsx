@@ -4,7 +4,8 @@ import withMock from 'storybook-addon-mock';
 import { Story } from '@storybook/react';
 import { TreeNavigation, TreeNavigationProps } from './TreeNavigation';
 import { BRAND_CONFIG } from "../../common";
-import initialData from './fixtures/lists.json';
+import allData from './fixtures/lists.json';
+import partialData from './fixtures/list.json';
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Agility Manager/TreeNavigation`,
@@ -24,8 +25,25 @@ TreeNavigationComponent.parameters = {
             url: '/api/getTreeData',
             method: 'POST',
             status: 200,
-            response: {
-                data: initialData
+            response: (request: any) => {
+                const {
+                    body
+                } = request;
+                const parsedBody = JSON.parse(body);
+                if (parsedBody.action == 'all') {
+                     return {
+                        data: allData
+                    };   
+                } else if (parsedBody.action === 'partial') {
+                    console.log(parsedBody);
+                    return {
+                        data: partialData.map(data => {
+                            data.id = `${data.id}+${parsedBody.id}`
+                            data.parent = parsedBody.id;
+                            return data;
+                        })
+                    }
+                }
             },
         },
     ],

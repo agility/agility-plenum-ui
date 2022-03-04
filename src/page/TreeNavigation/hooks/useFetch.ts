@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { NodeModel } from "@minoru/react-dnd-treeview";
+import { DataProps } from "../../../components/TreeView";
 
 export interface useFetchProps {
     urlData: string;
@@ -12,7 +14,7 @@ export const useFetch = () => {
         show: false,
         msg: null
     });
-    const [data, setData] = useState([]);
+    const [responseData, setResponseData] = useState([]);
 
     const fetchData = async ({ urlData, method, payload }: useFetchProps) => {
         setError({ show: false, msg: null });
@@ -28,7 +30,7 @@ export const useFetch = () => {
             });
             if (responseData.status != 200) throw 'Something went wrong';
             const response = await responseData.json();
-            setData(response.data);
+            setResponseData(response?.data);
             setIsLoading(false);
         } catch (e) {
             console.log(e);
@@ -36,6 +38,7 @@ export const useFetch = () => {
             setError({ show: true, msg: e });
         }
     };
+
     
-    return { isLoading, error, data, fetchData };
+    return { isLoading, error, responseData, fetchData };
 };

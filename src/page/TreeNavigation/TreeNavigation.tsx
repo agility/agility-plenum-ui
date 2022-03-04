@@ -1,5 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
-import { default as cn } from 'classnames';
+import React, { useEffect } from 'react';
 import { TreeView } from '../../components/TreeView';
 import { useFetch } from './hooks/useFetch';
 import { Button } from '../..';
@@ -14,7 +13,6 @@ export interface TreeNavigationProps {
 
 export const Spinner = () => {
     return (
-        
         <svg
             role="status"
             className="mr-3 w-5 h-5 text-gray-200 animate-spin dark:text-purple-500 fill-white"
@@ -38,7 +36,7 @@ export const Spinner = () => {
 /** Comment */
 export const TreeNavigation = ({ pageType = 'pages' }: TreeNavigationProps) => {
     const mainUrlParams = { urlData: endpoint, method: 'POST', payload: { pageType, action: 'all' } };
-    const { isLoading, error, data, fetchData } = useFetch();
+    const { isLoading, error, responseData, fetchData } = useFetch();
 
     useEffect(() => {
         fetchData(mainUrlParams);
@@ -58,7 +56,7 @@ export const TreeNavigation = ({ pageType = 'pages' }: TreeNavigationProps) => {
                     </div>
                 )}
                 {error?.show && !isLoading && <p className="text-sm text-gray-500">{error.msg}</p>}
-                {!isLoading && data?.length > 0 && !error?.show && <TreeView treeData={data} CustomNode={TreeItem} />}
+                {!isLoading && responseData?.length > 0 && !error?.show && <TreeView treeData={responseData} CustomNode={TreeItem} />}
             </div>
         </>
     );

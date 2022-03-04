@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { default as cn } from 'classnames';
 import { NodeModel } from '@minoru/react-dnd-treeview';
 import { DataProps } from '..';
@@ -15,13 +15,17 @@ export interface TreeItemProps {
 }
 const endpoint = '/api/getTreeData';
 
-export const TreeItem = ({ node, depth, isOpen, onToggle }: TreeItemProps) => {
+export const TreeItem = ({ node, depth, isOpen, onToggle, onUpdate }: TreeItemProps) => {
+    const { isLoading, error, responseData, fetchData } = useFetch();
+    useEffect(()=> {
+        if(responseData.length > 0) {onUpdate(responseData)};
+        console.log(responseData)
+    }, [responseData])
     const partialUrlParams = {
         urlData: endpoint,
         method: 'POST',
-        payload: { pageType: 'pages', action: 'partial' }
+        payload: { pageType: 'pages', action: 'partial', id: node.id }
     };
-    const { isLoading, error, data, fetchData } = useFetch();
     const handleToggle = async (id: string | number, data?: DataProps) => {
         if (data?.lazy) {
             await fetchData(partialUrlParams);
