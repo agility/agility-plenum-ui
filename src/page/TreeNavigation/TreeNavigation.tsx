@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { TreeView } from '../../components/TreeView';
 import { useFetch } from './hooks/useFetch';
 import { Button } from '../..';
-import { TreeItem } from "../../components/TreeView/TreeItem";
+import { TreeItem } from "./TreeItem";
 
 const endpoint = '/api/getTreeData';
 

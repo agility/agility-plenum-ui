@@ -1,7 +1,13 @@
 import React, { useState, JSXElementConstructor, useCallback } from 'react';
 import { Tree, NodeModel } from '@minoru/react-dnd-treeview';
 
-import { TreeItemProps } from './TreeItem';
+export interface TreeItemProps {
+    node: NodeModel<DataProps>;
+    depth: number;
+    isOpen: boolean;
+    onToggle: (id: NodeModel['id']) => void;
+    onUpdate: (childList: NodeModel<DataProps>[]) => void;
+}
 
 export interface TreeViewProps {
     /** Prop comment */
@@ -25,11 +31,9 @@ export interface DataProps {
 export const TreeView = ({ treeData, CustomNode }: TreeViewProps) => {
     const [list, setList] = useState<NodeModel<DataProps>[]>(treeData);
     const handleDrop = (newTree: NodeModel<DataProps>[]) => setList(newTree);
-    const handleUpdateList = useCallback((item: NodeModel<DataProps>) => {
-            console.log(list);
-            const newList = [ ...list, ...item ];
-            setList(newList);
-            console.log(newList);
+    const handleUpdateList = useCallback((item: NodeModel<DataProps>[]) => {
+        const newList = [...list, ...item];
+        setList(newList);
     }, []);
 
     return (
