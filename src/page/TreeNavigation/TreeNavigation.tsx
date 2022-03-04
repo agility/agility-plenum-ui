@@ -3,6 +3,7 @@ import { default as cn } from 'classnames';
 import { TreeView } from '../../components/TreeView';
 import { useFetch } from './hooks/useFetch';
 import { Button } from '../..';
+import { TreeItem } from "../../components/TreeView/TreeItem";
 
 const endpoint = '/api/getTreeData';
 
@@ -37,7 +38,6 @@ export const Spinner = () => {
 /** Comment */
 export const TreeNavigation = ({ pageType = 'pages' }: TreeNavigationProps) => {
     const mainUrlParams = { urlData: endpoint, method: 'POST', payload: { pageType, action: 'all' } };
-    const partialUrlParams = { urlData: endpoint, method: 'POST', payload: { pageType, action: 'partial' } };
     const { isLoading, error, data, fetchData } = useFetch();
 
     useEffect(() => {
@@ -58,7 +58,7 @@ export const TreeNavigation = ({ pageType = 'pages' }: TreeNavigationProps) => {
                     </div>
                 )}
                 {error?.show && !isLoading && <p className="text-sm text-gray-500">{error.msg}</p>}
-                {!isLoading && data?.length > 0 && !error?.show && <TreeView treeData={data} onLazyFetch={() => fetchData(partialUrlParams)} />}
+                {!isLoading && data?.length > 0 && !error?.show && <TreeView treeData={data} CustomNode={TreeItem} />}
             </div>
         </>
     );

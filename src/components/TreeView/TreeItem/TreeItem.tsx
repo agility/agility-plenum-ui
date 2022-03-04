@@ -11,6 +11,7 @@ export interface TreeItemProps {
     depth: number;
     isOpen: boolean;
     onToggle: (id: NodeModel['id']) => void;
+    onUpdate: (item: NodeModel<DataProps>) => void;
 }
 const endpoint = '/api/getTreeData';
 

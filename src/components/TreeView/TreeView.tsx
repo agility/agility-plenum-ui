@@ -1,12 +1,12 @@
-import React, { useState, FC } from 'react';
+import React, { useState, JSXElementConstructor } from 'react';
 import { Tree, NodeModel } from '@minoru/react-dnd-treeview';
 
-import { TreeItem } from "./TreeItem";
+import { TreeItemProps} from "./TreeItem";
 
 export interface TreeViewProps {
     /** Prop comment */
     treeData: NodeModel<DataProps>[];
-    onLazyFetch(id: string): void;
+    CustomNode: JSXElementConstructor<TreeItemProps>;
 }
 
 export interface DataProps {
@@ -22,9 +22,13 @@ export interface DataProps {
     folderID: number;
 }
 
-export const TreeView = ({ treeData }: TreeViewProps) => {
+export const TreeView = ({ treeData, CustomNode }: TreeViewProps) => {
     const [list, setList] = useState<NodeModel<DataProps>[]>(treeData);
     const handleDrop = (newTree: NodeModel<DataProps>[]) => setList(newTree);
+    const handleAppendList = (item: NodeModel<DataProps>) => {
+        const newList = {...list, item};
+        setList(newList);
+    }
 
     return (
         <Tree
@@ -40,7 +44,7 @@ export const TreeView = ({ treeData }: TreeViewProps) => {
             rootId={0}
             onDrop={handleDrop}
             render={(node: NodeModel<DataProps>, { depth, isOpen, onToggle }) => {
-                return <TreeItem node={node} depth={depth} isOpen={isOpen} onToggle={onToggle} />;
+                return <CustomNode node={node} depth={depth} isOpen={isOpen} onToggle={onToggle} onUpdate={handleAppendList} />;
             }}
         />
     );
