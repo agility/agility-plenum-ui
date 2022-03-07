@@ -6,7 +6,6 @@ import { TreeNavigation, TreeNavigationProps } from './TreeNavigation';
 import { BRAND_CONFIG } from "../../common";
 import allData from './fixtures/lists.json';
 import partialData from './fixtures/list.json';
-
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Agility Manager/TreeNavigation`,
     component: TreeNavigation,
@@ -35,13 +34,13 @@ TreeNavigationComponent.parameters = {
                         data: allData
                     };   
                 } else if (parsedBody.action === 'partial') {
-                    console.log(parsedBody);
                     return {
                         data: partialData.map(data => {
-                            data.id = `${data.id}+${parsedBody.id}`
-                            data.parent = parsedBody.id;
-                            return data;
-                        })
+                            const newData = {...data};
+                            newData.id = `${newData.id}+${parsedBody.id}`
+                            newData.parent = parsedBody.id;
+                            return newData;
+                        }) 
                     }
                 }
             },

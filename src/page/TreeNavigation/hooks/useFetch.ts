@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { NodeModel } from "@minoru/react-dnd-treeview";
-import { DataProps } from "../../../components/TreeView";
+import React, { useState } from 'react';
 
 export interface useFetchProps {
     urlData: string;

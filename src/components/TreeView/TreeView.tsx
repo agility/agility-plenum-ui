@@ -34,7 +34,7 @@ export const TreeView = ({ treeData, CustomNode }: TreeViewProps) => {
     const handleUpdateList = useCallback((item: NodeModel<DataProps>[]) => {
         const newList = [...list, ...item];
         setList(newList);
-    }, []);
+    }, [list]);
 
     return (
         <Tree

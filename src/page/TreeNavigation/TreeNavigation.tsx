@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TreeView } from '../../components/TreeView';
 import { useFetch } from './hooks/useFetch';
 import { Button } from '../..';
@@ -37,6 +37,11 @@ export const Spinner = () => {
 export const TreeNavigation = ({ pageType = 'pages' }: TreeNavigationProps) => {
     const mainUrlParams = { urlData: endpoint, method: 'POST', payload: { pageType, action: 'all' } };
     const { isLoading, error, responseData, fetchData } = useFetch();
+    const [treeData, setTreeData] = useState(responseData);
+
+    useEffect(() => {
+        setTreeData(responseData);
+    }, [responseData]);
 
     useEffect(() => {
         fetchData(mainUrlParams);
@@ -56,7 +61,7 @@ export const TreeNavigation = ({ pageType = 'pages' }: TreeNavigationProps) => {
                     </div>
                 )}
                 {error?.show && !isLoading && <p className="text-sm text-gray-500">{error.msg}</p>}
-                {!isLoading && responseData?.length > 0 && !error?.show && <TreeView treeData={responseData} CustomNode={TreeItem} />}
+                {!isLoading && responseData?.length > 0 && !error?.show && <TreeView treeData={treeData} CustomNode={TreeItem} />}
             </div>
         </>
     );
