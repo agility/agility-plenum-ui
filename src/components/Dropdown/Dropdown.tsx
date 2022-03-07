@@ -19,12 +19,12 @@ export interface DropdownProps {
 /** Comment */
 export const Dropdown: FC<DropdownProps> = ({ items }: DropdownProps): JSX.Element | null => {
     const buttonStyles = cn(
-        'bg-gray-100 self-end rounded-full flex items-center text-gray-400 hover:text-gray-600',
+        'bg-gray-100 self-end rounded-full flex items-center text-gray-400 hover:text-gray-600 z-10',
         'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-purple-500'
     );
     const menuStyles = cn(
         'rigin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5',
-        'divide-y divide-gray-100 focus:outline-none'
+        'divide-y divide-gray-100 focus:outline-none z-20'
     );
     if (!items?.length) return null;
     return (

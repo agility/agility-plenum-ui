@@ -1,10 +1,10 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { default as cn } from 'classnames';
-import { NodeModel } from '@minoru/react-dnd-treeview';
-import { DataProps, TreeItemProps } from '../../../components/TreeView';
+import { TreeItemProps } from '../../../components/TreeView';
 import { DynamicIcons } from '../../../util/DynamicIcons';
 import { useFetch } from '../hooks/useFetch';
 import { Spinner } from '..';
+import { Dropdown } from '../../../components/Dropdown';
 
 const endpoint = '/api/getTreeData';
 
@@ -24,7 +24,7 @@ export const CustomNode = ({ node, isOpen, onToggle, onUpdate }: TreeItemProps) 
         payload: { pageType: 'pages', action: 'partial', id: node.id }
     };
     const handleToggle = async () => {
-        if(isLazy) await fetchData(partialUrlParams);
+        if (isLazy) await fetchData(partialUrlParams);
         onToggle(node.id);
     };
     const iconStyles = cn(
@@ -32,7 +32,7 @@ export const CustomNode = ({ node, isOpen, onToggle, onUpdate }: TreeItemProps) 
     );
     const errorIconStyle = cn('mr-1 flex-shrink-0 h-4 w-4 self-center text-red-500');
     const listContent = cn(
-        'flex flex-row cursor-pointer px-1 py-[6px] text-gray-500 hover:text-gray-700'
+        'flex flex-row cursor-pointer px-1 py-[6px] text-gray-500 hover:text-gray-700 group'
     );
     return (
         <div className={listContent}>
@@ -66,7 +66,26 @@ export const CustomNode = ({ node, isOpen, onToggle, onUpdate }: TreeItemProps) 
                         className={iconStyles}
                         outline
                     />
-                    {node.text}
+                    <span className="flex-grow">{node.text}</span>
+                    <span className="group-hover:block hidden absolute right-0">
+                        <Dropdown
+                            items={[
+                                [
+                                    {
+                                        label: 'Context menu 1'
+                                    }
+                                ],
+                                [
+                                    {
+                                        label: 'Context menu 2'
+                                    },
+                                    {
+                                        label: 'Context menu 3'
+                                    }
+                                ],
+                            ]}
+                        />
+                    </span>
                 </>
             )}
         </div>
