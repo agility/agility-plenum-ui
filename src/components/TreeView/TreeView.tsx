@@ -1,6 +1,5 @@
-import React, { useState, JSXElementConstructor, useCallback } from 'react';
-import { default as cn } from 'classnames';
-import { Tree, NodeModel } from '@minoru/react-dnd-treeview';
+import React, { useState, JSXElementConstructor, useCallback, forwardRef, ForwardedRef } from 'react';
+import { Tree, NodeModel, TreeMethods } from '@minoru/react-dnd-treeview';
 
 export interface TreeItemProps {
     node: NodeModel<DataProps>;
@@ -34,11 +33,12 @@ type PlaceHolderProps = {
     depth: number;
 };
 
+/** Custom placeholder design */
 export const Placeholder: React.FC<PlaceHolderProps> = ({node, depth}) => {
     return <div></div>;
 };
 
-export const TreeView = ({ treeData, CustomNode }: TreeViewProps) => {
+const TreeView = ({ treeData, CustomNode }: TreeViewProps, ref: ForwardedRef<TreeMethods>) => {
     const [list, setList] = useState<NodeModel<DataProps>[]>(treeData);
     const handleDrop = (newTree: NodeModel<DataProps>[]) => setList(newTree);
     const handleUpdateList = useCallback(
@@ -50,7 +50,9 @@ export const TreeView = ({ treeData, CustomNode }: TreeViewProps) => {
     );
 
     return (
+        <>
         <Tree
+            ref={ref}
             tree={list}
             classes={{
                 root: 'pl-0 ml-0 !border-l-0',
@@ -85,5 +87,9 @@ export const TreeView = ({ treeData, CustomNode }: TreeViewProps) => {
                 );
             }}
         />
+        </>
     );
 };
+
+const _TreeView = forwardRef<TreeMethods, TreeViewProps>(TreeView);
+export { _TreeView as TreeView };

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { TreeView } from '../../components/TreeView';
 import { useFetch } from './hooks/useFetch';
 import { Button } from '../..';
-import { TreeItem } from "./TreeItem";
+import { CustomNode } from "./CustomNode";
 
 const endpoint = '/api/getTreeData';
 
@@ -36,9 +36,10 @@ export const Spinner = () => {
 /** Comment */
 export const TreeNavigation = ({ pageType = 'pages' }: TreeNavigationProps) => {
     const mainUrlParams = { urlData: endpoint, method: 'POST', payload: { pageType, action: 'all' } };
+    const ref = useRef<any | null>(null);
     const { isLoading, error, responseData, fetchData } = useFetch();
     const [treeData, setTreeData] = useState(responseData);
-
+    
     useEffect(() => {
         setTreeData(responseData);
     }, [responseData]);
@@ -46,12 +47,22 @@ export const TreeNavigation = ({ pageType = 'pages' }: TreeNavigationProps) => {
     useEffect(() => {
         fetchData(mainUrlParams);
     },[]);
+
+    const handleCloseAll = () => {
+        ref?.current?.closeAll()
+    };
     return (
-        <>
+        <> 
             <Button
                 onClick={() => fetchData(mainUrlParams)}
                 label="Refresh"
                 type="alternative"
+                size="sm"
+            />
+            <Button
+                onClick={handleCloseAll}
+                label="Close All"
+                type="secondary"
                 size="sm"
             />
             <div className="mt-10">
@@ -61,7 +72,7 @@ export const TreeNavigation = ({ pageType = 'pages' }: TreeNavigationProps) => {
                     </div>
                 )}
                 {error?.show && !isLoading && <p className="text-sm text-gray-500">{error.msg}</p>}
-                {!isLoading && responseData?.length > 0 && !error?.show && <TreeView treeData={treeData} CustomNode={TreeItem} />}
+                {!isLoading && responseData?.length > 0 && !error?.show && <TreeView treeData={treeData} CustomNode={CustomNode} ref={ref} />}
             </div>
         </>
     );

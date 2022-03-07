@@ -1,21 +1,14 @@
 import React, { FC, useEffect, useState } from 'react';
 import { default as cn } from 'classnames';
 import { NodeModel } from '@minoru/react-dnd-treeview';
-import { DataProps } from '../../../components/TreeView';
+import { DataProps, TreeItemProps } from '../../../components/TreeView';
 import { DynamicIcons } from '../../../util/DynamicIcons';
 import { useFetch } from '../hooks/useFetch';
 import { Spinner } from '..';
 
-export interface TreeItemProps {
-    node: NodeModel<DataProps>;
-    depth?: number;
-    isOpen: boolean;
-    onToggle: (id: NodeModel['id']) => void;
-    onUpdate: (childList: NodeModel<DataProps>[]) => void;
-}
 const endpoint = '/api/getTreeData';
 
-export const TreeItem = ({ node, isOpen, onToggle, onUpdate }: TreeItemProps) => {
+export const CustomNode = ({ node, isOpen, onToggle, onUpdate }: TreeItemProps) => {
     const { isLoading, error, responseData, fetchData } = useFetch();
     const [isLazy, setIsLazy] = useState(node.data?.lazy);
     useEffect(() => {
