@@ -1,4 +1,5 @@
 import React, { useState, JSXElementConstructor, useCallback } from 'react';
+import { default as cn } from 'classnames';
 import { Tree, NodeModel } from '@minoru/react-dnd-treeview';
 
 export interface TreeItemProps {
@@ -28,27 +29,50 @@ export interface DataProps {
     folderID: number;
 }
 
+type PlaceHolderProps = {
+    node: NodeModel;
+    depth: number;
+};
+
+export const Placeholder: React.FC<PlaceHolderProps> = ({node, depth}) => {
+    return <div></div>;
+};
+
 export const TreeView = ({ treeData, CustomNode }: TreeViewProps) => {
     const [list, setList] = useState<NodeModel<DataProps>[]>(treeData);
     const handleDrop = (newTree: NodeModel<DataProps>[]) => setList(newTree);
-    const handleUpdateList = useCallback((item: NodeModel<DataProps>[]) => {
-        const newList = [...list, ...item];
-        setList(newList);
-    }, [list]);
+    const handleUpdateList = useCallback(
+        (item: NodeModel<DataProps>[]) => {
+            const newList = [...list, ...item];
+            setList(newList);
+        },
+        [list]
+    );
 
     return (
         <Tree
             tree={list}
             classes={{
                 root: 'pl-0 ml-0 !border-l-0',
-                container: 'border-l pl-2 ml-3 border-l-gray-300',
+                container: 'border-l pl-2 ml-3 border-l-gray-300 relative',
                 listItem: 'flex text-sm font-medium rounded-md flex-col',
                 dropTarget: 'classes-dropTarget',
                 draggingSource: 'classes-draggingSource',
-                placeholder: 'classes-placeholder'
+                placeholder: 'bg-purple-500 h-[2px] absolute w-[calc(100%-16px)] left-4'
             }}
             rootId={0}
             onDrop={handleDrop}
+            sort={false}
+            insertDroppableFirst={false}
+            canDrop={(tree, { dragSource, dropTargetId }) => {
+                if (dragSource?.parent === dropTargetId) {
+                    return true;
+                }
+            }}
+            dropTargetOffset={5}
+            placeholderRender={(node, { depth }) => (
+                <Placeholder node={node} depth={depth} />
+            )}
             render={(node: NodeModel<DataProps>, { depth, isOpen, onToggle }) => {
                 return (
                     <CustomNode
