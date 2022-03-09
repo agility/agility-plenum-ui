@@ -2,12 +2,12 @@ import React, { FC, useState } from 'react';
 import { default as cn } from 'classnames';
 import { InputLabel } from '../InputLabel';
 
-export type SelectOptions = {
+export type SimpleSelectOptions = {
     label: string;
     value: string;
 };
 
-export interface SelectProps {
+export interface SimpleSelectProps {
     /** Label */
     label?: string;
     /** Select ID prop */
@@ -15,7 +15,7 @@ export interface SelectProps {
     /** Select name prop */
     name: string;
     /** List of options to display in the select menu */
-    options: SelectOptions[];
+    options: SimpleSelectOptions[];
     /** Select name prop */
     onChange?(value: string): void;
     /** Select disabled state */
@@ -27,7 +27,7 @@ export interface SelectProps {
 }
 
 /** Comment */
-export const Select: FC<SelectProps> = ({
+export const Select: FC<SimpleSelectProps> = ({
     label,
     id,
     name,
@@ -36,7 +36,7 @@ export const Select: FC<SelectProps> = ({
     isDisabled,
     isError,
     isRequired
-}: SelectProps) => {
+}: SimpleSelectProps) => {
     const [selectedOption, setSelectedOption] = useState<string>(options[0].value);
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const targetValue = e.target.value;

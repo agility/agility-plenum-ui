@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
-import { Select, SelectProps } from './Select';
+import { Select, SimpleSelectProps } from './Select';
 import { BRAND_CONFIG } from '../../../common';
 
 export default {
@@ -9,7 +9,7 @@ export default {
     component: Select
 } as Meta;
 
-const Template: Story<SelectProps> = (args) => <Select {...args} />;
+const Template: Story<SimpleSelectProps> = (args) => <Select {...args} />;
 const baseArgs = {
     label: 'Label',
     id: 'select',
@@ -28,11 +28,11 @@ AllVariations.decorators = [
     () => {
         return (
             <div className="grid-flow-row gap-4 grid">
-                <Select {...(Base.args as SelectProps)} />
-                <Select {...(Label.args as SelectProps)} />
-                <Select {...(Required.args as SelectProps)} />
-                <Select {...(Error.args as SelectProps)} />
-                <Select {...(Disabled.args as SelectProps)} />
+                <Select {...(Base.args as SimpleSelectProps)} />
+                <Select {...(Label.args as SimpleSelectProps)} />
+                <Select {...(Required.args as SimpleSelectProps)} />
+                <Select {...(Error.args as SimpleSelectProps)} />
+                <Select {...(Disabled.args as SimpleSelectProps)} />
                 <span className="text-xs block mt-5 text-gray-400">
                     Note: controls are disabled on this view
                 </span>
