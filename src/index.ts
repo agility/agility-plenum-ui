@@ -9,3 +9,4 @@ export * from './components/Forms/TextInputSelect';
 export * from './components/Forms/Radio';
 export * from './components/Forms/Textarea';
 export * from './components/Forms/Select';
+export * from './components/Forms/Checkbox';
