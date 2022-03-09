@@ -6,7 +6,7 @@ import { InputCounter } from '../InputCounter';
 import { BaseField } from '../BaseField';
 import { InputSelect } from './InputSelect';
 
-export type Type =
+type Type =
     | 'text'
     | 'email'
     | 'number'
