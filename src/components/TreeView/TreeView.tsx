@@ -20,6 +20,7 @@ export interface TreeViewProps {
     /** Prop comment */
     treeData: NodeModel<DataProps>[];
     CustomNode: JSXElementConstructor<TreeItemProps>;
+    initialOpen: boolean | [number | string];
 }
 
 export interface DataProps {
@@ -45,7 +46,7 @@ export const Placeholder: React.FC<PlaceHolderProps> = ({ node, depth }) => {
     return <div></div>;
 };
 
-const TreeView = ({ treeData, CustomNode }: TreeViewProps, ref: ForwardedRef<TreeMethods>) => {
+const TreeView = ({ treeData, CustomNode, initialOpen }: TreeViewProps, ref: ForwardedRef<TreeMethods>) => {
     const [list, setList] = useState<NodeModel<DataProps>[]>(treeData);
     const handleDrop = (newTree: NodeModel<DataProps>[]) => setList(newTree);
     const handleUpdateList = useCallback(
@@ -84,6 +85,7 @@ const TreeView = ({ treeData, CustomNode }: TreeViewProps, ref: ForwardedRef<Tre
                         return true;
                     }
                 }}
+                initialOpen={initialOpen}
                 dropTargetOffset={5}
                 placeholderRender={(node, { depth }) => <Placeholder node={node} depth={depth} />}
                 render={(node: NodeModel<DataProps>, { depth, isOpen, onToggle }) => {
