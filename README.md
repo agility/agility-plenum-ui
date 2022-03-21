@@ -24,12 +24,6 @@ Using npm:
 $ npm install @agility/plenum-ui
 ```
 
-Using bower:
-
-```bash
-$ bower install @agility/plenum-ui
-```
-
 Using yarn:
 
 ```bash
