@@ -17,7 +17,8 @@ const baseArgs = {
     isChecked: false,
     isRequired: false,
     isError: false,
-    message: ''
+    message: '',
+    onChange: (value:string) => {console.log(`onChange ${value}`)},
 };
 
 export const AllVariations = Template.bind({});
