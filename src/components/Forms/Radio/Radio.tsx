@@ -19,6 +19,10 @@ export interface RadioProps {
     isError?: boolean;
     /** Message or description */
     message?: string;
+    /** Callback on input change */
+    onChange?(value: string): void;
+    /** Callback on click */
+    onClick?(value: string): void;
 }
 
 /** Comment */
@@ -30,12 +34,22 @@ export const Radio: FC<RadioProps> = ({
     isChecked = false,
     isRequired = false,
     isError = false,
-    message
+    message,
+    onChange,
+    onClick
 }: RadioProps) => {
     const checboxStyles = cn('focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300', {
         'border-red-500 shadow-none': isError
     });
     const wrapperStyles = cn('relative flex items-start', { 'opacity-50': isDisabled });
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const targetValue = e.currentTarget.value;
+        onChange && onChange(targetValue);
+    };
+    const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
+        const targetValue = e.currentTarget.value;
+        onClick && onClick(targetValue);
+    };
     return (
         <div className={wrapperStyles}>
             <div className="flex items-center h-5">
@@ -47,6 +61,12 @@ export const Radio: FC<RadioProps> = ({
                     className={checboxStyles}
                     disabled={isDisabled}
                     defaultChecked={isChecked}
+                    onChange={(e) => {
+                        handleChange(e);
+                    }}
+                    onClick={(e) => {
+                        handleClick(e);
+                    }}
                 />
             </div>
             <div className="ml-3 text-sm">
