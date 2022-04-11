@@ -44,11 +44,11 @@ export const Radio: FC<RadioProps> = ({
     const wrapperStyles = cn('relative flex items-start', { 'opacity-50': isDisabled });
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const targetValue = e.currentTarget.value;
-        onChange && onChange(targetValue);
+        typeof onChange === 'function' && onChange(targetValue);
     };
     const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
         const targetValue = e.currentTarget.value;
-        onClick && onClick(targetValue);
+        typeof onClick === 'function' && onClick(targetValue);
     };
     return (
         <div className={wrapperStyles}>

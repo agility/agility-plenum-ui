@@ -18,7 +18,9 @@ const baseArgs = {
     isRequired: false,
     isError: false,
     message: '',
-    name: 'radio-group'
+    name: 'radio-group',
+    onChange: (value:string) => {console.log(`onChange ${value}`)},
+    onClick: (value:string) => {console.log(`onClick ${value}`)}
 };
 
 export const AllVariations = Template.bind({});
