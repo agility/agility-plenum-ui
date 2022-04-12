@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC, Fragment, JSXElementConstructor } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { default as cn } from 'classnames';
 import { DynamicIcons, IconName } from '../../util/DynamicIcons';
@@ -11,16 +11,18 @@ export type ItemProp = {
     isEmphasized?: boolean;
 };
 
-export interface DropdownProps {
+export interface DropdownProps{ 
     /** Prop comment */
     items: ItemProp[][];
+    IconElement: JSXElementConstructor<unknown>;
+    label?: string;
+    buttonClasses?: string;
 }
 
 /** Comment */
-export const Dropdown: FC<DropdownProps> = ({ items }: DropdownProps): JSX.Element | null => {
-    const buttonStyles = cn(
-        'bg-gray-100 self-end rounded-full flex items-center text-gray-400 hover:text-gray-600 z-10',
-        'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-purple-500'
+export const Dropdown: FC<DropdownProps> = ({ items, IconElement, label, buttonClasses }: DropdownProps): JSX.Element | null => {
+    const buttonStyles = cn('self-end flex items-center z-10', buttonClasses,
+        {'text-gray-400 hover:text-gray-600 ': !buttonClasses},
     );
     const menuStyles = cn(
         'rigin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5',
@@ -32,7 +34,9 @@ export const Dropdown: FC<DropdownProps> = ({ items }: DropdownProps): JSX.Eleme
             <div>
                 <Menu.Button className={buttonStyles}>
                     <span className="sr-only">Dropdown Menu</span>
-                    <DynamicIcons className="h-5 w-5" aria-hidden="true" icon="DotsVerticalIcon" />
+                    {label}
+                    {IconElement && <IconElement />}
+                    
                 </Menu.Button>
             </div>
 
