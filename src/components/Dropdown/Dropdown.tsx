@@ -17,16 +17,19 @@ export interface DropdownProps{
     IconElement: JSXElementConstructor<unknown>;
     label?: string;
     buttonClasses?: string;
+    position?: 'top' | 'bottom';
 }
 
 /** Comment */
-export const Dropdown: FC<DropdownProps> = ({ items, IconElement, label, buttonClasses }: DropdownProps): JSX.Element | null => {
+export const Dropdown: FC<DropdownProps> = ({ items, IconElement, label, buttonClasses, position='top' }: DropdownProps): JSX.Element | null => {
     const buttonStyles = cn('self-end flex items-center z-10', buttonClasses,
         {'text-gray-400 hover:text-gray-600 ': !buttonClasses},
     );
     const menuStyles = cn(
-        'rigin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5',
-        'divide-y divide-gray-100 focus:outline-none z-20'
+        'origin-bottom-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5',
+        'divide-y divide-gray-100 focus:outline-none z-20',
+        {'top-0': position === 'bottom'},
+        {'bottom-0 bottom-8': position === 'top'}
     );
     if (!items?.length) return null;
     return (
