@@ -21,7 +21,7 @@ export interface DropdownProps{
 }
 
 /** Comment */
-export const Dropdown: FC<DropdownProps> = ({ items, IconElement, label, buttonClasses, position='top' }: DropdownProps): JSX.Element | null => {
+export const Dropdown: FC<DropdownProps> = ({ items, IconElement, label, buttonClasses, position='bottom' }: DropdownProps): JSX.Element | null => {
     const buttonStyles = cn('self-end flex items-center z-10', buttonClasses,
         {'text-gray-400 hover:text-gray-600 ': !buttonClasses},
     );
