@@ -20,7 +20,7 @@ export interface TreeViewProps {
     /** Prop comment */
     treeData: NodeModel<DataProps>[];
     CustomNode: JSXElementConstructor<TreeItemProps>;
-    initialOpen: boolean | [number | string];
+    initialOpen: boolean | Array<number | string>;
 }
 
 export interface DataProps {
