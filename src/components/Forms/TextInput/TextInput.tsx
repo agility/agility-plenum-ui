@@ -91,7 +91,6 @@ export const TextInput: FC<TextInputProps> = ({
 
     const handleInputFocus = (): void => {
         setIsFocus(true);
-        console.log('should focus', isActive);
         // add other focus effects here
     };
 
@@ -99,7 +98,6 @@ export const TextInput: FC<TextInputProps> = ({
         const input = inputRef.current;
         setIsFocus(false);
         setIsActive(!(input && input.value === ''));
-        console.log('should blur', isActive);
     };
 
     const inputStyles = cn(

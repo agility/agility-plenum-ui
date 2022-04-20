@@ -24,6 +24,10 @@ export interface ButtonProps {
      * Optional click handler
      */
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    /**
+     * If button should be disabled
+     */
+    isDisabled?: boolean;
 }
 
 /**
@@ -34,6 +38,7 @@ export const Button: FC<ButtonProps> = ({
     size = 'base',
     onClick,
     label,
+    isDisabled,
     icon
 }: ButtonProps) => {
     const btnStyles = cn(
@@ -41,6 +46,7 @@ export const Button: FC<ButtonProps> = ({
         { 'text-sm px-4 py-2': size === 'sm' },
         { 'text-base px-5 py-2': size === 'base' },
         { 'text-lg px-5 py-2': size === 'lg' },
+        { 'opacity-50 cursor-auto': isDisabled },
         { 'text-white bg-purple-600 hover:bg-purple-700': type === 'primary' },
         {
             'text-purple-700 bg-purple-100 hover:text-purple-700 hover:bg-purple-200':
@@ -60,7 +66,7 @@ export const Button: FC<ButtonProps> = ({
     );
 
     return (
-        <button type="button" className={btnStyles} onClick={onClick}>
+        <button type="button" className={btnStyles} onClick={!isDisabled ? onClick : () => {null}}>
             {icon && <DynamicIcons icon={icon} className={iconStyles} outline={false} />}
             <span>{label}</span>
         </button>
