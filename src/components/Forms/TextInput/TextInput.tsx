@@ -73,14 +73,14 @@ export const TextInput: FC<TextInputProps> = ({
     // set force focus
     useEffect(() => {
         const input = inputRef.current;
-        if (!input || isFocus === undefined || isFocused === undefined || isDisabled) return;
-        if (isFocus || isFocused) {
+        if (!input || isFocus === undefined || isDisabled) return;
+        if (isFocus) {
             input.focus();
             setIsActive(true);
         } else {
             input.blur();
         }
-    }, [isFocus, isFocused]);
+    }, [isFocus]);
 
     // set label as active if default value is set
     useEffect(() => {
@@ -91,6 +91,7 @@ export const TextInput: FC<TextInputProps> = ({
 
     const handleInputFocus = (): void => {
         setIsFocus(true);
+        console.log('should focus', isActive);
         // add other focus effects here
     };
 
@@ -98,13 +99,14 @@ export const TextInput: FC<TextInputProps> = ({
         const input = inputRef.current;
         setIsFocus(false);
         setIsActive(!(input && input.value === ''));
+        console.log('should blur', isActive);
     };
 
     const inputStyles = cn(
         'border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full',
-        { 'border-gray-300 shadow-sm': !isFocus },
-        { 'focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none': isFocus },
-        { 'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError }
+        { 'border-gray-300 shadow-sm': !isFocus && !isError },
+        { 'focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none': isFocus && !isError },
+        { 'focus:ring-red-500 !border-red-500 shadow-none': isError }
     );
 
     const discriptionStyles = cn(
