@@ -21,3 +21,6 @@ Secondary.args = { ...Primary.args, type: 'secondary', label: 'Secondary', icon:
 
 export const Alternative = Template.bind({});
 Alternative.args = { label: 'Alternative', type: 'alternative', size: 'base', icon: 'BellIcon' };
+
+export const Danger = Template.bind({});
+Danger.args = { label: 'Danger', type: 'danger', size: 'base', icon: 'BellIcon' };

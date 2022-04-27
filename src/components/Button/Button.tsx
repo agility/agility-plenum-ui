@@ -7,7 +7,7 @@ export interface ButtonProps {
     /**
      * Is this the principal call to action on the page?
      */
-    type?: 'primary' | 'secondary' | 'alternative';
+    type?: 'primary' | 'secondary' | 'alternative' | 'danger';
     /**
      * How large should the button be?
      */
@@ -55,12 +55,16 @@ export const Button: FC<ButtonProps> = ({
         {
             'text-gray-700 bg-white hover:text-gray-700 hover:bg-gray-50 border-gray-300':
                 type === 'alternative'
+        },
+        {
+            'text-white bg-red-600 hover:text-white hover:bg-red-700 border-red-300':
+                type === 'danger'
         }
     );
 
     const iconStyles = cn(
         'h-5 w-5',
-        { 'text-white': type === 'primary' },
+        { 'text-white': type === 'primary' || type === 'danger' },
         { 'text-purple-700': type === 'secondary' },
         { 'text-gray-700': type === 'alternative' }
     );
