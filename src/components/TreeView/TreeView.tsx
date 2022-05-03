@@ -34,6 +34,7 @@ export interface DataProps {
     galleryFolderID: number;
     assetID: number;
     folderID: number;
+    canNestChildren?: boolean;
 }
 
 type PlaceHolderProps = {
