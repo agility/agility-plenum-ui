@@ -3,6 +3,7 @@ import { default as cn } from 'classnames';
 import { DynamicIcons, IconName } from '../../util/DynamicIcons';
 
 import '../../tailwind.css';
+import { Loader } from "../../util/Loader";
 export interface ButtonProps {
     /**
      * Is this the principal call to action on the page?
@@ -28,6 +29,10 @@ export interface ButtonProps {
      * If button should be disabled
      */
     isDisabled?: boolean;
+    /**
+     * Shows loading indicator
+     */
+    isLoading?: boolean;
 }
 
 /**
@@ -39,7 +44,8 @@ export const Button: FC<ButtonProps> = ({
     onClick,
     label,
     isDisabled,
-    icon
+    icon,
+    isLoading = false
 }: ButtonProps) => {
     const btnStyles = cn(
         'inline-flex space-x-2 items-center justify-center border transition-all shadow-sm rounded-md',
@@ -71,7 +77,11 @@ export const Button: FC<ButtonProps> = ({
 
     return (
         <button type="button" className={btnStyles} onClick={!isDisabled ? onClick : () => {null}}>
-            {icon && <DynamicIcons icon={icon} className={iconStyles} outline={false} />}
+            {icon ? 
+                isLoading ? <Loader classes="h-5 w-5 border-2" /> : <DynamicIcons icon={icon} className={iconStyles} outline={false} />
+                :
+                isLoading && <Loader classes="h-5 w-5 border-2" />
+            }
             <span>{label}</span>
         </button>
     );
