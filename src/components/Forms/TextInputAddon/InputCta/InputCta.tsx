@@ -41,10 +41,10 @@ export const InputCta: FC<InputCtaProps> = ({
             'hover:bg-gray-100': onClickHandler && !isClear
         },
         {
-            'border-l-white': isClear && align === 'right'
+            '!border-l-white': isClear && align === 'right'
         },
         {
-            'border-r-white': isClear && align === 'left'
+            '!border-r-white': isClear && align === 'left'
         },
         {
             'bg-gray-50': !isClear
