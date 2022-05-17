@@ -126,8 +126,8 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
         'border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full border-gray-300 shadow-sm',
         { 'focus:ring-red-500 border-red-500 outline-red-500 shadow-none': isError },
         { 'pl-10': inlineIcon },
-        { 'rounded-none rounded-l-md': (trailIcon || trailLabel) && !(leadIcon || leadLabel) },
-        { 'rounded-none rounded-r-md': !(trailIcon || trailLabel) && (leadIcon || leadLabel) },
+        { '!rounded-r-none !rounded-l-md': (trailIcon || trailLabel) && !(leadIcon || leadLabel) },
+        { '!rounded-r-none !rounded-r-md': !(trailIcon || trailLabel) && (leadIcon || leadLabel) },
         { 'rounded-none': (trailIcon || trailLabel) && (leadIcon || leadLabel) }
     );
 
