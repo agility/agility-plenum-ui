@@ -33,7 +33,7 @@ export const Checkbox: FC<CheckboxProps> = ({
     onChange,
 }: CheckboxProps) => {
     const checboxStyles = cn(
-        'focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded',
+        'focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 rounded',
         { 'border-red-500 shadow-none': isError }
     );
     const wrapperStyles = cn('relative flex items-start', { 'opacity-50': isDisabled });

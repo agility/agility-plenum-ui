@@ -103,7 +103,7 @@ export const TextInput: FC<TextInputProps> = ({
     const inputStyles = cn(
         'border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full',
         { 'border-gray-300 shadow-sm': !isFocus && !isError },
-        { 'focus:ring-indigo-500 border-indigo-500 outline-indigo-500 shadow-none': isFocus && !isError },
+        { 'focus:ring-purple-500 border-purple-500 outline-purple-500 shadow-none': isFocus && !isError },
         { 'focus:ring-red-500 !border-red-500 shadow-none': isError }
     );
 
