@@ -6,6 +6,8 @@ import React, {
     ForwardedRef,
     useEffect
 } from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Tree, NodeModel, TreeMethods } from '@minoru/react-dnd-treeview';
 
 export interface TreeItemProps {
@@ -64,60 +66,62 @@ const TreeView = (
     );
 
     useEffect(() => {
-        if (typeof initialOpen === 'boolean'){
+        if (typeof initialOpen === 'boolean') {
             setShowTree(true);
             setList(treeData);
             setOpenKeys(initialOpen);
-        }else if(typeof initialOpen !== 'boolean' && initialOpen.length > 0) {
+        } else if (typeof initialOpen !== 'boolean' && initialOpen.length > 0) {
             setShowTree(true);
             setList(treeData);
             setOpenKeys(initialOpen);
-        }else {
+        } else {
             setShowTree(false);
         }
     }, [initialOpen, treeData]);
 
     return (
         <>
-            {showTree && (
-                <Tree
-                    ref={ref}
-                    tree={list}
-                    classes={{
-                        root: 'pl-0 ml-0 !border-l-0',
-                        container: 'border-l pl-2 ml-3 border-l-gray-300 relative',
-                        listItem: 'flex text-sm font-medium rounded-md flex-col',
-                        dropTarget: 'classes-dropTarget',
-                        draggingSource: 'classes-draggingSource',
-                        placeholder: 'bg-purple-500 h-[2px] absolute w-[calc(100%-16px)] left-4'
-                    }}
-                    rootId={0}
-                    onDrop={handleDrop}
-                    sort={false}
-                    insertDroppableFirst={false}
-                    canDrop={(tree, { dragSource, dropTargetId }) => {
-                        if (dragSource?.parent === dropTargetId) {
-                            return true;
-                        }
-                    }}
-                    initialOpen={openKeys}
-                    dropTargetOffset={5}
-                    placeholderRender={(node, { depth }) => (
-                        <Placeholder node={node} depth={depth} />
-                    )}
-                    render={(node: NodeModel<DataProps>, { depth, isOpen, onToggle }) => {
-                        return (
-                            <CustomNode
-                                node={node}
-                                depth={depth}
-                                isOpen={isOpen}
-                                onToggle={onToggle}
-                                onUpdate={handleUpdateList}
-                            />
-                        );
-                    }}
-                />
-            )}
+            <DndProvider backend={HTML5Backend}>
+                {showTree && (
+                    <Tree
+                        ref={ref}
+                        tree={list}
+                        classes={{
+                            root: 'pl-0 ml-0 !border-l-0',
+                            container: 'border-l pl-2 ml-3 border-l-gray-300 relative',
+                            listItem: 'flex text-sm font-medium rounded-md flex-col',
+                            dropTarget: 'classes-dropTarget',
+                            draggingSource: 'classes-draggingSource',
+                            placeholder: 'bg-purple-500 h-[2px] absolute w-[calc(100%-16px)] left-4'
+                        }}
+                        rootId={0}
+                        onDrop={handleDrop}
+                        sort={false}
+                        insertDroppableFirst={false}
+                        canDrop={(tree, { dragSource, dropTargetId }) => {
+                            if (dragSource?.parent === dropTargetId) {
+                                return true;
+                            }
+                        }}
+                        initialOpen={openKeys}
+                        dropTargetOffset={5}
+                        placeholderRender={(node, { depth }) => (
+                            <Placeholder node={node} depth={depth} />
+                        )}
+                        render={(node: NodeModel<DataProps>, { depth, isOpen, onToggle }) => {
+                            return (
+                                <CustomNode
+                                    node={node}
+                                    depth={depth}
+                                    isOpen={isOpen}
+                                    onToggle={onToggle}
+                                    onUpdate={handleUpdateList}
+                                />
+                            );
+                        }}
+                    />
+                )}
+            </DndProvider>
         </>
     );
 };
