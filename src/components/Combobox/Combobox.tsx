@@ -1,24 +1,26 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, {  useState, useEffect } from 'react';
 import { default as cn } from 'classnames';
 import { Combobox as HeadlessUICombobox } from '@headlessui/react';
 import { DynamicIcons } from '../../util/DynamicIcons';
 import { InputLabel } from '../Forms/InputLabel';
 
-export type ComboboxItemProps = {
-    value: string;
-};
-
-export interface ComboboxProps {
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
+export interface ComboboxProps<T extends Record<string, unknown>> {
     /** Label */
     label?: string;
     /** ID */
     id: string;
     /** Array of items to display */
-    items: ComboboxItemProps[];
+    items: T[];
+    /** the item property to use as the key */
+    keyProperty: string;
+
+    /** the item property to use as the display */
+    displayProperty: string;
     /** Placeholder */
     placeholder?: string;
     /** Callback to trigger on change */
-    onChange?(value: string): void;
+    onChange?(value: T): void;
     /** Select disabled state */
     isDisabled?: boolean;
     /** Select error state */
@@ -30,19 +32,24 @@ export interface ComboboxProps {
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ');
 }
-/** Comment */
-export const Combobox: FC<ComboboxProps> = ({
+
+
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
+export const Combobox = <T extends Record<string, unknown>>({
     label,
     items,
+    displayProperty,
+    keyProperty,
     onChange,
     placeholder,
     isDisabled,
     isError,
     isRequired,
     id
-}: ComboboxProps) => {
+}: ComboboxProps<T>) => {
+
     const [query, setQuery] = useState<string>('');
-    const [selectedItem, setSelectedItem] = useState<string | undefined>();
+    const [selectedItem, setSelectedItem] = useState<T | undefined>();
 
     useEffect(() => {
         typeof onChange === 'function' && selectedItem !== undefined && onChange(selectedItem);
@@ -52,7 +59,7 @@ export const Combobox: FC<ComboboxProps> = ({
         query === ''
             ? items
             : items.filter((item) => {
-                  return item.value.toLowerCase().includes(query.toLowerCase());
+                  return `${item[displayProperty]}`.toLowerCase().includes(query.toLowerCase());
               });
     const inputStyles = cn(
         'w-full rounded-md border bg-white py-2 pl-3 pr-10 shadow-sm sm:text-sm',
@@ -68,7 +75,12 @@ export const Combobox: FC<ComboboxProps> = ({
         'absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'
     );
     return (
-        <HeadlessUICombobox as="div" value={selectedItem} onChange={setSelectedItem} disabled={isDisabled}>
+        <HeadlessUICombobox
+            as="div"
+            value={selectedItem}
+            onChange={setSelectedItem}
+            disabled={isDisabled}
+        >
             {label && (
                 <HeadlessUICombobox.Label className={labelStyles}>
                     <InputLabel
@@ -86,7 +98,7 @@ export const Combobox: FC<ComboboxProps> = ({
                 <HeadlessUICombobox.Input
                     className={inputStyles}
                     onChange={(event) => setQuery(event.target.value)}
-                    displayValue={(item: ComboboxItemProps) => item.value}
+                    displayValue={(item:Record<string, unknown>) => `${item[displayProperty]}`}
                     placeholder={placeholder}
                 />
                 <HeadlessUICombobox.Button className={buttonStyles}>
@@ -101,7 +113,7 @@ export const Combobox: FC<ComboboxProps> = ({
                     <HeadlessUICombobox.Options className={optionStyles}>
                         {filteredItems.map((item, index) => (
                             <HeadlessUICombobox.Option
-                                key={index}
+                                key={ `${item[keyProperty]}-${index}` }
                                 value={item}
                                 className={({ active }) =>
                                     classNames(
@@ -118,7 +130,7 @@ export const Combobox: FC<ComboboxProps> = ({
                                                 selected ? 'font-semibold' : ''
                                             )}
                                         >
-                                            {item.value}
+                                            { `${item[displayProperty]}`}
                                         </span>
 
                                         {selected && (

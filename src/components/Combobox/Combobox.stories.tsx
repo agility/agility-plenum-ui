@@ -9,7 +9,11 @@ export default {
     component: Combobox
 } as Meta;
 
-const comboboxlist = [
+interface ComboItem {
+    [value: string]: string
+}
+
+const comboboxlist: ComboItem[] = [
     { value: 'Leslie Alexander' },
     { value: 'Alishba Molloy' },
     { value: 'Raya Oconnell' },
@@ -23,27 +27,29 @@ const comboboxlist = [
     { value: 'Vera Pritchard' }
 ];
 
-const Template: Story<ComboboxProps> = (args) => <Combobox {...args} />;
+const Template: Story<ComboboxProps<ComboItem>> = (args) => <Combobox {...args} />;
 const baseArgs = {
     label: 'Label',
     items: comboboxlist,
+    displayProperty: "value",
+    keyProperty: "value",
     placeholder: 'Select',
     id: 'combobox',
     isRequired: false,
     isError: false,
     isDisabled: false
-} as ComboboxProps;
+} as ComboboxProps<ComboItem>;
 
 export const AllVariations = Template.bind({});
 AllVariations.decorators = [
     () => {
         return (
             <div className="grid-flow-row gap-4 grid">
-                <Combobox {...(Default.args as ComboboxProps)} />
-                <Combobox {...(Label.args as ComboboxProps)} />
-                <Combobox {...(Required.args as ComboboxProps)} />
-                <Combobox {...(Error.args as ComboboxProps)} />
-                <Combobox {...(Disabled.args as ComboboxProps)} />
+                <Combobox {...(Default.args as ComboboxProps<ComboItem>)} />
+                <Combobox {...(Label.args as ComboboxProps<ComboItem>)} />
+                <Combobox {...(Required.args as ComboboxProps<ComboItem>)} />
+                <Combobox {...(Error.args as ComboboxProps<ComboItem>)} />
+                <Combobox {...(Disabled.args as ComboboxProps<ComboItem>)} />
                 <span className="text-xs block mt-5 text-gray-400">
                     Note: controls are disabled on this view
                 </span>
