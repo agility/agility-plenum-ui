@@ -9,6 +9,8 @@ export interface CheckboxProps {
     id: string;
     /** Disabled state */
     isDisabled?: boolean;
+    /** value */
+    value?: string;
     /** Check state */
     isChecked?: boolean;
     /** If field is required */
@@ -18,7 +20,7 @@ export interface CheckboxProps {
     /** Message or description */
     message?: string;
     /** Callback on input change */
-    onChange?(value: string): void;
+    onChange?(value: string, isChecked: boolean): void;
 }
 
 /** Comment */
@@ -30,6 +32,7 @@ export const Checkbox: FC<CheckboxProps> = ({
     isRequired,
     isError,
     message,
+    value,
     onChange,
 }: CheckboxProps) => {
     const checboxStyles = cn(
@@ -40,7 +43,8 @@ export const Checkbox: FC<CheckboxProps> = ({
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const targetValue = e.currentTarget.value;
-        typeof onChange === 'function' && onChange(targetValue);
+        const targetChecked = e.currentTarget.checked;
+        typeof onChange === 'function' && onChange(targetValue, targetChecked);
     };
 
     return (
@@ -50,6 +54,7 @@ export const Checkbox: FC<CheckboxProps> = ({
                     id={id}
                     aria-describedby={`${id}-description`}
                     name={id}
+                    value={value}
                     type="checkbox"
                     className={checboxStyles}
                     disabled={isDisabled}

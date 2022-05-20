@@ -19,10 +19,12 @@ export interface RadioProps {
     isError?: boolean;
     /** Message or description */
     message?: string;
+    /** value */
+    value?: string;
     /** Callback on input change */
-    onChange?(value: string): void;
+    onChange?(value: string, isChecked: boolean): void;
     /** Callback on click */
-    onClick?(value: string): void;
+    onClick?(value: string, isChecked: boolean): void;
 }
 
 /** Comment */
@@ -36,7 +38,8 @@ export const Radio: FC<RadioProps> = ({
     isError = false,
     message,
     onChange,
-    onClick
+    onClick,
+    value
 }: RadioProps) => {
     const checboxStyles = cn('focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300', {
         'border-red-500 shadow-none': isError
@@ -44,11 +47,13 @@ export const Radio: FC<RadioProps> = ({
     const wrapperStyles = cn('relative flex items-start', { 'opacity-50': isDisabled });
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const targetValue = e.currentTarget.value;
-        typeof onChange === 'function' && onChange(targetValue);
+        const targetChecked = e.currentTarget.checked;
+        typeof onChange === 'function' && onChange(targetValue, targetChecked);
     };
     const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
         const targetValue = e.currentTarget.value;
-        typeof onClick === 'function' && onClick(targetValue);
+        const targetChecked = e.currentTarget.checked;
+        typeof onClick === 'function' && onClick(targetValue, targetChecked);
     };
     return (
         <div className={wrapperStyles}>
@@ -58,6 +63,7 @@ export const Radio: FC<RadioProps> = ({
                     aria-describedby={`${id}-description`}
                     name={name}
                     type="radio"
+                    value={value}
                     className={checboxStyles}
                     disabled={isDisabled}
                     defaultChecked={isChecked}

@@ -3,6 +3,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { Story } from '@storybook/react';
 import { Radio, RadioProps } from './Radio';
 import { BRAND_CONFIG } from '../../../common';
+import { check } from "prettier";
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Components/Radio`,
@@ -19,8 +20,8 @@ const baseArgs = {
     isError: false,
     message: '',
     name: 'radio-group',
-    onChange: (value:string) => {console.log(`onChange ${value}`)},
-    onClick: (value:string) => {console.log(`onClick ${value}`)}
+    onChange: (value:string, checked: boolean) => {console.log(`onChange ${value} ${checked}`)},
+    onClick: (value:string, checked: boolean) => {console.log(`onClick ${value} ${checked}`)}
 };
 
 export const AllVariations = Template.bind({});

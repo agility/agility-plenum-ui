@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow, ShallowWrapper } from 'enzyme';
 import { Checkbox } from './Checkbox';
 import { InputLabel } from '../InputLabel';
 
@@ -56,3 +56,4 @@ describe('Checkbox component', () => {
         expect(checkboxWrapper.find('#checkboxID-description').text()).toEqual('message');
     });
 });
+

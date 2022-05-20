@@ -82,3 +82,13 @@ Disabled.args = {
     message: 'This checkbox is disabled',
     id: 'checkboxId6'
 };
+
+export const Events = Template.bind({});
+Events.args = {
+    ...(baseArgs as CheckboxProps),
+    isDisabled: false,
+    message: 'This checkbox is disabled',
+    id: 'checkboxId6',
+    value: 'cbox',
+    onChange: (value, checked) => {console.log(value, checked)}
+};
