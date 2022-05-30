@@ -23,8 +23,27 @@ const baseArgs = {
     IconElement,
 };
 
+export const AllVariations = Template.bind({});
+AllVariations.decorators = [
+    () => {
+        return (
+            <div className="grid-flow-row gap-4 grid">
+                <Dropdown {...(Default.args as DropdownProps)} />
+                <Dropdown {...(Icon.args as DropdownProps)} />
+                <Dropdown {...(Label.args as DropdownProps)} />
+                <span className="text-xs block mt-5 text-gray-400">
+                    Note: controls are disabled on this view
+                </span>
+            </div>
+        )
+    }
+]
+
 export const Default = Template.bind({});
 Default.args = { ...baseArgs };
 
 export const Icon = Template.bind({});
 Icon.args = { ...baseArgs, items: dropdownDataWithIcons };
+
+export const Label = Template.bind({});
+Label.args = { ...baseArgs, items: dropdownDataWithIcons, label: 'Label' };
