@@ -7,7 +7,7 @@ export interface AvatarProps {
      */
     src?: string;
     /**
-     * Initials f
+     * Initials we use as fallback if no src is passed
      */
     initials?: string;
     /**
@@ -50,6 +50,13 @@ export const Avatar: FC<AvatarProps> = ({
         'h-14 w-14': size === 'lg',
         'h-16 w-16': size === 'xl'
     });
+    const fontStyles = cn('font-medium leading-none text-white uppercase', {
+        'text-xs': size === 'xxs' || size === 'xs',
+        'text-sm': size === 'sm',
+        'text-base': size === 'md',
+        'text-lg': size === 'lg',
+        'text-xl': size === 'xl'
+    });
     const defaultAvatarStyles = cn('inline-block rounded-full overflow-hidden bg-gray-100', {
         'h-6 w-6': size === 'xxs',
         'h-8 w-8': size === 'xs',
@@ -58,6 +65,7 @@ export const Avatar: FC<AvatarProps> = ({
         'h-14 w-14': size === 'lg',
         'h-16 w-16': size === 'xl'
     });
+    
     const statusStyles = cn('absolute top-0 right-0 block rounded-full ring-2 ring-white', {
         'h-1.5 w-1.5': size === 'xxs',
         'h-2 w-2': size === 'xs',
@@ -75,7 +83,7 @@ export const Avatar: FC<AvatarProps> = ({
                 <img className={imageStyles} src={src} alt={alt} />
             ) : initials ? (
                 <span className={initialsStyles}>
-                    <span className="text-xs font-medium leading-none text-white uppercase">{initials}</span>
+                    <span className={fontStyles}>{initials}</span>
                 </span>
             ) : (
                 <span className={defaultAvatarStyles}>

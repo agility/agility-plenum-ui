@@ -14,5 +14,5 @@ const baseArgs = {
     src: 'https://dlux.ca/wp-content/uploads/2021/07/IMG_3456-300x300.jpg'
 } as AvatarProps;
 
-export const AvatarComponent = Template.bind({});
-AvatarComponent.args = {...baseArgs};
+export const AvatarIcon = Template.bind({});
+AvatarIcon.args = {...baseArgs};
