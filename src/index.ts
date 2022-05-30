@@ -3,6 +3,7 @@ export * from './components/Combobox';
 export * from './components/Dropdown';
 export * from './components/Switch';
 export * from './components/TreeView';
+export * from './components/Avatar';
 export * from './components/Forms/TextInput';
 export * from './components/Forms/TextInputAddon';
 export * from './components/Forms/TextInputSelect';
