@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { default as cn } from 'classnames';
 import { DynamicIcons, IconName } from '../../../util/DynamicIcons';
 
@@ -68,29 +68,32 @@ export interface TextInputAddonProps {
     onCtaClick?(): void;
 }
 
-export const TextInputAddon: FC<TextInputAddonProps> = ({
-    label,
-    isFocused,
-    isError,
-    id,
-    name,
-    isRequired,
-    type,
-    defaultValue,
-    isDisabled,
-    message,
-    isShowCounter,
-    maxLength = 100,
-    placeholder,
-    leadIcon,
-    trailIcon,
-    inlineIcon,
-    trailLabel,
-    leadLabel,
-    clearCta = 'none',
-    onChange,
-    onCtaClick
-}: TextInputAddonProps) => {
+const TextInputAddon = (
+    {
+        label,
+        isFocused,
+        isError,
+        id,
+        name,
+        isRequired,
+        type,
+        defaultValue,
+        isDisabled,
+        message,
+        isShowCounter,
+        maxLength = 100,
+        placeholder,
+        leadIcon,
+        trailIcon,
+        inlineIcon,
+        trailLabel,
+        leadLabel,
+        clearCta = 'none',
+        onChange,
+        onCtaClick
+    }: TextInputAddonProps,
+    ref: React.Ref<HTMLInputElement>
+) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
     const [value, setValue] = useState<string | null | undefined>(defaultValue);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -172,7 +175,7 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
                         onBlur={handleInputBlur}
                         onChange={onChange}
                         onValueChange={setValue}
-                        ref={inputRef}
+                        ref={ref}
                         type={type}
                         name={name}
                         id={id}
@@ -206,3 +209,6 @@ export const TextInputAddon: FC<TextInputAddonProps> = ({
         </div>
     );
 };
+
+const _TextInputAddon = forwardRef<HTMLInputElement, TextInputAddonProps>(TextInputAddon);
+export { _TextInputAddon as TextInputAddon };
