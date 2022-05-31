@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, forwardRef, useEffect, useRef, useState } from 'react';
 import { default as cn } from 'classnames';
 
 import '../../../tailwind.css';
@@ -50,7 +50,7 @@ export interface TextInputProps {
     onChange?(value: string): void;
 }
 
-export const TextInput: FC<TextInputProps> = ({
+const TextInput = ({
     label,
     isFocused,
     isError,
@@ -64,7 +64,8 @@ export const TextInput: FC<TextInputProps> = ({
     isShowCounter,
     maxLength = 100,
     onChange
-}: TextInputProps) => {
+}: TextInputProps,
+    ref: React.Ref<HTMLInputElement>) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
     const [isActive, setIsActive] = useState<boolean>(false);
     const [value, setValue] = useState<string | null | undefined>(defaultValue);
@@ -121,7 +122,7 @@ export const TextInput: FC<TextInputProps> = ({
                 isRequired={isRequired}
                 id={id}
                 isError={isError}
-                isActive={isActive}
+                isActive={true}
                 isDisabled={isDisabled}
             />
             <div>
@@ -130,7 +131,7 @@ export const TextInput: FC<TextInputProps> = ({
                     onBlur={handleInputBlur}
                     onChange={onChange}
                     onValueChange={setValue}
-                    ref={inputRef}
+                    ref={ref}
                     type={type}
                     name={name}
                     id={id}
@@ -153,3 +154,6 @@ export const TextInput: FC<TextInputProps> = ({
         </div>
     );
 };
+
+const _TextInput = forwardRef<HTMLInputElement, TextInputProps>(TextInput);
+export { _TextInput as TextInput };
