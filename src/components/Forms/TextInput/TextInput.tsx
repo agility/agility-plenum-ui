@@ -48,6 +48,7 @@ export interface TextInputProps {
     maxLength?: number;
     /** Callback on change */
     onChange?(value: string): void;
+    value: string
 }
 
 const TextInput = ({
@@ -63,13 +64,18 @@ const TextInput = ({
     message,
     isShowCounter,
     maxLength = 100,
-    onChange
+    onChange,
+    value: externalValue
 }: TextInputProps,
     ref: React.Ref<HTMLInputElement>) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
     const [isActive, setIsActive] = useState<boolean>(false);
-    const [value, setValue] = useState<string | null | undefined>(defaultValue);
+    const [value, setValue] = useState<string | undefined>(defaultValue || '');
     const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        setValue(externalValue);
+    }, [externalValue])
 
     // set force focus
     useEffect(() => {
@@ -137,7 +143,7 @@ const TextInput = ({
                     id={id}
                     inputStyles={inputStyles}
                     isDisabled={isDisabled}
-                    defaultValue={defaultValue}
+                    value={value}
                     maxLength={maxLength}
                 />
                 <div className="flex flex-row space-x-3">

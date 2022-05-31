@@ -44,6 +44,8 @@ export interface TextInputAddonProps {
     isDisabled?: boolean;
     /** Set default value */
     defaultValue?: string;
+    /** Set value */
+    value?: string;
     /** Message shown under the text field */
     message?: string;
     /** Input character counter */
@@ -90,14 +92,19 @@ const TextInputAddon = (
         leadLabel,
         clearCta = 'none',
         onChange,
-        onCtaClick
+        onCtaClick,
+        value: externalValue
     }: TextInputAddonProps,
     ref: React.Ref<HTMLInputElement>
 ) => {
     const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused));
-    const [value, setValue] = useState<string | null | undefined>(defaultValue);
+    const [value, setValue] = useState<string | undefined>(defaultValue || '');
     const inputRef = useRef<HTMLInputElement>(null);
 
+    useEffect(() => {
+        setValue(externalValue);
+    }, [externalValue])
+    
     // set force focus
     useEffect(() => {
         const input = inputRef.current;
@@ -181,7 +188,7 @@ const TextInputAddon = (
                         id={id}
                         inputStyles={inputStyles}
                         isDisabled={isDisabled}
-                        defaultValue={defaultValue}
+                        value={value}
                         maxLength={maxLength}
                         placeholder={placeholder}
                     />
