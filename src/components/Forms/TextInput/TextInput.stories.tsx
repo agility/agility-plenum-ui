@@ -23,7 +23,7 @@ const baseArgs = {
     id: 'input',
     name: 'input',
     type: 'text',
-    defaultValue: '',
+    value: '',
     isRequired: false,
     isDisabled: false,
     isFocused: false,

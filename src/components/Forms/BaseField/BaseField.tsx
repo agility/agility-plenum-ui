@@ -27,6 +27,8 @@ export interface BaseFieldProps {
     placeholder?: string;
     /** Disabled state */
     isDisabled?: boolean;
+    /** Set value */
+    value?: string;
     /** Set default value */
     defaultValue?: string;
     /** Max length of input character  */
@@ -53,6 +55,7 @@ const BaseField = (
         id,
         name,
         type,
+        value,
         defaultValue,
         isDisabled,
         maxLength = 100,
@@ -96,6 +99,7 @@ const BaseField = (
             id={id}
             className={scopedtyles}
             disabled={isDisabled}
+            value={value}
             defaultValue={defaultValue}
             maxLength={maxLength}
             autoComplete="off"
