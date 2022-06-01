@@ -144,6 +144,7 @@ const TextInput = ({
                     inputStyles={inputStyles}
                     isDisabled={isDisabled}
                     value={value}
+                    defaultValue={defaultValue}
                     maxLength={maxLength}
                 />
                 <div className="flex flex-row space-x-3">

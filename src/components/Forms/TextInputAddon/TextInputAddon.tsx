@@ -189,6 +189,7 @@ const TextInputAddon = (
                         inputStyles={inputStyles}
                         isDisabled={isDisabled}
                         value={value}
+                        defaultValue={defaultValue}
                         maxLength={maxLength}
                         placeholder={placeholder}
                     />
