@@ -38,3 +38,37 @@ import { Button } from '@agility/plenum-ui';
 
 <Button label='Primary' type='primary' size='base' icon='BellIcon'>
 ```
+
+## Advanced
+If you wish to use yarn link with this project to debug locally:
+
+```
+cd THIS_PACKAGE
+yarn link
+yarn install
+cd node_modules/react
+yarn link
+cd ../../node_modules/react-dom
+yarn link
+cd YOUR_PROJECT
+yarn link PACKAGE_YOU_DEBUG_LOCALLY
+yarn link react
+yarn link react-dom
+```
+
+Then, when you are done
+
+```
+cd YOUR_PROJECT
+yarn unlink "@agility/plenum-ui"
+yarn unlink react
+yarn link react-dom
+
+cd THIS_PACKAGE
+yarn unlink
+cd node_modules/react
+yarn unlink
+cd ../../node_modules/react-dom
+yarn unlink
+
+```

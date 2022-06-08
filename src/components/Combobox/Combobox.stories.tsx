@@ -37,7 +37,8 @@ const baseArgs = {
     id: 'combobox',
     isRequired: false,
     isError: false,
-    isDisabled: false
+    isDisabled: false,
+    nullable: false
 } as ComboboxProps<ComboItem>;
 
 export const AllVariations = Template.bind({});
