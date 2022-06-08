@@ -59,7 +59,7 @@ export const Combobox = <T extends Record<string, unknown>>({
 	const [selectedItem, setSelectedItem] = useState<T | undefined>()
 
 	const onChangeValue = (value: T | undefined) => {
-		console.log("Value Changed", value, selectedItem)
+
 		if (value && selectedItem && value[keyProperty] === selectedItem[keyProperty]) {
 			setSelectedItem(undefined)
 		} else {
