@@ -713,12 +713,12 @@ select {
   top: 1px;
 }
 
-.left-0 {
-  left: 0px;
-}
-
 .bottom-10 {
   bottom: 2.5rem;
+}
+
+.left-0 {
+  left: 0px;
 }
 
 .left-4 {

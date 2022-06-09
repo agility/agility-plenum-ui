@@ -17,14 +17,22 @@ export interface DropdownProps {
 	IconElement: JSXElementConstructor<unknown>
 	label?: string
 	buttonClasses?: string
-	position?: "top" | "bottom"
+	yPosition?: "top" | "bottom"
+	xPosition?: "left" | "right"
 }
 
 /** Comment */
-export const Dropdown: FC<DropdownProps> = ({ items, IconElement, label, buttonClasses, position = "bottom" }: DropdownProps): JSX.Element | null => {
+export const Dropdown: FC<DropdownProps> = ({
+	items,
+	IconElement,
+	label,
+	buttonClasses,
+	yPosition = "bottom",
+	xPosition = "left"
+}: DropdownProps): JSX.Element | null => {
 	if (!items?.length) return null
 	return (
-		<Menu as="div" className="relative inline-block text-left">
+		<Menu as="div" className="relative inline-block text-left ">
 			<div>
 				<Menu.Button
 					className={cn(
@@ -50,8 +58,9 @@ export const Dropdown: FC<DropdownProps> = ({ items, IconElement, label, buttonC
 				<Menu.Items
 					className={cn(
 						"absolute right-0 mt-2 w-56 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5",
-						"z-20 divide-y divide-gray-100 focus:outline-none left-0",
-						position === "top" ? "bottom-10" : ""
+						" z-20 divide-y divide-gray-100 focus:outline-none",
+						yPosition === "top" ? "bottom-10" : "",
+						xPosition === "right" ? "right-0" : "left-0"
 					)}
 					slot=""
 				>
@@ -68,23 +77,35 @@ export const Dropdown: FC<DropdownProps> = ({ items, IconElement, label, buttonC
 													{ "text-gray-900": !item.isEmphasized },
 													{ "bg-gray-100 text-gray-900": active },
 													{
-														"bg-gray-100 text-red-500 hover:text-red-500": active && item.isEmphasized
+														"bg-gray-100 text-red-500 hover:text-red-500":
+															active && item.isEmphasized
 													}
 												)
 												const iconStyles = cn(
 													"mr-3 h-5 w-5",
 													{ "text-red-500": item.isEmphasized },
 													{
-														"text-gray-400 group-hover:text-gray-500": !item.isEmphasized
+														"text-gray-400 group-hover:text-gray-500":
+															!item.isEmphasized
 													},
 													{ "bg-gray-100 text-gray-900": active },
 													{
-														"bg-gray-100 text-red-500 group-hover:text-red-500": active && item.isEmphasized
+														"bg-gray-100 text-red-500 group-hover:text-red-500":
+															active && item.isEmphasized
 													}
 												)
 												return (
-													<a onClick={item.onClick} className={anchorStyles}>
-														{item.icon && <DynamicIcons className={iconStyles} aria-hidden="true" icon={item.icon} />}
+													<a
+														onClick={item.onClick}
+														className={anchorStyles}
+													>
+														{item.icon && (
+															<DynamicIcons
+																className={iconStyles}
+																aria-hidden="true"
+																icon={item.icon}
+															/>
+														)}
 														{item.label}
 													</a>
 												)
