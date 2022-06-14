@@ -16,7 +16,7 @@ export interface DropdownProps {
 	items: ItemProp[][]
 	IconElement: JSXElementConstructor<unknown>
 	label?: string
-	buttonClasses?: string
+	className?: string
 	yPosition?: "top" | "bottom"
 	xPosition?: "left" | "right"
 }
@@ -26,7 +26,7 @@ export const Dropdown: FC<DropdownProps> = ({
 	items,
 	IconElement,
 	label,
-	buttonClasses,
+	className,
 	yPosition = "bottom",
 	xPosition = "left"
 }: DropdownProps): JSX.Element | null => {
@@ -36,12 +36,12 @@ export const Dropdown: FC<DropdownProps> = ({
 			<div>
 				<Menu.Button
 					className={cn(
-						"z-20 flex items-center self-end outline-purple-500 focus:ring-purple-500",
-						buttonClasses ? buttonClasses : "text-gray-400 hover:text-gray-600 "
+						"z-20 flex items-center self-end rounded-md py-2px outline-purple-500 transition-all focus:ring-purple-500",
+						className ? className : "text-gray-400 hover:bg-white hover:text-gray-600"
 					)}
 				>
 					<span className="sr-only">Dropdown Menu</span>
-					{label}
+					{label && <span className="pl-1">{label}</span>}
 					{IconElement && <IconElement />}
 				</Menu.Button>
 			</div>

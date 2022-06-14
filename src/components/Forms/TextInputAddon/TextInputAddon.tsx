@@ -2,7 +2,6 @@ import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { default as cn } from 'classnames';
 import { DynamicIcons, IconName } from '../../../util/DynamicIcons';
 
-import '../../../tailwind.css';
 import { InputCounter } from '../InputCounter';
 import { BaseField } from '../BaseField';
 import { InputCta } from './InputCta';
@@ -104,7 +103,7 @@ const TextInputAddon = (
     useEffect(() => {
         setValue(externalValue);
     }, [externalValue])
-    
+
     // set force focus
     useEffect(() => {
         const input = inputRef.current;

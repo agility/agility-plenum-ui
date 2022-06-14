@@ -1,7 +1,6 @@
 import React, { FC, forwardRef, useEffect, useRef, useState } from 'react';
 import { default as cn } from 'classnames';
 
-import '../../../tailwind.css';
 import { InputCounter } from '../InputCounter';
 import { BaseField } from '../BaseField';
 import { InputLabel } from '../InputLabel';
