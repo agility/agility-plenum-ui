@@ -20,21 +20,23 @@ export interface ComboboxProps<T extends Record<string, unknown>> {
 	/** Placeholder */
 	placeholder?: string
 	/** Callback to trigger on change */
-	onChange?(value: T|undefined): void
+	onChange?(value: T | undefined): void
 	/** Select disabled state */
 	isDisabled?: boolean
 	/** Select error state */
 	isError?: boolean
 	/** Select required state */
-    isRequired?: boolean
+	isRequired?: boolean
 
-    /**
-     * Whether this item is nullable or not.
-     *
-     * @type {boolean}
-     * @memberof ComboboxProps
-     */
-    nullable?:boolean
+	value?: string
+
+	/**
+	 * Whether this item is nullable or not.
+	 *
+	 * @type {boolean}
+	 * @memberof ComboboxProps
+	 */
+	nullable?: boolean
 }
 
 function classNames(...classes: string[]) {
@@ -49,17 +51,23 @@ export const Combobox = <T extends Record<string, unknown>>({
 	keyProperty,
 	onChange,
 	placeholder,
+	value,
 	isDisabled,
 	isError,
 	isRequired,
 	id,
 	nullable
 }: ComboboxProps<T>) => {
+	console.log(value)
 	const [query, setQuery] = useState<string>("")
 	const [selectedItem, setSelectedItem] = useState<T | undefined>()
 
-	const onChangeValue = (value: T | undefined) => {
+	// if (value) {
+	// 	setSelectedItem(value)
+	// }
 
+	const onChangeValue = (value: T | undefined) => {
+		console.log(value)
 		if (value && selectedItem && value[keyProperty] === selectedItem[keyProperty]) {
 			setSelectedItem(undefined)
 		} else {
@@ -122,17 +130,13 @@ export const Combobox = <T extends Record<string, unknown>>({
 						placeholder={placeholder}
 					/>
 					{selectedItem && nullable && (
-							<button
-								className="absolute right-8 top-[1px] h-9 w-5 text-gray-400 hover:text-gray-500"
-								onClick={() => setSelectedItem(undefined)}
-							>
-								<DynamicIcons
-									icon="XIcon"
-									className="h-4 w-4 "
-									aria-hidden="true"
-								/>
-							</button>
-						)}
+						<button
+							className="absolute right-8 top-[1px] h-9 w-5 text-gray-400 hover:text-gray-500"
+							onClick={() => setSelectedItem(undefined)}
+						>
+							<DynamicIcons icon="XIcon" className="h-4 w-4 " aria-hidden="true" />
+						</button>
+					)}
 				</div>
 				<HeadlessUICombobox.Button className={buttonStyles}>
 					<DynamicIcons
