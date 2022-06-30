@@ -27,6 +27,8 @@ export interface ComboboxProps<T extends Record<string, unknown>> {
 	isError?: boolean
 	/** Select required state */
 	isRequired?: boolean
+	/** Message shown under field */
+	message?: string
 
 	value?: string
 
@@ -51,23 +53,17 @@ export const Combobox = <T extends Record<string, unknown>>({
 	keyProperty,
 	onChange,
 	placeholder,
-	value,
+	message,
 	isDisabled,
 	isError,
 	isRequired,
 	id,
 	nullable
 }: ComboboxProps<T>) => {
-	console.log(value)
 	const [query, setQuery] = useState<string>("")
 	const [selectedItem, setSelectedItem] = useState<T | undefined>()
 
-	// if (value) {
-	// 	setSelectedItem(value)
-	// }
-
 	const onChangeValue = (value: T | undefined) => {
-		console.log(value)
 		if (value && selectedItem && value[keyProperty] === selectedItem[keyProperty]) {
 			setSelectedItem(undefined)
 		} else {
@@ -189,6 +185,17 @@ export const Combobox = <T extends Record<string, unknown>>({
 							</HeadlessUICombobox.Option>
 						))}
 					</HeadlessUICombobox.Options>
+				)}
+			</div>
+			<div className="grow">
+				{message && (
+					<span
+						className={`mt-1 block text-sm ${
+							isError ? `text-red-500` : `text-gray-500`
+						}`}
+					>
+						{message}
+					</span>
 				)}
 			</div>
 		</HeadlessUICombobox>
