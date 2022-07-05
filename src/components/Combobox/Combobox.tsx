@@ -30,7 +30,7 @@ export interface ComboboxProps<T extends Record<string, unknown>> {
 	/** Message shown under field */
 	message?: string
 
-	value?: string
+	displayValue?: string
 
 	/**
 	 * Whether this item is nullable or not.
@@ -50,6 +50,7 @@ export const Combobox = <T extends Record<string, unknown>>({
 	label,
 	items,
 	displayProperty,
+	displayValue,
 	keyProperty,
 	onChange,
 	placeholder,
@@ -72,6 +73,13 @@ export const Combobox = <T extends Record<string, unknown>>({
 	}
 
 	useEffect(() => {
+		if (displayValue) {
+			const dv = items.find((i) => i[displayProperty] === displayValue)
+			setSelectedItem(dv)
+		}
+	}, [displayValue])
+
+	useEffect(() => {
 		typeof onChange === "function" && onChange(selectedItem)
 	}, [selectedItem])
 
@@ -81,12 +89,6 @@ export const Combobox = <T extends Record<string, unknown>>({
 			: items.filter((item) => {
 					return `${item[displayProperty]}`.toLowerCase().includes(query.toLowerCase())
 			  })
-	const inputStyles = cn(
-		"w-full rounded-md border bg-white py-2 pl-3 pr-10 shadow-sm sm:text-sm",
-		"focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500",
-		{ "border-red-500": isError },
-		{ "border-gray-300": !isError }
-	)
 	const labelStyles = cn("block text-sm font-medium text-gray-700")
 	const buttonStyles = cn(
 		"absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none"
@@ -118,7 +120,9 @@ export const Combobox = <T extends Record<string, unknown>>({
 			<div className="relative">
 				<div className="relative">
 					<HeadlessUICombobox.Input
-						className={inputStyles}
+						className={`w-full rounded-md border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm ${
+							isError ? "border-red-500" : ""
+						}`}
 						onChange={(event) => setQuery(event.target.value)}
 						displayValue={(item: Record<string, unknown>) =>
 							`${item ? item[displayProperty] : ""}`
