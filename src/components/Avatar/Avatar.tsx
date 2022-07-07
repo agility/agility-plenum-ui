@@ -65,7 +65,7 @@ export const Avatar: FC<AvatarProps> = ({
         'h-14 w-14': size === 'lg',
         'h-16 w-16': size === 'xl'
     });
-    
+
     const statusStyles = cn('absolute top-0 right-0 block rounded-full ring-2 ring-white', {
         'h-1.5 w-1.5': size === 'xxs',
         'h-2 w-2': size === 'xs',

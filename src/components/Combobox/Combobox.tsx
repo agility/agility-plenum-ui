@@ -20,21 +20,25 @@ export interface ComboboxProps<T extends Record<string, unknown>> {
 	/** Placeholder */
 	placeholder?: string
 	/** Callback to trigger on change */
-	onChange?(value: T|undefined): void
+	onChange?(value: T | undefined): void
 	/** Select disabled state */
 	isDisabled?: boolean
 	/** Select error state */
 	isError?: boolean
 	/** Select required state */
-    isRequired?: boolean
+	isRequired?: boolean
+	/** Message shown under field */
+	message?: string
 
-    /**
-     * Whether this item is nullable or not.
-     *
-     * @type {boolean}
-     * @memberof ComboboxProps
-     */
-    nullable?:boolean
+	displayValue?: string
+
+	/**
+	 * Whether this item is nullable or not.
+	 *
+	 * @type {boolean}
+	 * @memberof ComboboxProps
+	 */
+	nullable?: boolean
 }
 
 function classNames(...classes: string[]) {
@@ -46,9 +50,11 @@ export const Combobox = <T extends Record<string, unknown>>({
 	label,
 	items,
 	displayProperty,
+	displayValue,
 	keyProperty,
 	onChange,
 	placeholder,
+	message,
 	isDisabled,
 	isError,
 	isRequired,
@@ -59,13 +65,19 @@ export const Combobox = <T extends Record<string, unknown>>({
 	const [selectedItem, setSelectedItem] = useState<T | undefined>()
 
 	const onChangeValue = (value: T | undefined) => {
-
 		if (value && selectedItem && value[keyProperty] === selectedItem[keyProperty]) {
 			setSelectedItem(undefined)
 		} else {
 			setSelectedItem(value)
 		}
 	}
+
+	useEffect(() => {
+		if (displayValue) {
+			const dv = items.find((i) => i[displayProperty] === displayValue)
+			setSelectedItem(dv)
+		}
+	}, [displayValue])
 
 	useEffect(() => {
 		typeof onChange === "function" && onChange(selectedItem)
@@ -77,12 +89,6 @@ export const Combobox = <T extends Record<string, unknown>>({
 			: items.filter((item) => {
 					return `${item[displayProperty]}`.toLowerCase().includes(query.toLowerCase())
 			  })
-	const inputStyles = cn(
-		"w-full rounded-md border bg-white py-2 pl-3 pr-10 shadow-sm sm:text-sm",
-		"focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500",
-		{ "border-red-500": isError },
-		{ "border-gray-300": !isError }
-	)
 	const labelStyles = cn("block text-sm font-medium text-gray-700")
 	const buttonStyles = cn(
 		"absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none"
@@ -114,7 +120,9 @@ export const Combobox = <T extends Record<string, unknown>>({
 			<div className="relative">
 				<div className="relative">
 					<HeadlessUICombobox.Input
-						className={inputStyles}
+						className={`w-full rounded-md border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm ${
+							isError ? "border-red-500" : ""
+						}`}
 						onChange={(event) => setQuery(event.target.value)}
 						displayValue={(item: Record<string, unknown>) =>
 							`${item ? item[displayProperty] : ""}`
@@ -122,17 +130,13 @@ export const Combobox = <T extends Record<string, unknown>>({
 						placeholder={placeholder}
 					/>
 					{selectedItem && nullable && (
-							<button
-								className="absolute right-8 top-[1px] h-9 w-5 text-gray-400 hover:text-gray-500"
-								onClick={() => setSelectedItem(undefined)}
-							>
-								<DynamicIcons
-									icon="XIcon"
-									className="h-4 w-4 "
-									aria-hidden="true"
-								/>
-							</button>
-						)}
+						<button
+							className="absolute right-8 top-[1px] h-9 w-5 text-gray-400 hover:text-gray-500"
+							onClick={() => setSelectedItem(undefined)}
+						>
+							<DynamicIcons icon="XIcon" className="h-4 w-4 " aria-hidden="true" />
+						</button>
+					)}
 				</div>
 				<HeadlessUICombobox.Button className={buttonStyles}>
 					<DynamicIcons
@@ -185,6 +189,17 @@ export const Combobox = <T extends Record<string, unknown>>({
 							</HeadlessUICombobox.Option>
 						))}
 					</HeadlessUICombobox.Options>
+				)}
+			</div>
+			<div className="grow">
+				{message && (
+					<span
+						className={`mt-1 block text-sm ${
+							isError ? `text-red-500` : `text-gray-500`
+						}`}
+					>
+						{message}
+					</span>
 				)}
 			</div>
 		</HeadlessUICombobox>
