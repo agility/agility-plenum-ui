@@ -1263,7 +1263,7 @@ select {
 
 .border-purple-700 {
   --tw-border-opacity: 1;
-  border-color: rgb(126 34 206 / var(--tw-border-opacity));
+  border-color: rgb(88 0 212 / var(--tw-border-opacity));
 }
 
 .border-gray-300 {
@@ -1287,7 +1287,7 @@ select {
 
 .border-purple-500 {
   --tw-border-opacity: 1;
-  border-color: rgb(168 85 247 / var(--tw-border-opacity));
+  border-color: rgb(121 51 221 / var(--tw-border-opacity));
 }
 
 .\!border-red-500 {
@@ -1352,12 +1352,12 @@ select {
 
 .bg-purple-600 {
   --tw-bg-opacity: 1;
-  background-color: rgb(147 51 234 / var(--tw-bg-opacity));
+  background-color: rgb(105 44 216 / var(--tw-bg-opacity));
 }
 
 .bg-purple-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 232 255 / var(--tw-bg-opacity));
+  background-color: rgb(222 204 246 / var(--tw-bg-opacity));
 }
 
 .bg-white {
@@ -1377,7 +1377,7 @@ select {
 
 .bg-purple-500 {
   --tw-bg-opacity: 1;
-  background-color: rgb(168 85 247 / var(--tw-bg-opacity));
+  background-color: rgb(121 51 221 / var(--tw-bg-opacity));
 }
 
 .bg-gray-50 {
@@ -1560,7 +1560,7 @@ select {
 
 .text-purple-700 {
   --tw-text-opacity: 1;
-  color: rgb(126 34 206 / var(--tw-text-opacity));
+  color: rgb(88 0 212 / var(--tw-text-opacity));
 }
 
 .text-gray-700 {
@@ -1580,7 +1580,7 @@ select {
 
 .text-purple-600 {
   --tw-text-opacity: 1;
-  color: rgb(147 51 234 / var(--tw-text-opacity));
+  color: rgb(105 44 216 / var(--tw-text-opacity));
 }
 
 .text-red-500 {
@@ -1604,7 +1604,7 @@ select {
 
 .text-purple-500 {
   --tw-text-opacity: 1;
-  color: rgb(168 85 247 / var(--tw-text-opacity));
+  color: rgb(121 51 221 / var(--tw-text-opacity));
 }
 
 .opacity-50 {
@@ -1642,7 +1642,7 @@ select {
 }
 
 .outline-purple-500 {
-  outline-color: #a855f7;
+  outline-color: #7933DD;
 }
 
 .\!outline-red-500 {
@@ -1750,12 +1750,12 @@ select {
 
 .hover\:bg-purple-700:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(126 34 206 / var(--tw-bg-opacity));
+  background-color: rgb(88 0 212 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-purple-200:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(233 213 255 / var(--tw-bg-opacity));
+  background-color: rgb(205 179 242 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-gray-50:hover {
@@ -1780,7 +1780,7 @@ select {
 
 .hover\:text-purple-700:hover {
   --tw-text-opacity: 1;
-  color: rgb(126 34 206 / var(--tw-text-opacity));
+  color: rgb(88 0 212 / var(--tw-text-opacity));
 }
 
 .hover\:text-gray-700:hover {
@@ -1810,7 +1810,7 @@ select {
 
 .focus\:border-purple-500:focus {
   --tw-border-opacity: 1;
-  border-color: rgb(168 85 247 / var(--tw-border-opacity));
+  border-color: rgb(121 51 221 / var(--tw-border-opacity));
 }
 
 .focus\:outline-none:focus {
@@ -1826,7 +1826,7 @@ select {
 
 .focus\:ring-purple-500:focus {
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(168 85 247 / var(--tw-ring-opacity));
+  --tw-ring-color: rgb(121 51 221 / var(--tw-ring-opacity));
 }
 
 .focus\:ring-red-500:focus {
@@ -1866,7 +1866,7 @@ select {
 @media (prefers-color-scheme: dark) {
   .dark\:text-purple-500 {
     --tw-text-opacity: 1;
-    color: rgb(168 85 247 / var(--tw-text-opacity));
+    color: rgb(121 51 221 / var(--tw-text-opacity));
   }
 }
 
