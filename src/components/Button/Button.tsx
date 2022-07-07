@@ -38,6 +38,8 @@ export interface ButtonProps {
 	 * If button should be of type submit
 	 */
 	isSubmit?: boolean
+
+	isWidthFull?: boolean
 }
 
 /**
@@ -51,10 +53,12 @@ export const Button: FC<ButtonProps> = ({
 	isDisabled,
 	icon,
 	isLoading = false,
-	isSubmit = false
+	isSubmit = false,
+	isWidthFull = false
 }: ButtonProps) => {
 	const btnStyles = cn(
 		"inline-flex space-x-2 items-center justify-center border transition-all shadow-sm rounded-md",
+		{ "w-full": isWidthFull === true },
 		{ "text-sm px-4 py-2": size === "sm" },
 		{ "text-base px-5 py-2": size === "base" },
 		{ "text-lg px-5 py-2": size === "lg" },

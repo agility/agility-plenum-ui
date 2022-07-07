@@ -165,9 +165,9 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
 						name={name}
 						id={id}
 						inputStyles={`w-full border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm 
-                        ${selectLocation === "right" ? `rounded-l-md` : `rounded-r-md`} 
-                        ${isError ? "border-red-500" : ""} 
-                        ${prefix ? `pl-7` : ""} `}
+						${selectLocation === "right" ? `rounded-l-md` : `rounded-r-md`} 
+						${isError ? "border-red-500" : ""} 
+						${prefix ? `pl-7` : ""} `}
 						isDisabled={isDisabled}
 						defaultValue={defaultValue}
 						value={value}
