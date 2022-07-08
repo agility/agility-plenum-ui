@@ -109,8 +109,8 @@ const TextInput = (
 		setIsActive(!(input && input.value === ""))
 	}
 
-	const inputStyles = cn(
-		"border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full",
+	const className = cn(
+		"border py-2 px-3 rounded text-sm leading-5 font-normal w-full",
 		{ "border-gray-300 shadow-sm": !isFocus && !isError },
 		{
 			"focus:ring-purple-500 border-purple-500 outline-purple-500 shadow-none":
@@ -146,7 +146,7 @@ const TextInput = (
 					type={type}
 					name={name}
 					id={id}
-					inputStyles={inputStyles}
+					className={className}
 					isDisabled={isDisabled}
 					value={value}
 					defaultValue={defaultValue}

@@ -131,12 +131,12 @@ const TextInputAddon = (
         // add other focus effects here
     };
 
-    const inputStyles = cn(
-        'border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full border-gray-300 outline-purple-500 shadow-sm focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500 ',
+    const className = cn(
+        'border py-2 px-3 rounded text-sm leading-5 font-normal w-full border-gray-300 outline-purple-500 shadow-sm focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500 ',
         { 'focus:ring-red-500 !border-red-500 !outline-red-500 shadow-none': isError },
         { 'pl-10': inlineIcon },
-        { '!rounded-r-none !rounded-l-md': (trailIcon || trailLabel) && !(leadIcon || leadLabel) },
-        { '!rounded-r-none !rounded-r-md': !(trailIcon || trailLabel) && (leadIcon || leadLabel) },
+        { '!rounded-r-none !rounded-l': (trailIcon || trailLabel) && !(leadIcon || leadLabel) },
+        { '!rounded-r-none !rounded-r': !(trailIcon || trailLabel) && (leadIcon || leadLabel) },
         { 'rounded-none': (trailIcon || trailLabel) && (leadIcon || leadLabel) }
     );
 
@@ -185,7 +185,7 @@ const TextInputAddon = (
                         type={type}
                         name={name}
                         id={id}
-                        inputStyles={inputStyles}
+                        className={className}
                         isDisabled={isDisabled}
                         value={value}
                         defaultValue={defaultValue}

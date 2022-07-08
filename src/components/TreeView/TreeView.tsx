@@ -89,7 +89,7 @@ const TreeView = (
                         classes={{
                             root: 'pl-0 ml-0 !border-l-0',
                             container: 'border-l pl-2 ml-3 border-l-gray-300 relative',
-                            listItem: 'flex text-sm font-medium rounded-md flex-col',
+                            listItem: 'flex text-sm font-medium rounded flex-col',
                             dropTarget: 'classes-dropTarget',
                             draggingSource: 'classes-draggingSource',
                             placeholder: 'bg-purple-500 h-[2px] absolute w-[calc(100%-16px)] left-4'

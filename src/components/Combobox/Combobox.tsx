@@ -91,10 +91,10 @@ export const Combobox = <T extends Record<string, unknown>>({
 			  })
 	const labelStyles = cn("block text-sm font-medium text-gray-700")
 	const buttonStyles = cn(
-		"absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none"
+		"absolute inset-y-0 right-0 flex items-center rounded-r px-2 focus:outline-none"
 	)
 	const optionStyles = cn(
-		"absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+		"absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
 	)
 	return (
 		<HeadlessUICombobox
@@ -120,7 +120,7 @@ export const Combobox = <T extends Record<string, unknown>>({
 			<div className="relative">
 				<div className="relative">
 					<HeadlessUICombobox.Input
-						className={`w-full rounded-md border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm ${
+						className={`w-full rounded border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm ${
 							isError ? "border-red-500" : ""
 						}`}
 						onChange={(event) => setQuery(event.target.value)}

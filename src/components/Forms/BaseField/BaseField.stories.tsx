@@ -15,7 +15,7 @@ export default {
         isError: HIDE_CONTROL,
         defaultValue: HIDE_CONTROL,
         maxLength: HIDE_CONTROL,
-        inputStyles: HIDE_CONTROL,
+        className: HIDE_CONTROL,
         onFocus: HIDE_CONTROL,
         onBlur: HIDE_CONTROL
     }

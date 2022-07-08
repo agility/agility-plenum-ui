@@ -97,7 +97,13 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
 	// set force focus
 	useEffect(() => {
 		const input = inputRef.current
-		if (!input || isFocus === undefined || isFocused === undefined || isDisabled) return
+		if (
+			!input ||
+			isFocus === undefined ||
+			isFocused === undefined ||
+			isDisabled
+		)
+			return
 		if (isFocus || isFocused) {
 			input.focus()
 		} else {
@@ -147,12 +153,16 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
 						inputOptions={inputOptions}
 						align="left"
 						onSelectOption={onSelectOption}
+						className={cn(isError ? "border-red-500" : "")}
+						isDisabled={isDisabled}
 					/>
 				)}
 				<div className="relative flex-grow focus-within:z-20">
 					{prefix && (
 						<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-							<span className="text-gray-500 sm:text-sm">{prefix}</span>
+							<span className="text-gray-500 sm:text-sm">
+								{prefix}
+							</span>
 						</div>
 					)}
 					<BaseField
@@ -164,10 +174,15 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
 						type={type}
 						name={name}
 						id={id}
-						inputStyles={`w-full border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm 
-						${selectLocation === "right" ? `rounded-l-md` : `rounded-r-md`} 
-						${isError ? "border-red-500" : ""} 
-						${prefix ? `pl-7` : ""} `}
+						className={cn(
+							"w-full border border-gray-300 py-2 px-3 text-sm font-normal leading-5 shadow-sm",
+							"focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm",
+							selectLocation === "right"
+								? `rounded-l`
+								: `rounded-r`,
+							isError ? "border-red-500" : "",
+							prefix ? `pl-7` : ""
+						)}
 						isDisabled={isDisabled}
 						defaultValue={defaultValue}
 						value={value}
@@ -180,16 +195,23 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
 						inputOptions={inputOptions}
 						align={"right"}
 						onSelectOption={onSelectOption}
+						isDisabled={isDisabled}
+						className={cn(isError ? "border-red-500" : "")}
 					/>
 				)}
 			</div>
 			<div className="flex flex-row space-x-3">
 				<div className="grow">
-					{message && <span className={discriptionStyles}>{message}</span>}
+					{message && (
+						<span className={discriptionStyles}>{message}</span>
+					)}
 				</div>
 				{isShowCounter && (
 					<div className="shrink-0">
-						<InputCounter current={Number(value?.length)} limit={maxLength} />
+						<InputCounter
+							current={Number(value?.length)}
+							limit={maxLength}
+						/>
 					</div>
 				)}
 			</div>
