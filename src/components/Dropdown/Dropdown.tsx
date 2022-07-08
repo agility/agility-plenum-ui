@@ -36,7 +36,7 @@ export const Dropdown: FC<DropdownProps> = ({
 			<div>
 				<Menu.Button
 					className={cn(
-						"z-20 flex items-center self-end rounded-md py-2px outline-purple-500 transition-all focus:ring-purple-500",
+						"z-20 flex items-center self-end rounded py-2px outline-purple-500 transition-all focus:ring-purple-500",
 						className ? className : "text-gray-400 hover:bg-white hover:text-gray-600"
 					)}
 				>
@@ -57,7 +57,7 @@ export const Dropdown: FC<DropdownProps> = ({
 			>
 				<Menu.Items
 					className={cn(
-						"absolute right-0 mt-2 w-56 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5",
+						"absolute right-0 mt-2 w-56 origin-bottom-right rounded bg-white shadow-lg ring-1 ring-black ring-opacity-5",
 						" z-20 divide-y divide-gray-100 focus:outline-none",
 						yPosition === "top" ? "bottom-10" : "",
 						xPosition === "right" ? "right-0" : "left-0"

@@ -27,7 +27,7 @@ export const TreeItem: FC<TreeItemProps> = ({
     const [toggle, setToggle] = useState<boolean | undefined>(isExpanded);
     const unOrderedListStyles = cn({ 'pl-2 ml-3 border-l-gray-300 border-l': !isRoot });
     const listStyles = cn(
-        'flex text-sm font-medium rounded-md flex-col',
+        'flex text-sm font-medium rounded flex-col',
         { 'h-auto': toggle },
         { 'h-7 overflow-hidden': !toggle }
     );

@@ -53,8 +53,8 @@ const Textarea = (
 		typeof onChange === "function" && onChange(targetValue)
 		setValue(targetValue)
 	}
-	const inputStyles = cn(
-		"shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm rounded-md",
+	const className = cn(
+		"shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm rounded",
 		{ "border-gray-300 ": !isError },
 		{ "focus:ring-red-500 border-red-500 outline-red-500 shadow-none": isError }
 	)
@@ -85,7 +85,7 @@ const Textarea = (
 					rows={rows}
 					name={name}
 					id={id}
-					className={inputStyles}
+					className={className}
 					defaultValue={defaultValue}
 				/>
 			</div>

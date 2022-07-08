@@ -57,7 +57,7 @@ export const Button: FC<ButtonProps> = ({
 	isWidthFull = false
 }: ButtonProps) => {
 	const btnStyles = cn(
-		"inline-flex space-x-2 items-center justify-center border transition-all shadow-sm rounded-md",
+		"inline-flex space-x-2 items-center justify-center border transition-all shadow-sm rounded",
 		{ "w-full": isWidthFull === true },
 		{ "text-sm px-4 py-2": size === "sm" },
 		{ "text-base px-5 py-2": size === "base" },

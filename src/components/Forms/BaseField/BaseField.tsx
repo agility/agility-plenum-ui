@@ -34,7 +34,7 @@ export interface BaseFieldProps {
 	/** Max length of input character  */
 	maxLength?: number
 	/** Input style classes  */
-	inputStyles?: string
+	className?: string
 	/** Callback on change */
 	onChange?(value: string): void
 	/** Callback on onFocus */
@@ -46,7 +46,7 @@ export interface BaseFieldProps {
 }
 /** default input styles */
 const defaultStyles =
-	"border py-2 px-3 rounded-md text-sm leading-5 font-normal w-full border-gray-300 shadow-sm"
+	"border py-2 px-3 rounded text-sm leading-5 font-normal w-full border-gray-300 shadow-sm"
 /** Base input field component */
 const BaseField = (
 	{
@@ -60,7 +60,7 @@ const BaseField = (
 		isDisabled,
 		maxLength = 100,
 		placeholder,
-		inputStyles = defaultStyles,
+		className = defaultStyles,
 		onChange,
 		onValueChange
 	}: BaseFieldProps,
@@ -80,11 +80,6 @@ const BaseField = (
 		onBlur && onBlur()
 	}
 
-	/** Extend styles */
-	const scopedtyles = cn(inputStyles, {
-		"opacity-50": isDisabled
-	})
-
 	return (
 		<input
 			onFocus={handleFocus}
@@ -97,7 +92,7 @@ const BaseField = (
 			type={type}
 			name={name}
 			id={id}
-			className={scopedtyles}
+			className={cn(className, isDisabled ? "opacity-50" : "")}
 			disabled={isDisabled}
 			value={value}
 			defaultValue={defaultValue}
