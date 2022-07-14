@@ -18,9 +18,25 @@ module.exports = {
 				'purple-600': '#692CD8',
 				'purple-700': '#5800D4',
 				'purple-900': '#4600AA',
+
 				'gray-900': '#111827',
-				'gray-500': '#6B7280'
+				'gray-500': '#6B7280',
+
+				'green-50': '#ECFDF5',
+				'green-100': '#D1FAE5',
+				'green-200': '#A7F3D0',
+				'green-300': '#6EE7B7',
+				'green-400': '#34D399',
+				'green-500': '#10B981',
+				'green-600': '#059669',
+				'green-700': '#047857',
+				'green-800': '#065F46',
+				'green-900': '#064E3B',
+
 			},
+			fontWeight: {
+				medium: 600,
+			}
 		}
 	},
 	variants: {

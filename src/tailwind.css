@@ -1343,7 +1343,7 @@ select {
 
 .bg-green-400 {
   --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+  background-color: rgb(52 211 153 / var(--tw-bg-opacity));
 }
 
 .bg-purple-600 {
@@ -1511,7 +1511,7 @@ select {
 }
 
 .font-medium {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .font-semibold {
