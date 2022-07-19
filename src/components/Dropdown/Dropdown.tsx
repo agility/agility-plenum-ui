@@ -20,6 +20,7 @@ export interface DropdownProps {
 	menuClassName?: string
 	itemsClassName?: string
 	itemClassName?: string
+	activeItemClassName?:string
 	yPosition?: "top" | "bottom"
 	xPosition?: "left" | "right"
 }
@@ -34,7 +35,8 @@ export const Dropdown: FC<DropdownProps> = ({
 	xPosition = "left",
 	menuClassName,
 	itemsClassName,
-	itemClassName
+	itemClassName,
+	activeItemClassName
 }: DropdownProps): JSX.Element | null => {
 	if (!items?.length) return null
 	return (
@@ -66,7 +68,7 @@ export const Dropdown: FC<DropdownProps> = ({
 			>
 				<Menu.Items
 					className={cn(
-						"absolute right-0 mt-2 w-56 origin-bottom-right rounded bg-white shadow-lg ring-1 ring-black ring-opacity-5",
+						"absolute right-0 mt-2 w-56 origin-bottom-right rounded bg-white shadow-lg ",
 						" z-20 divide-y divide-gray-100 focus:outline-none",
 						itemsClassName,
 						yPosition === "top" ? "bottom-10" : "",
@@ -85,7 +87,7 @@ export const Dropdown: FC<DropdownProps> = ({
 													<a
 														onClick={item.onClick}
 														className={cn(
-															"group flex cursor-pointer items-center px-4 py-2 text-sm",
+															"group flex cursor-pointer items-center px-4 py-2 text-sm transition-all",
 															{
 																"text-red-500":
 																	item.isEmphasized
@@ -98,6 +100,7 @@ export const Dropdown: FC<DropdownProps> = ({
 																"bg-gray-100 text-gray-900":
 																	active
 															},
+															active ? activeItemClassName : "",
 															{
 																"bg-gray-100 text-red-500 hover:text-red-500":
 																	active &&
@@ -109,19 +112,19 @@ export const Dropdown: FC<DropdownProps> = ({
 														{item.icon && (
 															<DynamicIcons
 																className={cn(
-																	"mr-3 h-5 w-5",
+																	"mr-3 h-5 w-5 opacity-60 transition-all group-hover:opacity-100",
 																	{
 																		"text-red-500":
 																			item.isEmphasized
 																	},
-																	{
-																		"text-gray-400 group-hover:text-gray-500":
-																			!item.isEmphasized
-																	},
-																	{
-																		"bg-gray-100 text-gray-900":
-																			active
-																	},
+																	// {
+																	// 	"text-gray-400 group-hover:text-gray-500":
+																	// 		!item.isEmphasized && 1===2
+																	// },
+																	// {
+																	// 	"bg-gray-100 text-gray-900":
+																	// 		active
+																	// },
 																	{
 																		"bg-gray-100 text-red-500 group-hover:text-red-500":
 																			active &&
