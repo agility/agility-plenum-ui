@@ -37,22 +37,25 @@ export const ButtonDropDown: FC<ButtonDropDownProps> = ({
 				className={classNames(
 					"h-[calc(100%)] !rounded-l-none border !border-l-0  px-2 transition-all hover:!border-l-0",
 					button.type === "primary"
-						? "border-purple-600 bg-purple-600  !text-white  hover:border-purple-700 hover:bg-purple-700 active:border-purple-800 active:bg-purple-800"
+						? "border-purple-600 bg-purple-600  !text-white  hover:border-purple-700 hover:bg-purple-700 active:!border-purple-800 active:!bg-purple-800"
 						: "",
 					button.type === "secondary"
-						? "border-purple-100 bg-purple-100 !text-purple-700  hover:border-purple-200 hover:bg-purple-200 active:border-purple-300 active:bg-purple-300"
+						? "border-purple-100 bg-purple-100 !text-purple-700  hover:border-purple-200 hover:bg-purple-200 active:!border-purple-300 active:!bg-purple-300"
 						: "",
 					button.type === "alternative"
-						? "border-gray-300 bg-white !text-gray-600  hover:border-gray-300 hover:bg-gray-50"
+						? "border-gray-300 bg-white !text-gray-600  hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100"
 						: ""
 				)}
 				xPosition="right"
 				itemsClassName={classNames(
 					button.type === "primary"
-						? "!bg-purple-600 !divide-purple-700"
+						? "!bg-purple-600 !divide-purple-700 !border-purple-700 !mt-1"
 						: "",
 					button.type === "secondary"
-						? "!bg-purple-100 !divide-purple-300"
+						? "!bg-purple-100 !divide-purple-200 !border-purple-200 !mt-1"
+						: "",
+					button.type === "alternative"
+						? "!mt-1"
 						: ""
 				)}
 				itemClassName={classNames(
@@ -65,12 +68,8 @@ export const ButtonDropDown: FC<ButtonDropDownProps> = ({
 						: ""
 				)}
 				activeItemClassName={classNames(
-					button.type === "primary"
-						? "bg-purple-800"
-						: "",
-					button.type === "secondary"
-						? "bg-purple-300"
-						: ""
+					button.type === "primary" ? "!bg-purple-800" : "",
+					button.type === "secondary" ? "!bg-purple-300" : ""
 				)}
 			/>
 			<div className="hidden !bg-purple-100 !text-purple-600 transition-all hover:bg-purple-200 focus:bg-purple-300" />

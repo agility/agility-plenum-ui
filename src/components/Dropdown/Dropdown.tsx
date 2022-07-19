@@ -68,8 +68,8 @@ export const Dropdown: FC<DropdownProps> = ({
 			>
 				<Menu.Items
 					className={cn(
-						"absolute right-0 mt-2 w-56 origin-bottom-right rounded bg-white shadow-lg ",
-						" z-20 divide-y divide-gray-100 focus:outline-none",
+						"absolute right-0 mt-2 w-56 origin-bottom-right rounded bg-white shadow-lg",
+						" z-20 divide-y divide-gray-100 focus:outline-none border border-gray-100",
 						itemsClassName,
 						yPosition === "top" ? "bottom-10" : "",
 						xPosition === "right" ? "right-0" : "left-0"
