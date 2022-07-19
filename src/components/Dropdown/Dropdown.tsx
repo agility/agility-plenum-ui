@@ -17,6 +17,9 @@ export interface DropdownProps {
 	IconElement: JSXElementConstructor<unknown>
 	label?: string
 	className?: string
+	menuClassName?: string
+	itemsClassName?: string
+	itemClassName?: string
 	yPosition?: "top" | "bottom"
 	xPosition?: "left" | "right"
 }
@@ -28,23 +31,29 @@ export const Dropdown: FC<DropdownProps> = ({
 	label,
 	className,
 	yPosition = "bottom",
-	xPosition = "left"
+	xPosition = "left",
+	menuClassName,
+	itemsClassName,
+	itemClassName
 }: DropdownProps): JSX.Element | null => {
 	if (!items?.length) return null
 	return (
-		<Menu as="div" className="relative inline-block text-left ">
-			<div>
-				<Menu.Button
-					className={cn(
-						"z-20 flex items-center self-end rounded py-2px outline-purple-500 transition-all focus:ring-purple-500",
-						className ? className : "text-gray-400 hover:bg-white hover:text-gray-600"
-					)}
-				>
-					<span className="sr-only">Dropdown Menu</span>
-					{label && <span className="pl-1">{label}</span>}
-					{IconElement && <IconElement />}
-				</Menu.Button>
-			</div>
+		<Menu
+			as="div"
+			className={cn("relative inline-block text-left", menuClassName)}
+		>
+			<Menu.Button
+				className={cn(
+					"py-2px z-20 flex items-center self-end rounded outline-purple-500 transition-all focus:ring-purple-500",
+					className
+						? className
+						: "text-gray-400 hover:bg-white hover:text-gray-600"
+				)}
+			>
+				<span className="sr-only">Dropdown Menu</span>
+				{label && <span className="pl-1">{label}</span>}
+				{IconElement && <IconElement />}
+			</Menu.Button>
 
 			<Transition
 				as={Fragment}
@@ -59,6 +68,7 @@ export const Dropdown: FC<DropdownProps> = ({
 					className={cn(
 						"absolute right-0 mt-2 w-56 origin-bottom-right rounded bg-white shadow-lg ring-1 ring-black ring-opacity-5",
 						" z-20 divide-y divide-gray-100 focus:outline-none",
+						itemsClassName,
 						yPosition === "top" ? "bottom-10" : "",
 						xPosition === "right" ? "right-0" : "left-0"
 					)}
@@ -71,37 +81,53 @@ export const Dropdown: FC<DropdownProps> = ({
 									return (
 										<Menu.Item key={index}>
 											{({ active }) => {
-												const anchorStyles = cn(
-													"group flex items-center px-4 py-2 text-sm cursor-pointer",
-													{ "text-red-500": item.isEmphasized },
-													{ "text-gray-900": !item.isEmphasized },
-													{ "bg-gray-100 text-gray-900": active },
-													{
-														"bg-gray-100 text-red-500 hover:text-red-500":
-															active && item.isEmphasized
-													}
-												)
-												const iconStyles = cn(
-													"mr-3 h-5 w-5",
-													{ "text-red-500": item.isEmphasized },
-													{
-														"text-gray-400 group-hover:text-gray-500":
-															!item.isEmphasized
-													},
-													{ "bg-gray-100 text-gray-900": active },
-													{
-														"bg-gray-100 text-red-500 group-hover:text-red-500":
-															active && item.isEmphasized
-													}
-												)
 												return (
 													<a
 														onClick={item.onClick}
-														className={anchorStyles}
+														className={cn(
+															"group flex cursor-pointer items-center px-4 py-2 text-sm",
+															{
+																"text-red-500":
+																	item.isEmphasized
+															},
+															{
+																"text-gray-900":
+																	!item.isEmphasized
+															},
+															{
+																"bg-gray-100 text-gray-900":
+																	active
+															},
+															{
+																"bg-gray-100 text-red-500 hover:text-red-500":
+																	active &&
+																	item.isEmphasized
+															},
+															itemClassName
+														)}
 													>
 														{item.icon && (
 															<DynamicIcons
-																className={iconStyles}
+																className={cn(
+																	"mr-3 h-5 w-5",
+																	{
+																		"text-red-500":
+																			item.isEmphasized
+																	},
+																	{
+																		"text-gray-400 group-hover:text-gray-500":
+																			!item.isEmphasized
+																	},
+																	{
+																		"bg-gray-100 text-gray-900":
+																			active
+																	},
+																	{
+																		"bg-gray-100 text-red-500 group-hover:text-red-500":
+																			active &&
+																			item.isEmphasized
+																	}
+																)}
 																aria-hidden="true"
 																icon={item.icon}
 															/>

@@ -40,6 +40,11 @@ export interface ButtonProps {
 	isSubmit?: boolean
 
 	isWidthFull?: boolean
+
+	/**
+	 * Add on classes
+	 */
+	className?: string
 }
 
 /**
@@ -54,30 +59,9 @@ export const Button: FC<ButtonProps> = ({
 	icon,
 	isLoading = false,
 	isSubmit = false,
-	isWidthFull = false
+	isWidthFull = false,
+	className
 }: ButtonProps) => {
-	const btnStyles = cn(
-		"inline-flex space-x-2 items-center justify-center border transition-all shadow-sm rounded",
-		{ "w-full": isWidthFull === true },
-		{ "text-sm px-4 py-2": size === "sm" },
-		{ "text-base px-5 py-2": size === "base" },
-		{ "text-lg px-5 py-2": size === "lg" },
-		{ "opacity-50 cursor-auto": isDisabled },
-		{ "text-white bg-purple-600 hover:bg-purple-700": type === "primary" },
-		{
-			"text-purple-700 bg-purple-100 hover:text-purple-700 hover:bg-purple-200":
-				type === "secondary"
-		},
-		{
-			"text-gray-700 bg-white hover:text-gray-700 hover:bg-gray-50 border-gray-300":
-				type === "alternative"
-		},
-		{
-			"text-white bg-red-600 hover:text-white hover:bg-red-700 border-red-300":
-				type === "danger"
-		}
-	)
-
 	const iconStyles = cn(
 		"h-5 w-5",
 		{ "text-white": type === "primary" || type === "danger" },
@@ -88,7 +72,31 @@ export const Button: FC<ButtonProps> = ({
 	return (
 		<button
 			type={isSubmit ? "submit" : "button"}
-			className={btnStyles}
+			className={cn(
+				"inline-flex items-center justify-center space-x-2 rounded border transition-all",
+				{ "w-full": isWidthFull === true },
+				{ "px-4 py-2 text-sm": size === "sm" },
+				{ "px-5 py-2 text-base": size === "base" },
+				{ "px-5 py-2 text-lg": size === "lg" },
+				{ "cursor-auto opacity-50": isDisabled },
+				{
+					"border-purple-600 bg-purple-600 text-white hover:border-purple-700 hover:bg-purple-700 active:border-purple-800 active:bg-purple-800":
+						type === "primary"
+				},
+				{
+					"border-purple-100 bg-purple-100 text-purple-700 hover:border-purple-200 hover:bg-purple-200 hover:text-purple-700 active:border-purple-300 active:bg-purple-300":
+						type === "secondary"
+				},
+				{
+					"border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:text-gray-700 active:bg-gray-100":
+						type === "alternative"
+				},
+				{
+					"border-red-300 bg-red-600 text-white hover:bg-red-700 hover:text-white":
+						type === "danger"
+				},
+				className
+			)}
 			onClick={
 				!isDisabled
 					? onClick
@@ -101,7 +109,11 @@ export const Button: FC<ButtonProps> = ({
 				isLoading ? (
 					<Loader classes="h-5 w-5 border-2" />
 				) : (
-					<DynamicIcons icon={icon} className={iconStyles} outline={false} />
+					<DynamicIcons
+						icon={icon}
+						className={iconStyles}
+						outline={false}
+					/>
 				)
 			) : (
 				isLoading && <Loader classes="h-5 w-5 border-2" />
