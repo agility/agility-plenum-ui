@@ -1962,16 +1962,6 @@ select {
   border-color: rgb(188 153 238 / var(--tw-border-opacity));
 }
 
-.active\:border-purple-200:active {
-  --tw-border-opacity: 1;
-  border-color: rgb(205 179 242 / var(--tw-border-opacity));
-}
-
-.active\:border-purple-700:active {
-  --tw-border-opacity: 1;
-  border-color: rgb(88 0 212 / var(--tw-border-opacity));
-}
-
 .active\:bg-purple-800:active {
   --tw-bg-opacity: 1;
   background-color: rgb(79 0 191 / var(--tw-bg-opacity));
@@ -1985,16 +1975,6 @@ select {
 .active\:bg-gray-100:active {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.active\:bg-purple-200:active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(205 179 242 / var(--tw-bg-opacity));
-}
-
-.active\:bg-purple-700:active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(88 0 212 / var(--tw-bg-opacity));
 }
 
 .group:hover .group-hover\:block {

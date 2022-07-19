@@ -1,6 +1,7 @@
 export * from './components/Button';
 export * from './components/Combobox';
 export * from './components/Dropdown';
+export * from './components/ButtonDropdown';
 export * from './components/Switch';
 export * from './components/TreeView';
 export * from './components/Avatar';
