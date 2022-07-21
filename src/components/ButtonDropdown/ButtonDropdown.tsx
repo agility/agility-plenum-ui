@@ -47,30 +47,30 @@ export const ButtonDropDown: FC<ButtonDropDownProps> = ({
 						: ""
 				)}
 				xPosition="right"
-				itemsClassName={classNames(
-					button.type === "primary"
-						? "!bg-purple-600 !divide-purple-700 !border-purple-700 !mt-1"
-						: "",
-					button.type === "secondary"
-						? "!bg-purple-100 !divide-purple-200 !border-purple-200 !mt-1"
-						: "",
-					button.type === "alternative"
-						? "!mt-1"
-						: ""
-				)}
-				itemClassName={classNames(
-					"transition-all",
-					button.type === "primary"
-						? "bg-purple-600 !text-white hover:bg-purple-700 active:bg-purple-800"
-						: "",
-					button.type === "secondary"
-						? "bg-purple-100 !text-purple-700 hover:bg-purple-200 active:bg-purple-300 focus:bg-purple-300"
-						: ""
-				)}
-				activeItemClassName={classNames(
-					button.type === "primary" ? "!bg-purple-800" : "",
-					button.type === "secondary" ? "!bg-purple-300" : ""
-				)}
+				// itemsClassName={classNames(
+				// 	button.type === "primary"
+				// 		? "!bg-purple-600 !divide-purple-700 !border-purple-700 !mt-1"
+				// 		: "",
+				// 	button.type === "secondary"
+				// 		? "!bg-purple-100 !divide-purple-200 !border-purple-200 !mt-1"
+				// 		: "",
+				// 	button.type === "alternative"
+				// 		? "!mt-1"
+				// 		: ""
+				// )}
+				// itemClassName={classNames(
+				// 	"transition-all",
+				// 	button.type === "primary"
+				// 		? "bg-purple-600 !text-white hover:bg-purple-700 active:bg-purple-800"
+				// 		: "",
+				// 	button.type === "secondary"
+				// 		? "bg-purple-100 !text-purple-700 hover:bg-purple-200 active:bg-purple-300 focus:bg-purple-300"
+				// 		: ""
+				// )}
+				// activeItemClassName={classNames(
+				// 	button.type === "primary" ? "!bg-purple-800" : "",
+				// 	button.type === "secondary" ? "!bg-purple-300" : ""
+				// )}
 			/>
 			<div className="hidden !bg-purple-100 !text-purple-600 transition-all hover:bg-purple-200 focus:bg-purple-300" />
 		</div>
