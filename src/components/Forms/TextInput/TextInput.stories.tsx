@@ -20,8 +20,8 @@ export default {
 const Template: Story<TextInputProps> = (args) => <TextInput {...args} />;
 const baseArgs = {
     label: 'Default',
-    id: 'input',
-    name: 'input',
+    // id: 'input',
+    // name: 'input',
     type: 'text',
     value: '',
     isRequired: false,

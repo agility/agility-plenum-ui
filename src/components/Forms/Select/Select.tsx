@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react"
 import { default as cn } from "classnames"
 import { InputLabel } from "../InputLabel"
+import { useId } from "../../../util/useID"
 
 export type SimpleSelectOptions = {
 	label: string
@@ -11,9 +12,9 @@ export interface SimpleSelectProps {
 	/** Label */
 	label?: string
 	/** Select ID prop */
-	id: string
+	id?: string
 	/** Select name prop */
-	name: string
+	name?: string
 	/** List of options to display in the select menu */
 	options: SimpleSelectOptions[]
 	/** Select name prop */
@@ -38,6 +39,10 @@ export const Select: FC<SimpleSelectProps> = ({
 	isRequired
 }: SimpleSelectProps) => {
 	const [selectedOption, setSelectedOption] = useState<string>(options[0].value)
+	const uniqueID = useId()
+	if (!id) id = `select-${uniqueID}`
+	if (!name) name = id
+
 	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		const targetValue = e.target.value
 		typeof onChange == "function" && onChange(targetValue)

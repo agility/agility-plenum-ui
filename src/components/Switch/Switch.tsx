@@ -36,7 +36,7 @@ export const Switch: FC<SwitchProps> = ({
 	// the circular button inside the switch
 	const toggleStyles = cn(
 		"pointer-events-none inline-block rounded-full bg-white",
-		"shadow-lg transform ring-0 transition ease-in-out duration-200",
+		" transform ring-0 transition ease-in-out duration-200",
 		{ "translate-x-9": enabled },
 		{ "translate-x-0": !enabled },
 		{ "h-[34px] w-[34px]": size === "lg" },

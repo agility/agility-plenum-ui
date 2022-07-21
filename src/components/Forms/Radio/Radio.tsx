@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
 import { default as cn } from 'classnames';
 import { InputLabel } from '../InputLabel';
+import { useId } from '../../../util/useID';
 
 export interface RadioProps {
     /** group name */
-    name: string;
+    name?: string;
     /** Radio label */
     label: string;
     /** Radio ID */
-    id: string;
+    id?: string;
     /** Disabled state */
     isDisabled?: boolean;
     /** Check state */
@@ -41,6 +42,10 @@ export const Radio: FC<RadioProps> = ({
     onClick,
     value
 }: RadioProps) => {
+    const uniqueID = useId()
+	if (!id) id = `input-${uniqueID}`
+    if (!name) name = id
+
     const checboxStyles = cn('focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300', {
         'border-red-500 shadow-none': isError
     });

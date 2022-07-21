@@ -2,14 +2,15 @@ import React, { forwardRef, useState } from "react"
 import { default as cn } from "classnames"
 import { InputCounter } from "../InputCounter"
 import { InputLabel } from "../InputLabel"
+import { useId } from "../../../util/useID"
 
 export interface TextareaProps {
 	/** Input ID */
-	id: string
+	id?: string
 	/** Input Name */
-	name: string
+	name?: string
 	/** Label for the input */
-	label: string
+	label?: string
 	/** Error state */
 	isError?: boolean
 	/** If field is required */
@@ -18,6 +19,9 @@ export interface TextareaProps {
 	isDisabled?: boolean
 	/** Set default value */
 	defaultValue?: string
+
+	value?: string
+
 	/** Message shown under the text field */
 	message?: string
 	/** Input character counter */
@@ -43,29 +47,35 @@ const Textarea = (
 		isShowCounter,
 		maxLength = 500,
 		rows = 4,
-		onChange
+		onChange,
+		value:externalValue
 	}: TextareaProps,
 	ref: React.LegacyRef<HTMLTextAreaElement>
 ) => {
-	const [value, setValue] = useState<string | null | undefined>(defaultValue)
+	const uniqueID = useId()
+	const [value, setValue] = useState<string | undefined>(
+		externalValue || defaultValue || ""
+	)
 	const handleOnchange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		const targetValue = e.currentTarget.value
 		typeof onChange === "function" && onChange(targetValue)
 		setValue(targetValue)
 	}
 	const className = cn(
-		"shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm rounded",
+		"focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm rounded",
 		{ "border-gray-300 ": !isError },
-		{ "focus:ring-red-500 border-red-500 outline-red-500 shadow-none": isError }
+		{ "focus:ring-red-500 border-red-500 outline-red-500": isError }
 	)
 	const discriptionStyles = cn(
 		"text-sm mt-1 block",
 		{ "text-gray-500": !isError },
 		{ "text-red-500": isError }
 	)
-	const wrapperStyles = cn({ "opacity-50": isDisabled })
+
+	if (!id) id = `ta-${uniqueID}`
+
 	return (
-		<div className={wrapperStyles}>
+		<div className={cn({ "opacity-50": isDisabled })}>
 			{label && (
 				<InputLabel
 					isPlaceholder
@@ -87,15 +97,21 @@ const Textarea = (
 					id={id}
 					className={className}
 					defaultValue={defaultValue}
+					value={value}
 				/>
 			</div>
 			<div className="flex flex-row space-x-3">
 				<div className="grow">
-					{message && <span className={discriptionStyles}>{message}</span>}
+					{message && (
+						<span className={discriptionStyles}>{message}</span>
+					)}
 				</div>
 				{isShowCounter && (
 					<div className="shrink-0">
-						<InputCounter current={Number(value?.length)} limit={maxLength} />
+						<InputCounter
+							current={Number(value?.length)}
+							limit={maxLength}
+						/>
 					</div>
 				)}
 			</div>
