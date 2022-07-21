@@ -40,6 +40,7 @@ export const dropdownDataBase: ItemProp[][] = [
 export const dropdownDataWithIcons: ItemProp[][] = [
 	[
 		{
+
 			icon: 'ClipboardCopyIcon',
 			label: 'Copy',
 			onClick: () => {

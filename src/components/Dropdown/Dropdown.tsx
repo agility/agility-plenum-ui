@@ -5,6 +5,7 @@ import { DynamicIcons, IconName } from "../../util/DynamicIcons"
 
 export type ItemProp = {
 	icon?: IconName
+	iconObj?: React.ReactNode
 	label: string
 	url?: string
 	onClick?(): void
@@ -69,7 +70,7 @@ export const Dropdown: FC<DropdownProps> = ({
 				<Menu.Items
 					className={cn(
 						"absolute right-0 mt-2 w-56 origin-bottom-right rounded bg-white shadow-lg",
-						" z-20 divide-y divide-gray-100 focus:outline-none border border-gray-100",
+						" z-20 divide-y divide-gray-100 focus:outline-none border border-gray-300",
 						itemsClassName,
 						yPosition === "top" ? "bottom-10" : "",
 						xPosition === "right" ? "right-0" : "left-0"
@@ -109,6 +110,7 @@ export const Dropdown: FC<DropdownProps> = ({
 															itemClassName
 														)}
 													>
+														{item.iconObj && <>{ item.iconObj }</>}
 														{item.icon && (
 															<DynamicIcons
 																className={cn(
