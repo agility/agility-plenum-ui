@@ -4,6 +4,7 @@ import { default as cn } from "classnames"
 import { InputCounter } from "../InputCounter"
 import { BaseField } from "../BaseField"
 import { InputSelect } from "./InputSelect"
+import { useId } from "../../../util/useID"
 
 type Type =
 	| "text"
@@ -28,9 +29,9 @@ export interface TextInputSelectProps {
 	/** Input type*/
 	type: Type
 	/** Input ID */
-	id: string
+	id?: string
 	/** Input Name */
-	name: string
+	name?: string
 	/** Label for the input */
 	label?: string
 	/** placeholder for the input */
@@ -90,6 +91,10 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
 	const [value, setValue] = useState<string | undefined>(defaultValue || "")
 	const inputRef = useRef<HTMLInputElement>(null)
 
+	const uniqueID = useId()
+	if (!id) id = `select-${uniqueID}`
+	if (!name) name = id
+
 	useEffect(() => {
 		setValue(externalValue)
 	}, [externalValue])
@@ -139,6 +144,8 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
 		{ "text-red-500": isError }
 	)
 
+
+
 	return (
 		<div>
 			{label && (
@@ -175,7 +182,7 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
 						name={name}
 						id={id}
 						className={cn(
-							"w-full border border-gray-300 py-2 px-3 text-sm font-normal leading-5 shadow-sm",
+							"w-full border border-gray-300 py-2 px-3 text-sm font-normal leading-5",
 							"focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm",
 							selectLocation === "right"
 								? `rounded-l`

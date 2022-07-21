@@ -13,8 +13,8 @@ export default {
 const Template: Story<TextareaProps> = (args) => <Textarea {...args} />;
 const baseArgs = {
     label: 'Default',
-    id: 'input',
-    name: 'input',
+    // id: 'input',
+    // name: 'input',
     defaultValue: '',
     isRequired: false,
     isDisabled: false,

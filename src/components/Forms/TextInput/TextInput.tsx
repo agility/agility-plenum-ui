@@ -1,9 +1,10 @@
-import React, { FC, forwardRef, useEffect, useRef, useState } from "react"
+import React, {  forwardRef, useEffect, useRef, useState } from "react"
 import { default as cn } from "classnames"
 
 import { InputCounter } from "../InputCounter"
 import { BaseField } from "../BaseField"
 import { InputLabel } from "../InputLabel"
+import { useId } from "../../../util/useID"
 
 type Type =
 	| "text"
@@ -24,9 +25,9 @@ export interface TextInputProps {
 	/** Input type*/
 	type: Type
 	/** Input ID */
-	id: string
+	id?: string
 	/** Input Name */
-	name: string
+	name?: string
 	/** Label for the input */
 	label: string
 	/** Force the focus state on the input */
@@ -49,6 +50,8 @@ export interface TextInputProps {
 	onChange?(value: string): void
 	/** input value */
 	value?: string
+
+	className?:string
 }
 
 const TextInput = (
@@ -66,18 +69,18 @@ const TextInput = (
 		isShowCounter,
 		maxLength = 100,
 		onChange,
-		value: externalValue
+		value: externalValue,
+		className
 	}: TextInputProps,
 	ref: React.Ref<HTMLInputElement>
 ) => {
+	const uniqueID = useId()
 	const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused))
 	const [isActive, setIsActive] = useState<boolean>(false)
-	const [value, setValue] = useState<string | undefined>(defaultValue || "")
+	const [value, setValue] = useState<string | undefined>(
+		externalValue || defaultValue || ""
+	)
 	const inputRef = useRef<HTMLInputElement>(null)
-
-	useEffect(() => {
-		setValue(externalValue)
-	}, [externalValue])
 
 	// set force focus
 	useEffect(() => {
@@ -109,21 +112,17 @@ const TextInput = (
 		setIsActive(!(input && input.value === ""))
 	}
 
-	const className = cn(
-		"border py-2 px-3 rounded text-sm leading-5 font-normal w-full",
-		{ "border-gray-300 shadow-sm": !isFocus && !isError },
-		{
-			"focus:ring-purple-500 border-purple-500 outline-purple-500 shadow-none":
-				isFocus && !isError
-		},
-		{ "focus:ring-red-500 !border-red-500 shadow-none": isError }
-	)
 
 	const discriptionStyles = cn(
 		"text-sm mt-1 block",
 		{ "text-gray-500": !isError },
 		{ "text-red-500": isError }
 	)
+
+	if (!id) id = `input-${uniqueID}`
+	if (!name) name = id
+
+	console.log()
 
 	return (
 		<div>
@@ -146,7 +145,19 @@ const TextInput = (
 					type={type}
 					name={name}
 					id={id}
-					className={className}
+					className={cn(
+						"w-full rounded border py-2 px-3 text-sm font-normal leading-5",
+						{ "border-gray-300": !isFocus && !isError },
+						{
+							"border-purple-500 shadow-none outline-purple-500 focus:ring-purple-500":
+								isFocus && !isError
+						},
+						{
+							"!border-red-500 shadow-none focus:ring-red-500":
+								isError
+						},
+						className
+					)}
 					isDisabled={isDisabled}
 					value={value}
 					defaultValue={defaultValue}
@@ -154,11 +165,16 @@ const TextInput = (
 				/>
 				<div className="flex flex-row space-x-3">
 					<div className="grow">
-						{message && <span className={discriptionStyles}>{message}</span>}
+						{message && (
+							<span className={discriptionStyles}>{message}</span>
+						)}
 					</div>
 					{isShowCounter && (
 						<div className="shrink-0">
-							<InputCounter current={Number(value?.length)} limit={maxLength} />
+							<InputCounter
+								current={Number(value?.length)}
+								limit={maxLength}
+							/>
 						</div>
 					)}
 				</div>
