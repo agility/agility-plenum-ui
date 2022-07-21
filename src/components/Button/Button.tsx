@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { forwardRef } from "react"
 import { default as cn } from "classnames"
 import { DynamicIcons, IconName } from "../../util/DynamicIcons"
 
@@ -50,18 +50,22 @@ export interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button: FC<ButtonProps> = ({
-	type = "primary",
-	size = "base",
-	onClick,
-	label,
-	isDisabled,
-	icon,
-	isLoading = false,
-	isSubmit = false,
-	isWidthFull = false,
-	className
-}: ButtonProps) => {
+const Button = (
+	{
+		type = "primary",
+		size = "base",
+		onClick,
+		label,
+		isDisabled,
+		icon,
+		isLoading = false,
+		isSubmit = false,
+		isWidthFull = false,
+		className
+	}: ButtonProps,
+
+	ref: React.LegacyRef<HTMLButtonElement>
+) => {
 	const iconStyles = cn(
 		"h-5 w-5",
 		{ "text-white": type === "primary" || type === "danger" },
@@ -71,6 +75,7 @@ export const Button: FC<ButtonProps> = ({
 
 	return (
 		<button
+			ref={ref}
 			type={isSubmit ? "submit" : "button"}
 			className={cn(
 				"inline-flex items-center justify-center space-x-2 rounded border transition-all",
@@ -122,3 +127,6 @@ export const Button: FC<ButtonProps> = ({
 		</button>
 	)
 }
+
+const _Button = forwardRef<HTMLButtonElement, ButtonProps>(Button)
+export { _Button as Button }

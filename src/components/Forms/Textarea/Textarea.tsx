@@ -32,6 +32,8 @@ export interface TextareaProps {
 	onChange?(value: string): void
 	/** Number of rows */
 	rows?: number
+	placeholder?: string
+	className?: string
 }
 
 const Textarea = (
@@ -48,7 +50,9 @@ const Textarea = (
 		maxLength = 500,
 		rows = 4,
 		onChange,
-		value:externalValue
+		value: externalValue,
+		placeholder,
+		className
 	}: TextareaProps,
 	ref: React.LegacyRef<HTMLTextAreaElement>
 ) => {
@@ -61,11 +65,7 @@ const Textarea = (
 		typeof onChange === "function" && onChange(targetValue)
 		setValue(targetValue)
 	}
-	const className = cn(
-		"focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm rounded",
-		{ "border-gray-300 ": !isError },
-		{ "focus:ring-red-500 border-red-500 outline-red-500": isError }
-	)
+
 	const discriptionStyles = cn(
 		"text-sm mt-1 block",
 		{ "text-gray-500": !isError },
@@ -95,9 +95,18 @@ const Textarea = (
 					rows={rows}
 					name={name}
 					id={id}
-					className={className}
+					className={cn(
+						"block w-full rounded focus:border-purple-500 focus:ring-purple-500 sm:text-sm",
+						{ "border-gray-300 ": !isError },
+						{
+							"border-red-500 outline-red-500 focus:ring-red-500":
+								isError
+						},
+						className
+					)}
 					defaultValue={defaultValue}
 					value={value}
+					placeholder={placeholder}
 				/>
 			</div>
 			<div className="flex flex-row space-x-3">
