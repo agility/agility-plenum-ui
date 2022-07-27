@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import { default as cn } from 'classnames';
 import { InputLabel } from '../InputLabel';
+import { useId } from '../../../util/useID';
 
 export interface CheckboxProps {
     /** Checkbox label */
     label: string;
     /** Checkbox ID */
-    id: string;
+    id?: string;
     /** Disabled state */
     isDisabled?: boolean;
     /** value */
@@ -35,6 +36,9 @@ export const Checkbox: FC<CheckboxProps> = ({
     value,
     onChange,
 }: CheckboxProps) => {
+    const uniqueID = useId()
+	if (!id) id = `cb-${uniqueID}`
+
     const checboxStyles = cn(
         'focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 rounded',
         { 'border-red-500 shadow-none': isError }
@@ -58,7 +62,7 @@ export const Checkbox: FC<CheckboxProps> = ({
                     type="checkbox"
                     className={checboxStyles}
                     disabled={isDisabled}
-                    defaultChecked={isChecked}
+                    checked={isChecked}
                     onChange={(e) => {
                         handleChange(e);
                     }}
