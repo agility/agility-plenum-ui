@@ -16,7 +16,7 @@ export interface ButtonProps {
 	/**
 	 * Button contents
 	 */
-	label: string
+	label?: string
 	/**
 	 * An optional icon
 	 */
@@ -45,6 +45,10 @@ export interface ButtonProps {
 	 * Add on classes
 	 */
 	className?: string
+
+	iconObj?: React.ReactNode
+
+	title?: string
 }
 
 /**
@@ -58,10 +62,12 @@ const Button = (
 		label,
 		isDisabled,
 		icon,
+		iconObj,
 		isLoading = false,
 		isSubmit = false,
 		isWidthFull = false,
-		className
+		className,
+		title
 	}: ButtonProps,
 
 	ref: React.LegacyRef<HTMLButtonElement>
@@ -77,6 +83,7 @@ const Button = (
 		<button
 			ref={ref}
 			type={isSubmit ? "submit" : "button"}
+			title={title}
 			className={cn(
 				"inline-flex items-center justify-center space-x-2 rounded border transition-all",
 				{ "w-full": isWidthFull === true },
@@ -110,7 +117,14 @@ const Button = (
 					  }
 			}
 		>
-			{icon ? (
+			{iconObj &&
+				(isLoading ? (
+					<Loader classes="h-5 w-5 border-2" />
+				) : (
+					<>{iconObj}</>
+				))}
+
+			{icon && (
 				isLoading ? (
 					<Loader classes="h-5 w-5 border-2" />
 				) : (
@@ -120,10 +134,13 @@ const Button = (
 						outline={false}
 					/>
 				)
-			) : (
+			)}
+
+			{ !icon && ! iconObj &&  (
 				isLoading && <Loader classes="h-5 w-5 border-2" />
 			)}
-			<span>{label}</span>
+
+			{label && <span>{label}</span>}
 		</button>
 	)
 }

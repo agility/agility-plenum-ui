@@ -82,6 +82,13 @@ const TextInput = (
 	)
 	const inputRef = useRef<HTMLInputElement>(null)
 
+	useEffect(() => {
+		//if the external value is updated by the parent component, reset the value in here...
+		if (externalValue !== undefined && externalValue !== null) {
+			setValue(externalValue)
+		}
+	}, [externalValue])
+
 	// set force focus
 	useEffect(() => {
 		const input = inputRef.current

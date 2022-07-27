@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { default as cn } from "classnames"
 import { InputLabel } from "../InputLabel"
 import { useId } from "../../../util/useID"
@@ -25,6 +25,10 @@ export interface SimpleSelectProps {
 	isError?: boolean
 	/** Select required state */
 	isRequired?: boolean
+
+	value?: string
+
+	className?:string
 }
 
 /** Comment */
@@ -36,24 +40,28 @@ export const Select: FC<SimpleSelectProps> = ({
 	onChange,
 	isDisabled,
 	isError,
-	isRequired
+	isRequired,
+	value,
+	className
 }: SimpleSelectProps) => {
-	const [selectedOption, setSelectedOption] = useState<string>(options[0].value)
+	const [selectedOption, setSelectedOption] = useState<string>(
+		value || options[0].value
+	)
 	const uniqueID = useId()
 	if (!id) id = `select-${uniqueID}`
 	if (!name) name = id
+
+	useEffect(() => {
+		if (value !== undefined && value !== null) {
+			setSelectedOption(value)
+		}
+	}, [value])
 
 	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		const targetValue = e.target.value
 		typeof onChange == "function" && onChange(targetValue)
 		setSelectedOption(targetValue)
 	}
-	const selectStyles = cn(
-		"block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none",
-		"focus:ring-purple-500 focus:border-purple-500 sm:text-sm rounded",
-		{ "border-red-500": isError },
-		{ "border-gray-300": !isError }
-	)
 	const wrapperStyle = cn({ "opacity-50": isDisabled })
 	return (
 		<div className={wrapperStyle}>
@@ -71,7 +79,13 @@ export const Select: FC<SimpleSelectProps> = ({
 			<select
 				id={id}
 				name={name}
-				className={selectStyles}
+				className={cn(
+					"block w-full border-gray-300 py-2 pl-3 pr-10 text-base focus:outline-none",
+					"rounded focus:border-purple-500 focus:ring-purple-500 sm:text-sm",
+					{ "border-red-500": isError },
+					{ "border-gray-300": !isError },
+					className
+				)}
 				onChange={handleChange}
 				disabled={isDisabled}
 				value={selectedOption}
