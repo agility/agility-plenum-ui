@@ -32,7 +32,7 @@ export const InputLabel: FC<InputLabelProps> = ({
         { 'text-red-500 bg-white': !isPlaceholder && isError },
         { 'text-gray-700/[.5]': isDisabled }
     );
-
+    if (! label) return null
     return (
         <label htmlFor={id} className={labelStyles}>
             {label}

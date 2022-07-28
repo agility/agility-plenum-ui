@@ -1,4 +1,4 @@
-import React, {  forwardRef, useEffect, useRef, useState } from "react"
+import React, { forwardRef, useEffect, useRef, useState } from "react"
 import { default as cn } from "classnames"
 
 import { InputCounter } from "../InputCounter"
@@ -29,7 +29,7 @@ export interface TextInputProps {
 	/** Input Name */
 	name?: string
 	/** Label for the input */
-	label: string
+	label?: string
 	/** Force the focus state on the input */
 	isFocused?: boolean
 	/** Error state */
@@ -51,7 +51,7 @@ export interface TextInputProps {
 	/** input value */
 	value?: string
 
-	className?:string
+	className?: string
 }
 
 const TextInput = (
@@ -119,20 +119,11 @@ const TextInput = (
 		setIsActive(!(input && input.value === ""))
 	}
 
-
-	const discriptionStyles = cn(
-		"text-sm mt-1 block",
-		{ "text-gray-500": !isError },
-		{ "text-red-500": isError }
-	)
-
 	if (!id) id = `input-${uniqueID}`
 	if (!name) name = id
 
-	console.log()
-
 	return (
-		<div>
+		<>
 			<InputLabel
 				isPlaceholder
 				label={label}
@@ -142,51 +133,56 @@ const TextInput = (
 				isActive={true}
 				isDisabled={isDisabled}
 			/>
-			<div>
-				<BaseField
-					onFocus={handleInputFocus}
-					onBlur={handleInputBlur}
-					onChange={onChange}
-					onValueChange={setValue}
-					ref={ref}
-					type={type}
-					name={name}
-					id={id}
-					className={cn(
-						"w-full rounded border py-2 px-3 text-sm font-normal leading-5",
-						{ "border-gray-300": !isFocus && !isError },
-						{
-							"border-purple-500 shadow-none outline-purple-500 focus:ring-purple-500":
-								isFocus && !isError
-						},
-						{
-							"!border-red-500 shadow-none focus:ring-red-500":
-								isError
-						},
-						className
-					)}
-					isDisabled={isDisabled}
-					value={value}
-					defaultValue={defaultValue}
-					maxLength={maxLength}
-				/>
-				<div className="flex flex-row space-x-3">
-					<div className="grow">
-						{message && (
-							<span className={discriptionStyles}>{message}</span>
-						)}
-					</div>
-					{isShowCounter && (
-						<div className="shrink-0">
-							<InputCounter
-								current={Number(value?.length)}
-								limit={maxLength}
-							/>
-						</div>
+			<BaseField
+				onFocus={handleInputFocus}
+				onBlur={handleInputBlur}
+				onChange={onChange}
+				onValueChange={setValue}
+				ref={ref}
+				type={type}
+				name={name}
+				id={id}
+				className={cn(
+					"w-full rounded border py-2 px-3 text-sm font-normal leading-5",
+					{ "border-gray-300": !isFocus && !isError },
+					{
+						"border-purple-500 shadow-none outline-purple-500 focus:ring-purple-500":
+							isFocus && !isError
+					},
+					{
+						"!border-red-500 shadow-none focus:ring-red-500":
+							isError
+					},
+					className
+				)}
+				isDisabled={isDisabled}
+				value={value}
+				defaultValue={defaultValue}
+				maxLength={maxLength}
+			/>
+			<div className="flex flex-row space-x-3">
+				<div className="grow">
+					{message && (
+						<span
+							className={cn(
+								"mt-1 block text-sm",
+								isError ? "text-red-500" : "text-gray-500"
+							)}
+						>
+							{message}
+						</span>
 					)}
 				</div>
+				{isShowCounter && (
+					<div className="shrink-0">
+						<InputCounter
+							current={Number(value?.length)}
+							limit={maxLength}
+						/>
+					</div>
+				)}
 			</div>
-		</div>
+		</>
 	)
 }
 
