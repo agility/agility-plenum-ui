@@ -23,7 +23,7 @@ export const InputLabel: FC<InputLabelProps> = ({
     isError,
     label
 }: InputLabelProps) => {
-    const labelStyles = cn('z-20',
+    const labelStyles = cn('z-[2]',
         {'inline-block font-medium transition-all text-sm text-gray-700 mb-1': !isPlaceholder},
         {'inline-block font-medium ml-2 relative transition-all': isPlaceholder},
         { 'text-sm text-gray-400 px-2 top-8': isPlaceholder && !isActive },

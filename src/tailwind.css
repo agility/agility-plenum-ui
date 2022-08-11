@@ -744,6 +744,10 @@ select {
   z-index: 20;
 }
 
+.z-\[2\] {
+  z-index: 2;
+}
+
 .z-10 {
   z-index: 10;
 }
