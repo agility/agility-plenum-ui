@@ -27,6 +27,8 @@ export interface BaseFieldProps {
 	placeholder?: string
 	/** Disabled state */
 	isDisabled?: boolean
+	/** Readonly state */
+	isReadonly?: boolean
 	/** Set value */
 	value?: string
 	/** Set default value */
@@ -58,6 +60,7 @@ const BaseField = (
 		value,
 		defaultValue,
 		isDisabled,
+		isReadonly,
 		maxLength = 100,
 		placeholder,
 		className = defaultStyles,
@@ -92,8 +95,9 @@ const BaseField = (
 			type={type}
 			name={name}
 			id={id}
-			className={cn(className, isDisabled ? "opacity-50" : "")}
+			className={cn(isDisabled ? "opacity-50" : "", className)}
 			disabled={isDisabled}
+			readOnly={isReadonly}
 			value={value}
 			defaultValue={defaultValue}
 			maxLength={maxLength}

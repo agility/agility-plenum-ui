@@ -38,6 +38,8 @@ export interface TextInputProps {
 	isRequired?: boolean
 	/** Disabled state */
 	isDisabled?: boolean
+	/** Readonly state */
+	isReadonly?: boolean
 	/** Set default value */
 	defaultValue?: string
 	/** Message shown under the text field */
@@ -65,6 +67,7 @@ const TextInput = (
 		type,
 		defaultValue,
 		isDisabled,
+		isReadonly,
 		message,
 		isShowCounter,
 		maxLength = 100,
@@ -156,6 +159,7 @@ const TextInput = (
 					className
 				)}
 				isDisabled={isDisabled}
+				isReadonly={isReadonly}
 				value={value}
 				defaultValue={defaultValue}
 				maxLength={maxLength}
