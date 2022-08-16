@@ -64,6 +64,7 @@ export interface TextInputAddonProps {
 	leadLabel?: string
 	/** Remove bg and border from CTA  */
 	clearCta?: "left" | "right" | "both" | "none"
+	className?: string
 	/** Callback on change */
 	onChange?(value: string): void
 	/** Callback on Cta click */
@@ -93,7 +94,8 @@ const TextInputAddon = (
 		clearCta = "none",
 		onChange,
 		onCtaClick,
-		value: externalValue
+		value: externalValue,
+		className
 	}: TextInputAddonProps,
 	ref: React.Ref<HTMLInputElement>
 ) => {
@@ -142,24 +144,6 @@ const TextInputAddon = (
 		// add other focus effects here
 	}
 
-	const className = cn(
-		"border py-2 px-3 rounded text-sm leading-5 font-normal w-full border-gray-300 outline-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500 ",
-		{
-			"focus:ring-red-500 !border-red-500 !outline-red-500 shadow-none":
-				isError
-		},
-		{ "pl-10": inlineIcon },
-		{
-			"!rounded-r-none !rounded-l":
-				(trailIcon || trailLabel) && !(leadIcon || leadLabel)
-		},
-		{
-			"!rounded-r-none !rounded-r":
-				!(trailIcon || trailLabel) && (leadIcon || leadLabel)
-		},
-		{ "rounded-none": (trailIcon || trailLabel) && (leadIcon || leadLabel) }
-	)
-
 	const discriptionStyles = cn(
 		"text-sm mt-1 block",
 		{ "text-gray-500": !isError },
@@ -186,7 +170,7 @@ const TextInputAddon = (
 						isClear={clearCta === "left" || clearCta === "both"}
 					/>
 				)}
-				<div className="relative flex-grow focus-within:z-20">
+				<div className="relative flex-grow">
 					{inlineIcon && (
 						<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
 							<DynamicIcons
@@ -205,7 +189,30 @@ const TextInputAddon = (
 						type={type}
 						name={name}
 						id={id}
-						className={className}
+						className={cn(
+							"w-full rounded border border-gray-300 py-2 px-3 text-sm font-normal leading-5 outline-purple-500 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 ",
+							{
+								"!border-red-500 shadow-none !outline-red-500 focus:ring-red-500":
+									isError
+							},
+							{ "pl-10": inlineIcon },
+							{
+								"!rounded-r-none !rounded-l":
+									(trailIcon || trailLabel) &&
+									!(leadIcon || leadLabel)
+							},
+							{
+								"!rounded-r-none !rounded-r":
+									!(trailIcon || trailLabel) &&
+									(leadIcon || leadLabel)
+							},
+							{
+								"rounded-none":
+									(trailIcon || trailLabel) &&
+									(leadIcon || leadLabel)
+							},
+							className
+						)}
 						isDisabled={isDisabled}
 						value={value}
 						defaultValue={defaultValue}
