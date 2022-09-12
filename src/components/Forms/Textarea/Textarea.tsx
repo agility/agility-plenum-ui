@@ -104,6 +104,7 @@ const Textarea = (
 						},
 						className
 					)}
+					disabled={isDisabled}
 					defaultValue={defaultValue}
 					value={value}
 					placeholder={placeholder}
