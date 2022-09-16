@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react"
+import React, { forwardRef, useEffect, useState } from "react"
 import { default as cn } from "classnames"
 import { InputCounter } from "../InputCounter"
 import { InputLabel } from "../InputLabel"
@@ -71,6 +71,13 @@ const Textarea = (
 		{ "text-gray-500": !isError },
 		{ "text-red-500": isError }
 	)
+
+	useEffect(() => {
+		//if the external value is updated by the parent component, reset the value in here...
+		if (externalValue !== undefined && externalValue !== null) {
+			setValue(externalValue)
+		}
+	}, [externalValue])
 
 	if (!id) id = `ta-${uniqueID}`
 
