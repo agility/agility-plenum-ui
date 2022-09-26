@@ -2,7 +2,7 @@ import React, { forwardRef } from "react"
 import { default as cn } from "classnames"
 import { DynamicIcons, IconName } from "../../util/DynamicIcons"
 
-import "../../tailwind.css"
+
 import { Loader } from "../../util/Loader"
 export interface ButtonProps {
 	/**

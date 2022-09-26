@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import classNames, { default as cn } from "classnames"
 import { DynamicIcons, IconName } from "../../util/DynamicIcons"
 
-import "../../tailwind.css"
+
 import { Loader } from "../../util/Loader"
 import { Button, ButtonProps } from "../Button/Button"
 import { Dropdown, DropdownProps } from "../Dropdown"
@@ -35,7 +35,7 @@ export const ButtonDropDown: FC<ButtonDropDownProps> = ({
 			<Dropdown
 				{...dropDown}
 				className={classNames(
-					"h-[calc(100%)] !rounded-l-none border !border-l-0  px-2 transition-all hover:!border-l-0",
+					"h-full rounded-l-none border !border-l-0  px-2 transition-all hover:!border-l-0",
 					button.type === "primary"
 						? "border-purple-600 bg-purple-600  !text-white  hover:border-purple-700 hover:bg-purple-700 active:!border-purple-800 active:!bg-purple-800"
 						: "",
