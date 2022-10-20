@@ -1,6 +1,6 @@
 // eslint-disable-next-line
-const Enzyme = require('enzyme');
+const Enzyme = require("enzyme")
 // eslint-disable-next-line
-const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
+const Adapter = require("@wojtekmaj/enzyme-adapter-react-17")
 
-Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() })

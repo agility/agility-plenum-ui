@@ -2,7 +2,6 @@ import React, { forwardRef } from "react"
 import { default as cn } from "classnames"
 import { DynamicIcons, IconName } from "../../util/DynamicIcons"
 
-
 import { Loader } from "../../util/Loader"
 export interface ButtonProps {
 	/**
@@ -90,9 +89,11 @@ const Button = (
 				{ "px-4 py-2 text-sm": size === "sm" },
 				{ "px-5 py-2 text-base": size === "base" },
 				{ "px-5 py-2 text-lg": size === "lg" },
-				{ "cursor-auto opacity-50": isDisabled },
 				{
-					"border-purple-600 bg-purple-600 text-white hover:border-purple-700 hover:bg-purple-700 active:border-purple-800 active:bg-purple-800":
+					"cursor-auto  opacity-50": isDisabled
+				},
+				{
+					"active: border-purple-600 bg-purple-600 text-white hover:border-purple-700 hover:bg-purple-700 active:border-purple-800 active:bg-purple-800":
 						type === "primary"
 				},
 				{
@@ -116,6 +117,8 @@ const Button = (
 							null
 					  }
 			}
+			disabled={isDisabled}
+			aria-disabled={isDisabled}
 		>
 			{iconObj &&
 				(isLoading ? (
@@ -124,8 +127,8 @@ const Button = (
 					<>{iconObj}</>
 				))}
 
-			{icon && (
-				isLoading ? (
+			{icon &&
+				(isLoading ? (
 					<Loader classes="h-5 w-5 border-2" />
 				) : (
 					<DynamicIcons
@@ -133,11 +136,10 @@ const Button = (
 						className={iconStyles}
 						outline={false}
 					/>
-				)
-			)}
+				))}
 
-			{ !icon && ! iconObj &&  (
-				isLoading && <Loader classes="h-5 w-5 border-2" />
+			{!icon && !iconObj && isLoading && (
+				<Loader classes="h-5 w-5 border-2" />
 			)}
 
 			{label && <span>{label}</span>}
