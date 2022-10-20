@@ -7,6 +7,7 @@ import { BaseField } from "../BaseField"
 import { InputCta } from "./InputCta"
 import { InputLabel } from "../InputLabel"
 import { useId } from "../../../util/useID"
+import { SearchCircleIcon } from "@heroicons/react/solid"
 
 export type Type =
 	| "text"
@@ -56,8 +57,10 @@ export interface TextInputAddonProps {
 	leadIcon?: IconName
 	/** Trailing icon displayed within the input  */
 	trailIcon?: IconName
-	/** Icon within the input field  */
+	/** Icon within the input field at the begining of the field*/
 	inlineIcon?: IconName
+	/** Icon within the input field at the end of the field*/
+	inlineTrailingIcon?: IconName
 	/** Trailing label for the input CTA */
 	trailLabel?: string
 	/** Leading label for input CTA  */
@@ -89,6 +92,7 @@ const TextInputAddon = (
 		leadIcon,
 		trailIcon,
 		inlineIcon,
+		inlineTrailingIcon,
 		trailLabel,
 		leadLabel,
 		clearCta = "none",
@@ -180,6 +184,7 @@ const TextInputAddon = (
 							/>
 						</div>
 					)}
+
 					<BaseField
 						onFocus={handleInputFocus}
 						onBlur={handleInputBlur}
@@ -219,7 +224,17 @@ const TextInputAddon = (
 						maxLength={maxLength}
 						placeholder={placeholder}
 					/>
+					{inlineTrailingIcon && (
+						<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+							<DynamicIcons
+								icon={inlineTrailingIcon}
+								className="h-5 w-5 text-gray-400"
+								outline={false}
+							/>
+						</div>
+					)}
 				</div>
+
 				{(trailIcon || trailLabel) && (
 					<InputCta
 						icon={trailIcon}
