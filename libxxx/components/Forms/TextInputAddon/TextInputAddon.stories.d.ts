@@ -1,6 +1,6 @@
-import { Meta } from '@storybook/react/types-6-0';
-import { Story } from '@storybook/react';
-import { TextInputAddonProps } from './TextInputAddon';
+import { Meta } from "@storybook/react/types-6-0";
+import { Story } from "@storybook/react";
+import { TextInputAddonProps } from "./TextInputAddon";
 declare const _default: Meta<import("@storybook/react").Args>;
 export default _default;
 export declare const AllVariations: Story<TextInputAddonProps>;

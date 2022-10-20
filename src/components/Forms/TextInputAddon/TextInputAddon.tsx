@@ -228,7 +228,7 @@ const TextInputAddon = (
 						<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
 							<DynamicIcons
 								icon={inlineTrailingIcon}
-								className="h-5 w-5 text-gray-400"
+								className="h-5 w-5 bg-white text-gray-400"
 								outline={false}
 							/>
 						</div>

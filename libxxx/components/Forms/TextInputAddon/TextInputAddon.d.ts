@@ -34,8 +34,10 @@ export interface TextInputAddonProps {
     leadIcon?: IconName;
     /** Trailing icon displayed within the input  */
     trailIcon?: IconName;
-    /** Icon within the input field  */
+    /** Icon within the input field at the begining of the field*/
     inlineIcon?: IconName;
+    /** Icon within the input field at the end of the field*/
+    inlineTrailingIcon?: IconName;
     /** Trailing label for the input CTA */
     trailLabel?: string;
     /** Leading label for input CTA  */
