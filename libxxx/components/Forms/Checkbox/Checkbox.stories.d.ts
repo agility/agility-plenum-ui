@@ -1,0 +1,13 @@
+import { Meta } from '@storybook/react/types-6-0';
+import { Story } from '@storybook/react';
+import { CheckboxProps } from './Checkbox';
+declare const _default: Meta<import("@storybook/react").Args>;
+export default _default;
+export declare const AllVariations: Story<CheckboxProps>;
+export declare const Default: Story<CheckboxProps>;
+export declare const Description: Story<CheckboxProps>;
+export declare const Required: Story<CheckboxProps>;
+export declare const Checked: Story<CheckboxProps>;
+export declare const ErrorState: Story<CheckboxProps>;
+export declare const Disabled: Story<CheckboxProps>;
+export declare const Events: Story<CheckboxProps>;

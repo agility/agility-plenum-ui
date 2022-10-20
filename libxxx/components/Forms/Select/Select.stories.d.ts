@@ -1,0 +1,11 @@
+import { Meta } from '@storybook/react/types-6-0';
+import { Story } from '@storybook/react';
+import { SimpleSelectProps } from './Select';
+declare const _default: Meta<import("@storybook/react").Args>;
+export default _default;
+export declare const AllVariations: Story<SimpleSelectProps>;
+export declare const Base: Story<SimpleSelectProps>;
+export declare const Label: Story<SimpleSelectProps>;
+export declare const Disabled: Story<SimpleSelectProps>;
+export declare const Required: Story<SimpleSelectProps>;
+export declare const Error: Story<SimpleSelectProps>;
