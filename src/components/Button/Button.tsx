@@ -53,7 +53,7 @@ export interface ButtonProps {
 	asLink?: {
 		href: string
 		target: HTMLAttributeAnchorTarget
-		title: string
+		title?: string
 	}
 }
 
