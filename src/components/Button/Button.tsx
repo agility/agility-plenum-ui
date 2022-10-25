@@ -157,6 +157,7 @@ const Button = (
 			type={isSubmit ? "submit" : "button"}
 			title={asLink.title || title}
 			href={asLink.href}
+			target={asLink.target}
 			className={cn(
 				"inline-flex items-center justify-center space-x-2 rounded border transition-all",
 				{ "w-full": isWidthFull === true },
