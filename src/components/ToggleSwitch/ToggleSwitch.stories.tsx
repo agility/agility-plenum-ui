@@ -8,7 +8,6 @@ export default {
 	title: `${BRAND_CONFIG.brandTitle}/Components/ToggleSwitch`,
 	component: ToggleSwitch
 } as Meta
-
 const Template: Story<IToggleSwitchProps> = (args) => <ToggleSwitch {...args} />
 
 export const AllVariations = Template.bind({})
@@ -25,7 +24,7 @@ AllVariations.decorators = [
 				<ToggleSwitch
 					{...(ToggleSwitchComponentLg.args as IToggleSwitchProps)}
 				/>
-				<span className="mt-5 block text-xs text-gray-400">
+				<span className="block mt-5 text-xs text-gray-400">
 					Note: controls are disabled on this view
 				</span>
 			</div>
@@ -36,26 +35,25 @@ AllVariations.decorators = [
 export const ToggleSwitchComponentSm = Template.bind({})
 ToggleSwitchComponentSm.args = {
 	size: "sm",
-	onChange: (value: string, isChecked: boolean) => {
-		console.log(`Value: ${value} isChecked: ${isChecked}`)
-	}
+	isDisabled: true,
+	label: "Is Disabled",
+	value: "on",
+	isChecked: true
 }
 ToggleSwitchComponentSm.storyName = "ToggleSwitch Small"
 
 export const ToggleSwitchComponentMd = Template.bind({})
 ToggleSwitchComponentMd.args = {
 	size: "md",
-	onChange: (value: string, isChecked: boolean) => {
-		console.log(`Value: ${value} isChecked: ${isChecked}`)
-	}
+	isChecked: true,
+	label: "checked"
 }
 ToggleSwitchComponentMd.storyName = "ToggleSwitch Medium"
 
 export const ToggleSwitchComponentLg = Template.bind({})
 ToggleSwitchComponentLg.args = {
 	size: "lg",
-	onChange: (value: string, isChecked: boolean) => {
-		console.log(`Value: ${value} isChecked: ${isChecked}`)
-	}
+	value: "on",
+	label: "on"
 }
 ToggleSwitchComponentLg.storyName = "ToggleSwitch Large"
