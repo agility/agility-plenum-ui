@@ -1,32 +1,30 @@
-import React, { FC, useState } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { default as cn } from "classnames"
 import { Switch } from "@headlessui/react"
 
 export interface IToggleSwitchProps {
-	/** size state */
+	/** size of the toggle - default value is "md" */
 	size?: "sm" | "md" | "lg"
 	/** Toggle Switch label */
 	label?: string | null
-	/** A Classname string to be used for the label*/
+	/** A Classname to be used for the label*/
 	labelStyles?: string
-	/** A Classname string to style the Switch Group*/
+	/** A Classname  to style the Switch Group*/
 	groupStyles?: string
-	/** Toggle Switch ID */
-	id?: string
-	/** Disabled state */
+	/** Toggle Switch ID*/
+	id: string
+	/** Disabled state - default value is false*/
 	isDisabled?: boolean
-	/** The value used when using this component inside a form, if it is checked.*/
-	value: "on" | "off"
 	/** Whether or not the switch is checked. */
 	isChecked: boolean
-	/** If field is required */
+	/**A function to update isChecked State*/
+	onChangeHandler: (state: boolean, value: string) => void
+	/** If field is required - default value is false */
 	isRequired?: boolean
-	/** Error state */
-	// isError?: boolean
+	/** Error state - default value is false*/
+	isError?: boolean
 	/** Message or description */
 	// message?: string
-	/** The function to call when the switch is toggled. */
-	onChange?: (value: string) => void
 	/** The name used when using this component inside a form.*/
 	name: string
 }
@@ -34,52 +32,53 @@ export interface IToggleSwitchProps {
 /** Comment */
 export const ToggleSwitch: FC<IToggleSwitchProps> = ({
 	size = "md",
-	label = "Label",
+	label,
 	labelStyles,
 	groupStyles,
 	isDisabled,
-	value = "off",
-	isChecked = false,
-	id = "",
+	isChecked,
+	onChangeHandler,
+	id,
 	name,
-	onChange
+	isRequired = false,
+	isError = false
+	// onChange
 }) => {
-	const [t_isChecked, T_setIsChecked] = useState<boolean>(isChecked)
-	const [toggleValue, setToggleValue] = useState<string>(
-		t_isChecked ? "on" : "off"
-	)
+	const [toggleChecked, setToggleChecked] = useState<boolean>(isChecked)
+	const [toggleValue] = useState<"on" | "off">(toggleChecked ? "on" : "off")
+	useEffect(() => setToggleChecked(isChecked), [isChecked])
 
-	const handleToggleChange = (v: boolean | null) => {
-		if (v === null) return
-		T_setIsChecked(v)
-		setToggleValue(!v ? "off" : "on")
-		onChange && onChange(toggleValue)
-	}
+	//Styles for the switch input/button
 	const switchStyles = cn(
-		"relative inline-flex flex-shrink-0",
-		"border-2 border-transparent rounded-full cursor-pointer",
-		"transition-colors ease-in-out duration-200 focus:outline-none",
-		"focus-visible:ring-2  focus-visible:ring-purple-500 focus-visible:ring-opacity-75",
-		"focus-within:ring-2  focus-within:ring-purple-500 focus-within:ring-opacity-75",
-		"focus:ring-2  focus:ring-purple-500 focus:ring-opacity-75",
-		{ "bg-purple-600": t_isChecked },
-		{ "bg-gray-200": !t_isChecked },
+		"relative inline-flex flex-shrink-0 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-purple-500 focus-visible:ring-opacity-75 focus-within:ring-2  focus-within:ring-purple-500 focus-within:ring-opacity-75 focus:ring-2  focus:ring-purple-500 focus:ring-opacity-75",
+		{ "bg-purple-600": toggleChecked },
+		{ "bg-gray-200": !toggleChecked },
 		{ "h-[38px] w-[74px]": size === "lg" },
 		{ "h-[28px] w-[64px]": size === "md" },
 		{ "h-[18px] w-[34px]": size === "sm" },
-		isDisabled && "opacity-75 !bg-purple-300"
+		{
+			"focus-visible:ring-red-600 focus-within:ring-red-600 focus:ring-red-600 !bg-red-400":
+				isError
+		},
+		{ "opacity-75 !bg-purple-300": isDisabled }
 	)
-	// the circular button inside the switch
+	// Styles for the  circular button inside the switch
 	const toggleStyles = cn(
 		"pointer-events-none inline-block rounded-full bg-white",
 		" transform ring-0 transition ease-in-out duration-200",
-		{ "translate-x-9": t_isChecked },
-		{ "translate-x-0": !t_isChecked },
+		{ "translate-x-9": toggleChecked },
+		{ "translate-x-0": !toggleChecked },
 		{ "h-[34px] w-[34px]": size === "lg" },
 		{ "h-[24px] w-[24px]": size === "md" },
-		{ "h-[14px] w-[14px] translate-x-4": size === "sm" && t_isChecked },
-		{ "h-[14px] w-[14px] translate-x-0": size === "sm" && !t_isChecked }
+		{ "h-[14px] w-[14px] translate-x-4": size === "sm" && toggleChecked },
+		{ "h-[14px] w-[14px] translate-x-0": size === "sm" && !toggleChecked }
 	)
+	const handleToggleChange = (v: boolean | null) => {
+		if (v === null) return
+		console.log(v)
+		setToggleChecked(v)
+		onChangeHandler && onChangeHandler(v, toggleValue)
+	}
 
 	return (
 		<Switch.Group>
@@ -91,19 +90,16 @@ export const ToggleSwitch: FC<IToggleSwitchProps> = ({
 			>
 				{label && (
 					<Switch.Label
-						className={cn(
-							"mr-2",
-							labelStyles && labelStyles
-							// isDisabled && "opacity-50"
-						)}
+						className={cn("mr-2", labelStyles && labelStyles)}
 					>
 						{label}
+						{isRequired && (
+							<span className="text-red-500">&nbsp;*</span>
+						)}
 					</Switch.Label>
 				)}
 				<Switch
-					checked={
-						t_isChecked || toggleValue === "on" || value === "on"
-					}
+					checked={toggleChecked}
 					name={name}
 					value={toggleValue}
 					id={id}
@@ -111,12 +107,12 @@ export const ToggleSwitch: FC<IToggleSwitchProps> = ({
 					onChange={
 						isDisabled
 							? () => handleToggleChange(null)
-							: () => handleToggleChange(!t_isChecked)
+							: (v: boolean) => handleToggleChange(v)
 					}
 					aria-disabled={isDisabled}
 				>
 					<span className="sr-only">
-						Use space to toggle {toggleValue}.
+						Use space to toggle {toggleChecked ? "on" : "off"}.
 					</span>
 					<span aria-hidden="true" className={toggleStyles} />
 				</Switch>
