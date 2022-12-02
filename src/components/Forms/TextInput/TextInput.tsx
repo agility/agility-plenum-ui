@@ -70,7 +70,7 @@ const TextInput = (
 		isReadonly,
 		message,
 		isShowCounter,
-		maxLength = 100,
+		maxLength,
 		onChange,
 		value: externalValue,
 		className
@@ -181,7 +181,7 @@ const TextInput = (
 					<div className="shrink-0">
 						<InputCounter
 							current={Number(value?.length)}
-							limit={maxLength}
+							limit={maxLength }
 						/>
 					</div>
 				)}
