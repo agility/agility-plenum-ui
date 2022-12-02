@@ -47,7 +47,7 @@ const Textarea = (
 		defaultValue,
 		message,
 		isShowCounter,
-		maxLength = 500,
+		maxLength,
 		rows = 4,
 		onChange,
 		value: externalValue,
