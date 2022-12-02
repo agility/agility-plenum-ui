@@ -87,7 +87,7 @@ const TextInputAddon = (
 		isDisabled,
 		message,
 		isShowCounter,
-		maxLength = 100,
+		maxLength,
 		placeholder,
 		leadIcon,
 		trailIcon,

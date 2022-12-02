@@ -78,7 +78,7 @@ export const TextInputSelect: FC<TextInputSelectProps> = ({
 	isDisabled,
 	message,
 	isShowCounter,
-	maxLength = 100,
+	maxLength,
 	placeholder,
 	inputOptions,
 	selectLocation = "right",

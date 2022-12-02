@@ -61,7 +61,7 @@ const BaseField = (
 		defaultValue,
 		isDisabled,
 		isReadonly,
-		maxLength = 100,
+		maxLength,
 		placeholder,
 		className = defaultStyles,
 		onChange,
