@@ -52,6 +52,8 @@ export interface TextInputProps {
 	onChange?(value: string): void
 	/** input value */
 	value?: string
+	/**Placeholder input text*/
+	placeholder: string
 
 	className?: string
 }
@@ -72,6 +74,7 @@ const TextInput = (
 		isShowCounter,
 		maxLength,
 		onChange,
+		placeholder,
 		value: externalValue,
 		className
 	}: TextInputProps,
@@ -79,7 +82,7 @@ const TextInput = (
 ) => {
 	const uniqueID = useId()
 	const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused))
-	const [isActive, setIsActive] = useState<boolean>(false)
+
 	const [value, setValue] = useState<string | undefined>(
 		externalValue || defaultValue || ""
 	)
@@ -98,7 +101,6 @@ const TextInput = (
 		if (!input || isFocus === undefined || isDisabled) return
 		if (isFocus) {
 			input.focus()
-			setIsActive(true)
 		} else {
 			input.blur()
 		}
@@ -108,27 +110,20 @@ const TextInput = (
 	useEffect(() => {
 		const input = inputRef.current
 		if (!input || defaultValue === undefined || defaultValue === "") return
-		setIsActive(true)
 	}, [defaultValue])
 
-	const handleInputFocus = (): void => {
-		setIsFocus(true)
-		// add other focus effects here
-	}
+	const handleInputFocus = () => setIsFocus(true)
+	// add other focus effects here
 
-	const handleInputBlur = (): void => {
-		const input = inputRef.current
-		setIsFocus(false)
-		setIsActive(!(input && input.value === ""))
-	}
+	const handleInputBlur = () => setIsFocus(false)
 
 	if (!id) id = `input-${uniqueID}`
 	if (!name) name = id
 
 	return (
-		<>
+		<div className="relative">
 			<InputLabel
-				isPlaceholder
+				isPlaceholder={true}
 				label={label}
 				isRequired={isRequired}
 				id={id}
@@ -149,7 +144,7 @@ const TextInput = (
 					"w-full rounded border py-2 px-3 text-sm font-normal leading-5",
 					{ "border-gray-300": !isFocus && !isError },
 					{
-						"border-purple-500 shadow-none outline-purple-500 focus:ring-purple-500":
+						"!border-purple-500 shadow-none outline-purple-500 focus:!ring-purple-500":
 							isFocus && !isError
 					},
 					{
@@ -163,6 +158,7 @@ const TextInput = (
 				value={value}
 				defaultValue={defaultValue}
 				maxLength={maxLength}
+				placeholder={placeholder}
 			/>
 			<div className="flex flex-row space-x-3">
 				<div className="grow">
@@ -181,12 +177,12 @@ const TextInput = (
 					<div className="shrink-0">
 						<InputCounter
 							current={Number(value?.length)}
-							limit={maxLength }
+							limit={maxLength}
 						/>
 					</div>
 				)}
 			</div>
-		</>
+		</div>
 	)
 }
 
