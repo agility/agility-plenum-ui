@@ -48,11 +48,12 @@ AllVariations.decorators = [
 					{...(TrailAndLeadIcons.args as TextInputAddonProps)}
 				/>
 				<TextInputAddon {...(TrailIcon.args as TextInputAddonProps)} />
+				<TextInputAddon
+					{...(TrailIconSearch.args as TextInputAddonProps)}
+				/>
 				<TextInputAddon {...(LeadLabel.args as TextInputAddonProps)} />
 				<TextInputAddon
-					{...(Default.args as TextInputAddonProps)}
-					inlineTrailingIcon={"SearchIcon"}
-					label="Search"
+					{...(TrailIconSearchNoBTN.args as TextInputAddonProps)}
 				/>
 				<span className="mt-5 block text-xs text-gray-400">
 					Note: controls are disabled on this view
@@ -109,6 +110,25 @@ TrailIcon.args = {
 	clearCta: "right"
 }
 TrailIcon.storyName = "Trailing Icon"
+
+export const TrailIconSearch = Template.bind({})
+TrailIconSearch.args = {
+	...baseArgs,
+	label: "Search",
+	trailIcon: "SearchIcon",
+	placeholder: "Search",
+	clearCta: "right"
+}
+TrailIconSearch.storyName = "Trailing Icon Search"
+
+export const TrailIconSearchNoBTN = Template.bind({})
+TrailIconSearchNoBTN.args = {
+	...baseArgs,
+	label: "Search",
+	inlineTrailingIcon: "SearchIcon",
+	placeholder: "Type to search"
+}
+TrailIconSearch.storyName = "Trailing Icon Search No Button"
 
 export const LeadLabel = Template.bind({})
 LeadLabel.args = {

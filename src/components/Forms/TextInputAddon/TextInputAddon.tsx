@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react"
-import { default as cn } from "classnames"
+import classNames, { default as cn } from "classnames"
 import { DynamicIcons, IconName } from "../../../util/DynamicIcons"
 
 import { InputCounter } from "../InputCounter"
@@ -165,7 +165,7 @@ const TextInputAddon = (
 					isDisabled={isDisabled}
 				/>
 			)}
-			<div className="flex">
+			<div className="group flex rounded border  border-gray-300 focus-within:border-purple-500  ">
 				{(leadIcon || leadLabel) && (
 					<InputCta
 						icon={leadIcon}
@@ -176,7 +176,7 @@ const TextInputAddon = (
 				)}
 				<div className="relative flex-grow">
 					{inlineIcon && (
-						<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+						<div className="pointer-events-none absolute inset-y-0 left-0 flex  items-center pl-3">
 							<DynamicIcons
 								icon={inlineIcon}
 								className="h-5 w-5 text-gray-400"
@@ -195,19 +195,19 @@ const TextInputAddon = (
 						name={name}
 						id={id}
 						className={cn(
-							"w-full rounded border border-gray-300 py-2 px-3 text-sm font-normal leading-5 outline-purple-500 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 ",
+							" w-full rounded border-transparent py-2 px-3 text-sm font-normal leading-5 outline-purple-500  focus:border-purple-500  focus:outline-none focus:ring-1 focus:ring-purple-500 ",
 							{
 								"!border-red-500 shadow-none !outline-red-500 focus:ring-red-500":
 									isError
 							},
-							{ "pl-10": inlineIcon },
+							{ "rounded-l pl-10": inlineIcon },
 							{
-								"!rounded-r-none !rounded-l":
+								"!border-r-none !rounded-r-none !rounded-l ":
 									(trailIcon || trailLabel) &&
 									!(leadIcon || leadLabel)
 							},
 							{
-								"!rounded-r-none !rounded-r":
+								"!rounded-l-none !rounded-r":
 									!(trailIcon || trailLabel) &&
 									(leadIcon || leadLabel)
 							},
