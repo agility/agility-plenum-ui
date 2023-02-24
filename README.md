@@ -15,6 +15,19 @@
 - Textarea | [view](https://plenum-ui.vercel.app/?path=/story/plenum-ui-components-textarea--all-variations)
 - Select | [view](https://plenum-ui.vercel.app/?path=/story/plenum-ui-components-select--all-variations)
 
+## Prerequistes
+
+Follow the instructions to install Tailwind CSS into the project: [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/guides/nextjs)
+
+Import Plenum's tailwind.css and the global.css from the previous step into the
+app entrypoint (i.e. `_app.tsx`).
+
+```
+import "<RELATIVE_PATH>/globals.css"; 
+import "@agility/plenum-ui/lib/tailwind.css";
+```
+
+_Any additional styles should be added before these two import statements to prevent overwriting the Plenum styling_
 
 ## Installing
 
