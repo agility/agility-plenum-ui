@@ -102,7 +102,7 @@ export const Combobox = <T extends Record<string, unknown>>({
 			value={selectedItem}
 			onChange={(e: T | undefined) => onChangeValue(e)}
 			disabled={isDisabled}
-			nullable={nullable}
+			nullable={nullable ? undefined : false}
 		>
 			{label && (
 				<HeadlessUICombobox.Label className={labelStyles}>
