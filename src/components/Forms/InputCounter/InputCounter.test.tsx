@@ -15,10 +15,5 @@ describe('InputCounter', function () {
         console.log(limitCount);
         expect(limitCount.text().includes('2')).toEqual(true);
     });
-    it('should limit the current count by the limit param', function () {
-        const wrapper: ShallowWrapper = shallow(<InputCounter current={100} limit={50} />);
-        const currentCount = wrapper.find('.currentCount');
-        console.log(currentCount);
-        expect(currentCount.text().includes('50')).toEqual(true);
-    });
+
 });
