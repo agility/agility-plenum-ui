@@ -1,14 +1,12 @@
 import React, { FC } from "react"
-import classNames, { default as cn } from "classnames"
-import { DynamicIcons, IconName } from "../../util/DynamicIcons"
+import classNames from "classnames"
 
-
-import { Loader } from "../../util/Loader"
 import { Button, ButtonProps } from "../Button/Button"
 import { Dropdown, DropdownProps } from "../Dropdown"
 export interface ButtonDropDownProps {
 	button: ButtonProps
 	dropDown: DropdownProps
+	xPosition?: "left" | "right"
 }
 
 /**
@@ -16,7 +14,8 @@ export interface ButtonDropDownProps {
  */
 export const ButtonDropDown: FC<ButtonDropDownProps> = ({
 	button,
-	dropDown
+	dropDown,
+	xPosition
 }) => {
 	return (
 		<div className="flex items-stretch">
@@ -46,31 +45,8 @@ export const ButtonDropDown: FC<ButtonDropDownProps> = ({
 						? "border-gray-300 bg-white !text-gray-600  hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100"
 						: ""
 				)}
-				xPosition="right"
-				// itemsClassName={classNames(
-				// 	button.type === "primary"
-				// 		? "!bg-purple-600 !divide-purple-700 !border-purple-700 !mt-1"
-				// 		: "",
-				// 	button.type === "secondary"
-				// 		? "!bg-purple-100 !divide-purple-200 !border-purple-200 !mt-1"
-				// 		: "",
-				// 	button.type === "alternative"
-				// 		? "!mt-1"
-				// 		: ""
-				// )}
-				// itemClassName={classNames(
-				// 	"transition-all",
-				// 	button.type === "primary"
-				// 		? "bg-purple-600 !text-white hover:bg-purple-700 active:bg-purple-800"
-				// 		: "",
-				// 	button.type === "secondary"
-				// 		? "bg-purple-100 !text-purple-700 hover:bg-purple-200 active:bg-purple-300 focus:bg-purple-300"
-				// 		: ""
-				// )}
-				// activeItemClassName={classNames(
-				// 	button.type === "primary" ? "!bg-purple-800" : "",
-				// 	button.type === "secondary" ? "!bg-purple-300" : ""
-				// )}
+				xPosition={xPosition || "right"}
+				//itemsClassName="left-10X"
 			/>
 			<div className="hidden !bg-purple-100 !text-purple-600 transition-all hover:bg-purple-200 focus:bg-purple-300" />
 		</div>

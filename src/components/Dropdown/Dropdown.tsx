@@ -69,7 +69,7 @@ export const Dropdown: FC<DropdownProps> = ({
 			>
 				<Menu.Items
 					className={cn(
-						"absolute right-0 mt-2 w-56 origin-bottom-right rounded bg-white shadow-lg",
+						"absolute right-0 min-w-fit mt-2 origin-bottom-right rounded bg-white shadow-lg",
 						" z-20 divide-y divide-gray-100 focus:outline-none border border-gray-300",
 						itemsClassName,
 						yPosition === "top" ? "bottom-10" : "",
@@ -101,7 +101,9 @@ export const Dropdown: FC<DropdownProps> = ({
 																"bg-gray-100 text-gray-900":
 																	active
 															},
-															active ? activeItemClassName : "",
+															active
+																? activeItemClassName
+																: "",
 															{
 																"bg-gray-100 text-red-500 hover:text-red-500":
 																	active &&
@@ -110,7 +112,9 @@ export const Dropdown: FC<DropdownProps> = ({
 															itemClassName
 														)}
 													>
-														{item.iconObj && <>{ item.iconObj }</>}
+														{item.iconObj && (
+															<>{item.iconObj}</>
+														)}
 														{item.icon && (
 															<DynamicIcons
 																className={cn(
@@ -137,7 +141,7 @@ export const Dropdown: FC<DropdownProps> = ({
 																icon={item.icon}
 															/>
 														)}
-														{item.label}
+														<div className="whitespace-nowrap">{item.label}</div>
 													</a>
 												)
 											}}
