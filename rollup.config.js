@@ -30,7 +30,9 @@ const config = [
                 extensions: ['.css'],
                 exclude: 'src/font.css'
             })
-        ]
+        ],
+        external: ['react', 'react-dom']
+
     }
 ];
 
