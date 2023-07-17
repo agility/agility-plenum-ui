@@ -21,7 +21,7 @@ export const ButtonDropDown: FC<ButtonDropDownProps> = ({
 		<div className="flex items-stretch">
 			<Button
 				{...button}
-				className="!rounded-r-none !border-r-0 hover:!border-r-0 "
+				className="!rounded-r-none !border-r-0 hover:!border-r-0"
 			/>
 			<div
 				className={classNames(
@@ -39,10 +39,10 @@ export const ButtonDropDown: FC<ButtonDropDownProps> = ({
 						? "border-purple-600 bg-purple-600  !text-white  hover:border-purple-700 hover:bg-purple-700 active:!border-purple-800 active:!bg-purple-800"
 						: "",
 					button.type === "secondary"
-						? "border-purple-100 bg-purple-100 !text-purple-700  hover:border-purple-200 hover:bg-purple-200 active:!border-purple-300 active:!bg-purple-300"
+						? "border-purple-50 bg-purple-50 !text-purple-700  hover:border-purple-100 hover:bg-purple-100 active:!border-purple-300 active:!bg-purple-300"
 						: "",
 					button.type === "alternative"
-						? "border-gray-300 bg-white !text-gray-600  hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100"
+						? "border-gray-300 bg-white !text-gray-700  hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100"
 						: ""
 				)}
 				xPosition={xPosition || "right"}

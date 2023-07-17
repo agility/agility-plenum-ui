@@ -88,7 +88,15 @@ Events.args = {
     ...(baseArgs as CheckboxProps),
     isDisabled: false,
     message: 'This checkbox is disabled',
-    id: 'checkboxId6',
+    id: 'checkboxId7',
     value: 'cbox',
     onChange: (value, checked) => {console.log(value, checked)}
+};
+
+export const Bordered = Template.bind({});
+Bordered.args = {
+    ...(baseArgs as CheckboxProps),
+    hasBorder: true,
+    message: 'Checkbox is has a border',
+    id: 'checkboxId8'
 };

@@ -1,5 +1,5 @@
 import React, { forwardRef, HTMLAttributeAnchorTarget } from "react"
-import { default as cn } from "classnames"
+import cn from "classnames"
 import { DynamicIcons, IconName } from "../../util/DynamicIcons"
 
 import { Loader } from "../../util/Loader"
@@ -55,6 +55,9 @@ export interface ButtonProps {
 		target: HTMLAttributeAnchorTarget
 		title?: string
 	}
+
+	/** any other children */
+	children?: React.ReactNode
 }
 
 /**
@@ -74,7 +77,9 @@ const Button = (
 		isWidthFull = false,
 		className,
 		title,
-		asLink
+		asLink,
+		children,
+		...props
 	}: ButtonProps,
 
 	ref: React.LegacyRef<HTMLButtonElement>
@@ -92,11 +97,12 @@ const Button = (
 			type={isSubmit ? "submit" : "button"}
 			title={title}
 			className={cn(
-				"inline-flex items-center justify-center space-x-2 rounded border transition-all",
+				"inline-flex items-center justify-center space-x-2 rounded border transition-all leading-5 font-medium",
 				{ "w-full": isWidthFull === true },
-				{ "px-4 py-2 text-sm": size === "sm" },
+				{ "px-4 py-2 text-sm h-[38px]": size === "sm" },
 				{ "px-5 py-2 text-base": size === "base" },
 				{ "px-5 py-2 text-lg": size === "lg" },
+				{ "gap-2" : children },
 				{
 					"cursor-auto  opacity-50": isDisabled
 				},
@@ -105,7 +111,7 @@ const Button = (
 						type === "primary"
 				},
 				{
-					"border-purple-100 bg-purple-100 text-purple-700 hover:border-purple-200 hover:bg-purple-200 hover:text-purple-700 active:border-purple-300 active:bg-purple-300":
+					"border-purple-50 bg-purple-50 text-purple-700 focus:border-purple-700 focus:bg-purple-100 hover:border-purple-200 hover:bg-purple-200 hover:text-purple-700 active:border-purple-300 active:bg-purple-300":
 						type === "secondary"
 				},
 				{
@@ -127,7 +133,10 @@ const Button = (
 			}
 			disabled={isDisabled}
 			aria-disabled={isDisabled}
+			{...props}
 		>
+			{ children }
+
 			{iconObj &&
 				(isLoading ? (
 					<Loader classes="h-5 w-5 border-2 m-0" />
@@ -151,6 +160,7 @@ const Button = (
 			)}
 
 			{label && <span>{label}</span>}
+
 		</button>
 	) : (
 		<a
@@ -161,7 +171,7 @@ const Button = (
 			className={cn(
 				"inline-flex items-center justify-center space-x-2 rounded border transition-all",
 				{ "w-full": isWidthFull === true },
-				{ "px-4 py-2 text-sm": size === "sm" },
+				{ "px-4 py-2 text-sm h-[38px]": size === "sm" },
 				{ "px-5 py-2 text-base": size === "base" },
 				{ "px-5 py-2 text-lg": size === "lg" },
 				{
@@ -172,7 +182,7 @@ const Button = (
 						type === "primary"
 				},
 				{
-					"border-purple-100 bg-purple-100 text-purple-700 hover:border-purple-200 hover:bg-purple-200 hover:text-purple-700 active:border-purple-300 active:bg-purple-300":
+					"border-purple-50 bg-purple-50 text-purple-700 focus:border-purple-700 focus:bg-purple-100 hover:border-purple-100 hover:bg-purple-100 hover:text-purple-700 active:border-purple-300 active:bg-purple-300":
 						type === "secondary"
 				},
 				{
@@ -186,7 +196,10 @@ const Button = (
 				className
 			)}
 			aria-disabled={isDisabled}
+			{...props}
 		>
+			{ children }
+
 			{iconObj &&
 				(isLoading ? (
 					<Loader classes="h-5 w-5 border-2" />
