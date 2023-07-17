@@ -53,7 +53,7 @@ export interface TextInputProps {
 	/** input value */
 	value?: string
 	/**Placeholder input text*/
-	placeholder: string
+	placeholder?: string
 
 	className?: string
 }
@@ -76,7 +76,8 @@ const TextInput = (
 		onChange,
 		placeholder,
 		value: externalValue,
-		className
+		className,
+		...props
 	}: TextInputProps,
 	ref: React.Ref<HTMLInputElement>
 ) => {
@@ -159,6 +160,7 @@ const TextInput = (
 				defaultValue={defaultValue}
 				maxLength={maxLength}
 				placeholder={placeholder}
+				{...props}
 			/>
 			<div className="flex flex-row space-x-3">
 				<div className="grow">

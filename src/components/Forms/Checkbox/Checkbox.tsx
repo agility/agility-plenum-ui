@@ -22,6 +22,10 @@ export interface CheckboxProps {
     message?: string;
     /** Callback on input change */
     onChange?(value: string, isChecked: boolean): void;
+    /** Has a border around the checkbox and label */
+    hasBorder?: boolean
+    /** any arbitrary classNames to add to the wrapper */
+    className?: string
 }
 
 /** Comment */
@@ -35,40 +39,49 @@ export const Checkbox: FC<CheckboxProps> = ({
     message,
     value,
     onChange,
+    hasBorder,
+    className,
+    ...props
 }: CheckboxProps) => {
     const uniqueID = useId()
 	if (!id) id = `cb-${uniqueID}`
 
-    const checboxStyles = cn(
-        'focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 rounded',
+    const checkboxStyles = cn(
+        'rounded-sm border-gray-300 text-sm font-normal leading-5 text-purple-600 focus:ring-purple-600',
         { 'border-red-500 shadow-none': isError }
     );
-    const wrapperStyles = cn('relative flex items-start', { 'opacity-50': isDisabled });
+    const wrapperStyles = cn('relative flex items-center min-h-[38px]', 
+    { 'opacity-50': isDisabled }, 
+    { 'rounded-sm ring-1 px-3 ring-gray-300': hasBorder }, 
+    { 'py-3': hasBorder && message },
+    className );
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const targetValue = e.currentTarget.value;
-        const targetChecked = e.currentTarget.checked;
+        console.log(e)
+        const targetValue = e.target.value;
+        const targetChecked = e.target.checked;
         typeof onChange === 'function' && onChange(targetValue, targetChecked);
     };
 
     return (
         <div className={wrapperStyles}>
-            <div className="flex items-center h-5">
+            <div className="flex items-center">
                 <input
                     id={id}
                     aria-describedby={`${id}-description`}
                     name={id}
                     value={value}
                     type="checkbox"
-                    className={checboxStyles}
+                    className={checkboxStyles}
                     disabled={isDisabled}
                     checked={isChecked}
                     onChange={(e) => {
                         handleChange(e);
                     }}
+                    {...props}
                 />
             </div>
-            <div className="ml-3 text-sm">
+            <div className="ml-3 text-sm ">
                 <label htmlFor={id} className="font-medium text-gray-700">
                     <InputLabel
                         label={label}

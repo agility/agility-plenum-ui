@@ -65,7 +65,8 @@ const BaseField = (
 		placeholder,
 		className = defaultStyles,
 		onChange,
-		onValueChange
+		onValueChange,
+		...props
 	}: BaseFieldProps,
 	ref: React.LegacyRef<HTMLInputElement>
 ) => {
@@ -102,6 +103,7 @@ const BaseField = (
 			defaultValue={defaultValue}
 			maxLength={maxLength}
 			autoComplete="off"
+			{...props}
 		/>
 	)
 }
