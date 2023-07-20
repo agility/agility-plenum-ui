@@ -1,6 +1,6 @@
 {
 	"name": "@agility/plenum-ui",
-	"version": "1.3.47",
+	"version": "1.3.48",
 	"description": "Components that are part of the Agility CMS design system.",
 	"main": "lib/index.js",
 	"module": "lib/index.esm.js",
