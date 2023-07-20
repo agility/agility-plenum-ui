@@ -5,9 +5,9 @@ export const dropdownDataBase: ItemProp[][] = [
 		{
 			icon: {
 				name: "ClipboardCopyIcon",
-				pos: "trailing",
-				className: "",
-				outline: true
+				pos: "leading",
+				className: "h-5 w-5",
+				outline: false
 			},
 			key: "Copy",
 			label: "Copy",
@@ -20,9 +20,9 @@ export const dropdownDataBase: ItemProp[][] = [
 		{
 			icon: {
 				name: "CheckIcon",
-				pos: "trailing",
-				className: "",
-				outline: true
+				pos: "leading",
+				className: "h-5 w-5",
+				outline: false
 			},
 			key: "Add to Batch",
 			label: "Add to Batch",
@@ -33,9 +33,9 @@ export const dropdownDataBase: ItemProp[][] = [
 		{
 			icon: {
 				name: "EyeIcon",
-				pos: "trailing",
-				className: "",
-				outline: true
+				pos: "leading",
+				className: "h-5 w-5",
+				outline: false
 			},
 			key: "View Batch",
 			label: "View Batch",
@@ -54,9 +54,9 @@ export const dropdownDataBase: ItemProp[][] = [
 			key: "Delete",
 			icon: {
 				name: "TrashIcon",
-				pos: "trailing",
-				className: "",
-				outline: true
+				pos: "leading",
+				className: "h-5 w-5",
+				outline: false
 			}
 		}
 	]
@@ -67,9 +67,9 @@ export const dropdownDataWithIcons: ItemProp[][] = [
 		{
 			icon: {
 				name: "ClipboardCopyIcon",
-				pos: "trailing",
-				className: "",
-				outline: true
+				pos: "leading",
+				className: "h-5 w-5",
+				outline: false
 			},
 			key: "Copy",
 			label: "Copy",
@@ -82,9 +82,9 @@ export const dropdownDataWithIcons: ItemProp[][] = [
 		{
 			icon: {
 				name: "FolderAddIcon",
-				pos: "trailing",
-				className: "",
-				outline: true
+				pos: "leading",
+				className: "h-5 w-5",
+				outline: false
 			},
 			key: "Add to Batch",
 			label: "Add to Batch",
@@ -95,9 +95,9 @@ export const dropdownDataWithIcons: ItemProp[][] = [
 		{
 			icon: {
 				name: "EyeIcon",
-				pos: "trailing",
-				className: "",
-				outline: true
+				pos: "leading",
+				className: "h-5 w-5",
+				outline: false
 			},
 			key: "View Batch",
 			label: "View Batch",
@@ -110,9 +110,9 @@ export const dropdownDataWithIcons: ItemProp[][] = [
 		{
 			icon: {
 				name: "TrashIcon",
-				pos: "trailing",
-				className: "",
-				outline: true
+				pos: "leading",
+				className: "h-5 w-5",
+				outline: false
 			},
 			key: "Delete",
 			label: "Delete",

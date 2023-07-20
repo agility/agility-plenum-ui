@@ -33,7 +33,7 @@ export const AllVariations = Template.bind({})
 AllVariations.decorators = [
 	() => {
 		return (
-			<div className="mx-12 grid grid-flow-row gap-4">
+			<div className="mx-12 grid grid-flow-row ">
 				<Dropdown
 					{...{
 						...(Default.args as IDropdownProps)

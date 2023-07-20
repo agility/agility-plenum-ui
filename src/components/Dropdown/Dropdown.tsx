@@ -49,7 +49,7 @@ export const defaultClassNames: IDropdownClassnames = {
 	itemsClassname:
 		"mt-2 origin-bottom-right rounded bg-white shadow-lg z-20 divide-y divide-gray-100 focus:outline-none border border-gray-300  ",
 	itemClassname:
-		"group flex w-full cursor-pointer items-center px-4 py-2 text-sm transition-all hover:bg-gray-100 hover:text-gray-900 justify-between gap-4 focus:outline-purple-600",
+		"group flex font-muli  cursor-pointer items-center px-4 py-2 text-sm transition-all hover:bg-gray-100 hover:text-gray-900 justify-between gap-4 focus:outline-purple-600",
 	activeItemClassname:
 		"block px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 hover:text-gray-900",
 	buttonClassname:
@@ -72,10 +72,12 @@ export const Dropdown: React.FC<IDropdownProps> = ({
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
 		onOpenChange: setIsOpen,
+		placement: "bottom-start",
 		middleware: [
 			offset(10),
-			autoPlacement({ allowedPlacements: ["bottom-end", "bottom"] }),
-
+			autoPlacement({
+				allowedPlacements: ["bottom-start", "bottom-end", "bottom"]
+			}),
 			shift({ rootBoundary: "document" })
 		],
 		whileElementsMounted: autoUpdate
@@ -202,19 +204,30 @@ export const Dropdown: React.FC<IDropdownProps> = ({
 														activeItem === key
 													const itemClass = cn(
 														itemClassname,
+														"group flex cursor-pointer items-center px-4 py-2 text-sm transition-all",
+														{
+															"text-red-500":
+																isEmphasized
+														},
+														{
+															"text-gray-900":
+																!isEmphasized
+														},
+														{
+															"bg-gray-100 text-gray-900":
+																active
+														},
 														active
 															? activeItemClassname
 															: "",
 														{
-															"text-red-500 text-gray-900":
-																isEmphasized,
 															"bg-gray-100 text-red-500 hover:text-red-500":
-																isEmphasized &&
-																active,
-															"bg-gray-100 text-gray-900":
-																active
-														}
+																active &&
+																isEmphasized
+														},
+														itemClassname
 													)
+
 													return (
 														<li>
 															<button
@@ -229,41 +242,60 @@ export const Dropdown: React.FC<IDropdownProps> = ({
 																		},
 																	key,
 																	className:
-																		itemClass,
+																		cn(
+																			itemClass,
+																			"w-full"
+																		),
 																	...rest
 																}}
 															>
-																{icon &&
-																	(icon.pos ===
-																		"leading" ||
-																		icon?.pos ===
-																			undefined) && (
-																		<DynamicIcons
-																			{...{
-																				icon: icon.name,
-																				className:
-																					icon.className,
-																				outline:
-																					icon.outline
-																			}}
-																		/>
-																	)}
-																<div className="whitespace-nowrap">
-																	{label}
+																<div className="flex items-center gap-x-4">
+																	{icon &&
+																		(icon.pos ===
+																			"leading" ||
+																			icon?.pos ===
+																				undefined) && (
+																			<DynamicIcons
+																				{...{
+																					icon: icon.name,
+																					className:
+																						cn(
+																							icon.className,
+																							{
+																								"text-red-500":
+																									isEmphasized
+																							},
+																							"opacity-60 group-hover:opacity-100"
+																						),
+																					outline:
+																						icon.outline
+																				}}
+																			/>
+																		)}
+																	<div className="whitespace-nowrap">
+																		{label}
+																	</div>
+																	{icon &&
+																		icon.pos ===
+																			"trailing" && (
+																			<DynamicIcons
+																				{...{
+																					icon: icon.name,
+																					className:
+																						cn(
+																							icon.className,
+																							{
+																								"text-red-500":
+																									isEmphasized
+																							},
+																							"opacity-60 group-"
+																						),
+																					outline:
+																						icon.outline
+																				}}
+																			/>
+																		)}
 																</div>
-																{icon &&
-																	icon.pos ===
-																		"trailing" && (
-																		<DynamicIcons
-																			{...{
-																				icon: icon.name,
-																				className:
-																					icon.className,
-																				outline:
-																					icon.outline
-																			}}
-																		/>
-																	)}
 															</button>
 														</li>
 													)
