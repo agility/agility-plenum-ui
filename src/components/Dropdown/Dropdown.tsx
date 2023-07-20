@@ -13,7 +13,8 @@ import {
 	autoPlacement,
 	shift,
 	FloatingPortal,
-	useTransitionStyles
+	useTransitionStyles,
+	Placement
 } from "@floating-ui/react"
 import { DynamicIcons, IDynamicIconsProps } from "../DynamicIcons/DynamicIcons"
 import { ClassNameWithAutocomplete } from "../../util/types"
@@ -43,6 +44,7 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 	CustomDropdownTrigger?: React.ReactNode
 	id: string
 	classNames?: IDropdownClassnames
+	placement?: Placement
 }
 export const defaultClassNames: IDropdownClassnames = {
 	groupClassname: "flex inline-block text-left",
@@ -53,7 +55,7 @@ export const defaultClassNames: IDropdownClassnames = {
 	activeItemClassname:
 		"block px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 hover:text-gray-900",
 	buttonClassname:
-		"py-2px z-20 flex items-center self-end rounded outline-purple-500 transition-all focus:ring-purple-500 text-gray-400 hover:bg-white hover:text-gray-600 "
+		"py-2px z-20 flex items-center  rounded outline-purple-500 transition-all focus:ring-purple-500 text-gray-400 hover:text-gray-600 "
 }
 
 /** Comment */
@@ -63,6 +65,7 @@ export const Dropdown: React.FC<IDropdownProps> = ({
 	label,
 	classNames = defaultClassNames,
 	CustomDropdownTrigger,
+	placement = "bottom-start",
 	...props
 }: IDropdownProps): JSX.Element | null => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -72,11 +75,16 @@ export const Dropdown: React.FC<IDropdownProps> = ({
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
 		onOpenChange: setIsOpen,
-		placement: "bottom-start",
+		placement,
 		middleware: [
 			offset(10),
 			autoPlacement({
-				allowedPlacements: ["bottom-start", "bottom-end", "bottom"]
+				allowedPlacements: [
+					placement,
+					"bottom-start",
+					"bottom-end",
+					"bottom"
+				]
 			}),
 			shift({ rootBoundary: "document" })
 		],
@@ -311,36 +319,4 @@ export const Dropdown: React.FC<IDropdownProps> = ({
 			)}
 		</div>
 	)
-	// return (
-	// 	<div
-	// 		role="combobox"
-	// 		aria-expanded={isOpen}
-	// 		aria-owns={`${id}-list`}
-	// 		aria-haspopup="listbox"
-	// 	>
-	// 		<button onClick={toggling} aria-controls={`${id}-list`}>
-	// 			{selectedOption ? selectedOption.name : "Select option"}
-	// 		</button>
-	// 		{isOpen && (
-	// 			<ul id={`${id}-list`} role="listbox" tabIndex="-1">
-	// 				{options.map((option, index) => (
-	// 					<li
-	// 						key={option.id}
-	// 						id={`${id}-option-${index}`}
-	// 						onClick={onOptionClicked(option)}
-	// 						onKeyPress={onOptionClicked(option)}
-	// 						role="option"
-	// 						aria-selected={
-	// 							selectedOption &&
-	// 							selectedOption.id === option.id
-	// 						}
-	// 						tabIndex="0"
-	// 					>
-	// 						{option.name}
-	// 					</li>
-	// 				))}
-	// 			</ul>
-	// 		)}
-	// 	</div>
-	// )
 }

@@ -12,23 +12,19 @@ export interface ButtonDropDownProps {
 /**
  * Primary UI component for user interaction
  */
-export const ButtonDropDown: FC<ButtonDropDownProps> = ({
-	button,
-	dropDown,
-	xPosition
-}) => {
+export const ButtonDropDown: FC<ButtonDropDownProps> = ({ button, dropDown }) => {
 	const dropDownClasses: IDropdownProps["classNames"] = {
 		...defaultClassNames,
 		groupClassname: cn(
-			"h-[38px] flex items-center justify-center rounded-l-none border !border-l-0 rounded-r  px-2 transition-all hover:!border-l-0",
+			"flex items-center justify-center rounded-l-none border !border-l-0 rounded-r  px-2 transition-all hover:!border-l-0",
 			button.type === "primary"
-				? "border-purple-600 bg-purple-600  !text-white  hover:border-purple-700 hover:bg-purple-700 active:!border-purple-800 active:!bg-purple-800"
+				? "border-purple-600 bg-purple-600  !text-white  hover:border-purple-700 hover:bg-purple-700 active:!border-purple-800 active:!bg-purple-800 fill-white"
 				: "",
 			button.type === "secondary"
-				? "border-purple-50 bg-purple-50 !text-purple-700  hover:border-purple-100 hover:bg-purple-100 active:!border-purple-300 active:!bg-purple-300"
+				? "border-purple-50 bg-purple-50 !text-purple-700  hover:border-purple-100 hover:bg-purple-100 active:!border-purple-300 active:!bg-purple-300 fill-purple-700"
 				: "",
 			button.type === "alternative"
-				? "border-gray-300 bg-white !text-gray-700  hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100"
+				? "border-gray-300 bg-white !text-gray-700 fill-gray-700  hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100"
 				: ""
 		)
 	}
@@ -45,7 +41,9 @@ export const ButtonDropDown: FC<ButtonDropDownProps> = ({
 					button.type === "secondary" ? "bg-purple-200" : "",
 					button.type === "alternative" ? "bg-gray-300" : ""
 				)}
-			></div>
+			>
+				ds
+			</div>
 			<Dropdown
 				{...{
 					...(dropDown as IDropdownProps),

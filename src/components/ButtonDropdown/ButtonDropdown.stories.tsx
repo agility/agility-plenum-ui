@@ -21,7 +21,7 @@ const Template: Story<ButtonDropDownProps> = (args) => (
 
 const IconElement = () => (
 	<DynamicIcons
-		className="h-5 w-5"
+		className=" h-5 w-5 fill-inherit"
 		aria-hidden="true"
 		icon="ChevronDownIcon"
 	/>
@@ -34,8 +34,8 @@ const baseDropDownArgs: IDropdownProps = {
 	},
 	id: "button-dropdown-example",
 	label: "button dropdown example",
-
-	CustomDropdownTrigger: <IconElement />
+	CustomDropdownTrigger: <IconElement />,
+	placement: "right"
 }
 
 // Reuse that template for creating different stories
