@@ -5,6 +5,7 @@ import * as OutlineIcons from "@heroicons/react/outline"
 import * as TablerIconComponents from "@tabler/icons-react"
 import * as FA from "react-icons/fa"
 import { tablerIconNames, TablerIconName } from "./tablerIconNames"
+import { default as cn } from "classnames"
 
 import TablerIcon from "./TablerIcon"
 
@@ -46,18 +47,22 @@ export const DynamicIcons = ({
 		const Icon = outline ? OutlineIcons[icon] : SolidIcons[icon]
 		return (
 			<i {...props}>
-				<Icon className={className} />
+				<Icon className={cn("h-6 w-6 text-gray-600", className)} />
 			</i>
 		)
 	}
 	if (isTablerIcon(icon)) {
-		return <TablerIcon {...{ icon, className }} />
+		return (
+			<TablerIcon
+				{...{ icon, className: cn("w-6 h-6 text-gray-600", className) }}
+			/>
+		)
 	}
 	if (isFAIcon(icon)) {
 		const Icon = FA[icon]
 		return (
 			<i {...props}>
-				<Icon className={className} />
+				<Icon className={cn("h-6 w-6 text-gray-600", className)} />
 			</i>
 		)
 	}
