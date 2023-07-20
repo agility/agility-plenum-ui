@@ -6,6 +6,8 @@ import { BRAND_CONFIG } from '../../common';
 import { ButtonDropDown, ButtonDropDownProps } from './ButtonDropdown';
 import { DynamicIcons } from '../../util/DynamicIcons';
 import { dropdownDataBase } from '../Dropdown/data';
+import { IDropdownProps, defaultClassNames } from "../Dropdown"
+
 
 export default {
     title: `${BRAND_CONFIG.brandTitle}/Components/ButtonDropdown`,
@@ -25,9 +27,15 @@ const IconElement = () => (
 	/>
 )
 
-const baseDropDownArgs = {
+const baseDropDownArgs: IDropdownProps = {
 	items: dropdownDataBase,
-	IconElement
+	classNames: {
+		...defaultClassNames
+	},
+	id: "button-dropdown-example",
+	label: "button dropdown example",
+
+	CustomDropdownTrigger: <IconElement />
 }
 
 // Reuse that template for creating different stories
