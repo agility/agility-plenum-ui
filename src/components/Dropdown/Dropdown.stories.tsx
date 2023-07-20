@@ -51,7 +51,7 @@ AllVariations.decorators = [
 
 const IconElement = () => (
 	<DynamicIcons
-		className="h-5 w-5 text-gray-900"
+		className="h-5 w-5 text-gray-400 hover:text-gray-600"
 		aria-hidden="true"
 		icon="DotsVerticalIcon"
 	/>

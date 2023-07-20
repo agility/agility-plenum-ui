@@ -53,7 +53,7 @@ export const defaultClassNames: IDropdownClassnames = {
 	activeItemClassname:
 		"block px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 hover:text-gray-900",
 	buttonClassname:
-		"text-sm font-medium flex leading-5  group hover:text-purple-100 "
+		"py-2px z-20 flex items-center self-end rounded outline-purple-500 transition-all focus:ring-purple-500 text-gray-400 hover:bg-white hover:text-gray-600 "
 }
 
 /** Comment */
@@ -134,10 +134,10 @@ export const Dropdown: React.FC<IDropdownProps> = ({
 				}}
 			>
 				{CustomDropdownTrigger ? (
-					<>{CustomDropdownTrigger}</>
+					<span className="pl-1">{CustomDropdownTrigger}</span>
 				) : (
 					<>
-						{label}
+						<span className="pl-1">{label}</span>
 						<DynamicIcons
 							icon="ChevronDownIcon"
 							className="ml-1 h-5 w-6 "
