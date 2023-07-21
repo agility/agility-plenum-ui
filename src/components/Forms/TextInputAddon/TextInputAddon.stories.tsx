@@ -50,9 +50,7 @@ AllVariations.decorators = [
 				<TextInputAddon {...(TrailIcon.args as TextInputAddonProps)} />
 				<TextInputAddon {...(LeadLabel.args as TextInputAddonProps)} />
 				<TextInputAddon
-					{...(Default.args as TextInputAddonProps)}
-					inlineTrailingIcon={"SearchIcon"}
-					label="Search"
+					{...(InlineTrailingIcon.args as TextInputAddonProps)}
 				/>
 				<span className="mt-5 block text-xs text-gray-400">
 					Note: controls are disabled on this view
@@ -74,7 +72,7 @@ export const LeadIcon = Template.bind({})
 LeadIcon.args = {
 	...baseArgs,
 	label: "Email",
-	inlineIcon: "MailIcon",
+	inlineIcon: { icon: "MailIcon", outline: true },
 	placeholder: "you@example.com"
 }
 LeadIcon.storyName = "Leading Icon"
@@ -84,7 +82,7 @@ TrailAction.args = {
 	...baseArgs,
 	label: "Copy",
 	placeholder: 'class="flex-shrink-0',
-	trailIcon: "DuplicateIcon",
+	trailIcon: { icon: "DuplicateIcon", outline: true },
 	trailLabel: "copy"
 }
 TrailAction.storyName = "Trailing Action"
@@ -93,8 +91,8 @@ export const TrailAndLeadIcons = Template.bind({})
 TrailAndLeadIcons.args = {
 	...baseArgs,
 	label: "Person",
-	trailIcon: "SortAscendingIcon",
-	inlineIcon: "UserIcon",
+	trailIcon: { icon: "SortAscendingIcon", outline: true },
+	inlineIcon: { icon: "UserIcon", outline: true },
 	placeholder: "John Doe",
 	trailLabel: "Sort"
 }
@@ -104,7 +102,7 @@ export const TrailIcon = Template.bind({})
 TrailIcon.args = {
 	...baseArgs,
 	label: "API Key",
-	trailIcon: "QuestionMarkCircleIcon",
+	trailIcon: { icon: "QuestionMarkCircleIcon", outline: true },
 	placeholder: "000-00-0000",
 	clearCta: "right"
 }
@@ -118,3 +116,12 @@ LeadLabel.args = {
 	placeholder: "agilitycms.com"
 }
 LeadLabel.storyName = "Leading label"
+export const InlineTrailingIcon = Template.bind({})
+InlineTrailingIcon.args = {
+	...baseArgs,
+	label: "Search",
+	inlineTrailingIcon: { icon: "SearchIcon", outline: true },
+	placeholder: "Search"
+}
+InlineTrailingIcon.storyName = "Inline Trailing Icon"
+

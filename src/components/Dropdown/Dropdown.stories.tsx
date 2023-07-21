@@ -10,7 +10,7 @@ import {
 } from "./Dropdown"
 import { dropdownDataBase, dropdownDataWithIcons } from "./data"
 import { BRAND_CONFIG } from "../../common"
-import { DynamicIcons } from "../../util/DynamicIcons"
+import { DynamicIcons } from "../DynamicIcons/DynamicIcons"
 
 export default {
 	title: `${BRAND_CONFIG.brandTitle}/Components/Dropdown`,
@@ -33,17 +33,21 @@ export const AllVariations = Template.bind({})
 AllVariations.decorators = [
 	() => {
 		return (
-			<div className="mx-12 grid grid-flow-row ">
+			<div className="mx-12 grid grid-flow-row gap-y-4 ">
 				<Dropdown
 					{...{
-						...(Default.args as IDropdownProps)
+						...(Label.args as IDropdownProps)
 					}}
 				/>
+
 				<Dropdown
 					{...{
 						...(IconOnly.args as IDropdownProps)
 					}}
 				/>
+				<span className="mt-5 block text-xs text-gray-400">
+					Note: controls are disabled on this view
+				</span>
 			</div>
 		)
 	}
@@ -57,12 +61,14 @@ const IconElement = () => (
 	/>
 )
 
-export const Default = Template.bind({})
-Default.args = { ...baseArgs }
-
 export const IconOnly = Template.bind({})
 IconOnly.args = {
 	...baseArgs,
 	items: dropdownDataWithIcons,
 	CustomDropdownTrigger: <IconElement />
+}
+export const Label = Template.bind({})
+Label.args = {
+	...baseArgs,
+	items: dropdownDataWithIcons
 }

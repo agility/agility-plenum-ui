@@ -37,7 +37,7 @@ export interface IDynamicIconsProps extends React.ComponentProps<"i"> {
 
 export const DynamicIcons = ({
 	icon,
-	className = "w-6 h-6 text-gray-600",
+	className = "w-5 h-5 text-gray-400",
 	outline,
 	...props
 }: IDynamicIconsProps): JSX.Element => {

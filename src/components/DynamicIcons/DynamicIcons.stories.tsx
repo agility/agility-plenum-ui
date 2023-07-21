@@ -22,7 +22,20 @@ const baseArgs: IDynamicIconsProps = {
 export const AllVariations = Template.bind({})
 AllVariations.decorators = [
 	() => {
-		return <DynamicIcons {...(HeroIcon.args as IDynamicIconsProps)} />
+		return (
+			<div className="flex flex-col items-center">
+				<div className="grid grid-cols-3 gap-4">
+					<DynamicIcons {...(HeroIcon.args as IDynamicIconsProps)} />
+					<DynamicIcons
+						{...(TablerIcon.args as IDynamicIconsProps)}
+					/>
+					<DynamicIcons {...(FAIcon.args as IDynamicIconsProps)} />
+				</div>
+				<span className="mt-5 block text-xs text-gray-400">
+					Note: controls are disabled on this view
+				</span>
+			</div>
+		)
 	}
 ]
 

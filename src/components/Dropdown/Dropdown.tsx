@@ -45,6 +45,11 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 	id: string
 	classNames?: IDropdownClassnames
 	placement?: Placement
+	offsetOptions?: Partial<{
+		mainAxis: number
+		crossAxis: number
+		alignmentAxis: number | null
+	}>
 }
 export const defaultClassNames: IDropdownClassnames = {
 	groupClassname: "flex inline-block text-left",
@@ -66,6 +71,7 @@ export const Dropdown: React.FC<IDropdownProps> = ({
 	classNames = defaultClassNames,
 	CustomDropdownTrigger,
 	placement = "bottom-start",
+	offsetOptions,
 	...props
 }: IDropdownProps): JSX.Element | null => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -77,7 +83,7 @@ export const Dropdown: React.FC<IDropdownProps> = ({
 		onOpenChange: setIsOpen,
 		placement,
 		middleware: [
-			offset(10),
+			offset(offsetOptions ?? 10),
 			autoPlacement({
 				allowedPlacements: [
 					placement,
