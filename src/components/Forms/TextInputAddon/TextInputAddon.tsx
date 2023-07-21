@@ -1,13 +1,13 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react"
 import { default as cn } from "classnames"
-import { DynamicIcons, IconName } from "../../../util/DynamicIcons"
+
 
 import { InputCounter } from "../InputCounter"
 import { BaseField } from "../BaseField"
 import { InputCta } from "./InputCta"
 import { InputLabel } from "../InputLabel"
 import { useId } from "../../../util/useID"
-import { SearchCircleIcon } from "@heroicons/react/solid"
+import { IDynamicIconsProps, DynamicIcons } from "../../DynamicIcons"
 
 export type Type =
 	| "text"
@@ -54,13 +54,13 @@ export interface TextInputAddonProps {
 	/** Max length of input character  */
 	maxLength?: number
 	/** Leading icon displayed within the input  */
-	leadIcon?: IconName
+	leadIcon?: IDynamicIconsProps
 	/** Trailing icon displayed within the input  */
-	trailIcon?: IconName
+	trailIcon?: IDynamicIconsProps
 	/** Icon within the input field at the begining of the field*/
-	inlineIcon?: IconName
+	inlineIcon?: IDynamicIconsProps
 	/** Icon within the input field at the end of the field*/
-	inlineTrailingIcon?: IconName
+	inlineTrailingIcon?: IDynamicIconsProps
 	/** Trailing label for the input CTA */
 	trailLabel?: string
 	/** Leading label for input CTA  */
@@ -178,9 +178,12 @@ const TextInputAddon = (
 					{inlineIcon && (
 						<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
 							<DynamicIcons
-								icon={inlineIcon}
-								className="h-5 w-5 text-gray-400"
-								outline={false}
+								{...{
+									...inlineIcon,
+									className:
+										inlineIcon.className ||
+										"h-5 w-5 bg-white text-gray-400"
+								}}
 							/>
 						</div>
 					)}
@@ -207,7 +210,7 @@ const TextInputAddon = (
 									!(leadIcon || leadLabel)
 							},
 							{
-								"!rounded-r-none !rounded-r":
+								"!rounded-l-none !rounded-r":
 									!(trailIcon || trailLabel) &&
 									(leadIcon || leadLabel)
 							},
@@ -227,9 +230,12 @@ const TextInputAddon = (
 					{inlineTrailingIcon && (
 						<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
 							<DynamicIcons
-								icon={inlineTrailingIcon}
-								className="h-5 w-5 bg-white text-gray-400"
-								outline={false}
+								{...{
+									...inlineTrailingIcon,
+									className:
+										inlineTrailingIcon.className ||
+										"h-5 w-5 bg-white text-gray-400"
+								}}
 							/>
 						</div>
 					)}

@@ -12,15 +12,13 @@ export default {
 // Create a master template for mapping args to render the Button component
 const Template: Story<TextareaProps> = (args) => <Textarea {...args} />;
 const baseArgs = {
-    label: 'Default',
-    // id: 'input',
-    // name: 'input',
-    defaultValue: '',
-    isRequired: false,
-    isDisabled: false,
-    isError: false,
-    isShowCounter: false
-} as TextareaProps;
+	label: "Default",
+	defaultValue: "",
+	isRequired: false,
+	isDisabled: false,
+	isError: false,
+	isShowCounter: false
+} as TextareaProps
 
 export const AllVariations = Template.bind({});
 AllVariations.decorators = [

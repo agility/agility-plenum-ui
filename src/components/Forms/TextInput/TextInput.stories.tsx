@@ -19,17 +19,15 @@ export default {
 // Create a master template for mapping args to render the Button component
 const Template: Story<TextInputProps> = (args) => <TextInput {...args} />;
 const baseArgs = {
-    label: 'Default',
-    // id: 'input',
-    // name: 'input',
-    type: 'text',
-    value: '',
-    isRequired: false,
-    isDisabled: false,
-    isFocused: false,
-    isError: false,
-    isShowCounter: false
-} as TextInputProps;
+	label: "Default",
+	type: "text",
+	value: "",
+	isRequired: false,
+	isDisabled: false,
+	isFocused: false,
+	isError: false,
+	isShowCounter: false
+} as TextInputProps
 
 export const AllVariations = Template.bind({});
 AllVariations.decorators = [

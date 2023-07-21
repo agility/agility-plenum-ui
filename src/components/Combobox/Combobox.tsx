@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { default as cn } from "classnames"
 import { Combobox as HeadlessUICombobox } from "@headlessui/react"
-import { DynamicIcons } from "../../util/DynamicIcons"
+import { DynamicIcons, IDynamicIconsProps } from "../DynamicIcons/DynamicIcons"
 import { InputLabel } from "../Forms/InputLabel"
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
