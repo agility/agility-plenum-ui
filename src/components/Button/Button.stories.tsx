@@ -15,13 +15,36 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 const buttonIcon: IDynamicIconsProps = {
 	icon: "BellIcon",
-	outline: true
-} 
+	outline: false
+}
+export const AllVariations = Template.bind({})
+AllVariations.decorators = [
+	() => {
+		return (
+			<div className="flex flex-col items-center">
+				<div className="grid grid-cols-3 gap-4">
+					<Button {...(Primary.args as ButtonProps)} />
+					<Button {...(Secondary.args as ButtonProps)} />
+					<Button {...(Alternative.args as ButtonProps)} />
+					<Button {...(Danger.args as ButtonProps)} />
+				</div>
+				<span className="mt-5 block text-xs text-gray-400">
+					Note: controls are disabled on this view
+				</span>
+			</div>
+		)
+	}
+]
 // Reuse that template for creating different stories
-export const Primary = Template.bind({});
-Primary.args = { label: 'Primary', type: 'primary', size: 'base'};
+export const Primary = Template.bind({})
+Primary.args = {
+	label: "Primary",
+	type: "primary",
+	size: "base",
+	icon: buttonIcon
+}
 
-export const Secondary = Template.bind({});
+export const Secondary = Template.bind({})
 Secondary.args = {
 	...Primary.args,
 	type: "secondary",

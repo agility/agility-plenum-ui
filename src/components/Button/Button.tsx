@@ -148,7 +148,7 @@ const Button = (
 				(isLoading ? (
 					<Loader classes="h-5 w-5 border-2 m-0" />
 				) : (
-					<DynamicIcons {...icon} />
+					<DynamicIcons {...{ ...icon, className: iconStyles }} />
 				))}
 
 			{!icon && !iconObj && isLoading && (
@@ -206,7 +206,7 @@ const Button = (
 				(isLoading ? (
 					<Loader classes="h-5 w-5 border-2" />
 				) : (
-					<DynamicIcons {...icon} />
+					<DynamicIcons {...{ ...icon, className: iconStyles }} />
 				))}
 
 			{!icon && !iconObj && isLoading && (
