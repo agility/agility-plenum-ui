@@ -1,6 +1,11 @@
 import React, { forwardRef, HTMLAttributeAnchorTarget } from "react"
 import cn from "classnames"
-import { DynamicIcons, IDynamicIconsProps } from "../DynamicIcons/DynamicIcons"
+import {
+	DynamicIcons,
+	IDynamicIconsProps,
+	isUnifiedIconName,
+	UnifiedIconName
+} from "../DynamicIcons/DynamicIcons"
 
 import { Loader } from "../../util/Loader"
 export interface ButtonProps {
@@ -19,7 +24,7 @@ export interface ButtonProps {
 	/**
 	 * An optional icon
 	 */
-	icon?: IDynamicIconsProps
+	icon?: IDynamicIconsProps | UnifiedIconName
 	/**
 	 * Optional click handler
 	 */
@@ -136,24 +141,24 @@ const Button = (
 			{...props}
 		>
 			{children}
-
+			{isLoading && !icon && <Loader classes="h-5 w-5 border-2 m-0" />}
 			{iconObj &&
-				(isLoading ? (
-					<Loader classes="h-5 w-5 border-2 m-0" />
-				) : (
+				(!isLoading ? (
 					<>{iconObj}</>
+				) : (
+					<Loader classes="h-5 w-5 border-2 m-0" />
 				))}
 
 			{icon &&
-				(isLoading ? (
-					<Loader classes="h-5 w-5 border-2 m-0" />
+				(!isLoading ? (
+					isUnifiedIconName(icon) ? (
+						<DynamicIcons {...{ icon, className: iconStyles }} />
+					) : (
+						<DynamicIcons {...{ className: iconStyles, ...icon }} />
+					)
 				) : (
-					<DynamicIcons {...{ ...icon, className: iconStyles }} />
+					<Loader classes="h-5 w-5 border-2 m-0" />
 				))}
-
-			{!icon && !iconObj && isLoading && (
-				<Loader classes="h-5 w-5 border-2 m-0" />
-			)}
 
 			{label && <span>{label}</span>}
 		</button>
@@ -195,23 +200,24 @@ const Button = (
 		>
 			{children}
 
+			{isLoading && !icon && <Loader classes="h-5 w-5 border-2 m-0" />}
 			{iconObj &&
-				(isLoading ? (
-					<Loader classes="h-5 w-5 border-2" />
-				) : (
+				(!isLoading ? (
 					<>{iconObj}</>
+				) : (
+					<Loader classes="h-5 w-5 border-2 m-0" />
 				))}
 
 			{icon &&
-				(isLoading ? (
-					<Loader classes="h-5 w-5 border-2" />
+				(!isLoading ? (
+					isUnifiedIconName(icon) ? (
+						<DynamicIcons {...{ icon, className: iconStyles }} />
+					) : (
+						<DynamicIcons {...{ className: iconStyles, ...icon }} />
+					)
 				) : (
-					<DynamicIcons {...{ ...icon, className: iconStyles }} />
+					<Loader classes="h-5 w-5 border-2 m-0" />
 				))}
-
-			{!icon && !iconObj && isLoading && (
-				<Loader classes="h-5 w-5 border-2" />
-			)}
 
 			{label && <span>{label}</span>}
 		</a>
