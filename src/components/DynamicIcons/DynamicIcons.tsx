@@ -28,6 +28,12 @@ export function isTablerIcon(name: UnifiedIconName): name is TablerIconName {
 export function isFAIcon(name: UnifiedIconName): name is keyof typeof FA {
 	return name in FA
 }
+export function isUnifiedIconName(
+	name: UnifiedIconName | IDynamicIconsProps
+): name is UnifiedIconName {
+	return isHeroIcon(name) || isTablerIcon(name) || isFAIcon(name)
+}
+
 
 export interface IDynamicIconsProps extends React.ComponentProps<"i"> {
 	icon: UnifiedIconName | undefined
@@ -47,14 +53,23 @@ export const DynamicIcons = ({
 		const Icon = outline ? OutlineIcons[icon] : SolidIcons[icon]
 		return (
 			<i {...props}>
-				<Icon className={cn("h-6 w-6 text-gray-600", className)} />
+				<Icon
+					className={cn(className, {
+						"h-5 w-5 text-gray-600": !className
+					})}
+				/>
 			</i>
 		)
 	}
 	if (isTablerIcon(icon)) {
 		return (
 			<TablerIcon
-				{...{ icon, className: cn("w-6 h-6 text-gray-600", className) }}
+				{...{
+					icon,
+					className: cn(className, {
+						"text-gray-600 h-5 w-5": !className
+					})
+				}}
 			/>
 		)
 	}
@@ -62,7 +77,11 @@ export const DynamicIcons = ({
 		const Icon = FA[icon]
 		return (
 			<i {...props}>
-				<Icon className={cn("h-6 w-6 text-gray-600", className)} />
+				<Icon
+					className={cn(className, {
+						"h-5 w-5 text-gray-600": !className
+					})}
+				/>
 			</i>
 		)
 	}
