@@ -151,7 +151,7 @@ const Button = (
 
 			{icon &&
 				(!isLoading ? (
-					isUnifiedIconName(icon) ? (
+					typeof icon === "string" ? (
 						<DynamicIcons {...{ icon, className: iconStyles }} />
 					) : (
 						<DynamicIcons {...{ className: iconStyles, ...icon }} />
@@ -210,7 +210,7 @@ const Button = (
 
 			{icon &&
 				(!isLoading ? (
-					isUnifiedIconName(icon) ? (
+					typeof icon === "string" ? (
 						<DynamicIcons {...{ icon, className: iconStyles }} />
 					) : (
 						<DynamicIcons {...{ className: iconStyles, ...icon }} />

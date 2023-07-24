@@ -28,9 +28,7 @@ export function isTablerIcon(name: UnifiedIconName): name is TablerIconName {
 export function isFAIcon(name: UnifiedIconName): name is keyof typeof FA {
 	return name in FA
 }
-export function isUnifiedIconName(
-	name: UnifiedIconName | IDynamicIconsProps
-): name is UnifiedIconName {
+export function isUnifiedIconName(name: UnifiedIconName): name is UnifiedIconName {
 	return isHeroIcon(name) || isTablerIcon(name) || isFAIcon(name)
 }
 

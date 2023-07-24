@@ -76,3 +76,10 @@ Loading.args = {
 	icon: buttonIcon,
 	isLoading: true
 }
+export const StringOnly = Template.bind({})
+StringOnly.args = {
+	label: "Loading",
+	type: "primary",
+	size: "base",
+	icon: "AcademicCapIcon"
+}
