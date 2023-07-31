@@ -1,32 +1,37 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
 import Button from "./Button"
+import { defaultIcon } from "./defaultArgs"
 
 const meta: Meta<typeof Button> = {
-  title: "Atoms/Buttons/Button/Primary",
-  component: Button,
-  tags: ["autodocs"],
-  argTypes: {},
+	title: "Atoms/Buttons/Button/Primary",
+	component: Button,
+	tags: ["autodocs"],
+	argTypes: {}
 }
 
 export default meta
 type Story = StoryObj<typeof Button>
 
 export const Primary: Story = {
-  args: {
-    actionType: "primary",
-    label: "Button",
-    onClick: () => {
-      window.alert("Button clicked!")
-    },
-  },
+	args: {
+		actionType: "primary",
+		label: "Button",
+		onClick: () => {
+			window.alert("Button clicked!")
+		}
+	}
 }
 export const TrailingIcon: Story = {
-  args: {
-    ...Primary.args,
-    icon: "CursorArrowRippleIcon",
-    iconPosition: "trailing",
-  },
+	args: {
+		...Primary.args,
+		icon: {
+			...defaultIcon,
+			icon: "CheckIcon",
+			outline: false
+		},
+		iconPosition: "trailing"
+	}
 }
 export const LeadingIcon: Story = {
   args: {

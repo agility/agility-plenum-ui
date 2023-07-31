@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
 import Button from "./Button"
+import { defaultIcon } from "./defaultArgs"
 
 const meta: Meta<typeof Button> = {
   title: "Atoms/Buttons/Button/Secondary",
@@ -22,11 +23,11 @@ export const Secondary: Story = {
   },
 }
 export const TrailingIcon: Story = {
-  args: {
-    ...Secondary.args,
-    icon: "Icon3dCubeSphere",
-    iconPosition: "trailing",
-  },
+	args: {
+		...Secondary.args,
+		icon: { ...defaultIcon, icon: "Icon3dCubeSphere" },
+		iconPosition: "trailing"
+	}
 }
 export const LeadingIcon: Story = {
   args: {
