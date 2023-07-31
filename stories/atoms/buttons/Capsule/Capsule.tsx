@@ -1,7 +1,7 @@
 import { default as cn } from "classnames"
 import { HTMLAttributeAnchorTarget } from "react"
 import { BTNActionType, IButtonProps } from "../Button/Button"
-import { UnifiedIconName } from "../../dynamicIcon/DynamicIcon"
+import { UnifiedIconName } from "../../icons/DynamicIcon"
 
 /**
  * Capsule Style Button

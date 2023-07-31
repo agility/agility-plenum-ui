@@ -1,9 +1,7 @@
 import Loader from "stories/atoms/loaders/Loader"
 import { default as cn } from "classnames"
 import { HTMLAttributeAnchorTarget } from "react"
-import DynamicIcon, {
-  UnifiedIconName,
-} from "stories/atoms/dynamicIcon/DynamicIcon"
+import DynamicIcon, { UnifiedIconName } from "@/stories/atoms/icons/DynamicIcon"
 // import Loader from "../loaders/loader/Loader"
 
 export type BTNActionType = "primary" | "secondary" | "alternative" | "danger"

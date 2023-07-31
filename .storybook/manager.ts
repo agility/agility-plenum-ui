@@ -1,6 +1,7 @@
 // .storybook/manager.js
 
 import { addons } from "@storybook/manager-api"
+import plenumTheme from "./plenumTheme"
 
 addons.setConfig({
 	isFullscreen: false,
@@ -9,12 +10,10 @@ addons.setConfig({
 	panelPosition: "bottom",
 	enableShortcuts: true,
 	showToolbar: true,
-	theme: undefined,
-	selectedPanel: undefined,
-	initialActive: "sidebar",
+	theme: plenumTheme,
 	sidebar: {
 		showRoots: false,
-		collapsedRoots: ["other"]
+		collapsedRoots: ["other", "plenum"]
 	},
 	toolbar: {
 		title: { hidden: false },

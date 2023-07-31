@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { default as cn } from "classnames"
 import { Switch } from "@headlessui/react"
-import DynamicIcon, {
-  IIconProps,
-  UnifiedIconName,
-} from "@/stories/atoms/dynamicIcon/DynamicIcon"
+import DynamicIcon, { IIconProps, UnifiedIconName } from "@/stories/atoms/icons/DynamicIcon"
 export interface IToggleSwitchProps {
   isChecked: boolean
   onChange: (isChecked: boolean) => void

@@ -1308,6 +1308,43 @@
   resolved "https://registry.yarnpkg.com/@fal-works/esbuild-plugin-global-externals/-/esbuild-plugin-global-externals-2.1.2.tgz#c05ed35ad82df8e6ac616c68b92c2282bd083ba4"
   integrity sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==
 
+"@floating-ui/core@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.4.1.tgz#0d633f4b76052668afb932492ac452f7ebe97f17"
+  integrity sha512-jk3WqquEJRlcyu7997NtR5PibI+y5bi+LS3hPmguVClypenMsCY3CBa3LAQnozRCtCrYWSEtAdiskpamuJRFOQ==
+  dependencies:
+    "@floating-ui/utils" "^0.1.1"
+
+"@floating-ui/dom@^1.3.0":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.5.1.tgz#88b70defd002fe851f17b4a25efb2d3c04d7a8d7"
+  integrity sha512-KwvVcPSXg6mQygvA1TjbN/gh///36kKtllIF8SUm0qpFj8+rvYrpvlYdL1JoA71SHpDqgSSdGOSoQ0Mp3uY5aw==
+  dependencies:
+    "@floating-ui/core" "^1.4.1"
+    "@floating-ui/utils" "^0.1.1"
+
+"@floating-ui/react-dom@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-2.0.1.tgz#7972a4fc488a8c746cded3cfe603b6057c308a91"
+  integrity sha512-rZtAmSht4Lry6gdhAJDrCp/6rKN7++JnL1/Anbr/DdeyYXQPxvg/ivrbYvJulbRf4vL8b212suwMM2lxbv+RQA==
+  dependencies:
+    "@floating-ui/dom" "^1.3.0"
+
+"@floating-ui/react@^0.25.0":
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react/-/react-0.25.0.tgz#2dcc79b0892b570641484355ca27a0f25793c12b"
+  integrity sha512-0ulipo5ZTmCpTlVPjIbLyqReO7S3gwyQSiIm0TjKU5LPN97BmMZ2crJZcNMQ4GZz/V4qurMibGl4z3+TjF5tRA==
+  dependencies:
+    "@floating-ui/react-dom" "^2.0.1"
+    "@floating-ui/utils" "^0.1.0"
+    aria-hidden "^1.2.3"
+    tabbable "^6.0.1"
+
+"@floating-ui/utils@^0.1.0", "@floating-ui/utils@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.1.1.tgz#1a5b1959a528e374e8037c4396c3e825d6cf4a83"
+  integrity sha512-m0G6wlnhm/AX0H12IOWtK8gASEMffnX08RtKkCgTdHb9JpHKGloI7icFfLg9ZmQeavcvR0PKmzxClyuFPSjKWw==
+
 "@headlessui/react@^1.7.10":
   version "1.7.16"
   resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.16.tgz#9c458c9c4dbb708258c9e8da3fe5363f915f7b11"
@@ -1320,7 +1357,7 @@
   resolved "https://registry.yarnpkg.com/@headlessui/tailwindcss/-/tailwindcss-0.1.3.tgz#a9b8b4c2677a7ef37889708d4401c7871b2e6105"
   integrity sha512-3aMdDyYZx9A15euRehpppSyQnb2gIw2s/Uccn2ELIoLQ9oDy0+9oRygNWNjXCD5Dt+w1pxo7C+XoiYvGcqA4Kg==
 
-"@heroicons/react@^2.0.14":
+"@heroicons/react@^2.0.18":
   version "2.0.18"
   resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-2.0.18.tgz#f80301907c243df03c7e9fd76c0286e95361f7c1"
   integrity sha512-7TyMjRrZZMBPa+/5Y8lN0iyvUU/01PeMGX2+RE7cQWpEUIcb4QotzUObFkJDejj/HUH4qjP/eQ0gzzKs2f+6Yw==
@@ -2237,7 +2274,7 @@
     "@storybook/global" "^5.0.0"
     "@storybook/preview-api" "7.1.1"
 
-"@storybook/manager-api@7.1.1":
+"@storybook/manager-api@7.1.1", "@storybook/manager-api@^7.1.1":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@storybook/manager-api/-/manager-api-7.1.1.tgz#5cc575a03972410fb30b3dedb3131c581e9c6d84"
   integrity sha512-gk429qAGMW33rAZwFXo7fDoeYGrnSbj4ddHXJYc0nzBcC6emlq5IS5GHgJthQ3Oe8CPbq8bwUkWW6I5E7OePWA==
@@ -2454,7 +2491,7 @@
     "@testing-library/user-event" "^14.0.0"
     ts-dedent "^2.2.0"
 
-"@storybook/theming@7.1.1":
+"@storybook/theming@7.1.1", "@storybook/theming@^7.1.1":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-7.1.1.tgz#5dc1bf43c7522aa6f4d24a01d361f0c2825f109c"
   integrity sha512-8ri/BvfgUzBln9EYB8N/xgRaxZIFFTG0IEEekuV2H5uv4q9JW9p3E5zqghmM1OC/vspJJa8e4Eajb1YiTO0W6w==
@@ -2547,7 +2584,7 @@
   dependencies:
     tslib "^2.4.0"
 
-"@tabler/icons-react@^2.1.2":
+"@tabler/icons-react@^2.27.0":
   version "2.30.0"
   resolved "https://registry.yarnpkg.com/@tabler/icons-react/-/icons-react-2.30.0.tgz#e7ece4b83d6cd66b3a4ec043b89bf18e5341c03e"
   integrity sha512-aYggXusHW133L4KujJkVf4GIIrjg7tIRHgNf/n37mnoHqMjwNP+PjmVdrBM1Z8Ywx9PKFRlrwM0eUMDcG+I4HA==
@@ -2555,7 +2592,7 @@
     "@tabler/icons" "2.30.0"
     prop-types "^15.7.2"
 
-"@tabler/icons@2.30.0":
+"@tabler/icons@2.30.0", "@tabler/icons@^2.26.0":
   version "2.30.0"
   resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-2.30.0.tgz#4ea3c4da56fd5653bb9d0be0dc7feaa33602555c"
   integrity sha512-tvtmkI4ALjKThVVORh++sB9JnkFY7eGInKxNy+Df7WVQiF7T85tlvGADzlgX4Ic+CK5MIUzZ0jhOlQ/RRlgXpg==
@@ -3346,6 +3383,13 @@ argparse@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
   integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
+
+aria-hidden@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/aria-hidden/-/aria-hidden-1.2.3.tgz#14aeb7fb692bbb72d69bebfa47279c1fd725e954"
+  integrity sha512-xcLxITLe2HYa1cnYnwCjkOO1PqUHQpozB8x9AR0OgWN2woOBi5kSDVxKfd0b7sb1hw5qFeJhXm9H1nu3xSfLeQ==
+  dependencies:
+    tslib "^2.0.0"
 
 aria-query@5.1.3:
   version "5.1.3"
@@ -4686,9 +4730,9 @@ ejs@^3.1.8:
     jake "^10.8.5"
 
 electron-to-chromium@^1.4.477:
-  version "1.4.477"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.477.tgz#05669aa6f161ee9076a6805457e9bd9fe6d0dfd1"
-  integrity sha512-shUVy6Eawp33dFBFIoYbIwLHrX0IZ857AlH9ug2o4rvbWmpaCUdBpQ5Zw39HRrfzAFm4APJE9V+E2A/WB0YqJw==
+  version "1.4.478"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.478.tgz#687198cfcef9b854a79a229feaa6cd8961206290"
+  integrity sha512-qjTA8djMXd+ruoODDFGnRCRBpID+AAfYWCyGtYTNhsuwxI19s8q19gbjKTwRS5z/LyVf5wICaIiPQGLekmbJbA==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -8420,7 +8464,7 @@ react-element-to-jsx-string@^15.0.0:
     is-plain-object "5.0.0"
     react-is "18.1.0"
 
-react-icons@^4.7.1:
+react-icons@^4.10.1:
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.10.1.tgz#3f3b5eec1f63c1796f6a26174a1091ca6437a500"
   integrity sha512-/ngzDP/77tlCfqthiiGNZeYFACw85fUjZtLbedmJ5DTlNDIwETxhwBzdOJ21zj4iJdvc0J3y7yOsX3PpxAJzrw==
@@ -9313,6 +9357,11 @@ synckit@^0.8.5:
   dependencies:
     "@pkgr/utils" "^2.3.1"
     tslib "^2.5.0"
+
+tabbable@^6.0.1:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.2.0.tgz#732fb62bc0175cfcec257330be187dcfba1f3b97"
+  integrity sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==
 
 tailwindcss@^3.2.4:
   version "3.3.3"
