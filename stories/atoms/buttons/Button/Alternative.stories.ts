@@ -1,31 +1,37 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import Button from "./Button"
+import { IDynamicIconProps } from "../../icons"
 
 const meta: Meta<typeof Button> = {
-  title: "Atoms/Buttons/Button/Alternative",
-  component: Button,
-  tags: ["autodocs"],
-  argTypes: {},
+	title: "Atoms/Buttons/Button/Alternative",
+	component: Button,
+	tags: ["autodocs"],
+	argTypes: {}
 }
 
 export default meta
 type Story = StoryObj<typeof Button>
 
 export const Alternative: Story = {
-  args: {
-    actionType: "alternative",
-    label: "Button",
-    onClick: () => {
-      window.alert("Button clicked!")
-    },
-  },
+	args: {
+		actionType: "alternative",
+		label: "Button",
+		onClick: () => {
+			window.alert("Button clicked!")
+		}
+	}
+}
+const defaultIcon: IDynamicIconProps = {
+	icon: "BellIcon",
+	className: "w-5 h-5",
+	outline: true
 }
 export const TrailingIcon: Story = {
-  args: {
-    ...Alternative.args,
-    icon: "BellAlertIcon",
-    iconPosition: "trailing",
-  },
+	args: {
+		...Alternative.args,
+		icon: defaultIcon,
+		iconPosition: "trailing"
+	}
 }
 export const LeadingIcon: Story = {
   args: {

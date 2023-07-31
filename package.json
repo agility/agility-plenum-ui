@@ -18,7 +18,7 @@
 		"@floating-ui/react": "^0.25.0",
 		"@headlessui/react": "^1.7.10",
 		"@headlessui/tailwindcss": "^0.1.2",
-		"@heroicons/react": "^2.0.18",
+		"@heroicons/react": "^1.0.5",
 		"@next/font": "13.1.6",
 		"@tabler/icons": "^2.26.0",
 		"@tabler/icons-react": "^2.27.0",

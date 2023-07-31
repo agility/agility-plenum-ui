@@ -12,7 +12,7 @@ const meta: Meta<typeof Dropdown> = {
 type Story = StoryObj<typeof Dropdown>
 
 const IconElement = () => (
-	<DynamicIcon className="h-5 w-5 text-gray-400 hover:text-gray-600" icon={"IconDotsVertical"} />
+	<DynamicIcon className="h-5 w-5 text-gray-400 hover:text-gray-600" icon={"DotsVerticalIcon"} />
 )
 const defaultArgs: Story["args"] = {
 	items: [...dropdownDataBase],
@@ -41,7 +41,7 @@ export const WithIcons: Story = {
 	args: {
 		...defaultArgs,
 		items: [...dropdownDataWithIcons],
-		label: undefined
+		CustomDropdownTrigger: <IconElement />
 	}
 }
 export default meta

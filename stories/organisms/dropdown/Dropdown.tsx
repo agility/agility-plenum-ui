@@ -136,7 +136,7 @@ export const Dropdown: React.FC<IDropdownProps> = ({
 				) : (
 					<>
 						<span className="pl-1">{label}</span>
-						<DynamicIcon icon="IconChevronDown" className="ml-1 h-5 w-6 " />
+						<DynamicIcon icon="ChevronDownIcon" className="ml-1 h-5 w-6 " />
 					</>
 				)}
 			</button>
