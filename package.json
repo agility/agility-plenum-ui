@@ -12,7 +12,8 @@
 		"storybook:dev": "storybook dev -p 6006",
 		"storybook:tw": "tailwindcss -o ./lib/tailwind.css -w ",
 		"storybook": "concurrently \"yarn:storybook:*\" ",
-		"build:tw": "tailwindcss -o ./lib/tailwind.css"
+		"build:tw": "tailwindcss -o ./lib/tailwind.css",
+		"create-component": "node scripts/create-component.js"
 	},
 	"dependencies": {
 		"@floating-ui/react": "^0.25.0",

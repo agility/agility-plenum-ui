@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import Button from "./Button"
 import { IDynamicIconProps } from "../../icons"
+import { defaultIcon } from "./defaultArgs"
 
 const meta: Meta<typeof Button> = {
 	title: "Atoms/Buttons/Button/Alternative",
@@ -21,11 +22,7 @@ export const Alternative: Story = {
 		}
 	}
 }
-const defaultIcon: IDynamicIconProps = {
-	icon: "BellIcon",
-	className: "w-5 h-5",
-	outline: true
-}
+
 export const TrailingIcon: Story = {
 	args: {
 		...Alternative.args,

@@ -51,7 +51,8 @@ export const DynamicIcon = ({
 					icon,
 					className: cn(className, {
 						"text-gray-600 h-5 w-5": !className
-					})
+					}),
+					outline
 				}}
 			/>
 		)
