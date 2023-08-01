@@ -1,6 +1,5 @@
-# 🌐 Agility Plenum UI Library 
-
 [![Agility Yellow Triangle Logo with gray text reading Agility to the right of the triangle](https://cdn.agilitycms.com/content-manager/images/logos/agility-logo-storybook-350.png)](https://agilitycms.com/)
+# Agility Plenum UI Library 
 
 Welcome to Plenum, the definitive UI library for working within the [Agility CMS](https://www.agilitycms.com/) ecosystem. Plenum embraces atomic design principles and is built on our Plenum design system, providing a comprehensive and cohesive collection of components and patterns. 
 
@@ -9,6 +8,7 @@ Powered by [Next.js 13](https://nextjs.org/) and [Storybook 7.1](https://storybo
 Whether you're enhancing Agility CMS or developing for the Agility Marketplace, Plenum is your trusted partner for a consistent, user-friendly design experience.
 
 ## 🏗️ Building for the Agility Marketplace
+
 
 Are you developing for the Agility CMS Marketplace? Plenum is designed to facilitate and accelerate your workflow. Using Plenum's wide selection of components and patterns, you can build consistent, robust, and user-friendly applications that seamlessly blend into the Agility ecosystem.
 
