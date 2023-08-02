@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { DynamicIcon } from "./DynamicIcon"
 
 const meta: Meta<typeof DynamicIcon> = {
-	title: "Atoms/DynamicIcon",
+	title: "Design System/Atoms/DynamicIcon",
 	component: DynamicIcon,
 	tags: []
 }

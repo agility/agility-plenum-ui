@@ -42,7 +42,7 @@ export const DynamicIcon = ({
 	outline,
 	...props
 }: IDynamicIconProps): JSX.Element => {
-	if (!icon) return <i {...props}></i>
+	if (!icon) return <i {...{ ...props, className: "flex items-center justify-center" }}></i>
 
 	if (isTablerIcon(icon)) {
 		return (
@@ -60,7 +60,7 @@ export const DynamicIcon = ({
 	if (isFAIcon(icon)) {
 		const Icon = FA[icon]
 		return (
-			<i {...props}>
+			<i {...{ ...props, className: "flex items-center justify-center" }}>
 				<Icon
 					className={cn(className, {
 						"h-5 w-5 text-gray-600": !className
@@ -72,7 +72,7 @@ export const DynamicIcon = ({
 	if (isHeroIcon(icon)) {
 		const Icon = outline ? OutlineIcons[icon] : SolidIcons[icon]
 		return (
-			<i {...props}>
+			<i {...{ ...props, className: "flex items-center justify-center" }}>
 				<Icon
 					className={cn(className, {
 						"h-5 w-5 text-gray-600": !className

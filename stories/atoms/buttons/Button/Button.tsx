@@ -98,7 +98,7 @@ const Button = ({
 				))}
 
 			{icon &&
-				iconPosition === "trailing" &&
+				iconPosition === "leading" &&
 				(isLoading ? (
 					<Loader className={cn("h-4 w-4 border-2 m-0", loaderColors, loaderSize)} />
 				) : (
@@ -110,7 +110,7 @@ const Button = ({
 			)}
 			{label}
 			{icon &&
-				iconPosition === "leading" &&
+				iconPosition === "trailing" &&
 				(isLoading ? (
 					<Loader className={cn("h-4 w-4 border-2 m-0", loaderColors, loaderSize)} />
 				) : (

@@ -4,7 +4,7 @@ import { dropdownDataWithIcons } from "../dropdown/dropdownData"
 import { DynamicIcon } from "@/stories/atoms/icons"
 
 const meta: Meta<typeof ButtonDropdown> = {
-	title: "Organisms/ButtonDropdown",
+	title: "Design System/Organisms/ButtonDropdown",
 	component: ButtonDropdown,
 	tags: ["autodocs"],
 	argTypes: {}

@@ -5,7 +5,7 @@ import { dropdownDataBase, dropdownDataWithIcons } from "./dropdownData"
 import Dropdown, { defaultClassNames } from "./Dropdown"
 
 const meta: Meta<typeof Dropdown> = {
-	title: "Organisms/Dropdown",
+	title: "Design System/Organisms/Dropdown",
 	component: Dropdown,
 	tags: ["autodocs"],
 	argTypes: {}

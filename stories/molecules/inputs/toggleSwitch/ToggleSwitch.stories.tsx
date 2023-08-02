@@ -4,9 +4,9 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 import ToggleSwitch from "./ToggleSwitch"
 const meta: Meta<typeof ToggleSwitch> = {
-  title: "Molecules/Inputs/ToggleSwitch",
-  component: ToggleSwitch,
-  tags: ["autodocs"],
+	title: "Design System/Molecules/Inputs/ToggleSwitch",
+	component: ToggleSwitch,
+	tags: ["autodocs"]
 }
 type Story = StoryObj<typeof ToggleSwitch>
 export const DefaultToggleSwitch: Story = {

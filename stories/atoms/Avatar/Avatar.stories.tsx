@@ -1,12 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import Avatar from "./Avatar"
-import { useState } from "react"
-import { get } from "http"
 
 const meta: Meta<typeof Avatar> = {
-	title: "Atoms/Avatar",
+	title: "Design System/Atoms/Avatar",
 	component: Avatar,
-	tags: ["autodocs"]
+	tags: ["autodocs"],
+	parameters: {
+		design: {
+			type: "figma",
+			url: "https://www.figma.com/file/Rb5fJ8hD3pwvLnidgCaGgB/Agility-UI?type=design&node-id=19-1017&mode=design&t=9hpwa8YStpwXksff-4"
+		}
+	}
 }
 
 type Story = StoryObj<typeof Avatar>
@@ -26,12 +30,24 @@ export const AvatarWithStatus: Story = {
 	args: {
 		...DefaultAvatar.args,
 		status: "online"
+	},
+	parameters: {
+		design: {
+			type: "figma",
+			url: "https://www.figma.com/file/Rb5fJ8hD3pwvLnidgCaGgB/Agility-UI?type=design&node-id=19-1030&mode=design&t=9hpwa8YStpwXksff-4"
+		}
 	}
 }
 export const AvatarWithInitials: Story = {
 	args: {
 		src: undefined,
 		initials: "JD"
+	},
+	parameters: {
+		design: {
+			type: "figma",
+			url: "https://www.figma.com/file/Rb5fJ8hD3pwvLnidgCaGgB/Agility-UI?type=design&node-id=19-1254&mode=design&t=9hpwa8YStpwXksff-4"
+		}
 	}
 }
 export const AvatarWithStatusAndInitials: Story = {
@@ -73,7 +89,7 @@ export const LargeAvatar: Story = {
 export const XLargeAvatar: Story = {
 	args: {
 		...DefaultAvatar.args,
-		size: "xl"
+		size: "lg"
 	}
 }
 

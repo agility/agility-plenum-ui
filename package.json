@@ -36,6 +36,7 @@
 		"typescript": "4.9.4"
 	},
 	"devDependencies": {
+		"@storybook/addon-designs": "^7.0.1",
 		"@storybook/addon-essentials": "^7.1.1",
 		"@storybook/addon-interactions": "^7.1.1",
 		"@storybook/addon-links": "^7.1.1",
