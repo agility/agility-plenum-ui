@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { default as cn } from "classnames"
-import InputLabel from "@/stories/atoms/InputLabel"
+import InputLabel from "@/stories/molecules/inputs/InputLabel"
 import { useId } from "@/utils/useId"
 
 export interface CheckboxProps {

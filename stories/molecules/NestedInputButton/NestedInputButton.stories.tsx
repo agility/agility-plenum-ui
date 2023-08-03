@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import NestedInputButton, { INestedInputButtonProps } from "./NestedInputButton"
 
 const meta: Meta<typeof NestedInputButton> = {
-	title: "Design System/Atoms/NestedInputButton",
+	title: "Design System/molecules/NestedInputButton",
 	component: NestedInputButton,
 	tags: ["autodocs"],
 	argTypes: {},

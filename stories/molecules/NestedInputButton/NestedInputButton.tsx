@@ -1,5 +1,5 @@
 import React from "react"
-import { DynamicIcon, IDynamicIconProps } from "../icons"
+import { DynamicIcon, IDynamicIconProps } from "@/stories/atoms/icons"
 import { default as cn } from "classnames"
 export interface INestedInputButtonProps {
 	/** Icon to be included*/

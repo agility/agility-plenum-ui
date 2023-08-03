@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { default as cn } from "classnames"
 import { Combobox as HeadlessUICombobox } from "@headlessui/react"
-import InputLabel from "@/stories/atoms/InputLabel"
+import InputLabel from "@/stories/molecules/inputs/InputLabel"
 import { DynamicIcon } from "@/stories/atoms/icons"
 
 export interface IComboboxProps<T extends Record<string, unknown>> {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import InputLabel from "@/stories/atoms/InputLabel"
+import InputLabel from "@/stories/molecules/inputs/InputLabel"
 import { useId } from "@/utils/useId"
 import { default as cn } from "classnames"
 

@@ -1,4 +1,4 @@
-import InputLabel from "@/stories/atoms/InputLabel"
+import InputLabel from "@/stories/molecules/inputs/InputLabel"
 import { useId } from "@/utils/useId"
 import React from "react"
 import { default as cn } from "classnames"

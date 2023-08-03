@@ -3,7 +3,7 @@ import Select from "./Select"
 const meta: Meta<typeof Select> = {
 	title: "Design System/Molecules/Inputs/Select",
 	component: Select,
-	tags: []
+	tags: ["autodocs"]
 }
 type Story = StoryObj<typeof Select>
 export const DefaultSelect: Story = {

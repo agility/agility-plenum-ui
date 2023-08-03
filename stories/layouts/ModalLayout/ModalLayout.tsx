@@ -2,9 +2,9 @@
 import React from  "react"
 import EmptySectionPlaceholder from "@/stories/organisms/EmptySectionPlaceholder"
 
-export interface ITabsProps {}
+export interface IModalLayoutProps {}
 
-const Tabs: React.FC<ITabsProps> = ({}) => {
+const ModalLayout: React.FC<IModalLayoutProps> = ({}) => {
   return (
    <EmptySectionPlaceholder
 			{...{
@@ -19,4 +19,4 @@ const Tabs: React.FC<ITabsProps> = ({}) => {
   )
 };
 
-export default Tabs;
+export default ModalLayout;

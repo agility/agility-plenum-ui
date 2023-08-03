@@ -4,7 +4,7 @@ import { Combobox } from "./ComboBox"
 const meta: Meta<typeof Combobox> = {
 	title: "Design System/Molecules/Inputs/Combobox",
 	component: Combobox,
-	tags: []
+	tags: ["autodocs"]
 }
 type Story = StoryObj<typeof Combobox>
 interface ComboItem {
