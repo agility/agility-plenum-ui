@@ -92,7 +92,7 @@ const Button = ({
 		>
 			{CustomSVGIcon &&
 				(isLoading ? (
-					<Loader className={cn("h-4 w-4 border-2 m-0", loaderColors, loaderSize)} />
+					<div className={cn("h-4 rounded-full w-4 border-2 m-0 animate-spin", loaderColors, loaderSize)} />
 				) : (
 					<i>{CustomSVGIcon}</i>
 				))}
@@ -100,19 +100,19 @@ const Button = ({
 			{icon &&
 				iconPosition === "leading" &&
 				(isLoading ? (
-					<Loader className={cn("h-4 w-4 border-2 m-0", loaderColors, loaderSize)} />
+					<div className={cn("h-4 rounded-full w-4 border-2 m-0 animate-spin", loaderColors, loaderSize)} />
 				) : (
 					<DynamicIcon {...{ ...icon, className: iconStyles }} />
 				))}
 
 			{!icon && !CustomSVGIcon && isLoading && (
-				<Loader className={cn("h-4 w-4 border-2 m-0", loaderColors, loaderSize)} />
+				<div className={cn("h-4 rounded-full w-4 border-2 m-0 animate-spin", loaderColors, loaderSize)} />
 			)}
 			{label}
 			{icon &&
 				iconPosition === "trailing" &&
 				(isLoading ? (
-					<Loader className={cn("h-4 w-4 border-2 m-0", loaderColors, loaderSize)} />
+					<div className={cn("h-4 rounded-full w-4 border-2 m-0 animate-spin", loaderColors, loaderSize)} />
 				) : (
 					<DynamicIcon {...{ ...icon, className: iconStyles }} />
 				))}

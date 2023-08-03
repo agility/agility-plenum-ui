@@ -7,6 +7,21 @@ const meta: Meta<typeof Radio> = {
 }
 type Story = StoryObj<typeof Radio>
 export const DefaultRadio: Story = {
-  args: {},
+	args: {
+		label: "Radio Label",
+		id: "radioId",
+		isDisabled: false,
+		isChecked: false,
+		isRequired: false,
+		isError: false,
+		message: "",
+		name: "radio-group",
+		onChange: (value: string, checked: boolean) => {
+			console.log(`onChange ${value} ${checked}`)
+		},
+		onClick: (value: string, checked: boolean) => {
+			console.log(`onClick ${value} ${checked}`)
+		}
+	}
 }
 export default meta

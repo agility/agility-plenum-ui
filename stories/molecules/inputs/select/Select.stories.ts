@@ -7,6 +7,17 @@ const meta: Meta<typeof Select> = {
 }
 type Story = StoryObj<typeof Select>
 export const DefaultSelect: Story = {
-  args: {},
+	args: {
+		label: "Label",
+		id: "select",
+		name: "select",
+		options: [
+			{ label: "Canada", value: "value1" },
+			{ label: "USA", value: "value2" }
+		],
+		isDisabled: false,
+		isError: false,
+		isRequired: false
+	}
 }
 export default meta

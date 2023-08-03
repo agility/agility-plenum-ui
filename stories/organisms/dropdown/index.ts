@@ -1,2 +1,2 @@
 export { default } from "./Dropdown"
-export * from "./"
+export * from "."

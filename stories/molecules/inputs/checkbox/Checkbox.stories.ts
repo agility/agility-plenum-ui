@@ -7,6 +7,17 @@ const meta: Meta<typeof Checkbox> = {
 }
 type Story = StoryObj<typeof Checkbox>
 export const DefaultCheckbox: Story = {
-  args: {},
+	args: {
+		label: "Checkbox Label",
+		id: "checkboxId",
+		isDisabled: false,
+		isChecked: false,
+		isRequired: false,
+		isError: false,
+		message: "",
+		onChange: (value: string) => {
+			console.log(`onChange ${value}`)
+		}
+	}
 }
 export default meta
