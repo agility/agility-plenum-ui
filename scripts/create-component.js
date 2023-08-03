@@ -45,14 +45,22 @@ function createFiles() {
 
 	const componentContent = `
 import React from  "react"
+import EmptySectionPlaceholder from "@/stories/organisms/EmptySectionPlaceholder"
 
 export interface I${componentName}Props {}
 
 const ${componentName}: React.FC<I${componentName}Props> = ({}) => {
   return (
-    <div>
-      ${componentName}
-    </div>
+   <EmptySectionPlaceholder
+			{...{
+				icon: {
+					icon: "IconCode"
+				},
+				mutedText: "Coming Soon! 🚧",
+				primaryMessage: "We're working on this component. Be sure to check back soon!",
+				actions: []
+			}}
+		/>
   )
 };
 
@@ -65,7 +73,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import ${componentName}, { I${componentName}Props } from "./${componentName}"
 
 const meta: Meta<typeof ${componentName}> = {
-  title: "",
+  title: "Design System/${destinationDir}/${componentName}",
   component: ${componentName},
   tags: ["autodocs"],
   argTypes: {}
@@ -73,6 +81,11 @@ const meta: Meta<typeof ${componentName}> = {
 
 export default meta
 type Story = StoryObj<typeof ${componentName}>
+export const Default${componentName}Story: Story = {
+	args: {
+		
+	}
+}
 `
 	fs.writeFileSync(path.join(directoryPath, `${componentName}.stories.tsx`), storyContent)
 

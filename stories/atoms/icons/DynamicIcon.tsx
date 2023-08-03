@@ -35,15 +35,19 @@ export interface IDynamicIconProps extends React.ComponentProps<"i"> {
 	icon: UnifiedIconName
 	className?: ClassNameWithAutocomplete
 	outline?: boolean
+	CustomSVG?: React.ReactNode
 }
 
 export const DynamicIcon = ({
 	icon,
 	className = "w-5 h-5 text-gray-400",
 	outline,
+	CustomSVG,
 	...props
 }: IDynamicIconProps): JSX.Element => {
-	if (!icon) return <i {...{ ...props, className: "flex items-center justify-center" }}></i>
+	if (CustomSVG) {
+		return <i {...{ ...props, className: "flex items-center justify-center" }}>{CustomSVG}</i>
+	}
 
 	if (isTablerIcon(icon)) {
 		return (

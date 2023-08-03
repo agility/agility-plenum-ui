@@ -2,9 +2,9 @@
 import React from  "react"
 import EmptySectionPlaceholder from "@/stories/organisms/EmptySectionPlaceholder"
 
-export interface ICrumbProps {}
+export interface ICardLayoutProps {}
 
-const Crumb: React.FC<ICrumbProps> = ({}) => {
+const CardLayout: React.FC<ICardLayoutProps> = ({}) => {
   return (
    <EmptySectionPlaceholder
 			{...{
@@ -19,4 +19,4 @@ const Crumb: React.FC<ICrumbProps> = ({}) => {
   )
 };
 
-export default Crumb;
+export default CardLayout;

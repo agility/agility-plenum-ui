@@ -1,35 +1,35 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { DynamicIcon } from "./DynamicIcon"
+import IconWithShadow from "./IconWithShadow"
 
-const meta: Meta<typeof DynamicIcon> = {
-	title: "Design System/Atoms/Icons/DynamicIcon",
-	component: DynamicIcon,
+const meta: Meta<typeof IconWithShadow> = {
+	title: "Design System/Atoms/Icons/Icon With Shadow",
+	component: IconWithShadow,
 	tags: ["autodocs"]
 }
 
-type Story = StoryObj<typeof DynamicIcon>
+type Story = StoryObj<typeof IconWithShadow>
 
 export const HeroIconSolid: Story = {
 	args: {
-		icon: "TrashIcon",
+		icon: "CubeTransparentIcon",
 		outline: false
 	}
 }
 export const HeroIconOutline: Story = {
 	args: {
-		icon: "TrashIcon",
+		icon: "CubeTransparentIcon",
 		outline: true
 	}
 }
 export const TablerIconSolid: Story = {
 	args: {
-		icon: "IconTrashFilled",
+		icon: "IconPaperclip",
 		outline: false
 	}
 }
 export const TablerIconOutline: Story = {
 	args: {
-		icon: "TrashIcon",
+		icon: "IconPaperclip",
 		outline: true
 	}
 }
