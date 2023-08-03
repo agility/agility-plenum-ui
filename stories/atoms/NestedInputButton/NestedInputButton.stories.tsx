@@ -5,7 +5,13 @@ const meta: Meta<typeof NestedInputButton> = {
 	title: "Design System/Atoms/NestedInputButton",
 	component: NestedInputButton,
 	tags: ["autodocs"],
-	argTypes: {}
+	argTypes: {},
+	parameters: {
+		design: {
+			type: "figma",
+			url: "https://www.figma.com/file/Rb5fJ8hD3pwvLnidgCaGgB/Agility-UI?type=design&node-id=114-2290&mode=dev&device-scaling=100%25&page-id=0%3A1"
+		}
+	}
 }
 
 export default meta

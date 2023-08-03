@@ -1,3 +1,3 @@
 import { HTMLAttributes } from "react"
-
-export type ClassNameWithAutocomplete = HTMLAttributes<HTMLDivElement>["className"]
+import React from "react"
+export type ClassNameWithAutocomplete = React.ComponentPropsWithoutRef<"div">["className"] 

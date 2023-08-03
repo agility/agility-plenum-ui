@@ -4,7 +4,7 @@ import { DynamicIcon } from "./DynamicIcon"
 const meta: Meta<typeof DynamicIcon> = {
 	title: "Design System/Atoms/DynamicIcon",
 	component: DynamicIcon,
-	tags: []
+	tags: ["autodocs"]
 }
 
 type Story = StoryObj<typeof DynamicIcon>

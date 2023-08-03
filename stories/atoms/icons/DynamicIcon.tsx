@@ -8,6 +8,7 @@ import { tablerIconNames, TablerIconName } from "./tablerIconNames"
 import { default as cn } from "classnames"
 
 import TablerIcon from "./TablerIcon"
+import { ClassNameWithAutocomplete } from "@/utils/types"
 
 export type IconName = keyof typeof SolidIcons | keyof typeof OutlineIcons
 
@@ -32,7 +33,7 @@ export function isUnifiedIconName(name: UnifiedIconName): name is UnifiedIconNam
 
 export interface IDynamicIconProps extends React.ComponentProps<"i"> {
 	icon: UnifiedIconName
-	className?: string
+	className?: ClassNameWithAutocomplete
 	outline?: boolean
 }
 
