@@ -1,4 +1,23 @@
 [![Agility Yellow Triangle Logo with gray text reading Agility to the right of the triangle](https://cdn.agilitycms.com/content-manager/images/logos/agility-logo-storybook-350.png)](https://agilitycms.com/)
+
+# Table of Contents
+- [Agility Plenum UI Library](#agility-plenum-ui-library)
+  - [Building for the Agility Marketplace](#building-for-the-agility-marketplace)
+  - [Features](#features)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Scripts](#scripts)
+    - [Development and Build Scripts](#development-and-build-scripts)
+    - [Storybook Scripts](#storybook-scripts)
+    - [Component Generation Script](#component-generation-script)
+      - [How to use the script](#how-to-use-the-script)
+      - [Example](#example)
+      - [Notes](#notes)
+  
+**Table of Contents generated with [easy-toc](https://marketplace.visualstudio.com/items?itemName=HEPTACODE.easy-toc)**
+
+
 # Agility Plenum UI Library 
 
 Welcome to Plenum, the definitive UI library for working within the [Agility CMS](https://www.agilitycms.com/) ecosystem. Plenum embraces atomic design principles and is built on our Plenum design system, providing a comprehensive and cohesive collection of components and patterns. 
