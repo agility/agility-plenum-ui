@@ -3,7 +3,7 @@ import { defaultIcon } from "../../Button/defaultArgs"
 import Capsule from "../Capsule"
 
 const meta: Meta<typeof Capsule> = {
-	title: "Design System/Atoms/Buttons/Capsule/Secondary",
+	title: "Design System/atoms/Buttons/Capsule/Secondary",
 	component: Capsule,
 	tags: ["autodocs"],
 	parameters: {

@@ -3,7 +3,7 @@ import { defaultIcon } from "../../Button/defaultArgs"
 import Capsule from "../Capsule"
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta: Meta<typeof Capsule> = {
-	title: "Design System/Atoms/Buttons/Capsule/Primary",
+	title: "Design System/atoms/Buttons/Capsule/Primary",
 	component: Capsule,
 	tags: ["autodocs"],
 	parameters: {

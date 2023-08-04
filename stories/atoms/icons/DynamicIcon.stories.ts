@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { DynamicIcon } from "./DynamicIcon"
 
 const meta: Meta<typeof DynamicIcon> = {
-	title: "Design System/Atoms/Icons/DynamicIcon",
+	title: "Design System/atoms/Icons/DynamicIcon",
 	component: DynamicIcon,
 	tags: ["autodocs"]
 }

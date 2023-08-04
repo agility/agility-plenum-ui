@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import IconWithShadow from "./IconWithShadow"
 
 const meta: Meta<typeof IconWithShadow> = {
-	title: "Design System/Atoms/Icons/Icon With Shadow",
+	title: "Design System/atoms/Icons/Icon With Shadow",
 	component: IconWithShadow,
 	tags: ["autodocs"]
 }

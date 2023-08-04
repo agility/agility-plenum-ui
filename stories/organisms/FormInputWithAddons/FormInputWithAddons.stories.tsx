@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import FormInputWithAddons, { IFormInputWithAddonsProps } from "./FormInputWithAddons"
 
 const meta: Meta<typeof FormInputWithAddons> = {
-	title: "Design System/Molecules/Form Input With Addons",
+	title: "Design System/organisms/Form Input With Addons",
 	component: FormInputWithAddons,
 	tags: ["autodocs"],
 	argTypes: {},

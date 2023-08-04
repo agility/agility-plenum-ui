@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import Loader from "./Loader"
 
 const meta: Meta<typeof Loader> = {
-	title: "Design System/Atoms/Loaders/Loader",
+	title: "Design System/atoms/Loaders/Loader",
 	component: Loader
 }
 

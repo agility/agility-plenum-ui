@@ -4,7 +4,7 @@ import { defaultIcon } from "../defaultArgs"
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta: Meta<typeof Button> = {
-	title: "Design System/Atoms/Buttons/Button/Primary",
+	title: "Design System/atoms/Buttons/Button/Primary",
 	component: Button,
 	tags: ["autodocs"],
 	argTypes: {},

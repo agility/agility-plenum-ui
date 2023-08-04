@@ -255,7 +255,7 @@ node create-component.js ComponentName DestinationDirectory
 This command takes two arguments:
 
 - \`ComponentName\` - The name of the new component you want to create. This should be in PascalCase (for example, "MyComponent").
-- \`DestinationDirectory\` - The directory where the new component will be created. This should be relative to the 'stories' directory. (for example, "Atoms" or "Molecules").
+- \`DestinationDirectory\` - The directory where the new component will be created. This should be relative to the 'stories' directory. (for example, "atoms" or "Molecules").
 
 The script will create a new directory with the given component name inside the specified destination directory (under the 'stories' directory). Then, it will generate three files in the new directory:
 
@@ -265,17 +265,17 @@ The script will create a new directory with the given component name inside the 
 
 #### Example
 
-To create a new component named "Button" in the "Atoms" directory, you would run:
+To create a new component named "Button" in the "atoms" directory, you would run:
 
 ```bash
-node create-component.js Button Atoms
+node create-component.js Button atoms
 ```
 
 This would create a directory structure like:
 
 ```
 - stories
-  - Atoms
+  - atoms
     - Button
       - Button.tsx
       - Button.stories.tsx
