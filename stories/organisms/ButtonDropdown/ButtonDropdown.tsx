@@ -7,13 +7,14 @@ import { DynamicIcon } from "@/stories/atoms/icons"
 export interface ButtonDropDownProps {
 	button: IButtonProps
 	dropDown: IDropdownProps
-	xPosition?: "left" | "right"
+	placement?: IDropdownProps["placement"]
+	offsetOptions?: IDropdownProps["offsetOptions"]
 }
 
 /**
  * Primary UI component for user interaction
  */
-const ButtonDropDown: FC<ButtonDropDownProps> = ({ button, dropDown }) => {
+const ButtonDropDown: FC<ButtonDropDownProps> = ({ button, dropDown, placement, offsetOptions }) => {
 	const dropDownClasses: IDropdownProps["classNames"] = {
 		...defaultClassNames,
 		groupClassname: cn(
@@ -63,7 +64,13 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({ button, dropDown }) => {
 							}}
 						/>
 					),
-					classNames: dropDownClasses
+					classNames: dropDownClasses,
+					offsetOptions: offsetOptions ?? {
+						crossAxis: 0,
+						mainAxis: 5, //up/down
+						alignmentAxis: -10 //left/right
+					},
+					placement
 				}}
 			/>
 			<div className="hidden !bg-purple-100 !text-purple-600 transition-all hover:bg-purple-200 focus:bg-purple-300" />

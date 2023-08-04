@@ -23,7 +23,8 @@ export const Primary: Story = {
 			items: dropdownDataWithIcons,
 			label: "Dropdown",
 			id: "dropdown-primary"
-		}
+		},
+		placement: "bottom-end"
 	}
 }
 export const Secondary: Story = {
@@ -36,7 +37,8 @@ export const Secondary: Story = {
 			label: "Dropdown",
 			id: "dropdown-secondary",
 			items: dropdownDataWithIcons
-		}
+		},
+		placement: "bottom-end"
 	}
 }
 export const Alternative: Story = {
@@ -49,6 +51,7 @@ export const Alternative: Story = {
 			label: "Dropdown",
 			id: "dropdown-secondary",
 			items: dropdownDataWithIcons
-		}
+		},
+		placement: "bottom-end"
 	}
 }

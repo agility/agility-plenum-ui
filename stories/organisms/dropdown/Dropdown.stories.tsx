@@ -18,7 +18,8 @@ const IconElement = () => (
 const defaultArgs: Story["args"] = {
 	items: [...dropdownDataBase],
 	label: "Dropdown",
-	classNames: defaultClassNames
+	classNames: defaultClassNames,
+	placement: "bottom-end"
 }
 export const WithLabel: Story = {
 	args: {
