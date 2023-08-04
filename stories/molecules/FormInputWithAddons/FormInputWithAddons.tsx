@@ -1,7 +1,7 @@
-import InputField, { AcceptedInputTypes, IInputFieldProps } from "@/stories/atoms/InputField"
 import { DynamicIcon, IDynamicIconProps } from "@/stories/atoms/icons"
 import React, { useLayoutEffect, useRef, useState } from "react"
 import { default as cn } from "classnames"
+import InputField, { AcceptedInputTypes, IInputFieldProps } from "../inputs/InputField"
 
 export interface IFormInputWithAddonsProps extends Omit<IInputFieldProps, "type"> {
 	leadIcon?: IDynamicIconProps
