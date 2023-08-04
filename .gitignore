@@ -11,6 +11,9 @@ lib/
 # testing
 /coverage
 
+#yarn
+/.yarn/
+
 # next.js
 /.next/
 /out/

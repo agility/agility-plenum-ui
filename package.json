@@ -1,7 +1,6 @@
 {
 	"name": "plenum-ui-component-library",
 	"version": "0.1.0",
-	"private": false,
 	"license": "MIT",
 	"scripts": {
 		"dev": "next dev",
@@ -38,7 +37,6 @@
 		"@storybook/addon-essentials": "^7.1.1",
 		"@storybook/addon-interactions": "^7.1.1",
 		"@storybook/addon-links": "^7.1.1",
-		"@storybook/addon-mdx-gfm": "^7.1.1",
 		"@storybook/blocks": "^7.1.1",
 		"@storybook/manager-api": "^7.1.1",
 		"@storybook/nextjs": "^7.1.1",

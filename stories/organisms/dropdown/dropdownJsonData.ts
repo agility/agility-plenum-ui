@@ -1,4 +1,4 @@
-import { ItemProp } from "./Dropdown"
+import { ItemProp } from "./DropdownComponent"
 
 export const dropdownDataBase: ItemProp[][] = [
 	[
