@@ -18,6 +18,9 @@ lib/
 /.next/
 /out/
 
+#storybook output
+/storybook-static/
+
 # production
 /build
 
