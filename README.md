@@ -14,9 +14,6 @@
       - [How to use the script](#how-to-use-the-script)
       - [Example](#example)
       - [Notes](#notes)
-  
-**Table of Contents generated with [easy-toc](https://marketplace.visualstudio.com/items?itemName=HEPTACODE.easy-toc)**
-
 
 # Agility Plenum UI Library 
 
