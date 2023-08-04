@@ -2,11 +2,12 @@ import { Mulish } from "@next/font/google"
 import "./globals.css"
 
 const mulishFont = Mulish({
-  variable: "--mulish",
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900", "1000"],
-  display: "optional",
-  subsets: ["latin"],
-  fallback: ["Helvetica", "Arial", "sans-serif"],
+	variable: "--mulish",
+	weight: ["200", "300", "400", "500", "600", "700", "800", "900", "1000"],
+	display: "swap",
+	style: ["normal", "italic"],
+	subsets: ["latin"],
+	fallback: ["Helvetica", "Arial", "sans-serif"]
 })
 
 export default function RootLayout({
