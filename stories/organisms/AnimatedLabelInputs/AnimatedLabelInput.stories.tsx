@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import AmimatedLabelInput, { IAnimatedLabelInputProps } from "./AnimatedLabelInput"
+import AnimatedLabelInput, { IAnimatedLabelInputProps } from "./AnimatedLabelInput"
 
-const meta: Meta<typeof AmimatedLabelInput> = {
-	title: "Design System/organisms/Amimated Label Input",
-	component: AmimatedLabelInput,
+const meta: Meta<typeof AnimatedLabelInput> = {
+	title: "Design System/organisms/Animated Label Input",
+	component: AnimatedLabelInput,
 	tags: ["autodocs"],
 	argTypes: {}
 }
 
 export default meta
-type Story = StoryObj<typeof AmimatedLabelInput>
+type Story = StoryObj<typeof AnimatedLabelInput>
 export const DefaultAnimatedLabelInputsStory: Story = {
 	args: {
 		id: "test",
