@@ -4662,16 +4662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:18.0.10":
-  version: 18.0.10
-  resolution: "@types/react-dom@npm:18.0.10"
-  dependencies:
-    "@types/react": "*"
-  checksum: ff8282d5005a0b1cd95fb65bf79d3d8485e4cfe2aaf052129033a178684b940014a3f4536bc20d573f8a01cf4c6f4770c74988cef7c2b5cac3041d9f172647e3
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:*, @types/react@npm:>=16":
+"@types/react@npm:>=16":
   version: 18.2.18
   resolution: "@types/react@npm:18.2.18"
   dependencies:
@@ -4679,17 +4670,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 2e0d75de2b618e76780019e52478b1bec2b015a9187aea30f84518c0c3ddc639055bdfea50864aece937bad0cb0544d0100b80d30f5461e72fbc1c3c0be8b140
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:18.0.27":
-  version: 18.0.27
-  resolution: "@types/react@npm:18.0.27"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 600fdbc39a92ea4a77047db3e12f05f67776a710f5918248c0189a59ac2a38900c9db5a5d2e433a16df528a3ecab1aa114b322cacea573bb1ca2fc0b094c52d1
   languageName: node
   linkType: hard
 
@@ -11568,8 +11548,6 @@ __metadata:
     "@tailwindcss/line-clamp": ^0.4.2
     "@tailwindcss/typography": ^0.5.9
     "@types/node": 18.11.18
-    "@types/react": 18.0.27
-    "@types/react-dom": 18.0.10
     autoprefixer: ^10.4.13
     classnames: ^2.3.2
     concurrently: ^7.6.0
@@ -11586,17 +11564,6 @@ __metadata:
     storybook: ^7.1.1
     tailwindcss: ^3.2.4
     typescript: ^5.1.6
-  peerDependencies:
-    "@floating-ui/react": ^0.25.0
-    "@headlessui/react": ^1.7.10
-    "@headlessui/tailwindcss": ^0.1.2
-    "@heroicons/react": ^1.0.5
-    "@tabler/icons": ^2.26.0
-    "@tabler/icons-react": ^2.27.0
-    classnames: ^2.3.2
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-icons: ^4.10.1
   languageName: unknown
   linkType: soft
 

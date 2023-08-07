@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
 import { DynamicIcon } from "@/stories/atoms/icons"
-import { dropdownDataBase, dropdownDataWithIcons } from "./dropdownJsonData"
+import { dropdownDataBase, dropdownDataWithIcons } from "./dropdownJSON"
 import Dropdown, { defaultClassNames } from "./DropdownComponent"
 
 const meta: Meta<typeof Dropdown> = {

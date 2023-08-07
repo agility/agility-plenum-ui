@@ -1,7 +1,11 @@
-// build.js
+const { execSync } = require("child_process")
 const esbuild = require("esbuild")
 const path = require("path")
 
+// Run TypeScript to generate type declarations using the new tsconfig.lib.json
+execSync("tsc --emitDeclarationOnly --project tsconfig.lib.json", { stdio: "inherit" })
+
+// Build script using esbuild
 esbuild
 	.build({
 		entryPoints: [path.resolve(__dirname, "stories/index.ts")],
