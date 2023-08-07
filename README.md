@@ -1,61 +1,42 @@
-[![Agility Yellow Triangle Logo with gray text reading Agility to the right of the triangle](https://cdn.agilitycms.com/content-manager/images/logos/agility-logo-storybook-350.png)](https://agilitycms.com/)
 
-# Table of Contents
-- [Agility Plenum UI Library](#agility-plenum-ui-library)
-  - [Building for the Agility Marketplace](#building-for-the-agility-marketplace)
-  - [Features](#features)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Scripts](#scripts)
-    - [Development and Build Scripts](#development-and-build-scripts)
-    - [Storybook Scripts](#storybook-scripts)
-    - [Component Generation Script](#component-generation-script)
-      - [How to use the script](#how-to-use-the-script)
-      - [Example](#example)
-      - [Notes](#notes)
-
+[![Agility Yellow Triangle Logo withe gray text reading Agility to the right of the triangle](https://cdn.agilitycms.com/content-manager/images/logos/agility-logo-storybook-350.png)](https://agilitycms.com/)
 # Agility Plenum UI Library 
 
-Welcome to Plenum, the definitive UI library for working within the [Agility CMS](https://www.agilitycms.com/) ecosystem. Plenum embraces atomic design principles and is built on our Plenum design system, providing a comprehensive and cohesive collection of components and patterns. 
-
-Powered by [Next.js 13](https://nextjs.org/) and [Storybook 7.1](https://storybook.js.org/), Plenum is designed not just for building user interfaces in Agility CMS, but also for crafting your own applications within the Agility CMS ecosystem. 
-
-Whether you're enhancing Agility CMS or developing for the Agility Marketplace, Plenum is your trusted partner for a consistent, user-friendly design experience.
-
-## 🏗️ Building for the Agility Marketplace
+Welcome to Plenum, the definitive UI library for working within the [Agility CMS](https://www.agilitycms.com/) ecosystem. Built with [Next.js 13](https://nextjs.org/) and [Storybook 7.1](https://storybook.js.org/), Plenum is a comprehensive collection of components and patterns designed for building user interfaces in Agility CMS, as well as your own applications within the Agility CMS ecosystem.
 
 
-Are you developing for the Agility CMS Marketplace? Plenum is designed to facilitate and accelerate your workflow. Using Plenum's wide selection of components and patterns, you can build consistent, robust, and user-friendly applications that seamlessly blend into the Agility ecosystem.
+## Building for the Agility Marketplace
 
-We welcome and encourage contributions! Fork the repository, make your enhancements, and submit a pull request. Together, we can make Plenum better for every developer in the Agility community.
+The Plenum library is designed to encourage and facilitate building applications for the Agility CMS Marketplace. Use the rich selection of components and patterns to build consistent, robust, and user-friendly applications for the Agility ecosystem.
 
-## 🎁 Features
+Contributions to extend and improve this library are welcome! Feel free to fork the repository and submit pull requests.
 
-- Comprehensive UI components library, following atomic design principles and our Plenum design system for utmost consistency.
-- Modern, cutting-edge tech stack with Next.js 13 and Storybook 7.1.
-- Automation scripts for efficient component creation.
-- Integration with Tailwind CSS for utility-first styling.
-- Easy to install and integrate into any Agility CMS project.
+## Features
 
-## 📋 Prerequisites
+- Comprehensive UI components library, designed for versatility and consistency.
+- Built with modern technologies like Next.js 13 and Storybook 7.1.
+- Includes automation scripts for efficient component creation.
+- Adopts Tailwind CSS for utility-first styling.
+- Easy to use, install, and integrate into your project.
+  
+## Prerequisites
 
-Before you can take full advantage of Plenum, you need to install Tailwind CSS into your project. Follow the instructions here: [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/guides/nextjs)
+Before you begin, ensure that Tailwind CSS is installed in your project. Follow the instructions here: [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/guides/nextjs)
 
-In your app entry point (i.e., \`_app.tsx\`), import the \`globals.css\` file from the previous step, and the \`tailwind.css\` file from Plenum:
+In your app entry point (i.e. \`_app.tsx\`), import the \`globals.css\` file from the previous step, and the \`tailwind.css\` file from Plenum:
 
-```
+```jsx
 import "<RELATIVE_PATH>/globals.css";
 import "@agility/plenum-ui/lib/tailwind.css";
 ```
 
-Make sure to add any additional styles before these two import statements to prevent overwriting Plenum's styling.
+Make sure to add any additional styles before these two import statements to prevent overwriting the Plenum styling.
 
-## 💾 Installation
+## Installation
 
-Installing Plenum into your project is a breeze. You can use either npm or yarn:
+You can install the Plenum library using npm or yarn:
 
-```
+```bash
 # Using npm:
 npm install @agility/plenum-ui
 
@@ -63,23 +44,23 @@ npm install @agility/plenum-ui
 yarn add @agility/plenum-ui
 ```
 
-## 🔨 Usage
+## Usage
 
-To use Plenum components in your React components:
+Import and use the Plenum components in your React components:
 
-```
+```jsx
 import { Component } from '@agility/plenum-ui';
 
-<Component {...ComponentProps} />
+<Component {...{ComponentProps}} />
 ```
 
-## 📄 Scripts
+## Scripts
 
 ### Development and Build Scripts
 
-Run your development server:
+Run your development server with Storybook:
 
-```
+```bash
 npm run dev
 # or
 yarn dev
@@ -87,86 +68,110 @@ yarn dev
 
 Build your project:
 
-```
+```bash
 npm run build
 # or
 yarn build
 ```
 
-Start your application:
+Clean the \`dist\` directory:
 
-```
-npm run start
+```bash
+npm run clean
 # or
-yarn start
+yarn clean
 ```
 
 Lint your project:
 
-```
+```bash
 npm run lint
 # or
 yarn lint
 ```
 
-### 📚 Storybook Scripts
-
-Run your Storybook in development mode on port 6006:
-
-```
-npm run storybook
-# or
-yarn storybook
-```
-
-Build your Storybook:
-
-```
-npm run build-storybook
-# or
-yarn build-storybook
-```
-
-Generate Tailwind CSS for Storybook:
-
-```
-npm run storybook:tw
-# or
-yarn storybook:tw
-```
-
 Build Tailwind CSS:
 
-```
+```bash
 npm run build:tw
 # or
 yarn build:tw
 ```
 
-### 🛠️ Component Generation Script
+### Storybook Scripts
 
-Our Node.js script automates the creation of new components for our Storybook library. It creates a component directory with necessary files like \`Component.tsx\`, \`Component.stories.tsx\`, and \`index.tsx\`.
+Build your Storybook:
+
+```bash
+npm run build-storybook
+# or
+yarn build-storybook
+```
+
+Run your Storybook in development mode:
+
+```bash
+npm run storybook:dev
+# or
+yarn storybook:dev
+```
+
+Generate Tailwind CSS for Storybook and watch for changes:
+
+```bash
+npm run storybook:tw
+# or
+yarn storybook:tw
+```
+
+Build specific parts of Storybook:
+
+```bash
+# Build Storybook
+npm run sb-build:storybook
+# or
+yarn sb-build:storybook
+
+# Build Tailwind CSS for Storybook
+npm run sb-build:tw
+# or
+yarn sb-build:tw
+```
+
+Compile TypeScript files using custom build script:
+
+```bash
+npm run build:tsc
+# or
+yarn build:tsc
+```
+
+These scripts cover various tasks related to development, build processes, linting, and handling specific aspects like Storybook and Tailwind CSS. Make sure to run the appropriate script for the task you want to perform.
+
+
+### Component Generation Script
+
+We have a Node.js script that automates the creation of new components for our Storybook library. This script generates a component directory, along with the necessary files like \`Component.tsx\`, \`Component.stories.tsx\`, and \`index.tsx\`.
 
 #### How to use the script
 
-To use the script, you should have Node.js installed. From the terminal, you can create a new component with the following command:
+To use the script, you should have Node.js installed. From the terminal, you can create a new component by running the following command:
 
-```
-yarn create-component ComponentName DestinationDirectory
-# or
-npm run create-component ComponentName DestinationDirectory
+```bash
+node create-component.js ComponentName DestinationDirectory
 ```
 
-The command takes two arguments:
+This command takes two arguments:
 
-- \`ComponentName\`: The name of the new component (PascalCase, e.g., "MyComponent").
-- \`DestinationDirectory\`: The directory where the new component will be created. It should be relative to the 'stories' directory (e.g., "atoms" or "Molecules").
+- \`ComponentName\` - The name of the new component you want to create. This should be in PascalCase (for example, "MyComponent").
+- \`DestinationDirectory\` - The directory where the new component will be created. This should be relative to the 'stories' directory. (for example, "atoms" or "Molecules").
 
-The script will create a new directory with the component name inside the destination directory (under the 'stories' directory), and generate three files in the new directory:
+The script will create a new directory with the given component name inside the specified destination directory (under the 'stories' directory). Then, it will generate three files in the new directory:
 
-- \`ComponentName.tsx\`: The component file, which contains a basic functional component structure with a typed interface for props.
-- \`ComponentName.stories.tsx\`: The Storybook story file for the new component.
-- \`index.tsx\`: An index file to cleanly export the new component.
+- \`ComponentName.tsx\` - This is the component file. It contains a basic React functional component structure.
+- \`ComponentName.stories.tsx\` - This is the Storybook story file. It sets up a basic story for the new component.
+- \`index.tsx\` - This file simply exports the new component. It's used for cleaner imports.
+
 #### Example
 
 To create a new component named "Button" in the "atoms" directory, you would run:
@@ -188,7 +193,6 @@ This would create a directory structure like:
 
 Each of the generated files will contain basic boilerplate code that you can start with.
 
-#### Notes
-Upon successful component creation, the script will exit and display a success message. If the directory already exists, the script will ask for confirmation before overwriting any existing files.
+##### Notes
 
-Please note that the script assumes that the 'stories' directory exists. If the destination directory does not exist, the script will attempt to create it. The script will also prompt you before overwriting any existing files. Use PascalCase for component names and directory names, and ensure the paths are correctly set. If you encounter any issues, you can still manually create the component and its associated files.
+This script does prompt the user before overwriting existing directories, so you can run it with confidence. Always use PascalCase for component names, and ensure the destination directory exists or can be created. If you encounter any issues, you can create the component and its files manually

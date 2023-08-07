@@ -17,8 +17,8 @@
 		"build:tw": "tailwindcss -o ./lib/tailwind.css",
 		"build:tsc": "yarn node build.js",
 		"build": "npm run clean && npm-run-all -s \"build:*\" ",
-		"create-component": "node scripts/create-component.js",
-		"clean": "rimraf dist"
+		"clean": "rimraf dist",
+		"create-component": "node scripts/create-component.js"
 	},
 	"devDependencies": {
 		"@floating-ui/react": "^0.25.0",

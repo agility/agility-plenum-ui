@@ -174,7 +174,7 @@ import { Component } from '@agility/plenum-ui';
 
 ### Development and Build Scripts
 
-Run your development server:
+Run your development server with Storybook:
 
 ```bash
 npm run dev
@@ -190,12 +190,12 @@ npm run build
 yarn build
 ```
 
-Start your application:
+Clean the \`dist\` directory:
 
 ```bash
-npm run start
+npm run clean
 # or
-yarn start
+yarn clean
 ```
 
 Lint your project:
@@ -204,6 +204,14 @@ Lint your project:
 npm run lint
 # or
 yarn lint
+```
+
+Build Tailwind CSS:
+
+```bash
+npm run build:tw
+# or
+yarn build:tw
 ```
 
 ### Storybook Scripts
@@ -224,7 +232,7 @@ npm run storybook:dev
 yarn storybook:dev
 ```
 
-Generate Tailwind CSS for Storybook:
+Generate Tailwind CSS for Storybook and watch for changes:
 
 ```bash
 npm run storybook:tw
@@ -232,13 +240,30 @@ npm run storybook:tw
 yarn storybook:tw
 ```
 
-Build Tailwind CSS:
+Build specific parts of Storybook:
 
 ```bash
-npm run build:tw
+# Build Storybook
+npm run sb-build:storybook
 # or
-yarn build:tw
+yarn sb-build:storybook
+
+# Build Tailwind CSS for Storybook
+npm run sb-build:tw
+# or
+yarn sb-build:tw
 ```
+
+Compile TypeScript files using custom build script:
+
+```bash
+npm run build:tsc
+# or
+yarn build:tsc
+```
+
+These scripts cover various tasks related to development, build processes, linting, and handling specific aspects like Storybook and Tailwind CSS. Make sure to run the appropriate script for the task you want to perform.
+
 
 ### Component Generation Script
 
