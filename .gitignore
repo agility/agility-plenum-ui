@@ -21,8 +21,9 @@ lib/
 #storybook output
 /storybook-static/
 
+
 # production
-/build
+/dist
 
 # misc
 .DS_Store

@@ -1,3 +1,3 @@
-
-export { default } from './ButtonDropdown';
-export * from './ButtonDropdown';
+import ButtonDropdown, { IButtonDropdownProps } from "./ButtonDropdown"
+export type { IButtonDropdownProps }
+export default ButtonDropdown

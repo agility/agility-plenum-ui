@@ -20,7 +20,7 @@ import {
 import { ClassNameWithAutocomplete } from "utils/types"
 import { DynamicIcon, IDynamicIconProps } from "@/stories/atoms/icons"
 
-export interface ItemProp extends HTMLAttributes<HTMLButtonElement> {
+export interface IItemProp extends HTMLAttributes<HTMLButtonElement> {
 	icon?: {
 		name: IDynamicIconProps["icon"]
 		className?: ClassNameWithAutocomplete
@@ -40,7 +40,7 @@ export interface IDropdownClassnames {
 	buttonClassname?: ClassNameWithAutocomplete
 }
 export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
-	items: ItemProp[][]
+	items: IItemProp[][]
 	label: string
 	CustomDropdownTrigger?: React.ReactNode
 	id: string

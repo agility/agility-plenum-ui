@@ -2,7 +2,7 @@ import { DynamicIcon } from "./DynamicIcon"
 import { default as cn } from "classnames"
 import { IDynamicIconProps } from "./DynamicIcon"
 
-interface IIconWithShadowProps extends IDynamicIconProps {}
+export interface IIconWithShadowProps extends IDynamicIconProps {}
 
 const IconWithShadow: React.FC<IIconWithShadowProps> = (props) => {
 	return (

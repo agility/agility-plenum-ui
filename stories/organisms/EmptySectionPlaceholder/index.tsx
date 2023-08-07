@@ -1,3 +1,3 @@
-
-export { default } from './EmptySectionPlaceholder';
-export * from './EmptySectionPlaceholder';
+import EmptySectionPlaceholder, { IEmptySectionPlaceholderProps } from "./EmptySectionPlaceholder"
+export default EmptySectionPlaceholder
+export type { IEmptySectionPlaceholderProps }

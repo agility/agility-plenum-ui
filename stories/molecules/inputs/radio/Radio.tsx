@@ -2,7 +2,7 @@ import InputLabel from "@/stories/molecules/inputs/InputLabel"
 import { useId } from "@/utils/useId"
 import React from "react"
 import { default as cn } from "classnames"
-interface IRadioProps {
+export interface IRadioProps {
 	/** group name */
 	name?: string
 	/** Radio label */

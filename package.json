@@ -2,6 +2,9 @@
 	"name": "plenum-ui-component-library",
 	"version": "2.0.0",
 	"license": "MIT",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"scripts": {
 		"lint": "next lint",
 		"build-storybook": "npm-run-all -p \"sb-build:*\"",
@@ -12,8 +15,8 @@
 		"storybook": "npm-run-all -p \"storybook:*\" ",
 		"dev": "yarn storybook",
 		"build:tw": "tailwindcss -o ./lib/tailwind.css",
-		"build:tsc": "rollup -c",
-		"build": "npm-run-all -2 build:*",
+		"build:tsc": "node build.js",
+		"build": "npm-run-all -s \"build:*\"",
 		"create-component": "node scripts/create-component.js"
 	},
 	"peerDependencies": {
@@ -55,6 +58,7 @@
 		"autoprefixer": "^10.4.13",
 		"classnames": "^2.3.2",
 		"concurrently": "^7.6.0",
+		"esbuild": "^0.18.19",
 		"eslint": "8.32.0",
 		"eslint-config-next": "13.1.6",
 		"eslint-plugin-storybook": "^0.6.13",

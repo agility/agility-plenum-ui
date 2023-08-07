@@ -9,5 +9,6 @@ import {
 	isTablerIcon,
 	isUnifiedIconName
 } from "./DynamicIcon"
-export { DynamicIcon, isFAIcon, isHeroIcon, isTablerIcon, isUnifiedIconName }
-export type { FAIconName, IDynamicIconProps, IconName, UnifiedIconName }
+import IconWithShadow, { IIconWithShadowProps } from "./IconWithShadow"
+export { DynamicIcon, isFAIcon, isHeroIcon, isTablerIcon, isUnifiedIconName, IconWithShadow }
+export type { FAIconName, IDynamicIconProps, IconName, UnifiedIconName, IIconWithShadowProps }

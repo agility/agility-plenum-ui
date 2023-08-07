@@ -1,10 +1,10 @@
 import React, { FC } from "react"
 import { default as cn } from "classnames"
 import Button, { IButtonProps } from "@/stories/atoms/buttons/Button"
-import Dropdown, { IDropdownProps, defaultClassNames } from "../dropdown/DropdownComponent"
+import Dropdown, { IDropdownProps, defaultClassNames } from "../Dropdown/DropdownComponent"
 import { DynamicIcon } from "@/stories/atoms/icons"
 
-export interface ButtonDropDownProps {
+export interface IButtonDropdownProps {
 	button: IButtonProps
 	dropDown: IDropdownProps
 	placement?: IDropdownProps["placement"]
@@ -14,7 +14,7 @@ export interface ButtonDropDownProps {
 /**
  * Primary UI component for user interaction
  */
-const ButtonDropDown: FC<ButtonDropDownProps> = ({ button, dropDown, placement, offsetOptions }) => {
+const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement, offsetOptions }) => {
 	const dropDownClasses: IDropdownProps["classNames"] = {
 		...defaultClassNames,
 		groupClassname: cn(
@@ -77,4 +77,4 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({ button, dropDown, placement, 
 		</div>
 	)
 }
-export default ButtonDropDown
+export default ButtonDropdown

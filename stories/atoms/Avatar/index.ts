@@ -1,2 +1,3 @@
-export { default } from "./Avatar"
-export * from "./Avatar"
+import Avatar, { IAvatarProps } from "./Avatar"
+export default Avatar
+export type { IAvatarProps }

@@ -3,11 +3,11 @@ import InputLabel from "@/stories/molecules/inputs/InputLabel"
 import { useId } from "@/utils/useId"
 import { default as cn } from "classnames"
 
-export type SimpleSelectOptions = {
+export type ISimpleSelectOptions = {
 	label: string
 	value: string
 }
-interface ISelectProps {
+export interface ISelectProps {
 	/** Label */
 	label?: string
 	/** Select ID prop */
@@ -15,7 +15,7 @@ interface ISelectProps {
 	/** Select name prop */
 	name?: string
 	/** List of options to display in the select menu */
-	options: SimpleSelectOptions[]
+	options: ISimpleSelectOptions[]
 	/** Select name prop */
 	onChange?(value: string): void
 	/** Select disabled state */

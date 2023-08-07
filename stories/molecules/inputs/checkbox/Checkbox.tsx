@@ -3,7 +3,7 @@ import { default as cn } from "classnames"
 import InputLabel from "@/stories/molecules/inputs/InputLabel"
 import { useId } from "@/utils/useId"
 
-export interface CheckboxProps {
+export interface ICheckboxProps {
 	/** Checkbox label */
 	label: string
 	/** Checkbox ID */
@@ -29,7 +29,7 @@ export interface CheckboxProps {
 }
 
 /** Comment */
-const Checkbox: FC<CheckboxProps> = ({
+const Checkbox: FC<ICheckboxProps> = ({
 	label,
 	id,
 	isDisabled,
@@ -42,7 +42,7 @@ const Checkbox: FC<CheckboxProps> = ({
 	hasBorder,
 	className,
 	...props
-}: CheckboxProps) => {
+}: ICheckboxProps) => {
 	const uniqueID = useId()
 	if (!id) id = `cb-${uniqueID}`
 

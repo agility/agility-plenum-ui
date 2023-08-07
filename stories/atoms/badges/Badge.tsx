@@ -2,7 +2,7 @@ import React from "react"
 import { default as cn } from "classnames"
 import { ClassNameWithAutocomplete } from "@/utils/types"
 import { DynamicIcon } from "../icons"
-interface IBadgeProps {
+export interface IBadgeProps {
 	/** The content scheme of the badge */
 	color: "primary" | "secondary" | "danger" | "warning" | "success" | "info" | "basic" | "pink"
 	/** Render with slightly rounded corners or as a pill shape */

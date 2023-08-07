@@ -1,2 +1,3 @@
-export { default } from "./InputField"
-export * from "./InputField"
+import InputField, { AcceptedInputTypes, IInputFieldProps } from "./InputField"
+export type { AcceptedInputTypes, IInputFieldProps }
+export default InputField

@@ -1,6 +1,6 @@
-import { ItemProp } from "./DropdownComponent"
+import { IItemProp } from "./DropdownComponent"
 
-export const dropdownDataBase: ItemProp[][] = [
+export const dropdownDataBase: IItemProp[][] = [
 	[
 		{
 			key: "Copy",
@@ -38,7 +38,7 @@ export const dropdownDataBase: ItemProp[][] = [
 	]
 ]
 
-export const dropdownDataWithIcons: ItemProp[][] = [
+export const dropdownDataWithIcons: IItemProp[][] = [
 	[
 		{
 			icon: {

@@ -1,8 +1,8 @@
 import React from "react"
 import classNames, { default as cn } from "classnames"
 
-interface ILoaderProps {
-  className?: string
+export interface ILoaderProps {
+	className?: string
 }
 const Loader: React.FC<ILoaderProps> = ({ className }) => {
   const outerLoaderStyles = cn(

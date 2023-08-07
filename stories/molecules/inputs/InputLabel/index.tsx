@@ -1,3 +1,3 @@
-
-export { default } from './InputLabel';
-export * from './InputLabel';
+import InputLabel, { IInputLabelProps } from "./InputLabel"
+export type { IInputLabelProps }
+export default InputLabel

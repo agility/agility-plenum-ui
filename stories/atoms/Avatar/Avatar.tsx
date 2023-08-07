@@ -1,6 +1,6 @@
 import React, { FC, useMemo } from "react"
 import { default as cn } from "classnames"
-import Image from "next/image"
+// import Image from "next/image"
 export interface IAvatarProps {
 	/**
 	 * source url for the avatar
@@ -102,17 +102,8 @@ const Avatar: FC<IAvatarProps> = ({ src, status, size = "md", alt = "Avatar imag
 	return (
 		<span className="inline-block relative">
 			{src ? (
-				<Image
-					className={imageStyles}
-					width={imageSize}
-					height={imageSize}
-					src={src}
-					alt={alt}
-					quality={100}
-					// layout="fill"
-					blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCA"
-					loading="eager"
-				/>
+				// eslint-disable-next-line @next/next/no-img-element
+				<img className={imageStyles} width={imageSize} height={imageSize} src={src} alt={alt} loading="eager" />
 			) : initials ? (
 				<span className={initialsStyles}>
 					<span className={fontStyles}>{initials}</span>

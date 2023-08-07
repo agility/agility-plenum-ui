@@ -1,19 +1,14 @@
 import React, { useMemo } from "react"
 import { default as cn } from "classnames"
-
-type Ran<T extends number> = number extends T ? number : _Range<T, []>
-type _Range<T extends number, R extends unknown[]> = R["length"] extends T
-  ? R[number]
-  : _Range<T, [R["length"], ...R]>
-type R5 = Ran<101>
-
-interface IRadialProgressProps extends React.PropsWithChildren {
-  /** Percentage value to display */
-  inputValue: number
-  /** Radius for the circle - Max value of 100 */
-  radius: number
-  className?: string
+export interface IRadialProgressProps extends React.PropsWithChildren {
+	/** Percentage value to display */
+	inputValue: number
+	/** Radius for the circle - Max value of 100 */
+	radius: number
+	/** Additional classnames */
+	className?: string
 }
+
 const RadialProgress: React.FC<IRadialProgressProps> = ({
   inputValue,
   radius,

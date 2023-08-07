@@ -1,3 +1,3 @@
-
-export { default } from './NestedInputButton';
-export * from './NestedInputButton';
+import NestedInputButton, { INestedInputButtonProps } from "./NestedInputButton"
+export type { INestedInputButtonProps }
+export default NestedInputButton

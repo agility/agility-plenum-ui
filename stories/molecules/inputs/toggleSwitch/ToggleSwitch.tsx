@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react"
 import { default as cn } from "classnames"
 import { Switch } from "@headlessui/react"
-import DynamicIcon, { IIconProps, UnifiedIconName } from "@/stories/atoms/icons/DynamicIcon"
+import { DynamicIcon, IDynamicIconProps } from "@/stories/atoms"
 export interface IToggleSwitchProps {
-  isChecked: boolean
-  onChange: (isChecked: boolean) => void
-  label?: {
-    text: string | JSX.Element
-    className?: string
-    xPosition?: "left" | "right"
-  }
-  screenReaderLabel: string
-  name: string
-  id: string
-  variant: "base" | "short"
-  withIcon?: IIconProps
+	isChecked: boolean
+	onChange: (isChecked: boolean) => void
+	label?: {
+		text: string | JSX.Element
+		className?: string
+		xPosition?: "left" | "right"
+	}
+	screenReaderLabel: string
+	name: string
+	id: string
+	variant: "base" | "short"
+	withIcon?: IDynamicIconProps
 }
 
 const ToggleSwitch: React.FC<IToggleSwitchProps> = ({

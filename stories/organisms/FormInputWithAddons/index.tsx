@@ -1,3 +1,3 @@
-
-export { default } from './FormInputWithAddons';
-export * from './FormInputWithAddons';
+import FormInputWithAddons, { IFormInputWithAddonsProps } from "./FormInputWithAddons"
+export type { IFormInputWithAddonsProps }
+export default FormInputWithAddons
