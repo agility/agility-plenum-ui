@@ -1,8 +1,9 @@
 import React, { FC } from "react"
 import { default as cn } from "classnames"
 import Button, { IButtonProps } from "@/stories/atoms/buttons/Button"
-import Dropdown, { IDropdownProps, defaultClassNames } from "../Dropdown/DropdownComponent"
+
 import { DynamicIcon } from "@/stories/atoms/icons"
+import Dropdown, { IDropdownProps, defaultClassNames } from "../Dropdown"
 
 export interface IButtonDropdownProps {
 	button: IButtonProps
