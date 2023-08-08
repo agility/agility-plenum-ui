@@ -1,6 +1,13 @@
 const { execSync } = require("child_process")
 const esbuild = require("esbuild")
 const path = require("path")
+const { Generator } = require('npm-dts');
+
+new Generator({
+	entry: path.resolve(__dirname, "stories/index.ts"),
+	output: path.resolve(__dirname, 'dist/index.d.ts'),
+	tsc: "--emitDeclarationOnly --project tsconfig.lib.json"
+}).generate();
 
 // Run TypeScript to generate type declarations using the new tsconfig.lib.json
 execSync("tsc --emitDeclarationOnly --project tsconfig.lib.json", { stdio: "inherit" })
@@ -12,6 +19,7 @@ esbuild
 		bundle: true,
 		platform: "browser",
 		target: ["es6"],
+		//HACK outfile: "dist/index.js,"
 		outdir: path.resolve(__dirname, "dist"),
 		sourcemap: true,
 		external: [
