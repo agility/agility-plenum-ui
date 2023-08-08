@@ -5,6 +5,9 @@
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"engines": {
+		"node": ">= 18.0.0"
+	},
 	"scripts": {
 		"lint": "next lint",
 		"build-storybook": "npm-run-all -p \"sb-build:*\"",
