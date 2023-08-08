@@ -3,7 +3,7 @@ import { default as cn } from "classnames"
 import Button, { IButtonProps } from "@/stories/atoms/buttons/Button"
 
 import { DynamicIcon } from "@/stories/atoms/icons"
-import Dropdown, { IDropdownProps, defaultClassNames } from "../Dropdown"
+import Dropdown, { IDropdownProps, defaultClassNames } from "../DropdownComponent"
 
 export interface IButtonDropdownProps {
 	button: IButtonProps

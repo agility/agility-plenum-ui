@@ -1,6 +1,6 @@
 import AnimatedLabelInput, { IAnimatedLabelInputProps } from "./AnimatedLabelInput"
 import ButtonDropdown, { IButtonDropdownProps } from "./ButtonDropdown"
-import Dropdown, { IDropdownClassnames, IDropdownProps, IItemProp } from "./Dropdown"
+import Dropdown, { IDropdownClassnames, IDropdownProps, IItemProp } from "./DropdownComponent"
 import EmptySectionPlaceholder, { IEmptySectionPlaceholderProps } from "./EmptySectionPlaceholder"
 import FormInputWithAddons, { IFormInputWithAddonsProps } from "./FormInputWithAddons"
 

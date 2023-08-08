@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import ButtonDropdown from "."
+import { IItemProp } from "../DropdownComponent"
 
-import { IItemProp } from "../Dropdown"
 
 const meta: Meta<typeof ButtonDropdown> = {
 	title: "Design System/Organisms/Button Dropdown",
