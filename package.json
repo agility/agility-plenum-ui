@@ -42,7 +42,6 @@
 		"@tabler/icons": "^2.26.0",
 		"@tabler/icons-react": "^2.27.0",
 		"@tailwindcss/forms": "^0.5.3",
-		"@tailwindcss/line-clamp": "^0.4.2",
 		"@tailwindcss/typography": "^0.5.9",
 		"@types/node": "18.11.18",
 		"autoprefixer": "^10.4.13",
