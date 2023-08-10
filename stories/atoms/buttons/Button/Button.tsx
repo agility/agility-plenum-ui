@@ -14,7 +14,7 @@ export interface IButtonProps extends React.ComponentPropsWithoutRef<"button"> {
 	/** The Button's text content. */
 	label: string
 	/** The Icon to be displayed inside the button. */
-	icon?: IDynamicIconProps
+	icon?: IDynamicIconProps | UnifiedIconName
 	/** Does the button width grow to fill it's container? */
 	fullWidth?: boolean
 	/** Optionally render as anchor tag */
@@ -113,6 +113,8 @@ const Button = ({
 				iconPosition === "leading" &&
 				(isLoading ? (
 					<div className={cn("h-4 rounded-full w-4 border-2 m-0 animate-spin", loaderColors, loaderSize)} />
+				) : typeof icon === "string" ? (
+					<DynamicIcon {...{ icon: icon, className: iconStyles }} />
 				) : (
 					<DynamicIcon {...{ ...icon, className: iconStyles }} />
 				))}
@@ -125,6 +127,8 @@ const Button = ({
 				iconPosition === "trailing" &&
 				(isLoading ? (
 					<div className={cn("h-4 rounded-full w-4 border-2 m-0 animate-spin", loaderColors, loaderSize)} />
+				) : typeof icon === "string" ? (
+					<DynamicIcon {...{ icon: icon, className: iconStyles }} />
 				) : (
 					<DynamicIcon {...{ ...icon, className: iconStyles }} />
 				))}
