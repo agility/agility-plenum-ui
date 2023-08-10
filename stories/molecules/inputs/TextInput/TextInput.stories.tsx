@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import TextInput, { ITextInputProps } from "./TextInput"
+import React from "react"
 
 const meta: Meta<typeof TextInput> = {
 	title: "Design System/molecules/inputs/TextInput",
@@ -10,6 +11,7 @@ const meta: Meta<typeof TextInput> = {
 
 export default meta
 type Story = StoryObj<typeof TextInput>
+
 export const DefaultTextInputStory: Story = {
 	args: {
 		type: "text",
@@ -19,14 +21,12 @@ export const DefaultTextInputStory: Story = {
 		id: "id",
 		name: "name",
 		isRequired: true,
-		defaultValue: "defaultValue",
+
 		isDisabled: false,
 		isReadonly: false,
 		message: "message",
 		isShowCounter: true,
 		maxLength: 100,
-		onChange: () => {},
-		placeholder: "placeholder",
-		value: "value"
-	} as ITextInputProps
+		placeholder: "placeholder"
+	}
 }

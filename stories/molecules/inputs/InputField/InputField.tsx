@@ -58,6 +58,7 @@ const InputField: React.FC<IInputFieldProps> = ({
 	ref,
 	...rest
 }) => {
+
 	return (
 		<input
 			{...{
@@ -67,6 +68,7 @@ const InputField: React.FC<IInputFieldProps> = ({
 				name,
 				value,
 				onChange: (e) => {
+					console.log(e)
 					handleChange(e.target.value)
 				},
 				autoFocus: isFocused,
