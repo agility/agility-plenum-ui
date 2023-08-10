@@ -8,7 +8,7 @@ import { DynamicIcon, UnifiedIconName, IDynamicIconProps } from "../../icons"
 export type BTNActionType = "primary" | "secondary" | "alternative" | "danger"
 export interface IButtonProps extends React.ComponentPropsWithoutRef<"button"> {
 	/** Is the button a Primary CTA, alternative or danger button? */
-	actionType: BTNActionType
+	actionType?: BTNActionType
 	/** How lg should the button be? - Defaults to 'base'. */
 	size?: "xs" | "sm" | "md" | "lg" | "xl"
 	/** The Button's text content. */
