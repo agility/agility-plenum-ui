@@ -27,7 +27,7 @@ In your app entry point (i.e. \`_app.tsx\`), import the \`globals.css\` file fro
 
 ```jsx
 import "<RELATIVE_PATH>/globals.css";
-import "@agility/plenum-ui/lib/tailwind.css";
+import "@agility/plenum-ui/dist/lib/tailwind.css";
 ```
 
 Make sure to add any additional styles before these two import statements to prevent overwriting the Plenum styling.

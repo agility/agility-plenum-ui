@@ -17,7 +17,7 @@
 		"storybook:tw": "tailwindcss -o ./lib/tailwind.css -w ",
 		"storybook": "npm-run-all -p \"storybook:*\" ",
 		"dev": "yarn storybook",
-		"build:tw": "tailwindcss -o ./lib/tailwind.css",
+		"build:tw": "tailwindcss -o ./dist/lib/tailwind.css",
 		"build:tsc": "yarn node build.js",
 		"prepare": "yarn build",
 		"build": "npm run clean && npm-run-all -s \"build:*\" ",
