@@ -17,7 +17,9 @@ import {
 	Radio,
 	Select,
 	TextAreaField,
-	ToggleSwitch
+	ToggleSwitch,
+	ITextInputProps,
+	TextInput
 } from "./inputs"
 
 export type {
@@ -30,6 +32,18 @@ export type {
 	ISelectProps,
 	ITextAreaFieldProps,
 	IToggleSwitchProps,
-	AcceptedInputTypes
+	AcceptedInputTypes,
+	ITextInputProps
 }
-export { Checkbox, Combobox, InputField, InputLabel, NestedInputButton, Radio, Select, TextAreaField, ToggleSwitch }
+export {
+	Checkbox,
+	Combobox,
+	InputField,
+	InputLabel,
+	NestedInputButton,
+	Radio,
+	Select,
+	TextAreaField,
+	ToggleSwitch,
+	TextInput
+}

@@ -45,7 +45,9 @@ import {
 	Radio,
 	Select,
 	TextAreaField,
-	ToggleSwitch
+	ToggleSwitch,
+	TextInput,
+	ITextInputProps
 } from "./molecules"
 // Organism Components, props, and type gaurds.
 import {
@@ -92,7 +94,8 @@ export type {
 	UnifiedIconName,
 	IconName,
 	FAIconName,
-	BTNActionType
+	BTNActionType,
+	ITextInputProps
 }
 export {
 	Avatar,
@@ -120,5 +123,6 @@ export {
 	isFAIcon,
 	isHeroIcon,
 	isTablerIcon,
-	isUnifiedIconName
+	isUnifiedIconName,
+	TextInput
 }
