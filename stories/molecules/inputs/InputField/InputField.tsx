@@ -37,7 +37,8 @@ export interface IInputFieldProps extends React.ComponentPropsWithoutRef<"input"
 	required?: boolean
 	/** use input psuedo classes for :valid and :invalid styles. on by default */
 	clientSideCheck?: boolean
-	/** use placeholder string */
+	/**ref for input */
+	ref?: React.Ref<HTMLInputElement>
 }
 
 const InputField: React.FC<IInputFieldProps> = ({
@@ -54,6 +55,7 @@ const InputField: React.FC<IInputFieldProps> = ({
 	clientSideCheck = true,
 	placeholder,
 	className,
+	ref,
 	...rest
 }) => {
 	return (
@@ -61,6 +63,7 @@ const InputField: React.FC<IInputFieldProps> = ({
 			{...{
 				type,
 				id,
+				ref,
 				name,
 				value,
 				onChange: (e) => {
