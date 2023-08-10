@@ -6,6 +6,7 @@ import NestedInputButton, { INestedInputButtonProps } from "./NestedInputButton"
 import Radio, { IRadioProps } from "./radio"
 import Select, { ISelectProps } from "./select"
 import TextAreaField, { ITextAreaFieldProps } from "./textArea"
+import TextInput, { ITextInputProps } from "./TextInput"
 import ToggleSwitch, { IToggleSwitchProps } from "./toggleSwitch"
 
 export type {
@@ -17,8 +18,20 @@ export type {
 	IRadioProps,
 	ISelectProps,
 	ITextAreaFieldProps,
+	ITextInputProps,
 	IToggleSwitchProps,
 	AcceptedInputTypes
 }
 
-export { Checkbox, Combobox, InputField, InputLabel, NestedInputButton, Radio, Select, TextAreaField, ToggleSwitch }
+export {
+	Checkbox,
+	Combobox,
+	InputField,
+	InputLabel,
+	NestedInputButton,
+	Radio,
+	Select,
+	TextAreaField,
+	ToggleSwitch,
+	TextInput
+}
