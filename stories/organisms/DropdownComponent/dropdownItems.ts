@@ -42,11 +42,11 @@ export const dropdownDataWithIcons: IItemProp[][] = [
 	[
 		{
 			icon: {
-				name: "IconClipboardCopy",
-				pos: "leading",
+				icon: "IconClipboardCopy",
 				className: "h-5 w-5",
 				outline: false
 			},
+			iconPosition: "leading",
 			key: "Copy",
 			label: "Copy",
 			onClick: () => {
@@ -57,11 +57,11 @@ export const dropdownDataWithIcons: IItemProp[][] = [
 	[
 		{
 			icon: {
-				name: "IconFolderPlus",
-				pos: "leading",
+				icon: "IconFolderPlus",
 				className: "h-5 w-5",
 				outline: false
 			},
+			iconPosition: "leading",
 			key: "Add to Batch",
 			label: "Add to Batch",
 			onClick: () => {
@@ -70,11 +70,11 @@ export const dropdownDataWithIcons: IItemProp[][] = [
 		},
 		{
 			icon: {
-				name: "IconEye",
-				pos: "leading",
+				icon: "IconEye",
 				className: "h-5 w-5",
 				outline: false
 			},
+			iconPosition: "leading",
 			key: "View Batch",
 			label: "View Batch",
 			onClick: () => {
@@ -85,11 +85,11 @@ export const dropdownDataWithIcons: IItemProp[][] = [
 	[
 		{
 			icon: {
-				name: "IconTrash",
-				pos: "leading",
+				icon: "IconTrash",
 				className: "h-5 w-5",
 				outline: false
 			},
+			iconPosition: "leading",
 			key: "Delete",
 			label: "Delete",
 			onClick: () => {
