@@ -39,6 +39,13 @@ export const PrimaryLeadingIcon: Story = {
 		iconPosition: "leading"
 	}
 }
+export const PrimarySimpleIconName: Story = {
+	args: {
+		...Primary.args,
+		icon: "CheckIcon",
+		iconPosition: "leading"
+	}
+}
 export const PrimaryTrailingIcon: Story = {
 	args: {
 		...PrimaryLeadingIcon.args,

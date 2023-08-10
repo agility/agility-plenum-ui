@@ -38,6 +38,13 @@ export const DangerLeadingIcon: Story = {
 		iconPosition: "leading"
 	}
 }
+export const DangerSimpleIconName: Story = {
+	args: {
+		...Danger.args,
+		icon: "TrashIcon",
+		iconPosition: "leading"
+	}
+}
 export const DangerExtraSmall: Story = {
 	args: {
 		...Danger.args,

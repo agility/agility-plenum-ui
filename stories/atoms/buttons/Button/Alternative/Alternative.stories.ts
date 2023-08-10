@@ -41,6 +41,13 @@ export const AlternativeExtraSmall: Story = {
 		size: "sm"
 	}
 }
+export const AlternativeSimpleIconName: Story = {
+	args: {
+		...Alternative.args,
+		icon: defaultIcon.icon,
+		iconPosition: "leading"
+	}
+}
 export const AlternativeSmall: Story = {
 	args: {
 		...Alternative.args,
