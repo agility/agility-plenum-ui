@@ -31,6 +31,7 @@ export interface IButtonProps extends React.ComponentPropsWithoutRef<"button"> {
 	isLoading?: boolean
 	className?: string
 	iconObj?: React.ReactNode
+	ref?: React.LegacyRef<HTMLButtonElement>
 }
 /**
  * Primary UI component for user interaction
@@ -47,6 +48,7 @@ const Button = ({
 	asLink,
 	isLoading = false,
 	className,
+	ref,
 	...props
 }: IButtonProps) => {
 	const iconStyles = cn(
@@ -90,6 +92,7 @@ const Button = ({
 				},
 				className ? className : ""
 			)}
+			ref={ref}
 			{...props}
 		>
 			{CustomSVGIcon &&
