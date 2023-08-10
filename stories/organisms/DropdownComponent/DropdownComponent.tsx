@@ -18,15 +18,11 @@ import {
 } from "@floating-ui/react"
 
 import { ClassNameWithAutocomplete } from "utils/types"
-import { DynamicIcon, IDynamicIconProps } from "@/stories/atoms/icons"
+import { DynamicIcon, IDynamicIconProps, UnifiedIconName } from "@/stories/atoms/icons"
 
 export interface IItemProp extends HTMLAttributes<HTMLButtonElement> {
-	icon?: {
-		name: IDynamicIconProps["icon"]
-		className?: ClassNameWithAutocomplete
-		pos?: "trailing" | "leading"
-		outline?: boolean
-	}
+	icon?: IDynamicIconProps | UnifiedIconName
+	iconPosition?: "trailing" | "leading"
 	label: string
 	onClick?(): void
 	isEmphasized?: boolean
@@ -180,80 +176,115 @@ const Dropdown: React.FC<IDropdownProps> = ({
 								{items.map((itemStack, idx) => {
 									return (
 										<React.Fragment key={`${idx}-list-${id}`}>
-											{itemStack.map(({ onClick, label, key, isEmphasized, icon, ...rest }) => {
-												const active = activeItem && activeItem === key
-												const itemClass = cn(
-													itemClassname,
-													"group flex cursor-pointer items-center px-4 py-2 text-sm transition-all",
-													{
-														"text-red-500": isEmphasized
-													},
-													{
-														"text-gray-900": !isEmphasized
-													},
-													{
-														"bg-gray-100 text-gray-900": active
-													},
-													active ? activeItemClassname : "",
-													{
-														"bg-gray-100 text-red-500 hover:text-red-500":
-															active && isEmphasized
-													},
-													itemClassname
-												)
+											{itemStack.map(
+												({
+													onClick,
+													label,
+													key,
+													isEmphasized,
+													icon,
+													iconPosition,
+													...rest
+												}) => {
+													const active = activeItem && activeItem === key
+													const itemClass = cn(
+														itemClassname,
+														"group flex cursor-pointer items-center px-4 py-2 text-sm transition-all",
+														{
+															"text-red-500": isEmphasized
+														},
+														{
+															"text-gray-900": !isEmphasized
+														},
+														{
+															"bg-gray-100 text-gray-900": active
+														},
+														active ? activeItemClassname : "",
+														{
+															"bg-gray-100 text-red-500 hover:text-red-500":
+																active && isEmphasized
+														},
+														itemClassname
+													)
 
-												return (
-													<li key={key}>
-														<button
-															{...{
-																onClick: () => {
-																	setActiveItem(key)
-																	onClick && onClick()
-																},
-																key,
-																className: cn(itemClass, "w-full"),
-																...rest
-															}}
-														>
-															<div className="flex items-center gap-x-4">
-																{icon &&
-																	(icon.pos === "leading" ||
-																		icon?.pos === undefined) && (
-																		<DynamicIcon
-																			{...{
-																				icon: icon.name,
-																				className: cn(
-																					icon.className,
-																					{
-																						"text-red-500": isEmphasized
-																					},
-																					"opacity-60 group-hover:opacity-100"
-																				),
-																				outline: icon.outline
-																			}}
-																		/>
-																	)}
-																<div className="whitespace-nowrap">{label}</div>
-																{icon && icon.pos === "trailing" && (
-																	<DynamicIcon
-																		{...{
-																			icon: icon.name,
-																			className: cn(
-																				icon.className,
-																				{
-																					"text-red-500": isEmphasized
-																				},
-																				"opacity-60 group-"
-																			),
-																			outline: icon.outline
-																		}}
-																	/>
-																)}
-															</div>
-														</button>
-													</li>
-												)
-											})}
+													return (
+														<li key={key}>
+															<button
+																{...{
+																	onClick: () => {
+																		setActiveItem(key)
+																		onClick && onClick()
+																	},
+																	key,
+																	className: cn(itemClass, "w-full"),
+																	...rest
+																}}
+															>
+																<div className="flex items-center gap-x-4">
+																	{icon &&
+																		(iconPosition === "leading" ||
+																			iconPosition === undefined) &&
+																		(typeof icon === "string" ? (
+																			<DynamicIcon
+																				{...{
+																					icon: icon,
+																					className: cn(
+																						{
+																							"text-red-500": isEmphasized
+																						},
+																						"opacity-60 group"
+																					)
+																				}}
+																			/>
+																		) : (
+																			<DynamicIcon
+																				{...{
+																					...icon,
+																					className: cn(
+																						icon.className,
+																						{
+																							"text-red-500": isEmphasized
+																						},
+																						"opacity-60 group"
+																					)
+																				}}
+																			/>
+																		))}
+																	<div className="whitespace-nowrap">{label}</div>
+																	{icon &&
+																		iconPosition === "trailing" &&
+																		(typeof icon === "string" ? (
+																			<DynamicIcon
+																				{...{
+																					icon: icon,
+																					className: cn(
+																						{
+																							"text-red-500": isEmphasized
+																						},
+																						"opacity-60 group"
+																					)
+																				}}
+																			/>
+																		) : (
+																			<DynamicIcon
+																				{...{
+																					...icon,
+																					className: cn(
+																						icon.className,
+																						{
+																							"text-red-500": isEmphasized
+																						},
+																						"opacity-60 group"
+																					)
+																				}}
+																			/>
+																		))}
+																</div>
+															</button>
+														</li>
+													)
+												}
+											)}
 										</React.Fragment>
 									)
 								})}
