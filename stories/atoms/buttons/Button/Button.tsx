@@ -30,6 +30,7 @@ export interface IButtonProps extends React.ComponentPropsWithoutRef<"button"> {
 	/** Is the associated content loading? */
 	isLoading?: boolean
 	className?: string
+	iconObj?: React.ReactNode
 }
 /**
  * Primary UI component for user interaction
@@ -39,6 +40,7 @@ const Button = ({
 	size = "sm",
 	label,
 	icon,
+	iconObj,
 	CustomSVGIcon,
 	fullWidth = false,
 	iconPosition = "trailing",
@@ -96,6 +98,13 @@ const Button = ({
 				) : (
 					<i>{CustomSVGIcon}</i>
 				))}
+			{iconObj &&
+				iconPosition === "leading" &&
+				(!isLoading ? (
+					<>{iconObj}</>
+				) : (
+					<div className={cn("h-4 rounded-full w-4 border-2 m-0 animate-spin", loaderColors, loaderSize)} />
+				))}
 
 			{icon &&
 				iconPosition === "leading" &&
@@ -115,6 +124,13 @@ const Button = ({
 					<div className={cn("h-4 rounded-full w-4 border-2 m-0 animate-spin", loaderColors, loaderSize)} />
 				) : (
 					<DynamicIcon {...{ ...icon, className: iconStyles }} />
+				))}
+			{iconObj &&
+				iconPosition === "trailing" &&
+				(!isLoading ? (
+					<>{iconObj}</>
+				) : (
+					<div className={cn("h-4 rounded-full w-4 border-2 m-0 animate-spin", loaderColors, loaderSize)} />
 				))}
 		</button>
 	)
