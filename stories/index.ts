@@ -47,7 +47,8 @@ import {
 	Textarea,
 	ToggleSwitch,
 	TextInput,
-	ITextInputProps
+	ITextInputProps,
+	ISimpleSelectOptions
 } from "./molecules"
 // Organism Components, props, and type gaurds.
 import {
@@ -98,7 +99,8 @@ export type {
 	IconName,
 	FAIconName,
 	BTNActionType,
-	ITextInputProps
+	ITextInputProps,
+	ISimpleSelectOptions
 }
 export {
 	Avatar,
