@@ -6,7 +6,7 @@ import {
 	INestedInputButtonProps,
 	IRadioProps,
 	ISelectProps,
-	ITextAreaFieldProps,
+	ITextareaProps,
 	IToggleSwitchProps,
 	AcceptedInputTypes,
 	Checkbox,
@@ -16,7 +16,7 @@ import {
 	NestedInputButton,
 	Radio,
 	Select,
-	TextAreaField,
+	Textarea,
 	ToggleSwitch,
 	ITextInputProps,
 	TextInput
@@ -30,7 +30,7 @@ export type {
 	INestedInputButtonProps,
 	IRadioProps,
 	ISelectProps,
-	ITextAreaFieldProps,
+	ITextareaProps,
 	IToggleSwitchProps,
 	AcceptedInputTypes,
 	ITextInputProps
@@ -43,7 +43,7 @@ export {
 	NestedInputButton,
 	Radio,
 	Select,
-	TextAreaField,
+	Textarea,
 	ToggleSwitch,
 	TextInput
 }

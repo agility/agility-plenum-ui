@@ -14,6 +14,8 @@ export const DefaultTextArea: Story = {
 		id: "appDescription",
 		name: "description",
 		rows: 12,
+		cols: 18,
+		label: "Description",
 		placeholder: dummyText
 	}
 }

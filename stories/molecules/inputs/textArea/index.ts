@@ -1,3 +1,3 @@
-import TextAreaField, { ITextAreaFieldProps } from "./TextArea"
-export type { ITextAreaFieldProps }
-export default TextAreaField
+import TextArea, { ITextareaProps } from "./TextArea"
+export type { ITextareaProps }
+export default TextArea

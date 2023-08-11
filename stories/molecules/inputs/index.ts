@@ -5,7 +5,7 @@ import InputLabel, { IInputLabelProps } from "./InputLabel"
 import NestedInputButton, { INestedInputButtonProps } from "./NestedInputButton"
 import Radio, { IRadioProps } from "./radio"
 import Select, { ISelectProps } from "./select"
-import TextAreaField, { ITextAreaFieldProps } from "./textArea"
+import Textarea, { ITextareaProps } from "./textArea"
 import TextInput, { ITextInputProps } from "./TextInput"
 import ToggleSwitch, { IToggleSwitchProps } from "./toggleSwitch"
 
@@ -17,7 +17,7 @@ export type {
 	INestedInputButtonProps,
 	IRadioProps,
 	ISelectProps,
-	ITextAreaFieldProps,
+	ITextareaProps,
 	ITextInputProps,
 	IToggleSwitchProps,
 	AcceptedInputTypes
@@ -31,7 +31,7 @@ export {
 	NestedInputButton,
 	Radio,
 	Select,
-	TextAreaField,
+	Textarea,
 	ToggleSwitch,
 	TextInput
 }
