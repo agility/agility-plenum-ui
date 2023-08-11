@@ -1,7 +1,7 @@
 import React from "react"
 import { default as cn } from "classnames"
 import InputField, { IInputFieldProps } from "@/stories/molecules/inputs/InputField"
-import TextAreaField, { ITextAreaFieldProps } from "@/stories/molecules/inputs/textArea/TextArea"
+import Textarea, { ITextareaProps } from "@/stories/molecules/inputs/textArea/TextArea"
 
 interface ILabelProps extends React.ComponentPropsWithoutRef<"label"> {
 	display: string
@@ -12,7 +12,7 @@ export interface IAnimatedLabelInputProps {
 	containerStyles?: string
 	message?: string
 	input?: IInputFieldProps
-	textarea?: ITextAreaFieldProps
+	textarea?: ITextareaProps
 	required?: boolean
 	isError?: boolean
 	label: ILabelProps
@@ -31,7 +31,7 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = ({
 	return (
 		<div className={cn("group relative", containerStyles ? containerStyles : "")}>
 			{input && <InputField isError={isError} {...input} />}
-			{textarea && <TextAreaField isError={isError} {...textarea} />}
+			{textarea && <Textarea isError={isError} {...textarea} />}
 			<label
 				className={cn(
 					"absolute left-1 z-10 ml-[.172rem] inline-block bg-white px-1 text-xs  transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600",
