@@ -13,6 +13,7 @@ export type AcceptedInputTypes =
 	| "tel"
 	| "text"
 	| "url"
+	| "currency"
 
 export interface IInputFieldProps extends React.ComponentPropsWithoutRef<"input"> {
 	/** Callback on change */

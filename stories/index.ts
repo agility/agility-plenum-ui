@@ -62,7 +62,9 @@ import {
 	ButtonDropdown,
 	Dropdown,
 	EmptySectionPlaceholder,
-	FormInputWithAddons
+	FormInputWithAddons,
+	TextInputSelect,
+	ITextInputSelectProps
 } from "./organisms"
 
 export type {
@@ -70,6 +72,7 @@ export type {
 	IBadgeProps,
 	IButtonProps,
 	ICapsuleProps,
+	ITextInputSelectProps,
 	IDynamicIconProps,
 	IIconWithShadowProps,
 	ILoaderProps,
@@ -124,5 +127,6 @@ export {
 	isHeroIcon,
 	isTablerIcon,
 	isUnifiedIconName,
-	TextInput
+	TextInput,
+	TextInputSelect
 }
