@@ -1,36 +1,34 @@
 import React from "react"
 import { default as cn } from "classnames"
-import InputField, { IInputFieldProps } from "@/stories/molecules/inputs/InputField"
 
-interface ILabelProps extends React.ComponentPropsWithoutRef<"label"> {
-	display: string
-}
+import TextArea, { ITextareaProps } from "@/stories/molecules/inputs/textArea"
 
-export interface IAnimatedLabelInputProps extends IInputFieldProps {
+export interface IAnimatedLabelTextAreaProps extends ITextareaProps {
 	id: string
 	containerStyles?: string
 	message?: string
 	required?: boolean
 	isError?: boolean
-	label: ILabelProps
+	handleChange: (value: string) => void
 }
 
-const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimatedLabelInputProps) => {
+const AnimatedLabelTextArea: React.FC<IAnimatedLabelTextAreaProps> = (props: IAnimatedLabelTextAreaProps) => {
 	const { id, containerStyles, message, required, isError, label, value, handleChange, ...input } = props
 
 	const [hasValue, setHasValue] = React.useState<boolean>(!!value)
 
 	return (
 		<div className={cn("group relative", containerStyles ? containerStyles : "")}>
-			<InputField
+			<TextArea
 				id={id}
 				isError={isError}
 				value={value}
-				handleChange={(v) => {
+				onChange={(v) => {
 					setHasValue(!!v)
 					if (handleChange) handleChange(v)
 				}}
 				{...input}
+				label={undefined}
 			/>
 			<label
 				className={cn(
@@ -43,7 +41,7 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 				)}
 				htmlFor={id}
 			>
-				{label.display}
+				{label}
 				{required && <span className="text-red-600 ml-1">*</span>}
 			</label>
 
@@ -60,4 +58,4 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 	)
 }
 
-export default AnimatedLabelInput
+export default AnimatedLabelTextArea

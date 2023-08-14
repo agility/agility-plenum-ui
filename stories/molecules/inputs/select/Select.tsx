@@ -3,7 +3,7 @@ import InputLabel from "@/stories/molecules/inputs/InputLabel"
 import { useId } from "@/utils/useId"
 import { default as cn } from "classnames"
 
-export type ISimpleSelectOptions = {
+export interface ISimpleSelectOptions {
 	label: string
 	value: string
 }

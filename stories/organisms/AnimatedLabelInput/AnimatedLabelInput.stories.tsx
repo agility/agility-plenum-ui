@@ -15,7 +15,16 @@ export const DefaultAnimatedLabelInputsStory: Story = {
 		id: "test",
 		label: {
 			display: "Label"
+		}
+	} as IAnimatedLabelInputProps
+}
+
+export const DefaultAnimatedLabelInputsStoryWithPlaceHolder: Story = {
+	args: {
+		id: "test",
+		label: {
+			display: "Label"
 		},
-		input: {}
+		placeholder: "Placeholder"
 	} as IAnimatedLabelInputProps
 }

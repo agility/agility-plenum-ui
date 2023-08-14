@@ -53,6 +53,8 @@ import {
 // Organism Components, props, and type gaurds.
 import {
 	IAnimatedLabelInputProps,
+	AnimatedLabelTextArea,
+	IAnimatedLabelTextAreaProps,
 	IButtonDropdownProps,
 	IDropdownClassnames,
 	IDropdownProps,
@@ -89,6 +91,7 @@ export type {
 	IToggleSwitchProps,
 	AcceptedInputTypes,
 	IAnimatedLabelInputProps,
+	IAnimatedLabelTextAreaProps,
 	IButtonDropdownProps,
 	IDropdownClassnames,
 	IDropdownProps,
@@ -114,6 +117,7 @@ export {
 	Textarea,
 	ToggleSwitch,
 	AnimatedLabelInput,
+	AnimatedLabelTextArea,
 	ButtonDropdown,
 	Dropdown,
 	EmptySectionPlaceholder,

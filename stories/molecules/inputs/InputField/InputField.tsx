@@ -15,13 +15,13 @@ export type AcceptedInputTypes =
 	| "url"
 	| "currency"
 
-export interface IInputFieldProps extends React.ComponentPropsWithoutRef<"input"> {
+export interface IInputFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
 	/** Callback on change */
 	handleChange: (value: string) => void
 	/** Input ID*/
-	id: string
+	id?: string
 	/** Input Name */
-	name: string
+	name?: string
 	/** Force the focus state on the input */
 	isFocused?: boolean
 	/** Error condition */
@@ -38,6 +38,8 @@ export interface IInputFieldProps extends React.ComponentPropsWithoutRef<"input"
 	required?: boolean
 	/** use input psuedo classes for :valid and :invalid styles. on by default */
 	clientSideCheck?: boolean
+	/** Placeholder text */
+	placeholder?: string
 	/**ref for input */
 	ref?: React.Ref<HTMLInputElement>
 }
@@ -54,28 +56,26 @@ const InputField: React.FC<IInputFieldProps> = ({
 	handleChange,
 	required,
 	clientSideCheck = true,
-	placeholder,
 	className,
+	placeholder,
 	ref,
 	...rest
 }) => {
-
 	return (
 		<input
 			{...{
+				ref,
 				type,
 				id,
-				ref,
 				name,
 				value,
 				onChange: (e) => {
-					console.log(e)
-					handleChange(e.target.value)
+					if (handleChange) handleChange(e.target.value)
 				},
 				autoFocus: isFocused,
 				readOnly: isReadonly,
 				disabled: isDisabled,
-				placeholder: placeholder || " ",
+				placeholder: placeholder || undefined,
 				required,
 				"aria-invalid": isError,
 				"aria-disabled": isDisabled,

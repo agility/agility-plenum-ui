@@ -76,19 +76,46 @@ const Textarea: React.FC<ITextareaProps> = ({
 
 	if (!id) id = `ta-${uniqueID}`
 
+	if (!label) {
+		return (
+			<textarea
+				ref={ref}
+				maxLength={maxLength}
+				onChange={handleOnchange}
+				rows={rows}
+				name={name}
+				id={id}
+				cols={cols}
+				className={cn(
+					"peer block w-full rounded focus:border-purple-500 focus:ring-purple-500 sm:text-sm",
+					{ "border-gray-300 ": !isError },
+					{
+						"border-red-500 outline-red-500 focus:ring-red-500": isError
+					},
+					className
+				)}
+				disabled={isDisabled}
+				defaultValue={defaultValue}
+				value={value}
+				placeholder={placeholder}
+				{...rest}
+			/>
+		)
+	}
+
+	//with label
 	return (
 		<div>
-			{label && (
-				<InputLabel
-					isPlaceholder
-					isActive
-					label={label}
-					isRequired={isRequired}
-					id={id}
-					isError={isError}
-					isDisabled={isDisabled}
-				/>
-			)}
+			<InputLabel
+				isPlaceholder
+				isActive
+				label={label}
+				isRequired={isRequired}
+				id={id}
+				isError={isError}
+				isDisabled={isDisabled}
+			/>
+
 			<div>
 				<textarea
 					ref={ref}
