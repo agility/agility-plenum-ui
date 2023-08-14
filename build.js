@@ -15,11 +15,17 @@ execSync("tsc --emitDeclarationOnly --project tsconfig.lib.json", { stdio: "inhe
 // Build script using esbuild
 esbuild
 	.build({
+		logLevel: "info",
 		entryPoints: [path.resolve(__dirname, "stories/index.ts")],
+
 		bundle: true,
 		platform: "browser",
-		target: ["es6"],
-		//HACK outfile: "dist/index.js,"
+		target: ["esnext"],
+		minify: true,
+		pure: ["React.createElement"],
+		jsx: 'transform',
+		loader: { '.js': 'jsx' },
+
 		outdir: path.resolve(__dirname, "dist"),
 		sourcemap: true,
 		external: [
@@ -32,8 +38,6 @@ esbuild
 			"@tabler/icons",
 			"@tabler/icons-react",
 			"classnames",
-			"react",
-			"react-dom",
 			"react-icons"
 		],
 		format: "esm"

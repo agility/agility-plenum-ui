@@ -17,4 +17,12 @@ export type {
 	IFormInputWithAddonsProps,
 	ITextInputSelectProps
 }
-export { AnimatedLabelInput, AnimatedLabelTextArea, ButtonDropdown, Dropdown, EmptySectionPlaceholder, FormInputWithAddons, TextInputSelect }
+export {
+	AnimatedLabelInput,
+	AnimatedLabelTextArea,
+	ButtonDropdown,
+	Dropdown,
+	EmptySectionPlaceholder,
+	FormInputWithAddons,
+	TextInputSelect
+}

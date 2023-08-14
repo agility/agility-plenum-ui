@@ -51,28 +51,15 @@ const Textarea: React.FC<ITextareaProps> = ({
 	rows = 12,
 	cols = 48,
 	onChange,
-	value: externalValue,
+	value,
 	placeholder,
 	className,
 	ref,
 	...rest
 }) => {
 	const uniqueID = useId()
-	const [value, setValue] = useState<string | undefined>(externalValue || defaultValue || "")
-	const handleOnchange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		const targetValue = e.currentTarget.value
-		typeof onChange === "function" && onChange(targetValue)
-		setValue(targetValue)
-	}
 
 	const discriptionStyles = cn("text-sm mt-1 block", { "text-gray-500": !isError }, { "text-red-500": isError })
-
-	useEffect(() => {
-		//if the external value is updated by the parent component, reset the value in here...
-		if (externalValue !== undefined && externalValue !== null) {
-			setValue(externalValue)
-		}
-	}, [externalValue])
 
 	if (!id) id = `ta-${uniqueID}`
 
@@ -81,7 +68,12 @@ const Textarea: React.FC<ITextareaProps> = ({
 			<textarea
 				ref={ref}
 				maxLength={maxLength}
-				onChange={handleOnchange}
+				onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+					const targetValue = e.target.value
+					if (onChange) {
+						onChange(targetValue)
+					}
+				}}
 				rows={rows}
 				name={name}
 				id={id}
@@ -120,7 +112,12 @@ const Textarea: React.FC<ITextareaProps> = ({
 				<textarea
 					ref={ref}
 					maxLength={maxLength}
-					onChange={handleOnchange}
+					onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+						const targetValue = e.target.value
+						if (onChange) {
+							onChange(targetValue)
+						}
+					}}
 					rows={rows}
 					name={name}
 					id={id}

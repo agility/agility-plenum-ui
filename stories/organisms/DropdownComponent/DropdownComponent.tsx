@@ -215,7 +215,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 																		setActiveItem(key)
 																		onClick && onClick()
 																	},
-																	key,
+																	key: key,
 																	className: cn(itemClass, "w-full"),
 																	...rest
 																}}

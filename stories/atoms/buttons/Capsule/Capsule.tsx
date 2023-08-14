@@ -6,7 +6,8 @@ import { UnifiedIconName } from "../../icons/DynamicIcon"
 /**
  * Capsule Style Button
  */
-export interface ICapsuleProps extends React.ComponentPropsWithoutRef<"button"> {
+export interface ICapsuleProps
+	extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
 	/** Is the button a Primary CTA, alternative or danger button? */
 	actionType: BTNActionType
 	/** How lg should the button be? - Defaults to 'base'. */

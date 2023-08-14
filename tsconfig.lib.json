@@ -3,17 +3,24 @@
 		"declaration": true,
 		"declarationDir": "./dist/types",
 		"outDir": "./dist",
-		"module": "esnext",
+		"module": "ESNext",
 		"rootDir": "./",
-		"target": "es2021",
+		"target": "ESNext",
 		"esModuleInterop": true,
 		"moduleResolution": "node",
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./*"]
+			"@/*": [
+				"./*"
+			]
 		},
 		"jsx": "react-jsx"
 	},
-	"include": ["stories/**/*.ts", "utils/**/*.ts"],
-	"exclude": ["node_modules"]
+	"include": [
+		"stories/**/*.ts",
+		"utils/**/*.ts"
+	],
+	"exclude": [
+		"node_modules"
+	]
 }

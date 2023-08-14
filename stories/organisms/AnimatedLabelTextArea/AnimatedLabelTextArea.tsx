@@ -13,7 +13,7 @@ export interface IAnimatedLabelTextAreaProps extends ITextareaProps {
 }
 
 const AnimatedLabelTextArea: React.FC<IAnimatedLabelTextAreaProps> = (props: IAnimatedLabelTextAreaProps) => {
-	const { id, containerStyles, message, required, isError, label, value, handleChange, ...input } = props
+	const { id, containerStyles, message, required, isError, label, value, handleChange, onChange, ...input } = props
 
 	const [hasValue, setHasValue] = React.useState<boolean>(!!value)
 
@@ -23,11 +23,11 @@ const AnimatedLabelTextArea: React.FC<IAnimatedLabelTextAreaProps> = (props: IAn
 				id={id}
 				isError={isError}
 				value={value}
+				{...input}
 				onChange={(v) => {
 					setHasValue(!!v)
 					if (handleChange) handleChange(v)
 				}}
-				{...input}
 				label={undefined}
 			/>
 			<label
@@ -41,7 +41,7 @@ const AnimatedLabelTextArea: React.FC<IAnimatedLabelTextAreaProps> = (props: IAn
 				)}
 				htmlFor={id}
 			>
-				{label}
+				{label} {`${hasValue}`}
 				{required && <span className="text-red-600 ml-1">*</span>}
 			</label>
 

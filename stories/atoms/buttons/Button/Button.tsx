@@ -1,12 +1,13 @@
 import Loader from "stories/atoms/loaders/Loader"
 import { default as cn } from "classnames"
-import { HTMLAttributeAnchorTarget } from "react"
+import React, { HTMLAttributeAnchorTarget } from "react"
 import { DynamicIcon, UnifiedIconName, IDynamicIconProps } from "../../icons"
 
 // import Loader from "../loaders/loader/Loader"
 
 export type BTNActionType = "primary" | "secondary" | "alternative" | "danger"
-export interface IButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+export interface IButtonProps
+	extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
 	/** Is the button a Primary CTA, alternative or danger button? */
 	actionType?: BTNActionType
 	/** How lg should the button be? - Defaults to 'base'. */

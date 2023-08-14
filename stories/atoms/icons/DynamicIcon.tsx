@@ -1,5 +1,5 @@
 import React from "react"
-// TODO: Fix heroicons support 
+// TODO: Fix heroicons support
 import * as SolidIcons from "@heroicons/react/solid"
 import * as OutlineIcons from "@heroicons/react/outline"
 import * as TablerIconComponents from "@tabler/icons-react"
@@ -31,7 +31,7 @@ export function isUnifiedIconName(name: UnifiedIconName): name is UnifiedIconNam
 	return isTablerIcon(name) || isFAIcon(name)
 }
 
-export interface IDynamicIconProps extends React.ComponentProps<"i"> {
+export interface IDynamicIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
 	icon: UnifiedIconName
 	className?: ClassNameWithAutocomplete
 	outline?: boolean

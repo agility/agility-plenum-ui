@@ -3,7 +3,7 @@ import { TablerIconName } from "./tablerIconNames"
 import * as TablerIcons from "@tabler/icons-react"
 import { ClassNameWithAutocomplete } from "@/utils/types"
 
-export interface ITablerIconProps extends React.ComponentProps<"i"> {
+export interface ITablerIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
 	icon: TablerIconName
 	className?: ClassNameWithAutocomplete
 }
