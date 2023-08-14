@@ -6,13 +6,14 @@ interface ILabelProps extends React.ComponentPropsWithoutRef<"label"> {
 	display: string
 }
 
-export interface IAnimatedLabelInputProps extends IInputFieldProps {
+export interface IAnimatedLabelInputProps extends Omit<IInputFieldProps, "handleChange"> {
 	id: string
 	containerStyles?: string
 	message?: string
 	required?: boolean
 	isError?: boolean
 	label: ILabelProps
+	handleChange: (value: string) => void
 }
 
 const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimatedLabelInputProps) => {
