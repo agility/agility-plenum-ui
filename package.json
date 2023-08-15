@@ -1,6 +1,6 @@
 {
 	"name": "@agility/plenum-ui",
-	"version": "2.0.0-rc14",
+	"version": "2.0.0-rc15",
 	"license": "MIT",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
@@ -19,12 +19,10 @@
 		"dev": "yarn storybook",
 		"build:tw": "tailwindcss -o ./dist/tailwind.css",
 		"build:tsc": "yarn node build.js",
-		"Xbuild:rollup": "rollup -c",
 		"prepare": "yarn build",
 		"build": "yarn clean && npm-run-all -s \"build:*\" ",
 		"clean": "rimraf dist",
-		"create-component": "node scripts/create-component.js",
-		"buildsh": "./scripts/build.sh --external:react --external:react-dom"
+		"create-component": "node scripts/create-component.js"
 	},
 	"devDependencies": {
 		"@floating-ui/react": "^0.25.0",
@@ -32,9 +30,6 @@
 		"@headlessui/tailwindcss": "^0.1.2",
 		"@heroicons/react": "^1.0.5",
 		"@next/font": "^13.4.12",
-		"@rollup/plugin-commonjs": "^21.0.1",
-		"@rollup/plugin-node-resolve": "^13.1.3",
-		"@rollup/plugin-typescript": "^11.1.2",
 		"@storybook/addon-designs": "^7.0.1",
 		"@storybook/addon-essentials": "^7.1.1",
 		"@storybook/addon-interactions": "^7.1.1",
@@ -67,11 +62,6 @@
 		"react-dom": "18.2.0",
 		"react-icons": "^4.10.1",
 		"rimraf": "^5.0.1",
-		"rollup": "3.28.0",
-		"rollup-plugin-dts": "^5.3.1",
-		"rollup-plugin-peer-deps-external": "^2.2.4",
-		"rollup-plugin-postcss": "^4.0.2",
-		"rollup-plugin-typescript2": "^0.35.0",
 		"storybook": "^7.1.1",
 		"tailwindcss": "^3.2.4",
 		"typescript": "^5.1.6"

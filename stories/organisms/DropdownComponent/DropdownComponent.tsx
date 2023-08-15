@@ -28,19 +28,17 @@ export interface IItemProp extends HTMLAttributes<HTMLButtonElement> {
 	isEmphasized?: boolean
 	key: React.Key
 }
-export interface IDropdownClassnames {
-	groupClassname?: ClassNameWithAutocomplete
-	itemsClassname?: ClassNameWithAutocomplete
-	itemClassname?: ClassNameWithAutocomplete
-	activeItemClassname?: ClassNameWithAutocomplete
-	buttonClassname?: ClassNameWithAutocomplete
-}
 export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 	items: IItemProp[][]
 	label: string
 	CustomDropdownTrigger?: React.ReactNode
 	id: string
-	classNames?: IDropdownClassnames
+	groupClassname?: ClassNameWithAutocomplete
+	itemsClassname?: ClassNameWithAutocomplete
+	itemClassname?: ClassNameWithAutocomplete
+	activeItemClassname?: ClassNameWithAutocomplete
+	buttonClassname?: ClassNameWithAutocomplete
+	iconClassname?: ClassNameWithAutocomplete
 	placement?: Placement
 	offsetOptions?: Partial<{
 		mainAxis: number
@@ -48,7 +46,7 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 		alignmentAxis: number | null
 	}>
 }
-export const defaultClassNames: IDropdownClassnames = {
+export const defaultClassNames = {
 	groupClassname: "flex inline-block text-left",
 	itemsClassname:
 		"mt-2 origin-bottom-right rounded bg-white shadow-lg z-20 divide-y divide-gray-100  border border-gray-300  ",
@@ -56,7 +54,8 @@ export const defaultClassNames: IDropdownClassnames = {
 		"group flex font-muli  cursor-pointer items-center px-4 py-2 text-sm transition-all hover:bg-gray-100 hover:text-gray-900 justify-between gap-4 ",
 	activeItemClassname: "block px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 hover:text-gray-900",
 	buttonClassname:
-		"py-[2px] z-20 flex items-center  rounded outline-purple-500 transition-all   text-gray-400 hover:text-gray-600 "
+		"py-[2px] z-20 flex items-center  rounded outline-purple-500 transition-all   text-gray-400 hover:text-gray-600 ",
+	iconClassname: "ml-1 h-5 w-6"
 }
 
 /** Comment */
@@ -64,7 +63,12 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	items,
 	id,
 	label,
-	classNames = defaultClassNames,
+	groupClassname = defaultClassNames.groupClassname,
+	itemsClassname = defaultClassNames.itemsClassname,
+	itemClassname = defaultClassNames.itemClassname,
+	activeItemClassname = defaultClassNames.activeItemClassname,
+	buttonClassname = defaultClassNames.buttonClassname,
+	iconClassname = defaultClassNames.iconClassname,
 	CustomDropdownTrigger,
 	placement = "bottom-start",
 	offsetOptions,
@@ -104,8 +108,6 @@ const Dropdown: React.FC<IDropdownProps> = ({
 		}
 	})
 
-	const { groupClassname, buttonClassname, itemsClassname, itemClassname, activeItemClassname } = classNames
-
 	return (
 		<div
 			{...{
@@ -132,7 +134,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 				) : (
 					<>
 						<span className="pl-1">{label}</span>
-						<DynamicIcon icon="ChevronDownIcon" className="ml-1 h-5 w-6 " />
+						<DynamicIcon icon="ChevronDownIcon" className={iconClassname} />
 					</>
 				)}
 			</button>

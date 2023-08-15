@@ -16,21 +16,7 @@ export interface IButtonDropdownProps {
  * Primary UI component for user interaction
  */
 const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement, offsetOptions }) => {
-	const dropDownClasses: IDropdownProps["classNames"] = {
-		...defaultClassNames,
-		groupClassname: cn(
-			"flex items-center justify-center rounded-l-none border !border-l-0 rounded-r  px-2 transition-all hover:!border-l-0",
-			button.actionType === "primary"
-				? "border-purple-600 bg-purple-600  !text-white  hover:border-purple-700 hover:bg-purple-700 active:!border-purple-800 active:!bg-purple-800 fill-white"
-				: "",
-			button.actionType === "secondary"
-				? "border-purple-50 bg-purple-50 !text-purple-700  hover:border-purple-100 hover:bg-purple-100 active:!border-purple-300 active:!bg-purple-300 fill-purple-700"
-				: "",
-			button.actionType === "alternative"
-				? "border-gray-300 bg-white !text-gray-700 fill-gray-700  hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100"
-				: ""
-		)
-	}
+
 	return (
 		<div className="flex items-stretch focus-within:ring-purple-600 focus-within:ring-2 focus-within:ring-offset-white focus-within:ring-offset-2 rounded-[3px]">
 			<Button
@@ -65,7 +51,18 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement,
 							}}
 						/>
 					),
-					classNames: dropDownClasses,
+					groupClassname: cn(
+						"flex items-center justify-center rounded-l-none border !border-l-0 rounded-r  px-2 transition-all hover:!border-l-0",
+						button.actionType === "primary"
+							? "border-purple-600 bg-purple-600  !text-white  hover:border-purple-700 hover:bg-purple-700 active:!border-purple-800 active:!bg-purple-800 fill-white"
+							: "",
+						button.actionType === "secondary"
+							? "border-purple-50 bg-purple-50 !text-purple-700  hover:border-purple-100 hover:bg-purple-100 active:!border-purple-300 active:!bg-purple-300 fill-purple-700"
+							: "",
+						button.actionType === "alternative"
+							? "border-gray-300 bg-white !text-gray-700 fill-gray-700  hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100"
+							: ""
+					),
 					offsetOptions: offsetOptions ?? {
 						crossAxis: 0,
 						mainAxis: 5, //up/down
