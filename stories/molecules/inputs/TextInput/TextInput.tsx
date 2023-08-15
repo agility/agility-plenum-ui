@@ -32,7 +32,7 @@ export interface ITextInputProps {
 	/** Max length of input character  */
 	maxLength?: number
 	/** Callback on change */
-	onChange(value: string): void
+	handleChange(value: string): void
 	/** input value */
 	value: string
 	/**Placeholder input text*/
@@ -56,7 +56,7 @@ const TextInput = (
 		message,
 		isShowCounter,
 		maxLength,
-		onChange,
+		handleChange,
 		placeholder,
 		value: externalValue,
 		className,
@@ -116,7 +116,10 @@ const TextInput = (
 			<InputField
 				onFocus={handleInputFocus}
 				onBlur={handleInputBlur}
-				handleChange={(v) => setValue(v)}
+				handleChange={(v: string) => {
+					setValue(v)
+					handleChange(v)
+				}}
 				ref={ref}
 				type={type}
 				name={name}
