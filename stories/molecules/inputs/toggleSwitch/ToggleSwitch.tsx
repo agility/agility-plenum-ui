@@ -37,7 +37,7 @@ const ToggleSwitch: React.FC<IToggleSwitchProps> = ({
 
 	return (
 		<Switch.Group as={"div"} className={"flex items-center gap-2"}>
-			{label && label.xPosition === "left" && (
+			{label && (label.xPosition === "left" || !label?.xPosition) && (
 				<Switch.Label className={label.className}>{label.text}</Switch.Label>
 			)}
 			<Switch
