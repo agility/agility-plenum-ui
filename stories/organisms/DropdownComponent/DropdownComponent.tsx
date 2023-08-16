@@ -1,5 +1,4 @@
-import React, { Fragment, HTMLAttributes, useState } from "react"
-import { Transition } from "@headlessui/react"
+import React, { HTMLAttributes, useState } from "react"
 import { default as cn } from "classnames"
 import {
 	useFloating,
@@ -39,6 +38,7 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 	activeItemClassname?: ClassNameWithAutocomplete
 	buttonClassname?: ClassNameWithAutocomplete
 	iconClassname?: ClassNameWithAutocomplete
+	iconSpacingClassname?: ClassNameWithAutocomplete
 	placement?: Placement
 	offsetOptions?: Partial<{
 		mainAxis: number
@@ -54,8 +54,9 @@ export const defaultClassNames = {
 		"group flex font-muli  cursor-pointer items-center px-4 py-2 text-sm transition-all hover:bg-gray-100 hover:text-gray-900 justify-between gap-4 ",
 	activeItemClassname: "block px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 hover:text-gray-900",
 	buttonClassname:
-		"py-[2px] z-20 flex items-center  rounded outline-purple-500 transition-all   text-gray-400 hover:text-gray-600 ",
-	iconClassname: "ml-1 h-5 w-6"
+		"py-[2px] z-20 flex items-center  rounded outline-purple-500 transition-all text-gray-400 hover:text-gray-600 ",
+	iconClassname: "ml-1 h-5 w-6",
+	iconSpacingClassname: "flex items-center gap-x-4"
 }
 
 /** Comment */
@@ -63,12 +64,13 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	items,
 	id,
 	label,
-	groupClassname = defaultClassNames.groupClassname,
-	itemsClassname = defaultClassNames.itemsClassname,
-	itemClassname = defaultClassNames.itemClassname,
-	activeItemClassname = defaultClassNames.activeItemClassname,
-	buttonClassname = defaultClassNames.buttonClassname,
-	iconClassname = defaultClassNames.iconClassname,
+	groupClassname,
+	itemsClassname,
+	itemClassname,
+	activeItemClassname,
+	buttonClassname,
+	iconClassname,
+	iconSpacingClassname,
 	CustomDropdownTrigger,
 	placement = "bottom-start",
 	offsetOptions,
@@ -111,7 +113,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	return (
 		<div
 			{...{
-				className: groupClassname,
+				className: cn(defaultClassNames.groupClassname, groupClassname),
 				role: "combobox",
 				"aria-owns": `${id}-list`,
 				"aria-expanded": isOpen,
@@ -122,7 +124,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 			<button
 				{...{
 					ref: refs.setReference,
-					className: buttonClassname,
+					className: cn(defaultClassNames.buttonClassname, buttonClassname),
 					onClick: () => {
 						setIsOpen(!isOpen)
 					},
@@ -134,7 +136,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 				) : (
 					<>
 						<span className="pl-1">{label}</span>
-						<DynamicIcon icon="ChevronDownIcon" className={iconClassname} />
+						<DynamicIcon icon="ChevronDownIcon" className={cn(defaultClassNames.iconClassname, iconClassname)} />
 					</>
 				)}
 			</button>
@@ -142,39 +144,22 @@ const Dropdown: React.FC<IDropdownProps> = ({
 			{isMounted && items.length > 0 && isOpen && (
 				<FloatingPortal>
 					<FloatingFocusManager context={context} modal={true}>
-						<Transition
-							as={Fragment}
-							show={isOpen}
-							enter="transition ease-out duration-100"
-							enterFrom="transform opacity-0 scale-95"
-							enterTo="transform opacity-100 scale-100"
-							leave="transition ease-in duration-75"
-							leaveFrom="transform opacity-100 scale-100"
-							leaveTo="transform opacity-0 scale-95"
+						<div
+							{...getFloatingProps()}
+							className={cn(defaultClassNames.itemsClassname, itemsClassname)}
+							ref={refs.setFloating}
+							aria-labelledby={label}							
+							style={{
+								position: context.strategy,
+								top: Math.round(context.y ?? 0),
+								left: Math.round(context.x ?? 0),
+								width: "max-content",
+								maxWidth: "min(calc(100vw - 10px), 25rem)",
+								...floatingStyles,
+							}}
 						>
-							<ul
-								{...{
-									...getFloatingProps(),
-									className: itemsClassname,
-									ref: refs.setFloating,
-									// style: floatingStyles,
-									"aria-labelledby": label,
-									id: `${id}-list`,
-									role: "listbox",
-									style: {
-										position: context.strategy,
-										top: Math.round(context.y ?? 0),
-										left: Math.round(context.x ?? 0),
-										width: "max-content",
-										maxWidth: "min(calc(100vw - 10px), 25rem)",
-										...floatingStyles
-									}
-								}}
-								className={itemsClassname}
-								ref={refs.setFloating}
-								aria-labelledby={label}
-								{...getFloatingProps()}
-							>
+
+							<ul id={`${id}-list`} role="listbox" style={{...transitionStyles}}>
 								{items.map((itemStack, idx) => {
 									return (
 										<React.Fragment key={`${idx}-list-${id}`}>
@@ -187,9 +172,10 @@ const Dropdown: React.FC<IDropdownProps> = ({
 													icon,
 													iconPosition,
 													...rest
-												}) => {
+												}, idx) => {
 													const active = activeItem && activeItem === key
 													const itemClass = cn(
+														defaultClassNames.itemClassname,
 														itemClassname,
 														"group flex cursor-pointer items-center px-4 py-2 text-sm transition-all",
 														{
@@ -201,16 +187,13 @@ const Dropdown: React.FC<IDropdownProps> = ({
 														{
 															"bg-gray-100 text-gray-900": active
 														},
-														active ? activeItemClassname : "",
+														active ? cn(defaultClassNames.activeItemClassname, activeItemClassname) : "",
 														{
 															"bg-gray-100 text-red-500 hover:text-red-500":
-																active && isEmphasized
-														},
-														itemClassname
-													)
-
-													return (
-														<li key={key}>
+															active && isEmphasized
+														})
+														return (
+															<li key={`${key}-${idx}`}>
 															<button
 																{...{
 																	onClick: () => {
@@ -222,53 +205,53 @@ const Dropdown: React.FC<IDropdownProps> = ({
 																	...rest
 																}}
 															>
-																<div className="flex items-center gap-x-4">
+																<div className={cn(defaultClassNames.iconSpacingClassname, iconSpacingClassname)}>
 																	{icon &&
 																		(iconPosition === "leading" ||
-																			iconPosition === undefined) &&
+																		iconPosition === undefined) &&
 																		(typeof icon === "string" ? (
 																			<DynamicIcon
-																				{...{
-																					icon: icon,
-																					className: cn(
+																			{...{
+																				icon: icon,
+																				className: cn(
+																					{
+																						"text-red-500": isEmphasized
+																					},
+																					"opacity-60 group"
+																					)
+																				}}
+																				/>
+																				) : (
+																					<DynamicIcon
+																					{...{
+																						...icon,
+																						className: cn(
+																							icon.className,
 																						{
 																							"text-red-500": isEmphasized
 																						},
 																						"opacity-60 group"
-																					)
-																				}}
-																			/>
-																		) : (
-																			<DynamicIcon
-																				{...{
-																					...icon,
-																					className: cn(
-																						icon.className,
-																						{
-																							"text-red-500": isEmphasized
-																						},
-																						"opacity-60 group"
-																					)
-																				}}
-																			/>
-																		))}
+																						)
+																					}}
+																					/>
+																					))}
 																	<div className="whitespace-nowrap">{label}</div>
 																	{icon &&
 																		iconPosition === "trailing" &&
 																		(typeof icon === "string" ? (
 																			<DynamicIcon
-																				{...{
-																					icon: icon,
-																					className: cn(
-																						{
-																							"text-red-500": isEmphasized
-																						},
-																						"opacity-60 group"
+																			{...{
+																				icon: icon,
+																				className: cn(
+																					{
+																						"text-red-500": isEmphasized
+																					},
+																					"opacity-60 group"
 																					)
 																				}}
-																			/>
-																		) : (
-																			<DynamicIcon
+																				/>
+																				) : (
+																					<DynamicIcon
 																				{...{
 																					...icon,
 																					className: cn(
@@ -277,10 +260,10 @@ const Dropdown: React.FC<IDropdownProps> = ({
 																							"text-red-500": isEmphasized
 																						},
 																						"opacity-60 group"
-																					)
-																				}}
-																			/>
-																		))}
+																						)
+																					}}
+																					/>
+																					))}
 																</div>
 															</button>
 														</li>
@@ -291,7 +274,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 									)
 								})}
 							</ul>
-						</Transition>
+						</div>
 					</FloatingFocusManager>
 				</FloatingPortal>
 			)}
