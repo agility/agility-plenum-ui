@@ -58,7 +58,8 @@ import { Component } from '@agility/plenum-ui';
 
 ### Development and Build Scripts
 
-Run your development server with Storybook:
+
+#### Run your development server with Storybook:
 
 ```bash
 npm run dev
@@ -66,7 +67,7 @@ npm run dev
 yarn dev
 ```
 
-Build your project:
+#### Build your project:
 
 ```bash
 npm run build
@@ -74,7 +75,28 @@ npm run build
 yarn build
 ```
 
-Clean the \`dist\` directory:
+#### Use yarn link to locally test the library in another project:
+
+In the Plenum project directory after having run a build, run:
+ ```bash 
+yarn link.
+```
+You should see the following in your terminal: 
+```bash
+yarn link v1.22.10 
+success Registered "@agility/plenum-ui".
+```
+You can now run 
+```bash 
+yarn link "@agility/plenum-ui"
+```
+in the projects where you want to consume this package and it will be used instead. It should output a message like 
+```bash
+yarn link v1.22.10
+success Using linked package for "@agility/plenum-ui".
+```
+
+#### Clean the \`dist\` directory:
 
 ```bash
 npm run clean
@@ -82,7 +104,7 @@ npm run clean
 yarn clean
 ```
 
-Lint your project:
+#### Lint your project:
 
 ```bash
 npm run lint
@@ -90,7 +112,7 @@ npm run lint
 yarn lint
 ```
 
-Build Tailwind CSS:
+#### Build Tailwind CSS:
 
 ```bash
 npm run build:tw
@@ -100,7 +122,7 @@ yarn build:tw
 
 ### Storybook Scripts
 
-Build your Storybook:
+#### Build your Storybook:
 
 ```bash
 npm run build-storybook
@@ -108,7 +130,7 @@ npm run build-storybook
 yarn build-storybook
 ```
 
-Run your Storybook in development mode:
+#### Run your Storybook in development mode:
 
 ```bash
 npm run storybook:dev
@@ -116,7 +138,7 @@ npm run storybook:dev
 yarn storybook:dev
 ```
 
-Generate Tailwind CSS for Storybook and watch for changes:
+#### Generate Tailwind CSS for Storybook and watch for changes:
 
 ```bash
 npm run storybook:tw
@@ -124,7 +146,7 @@ npm run storybook:tw
 yarn storybook:tw
 ```
 
-Build specific parts of Storybook:
+#### Build specific parts of Storybook:
 
 ```bash
 # Build Storybook
@@ -138,7 +160,7 @@ npm run sb-build:tw
 yarn sb-build:tw
 ```
 
-Compile TypeScript files using custom build script:
+#### Compile TypeScript files using custom build script:
 
 ```bash
 npm run build:tsc
