@@ -53,7 +53,7 @@ const Checkbox: FC<ICheckboxProps> = ({
 	const wrapperStyles = cn(
 		"relative flex items-center min-h-[38px]",
 		{ "opacity-50": isDisabled },
-		{ "rounded-sm ring-1 px-3 ring-gray-300": hasBorder },
+		{ "rounded-sm border border-1 px-3 border-gray-200": hasBorder },
 		{ "py-3": hasBorder && message },
 		className
 	)
