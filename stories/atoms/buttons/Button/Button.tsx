@@ -1,13 +1,14 @@
 import Loader from "stories/atoms/loaders/Loader"
 import { default as cn } from "classnames"
-import React, { HTMLAttributeAnchorTarget } from "react"
+import React, { HTMLAttributeAnchorTarget, forwardRef } from "react"
 import { DynamicIcon, UnifiedIconName, IDynamicIconProps } from "../../icons"
 
 // import Loader from "../loaders/loader/Loader"
 
 export type BTNActionType = "primary" | "secondary" | "alternative" | "danger"
+
 export interface IButtonProps
-	extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+	extends Omit<React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "ref"> {
 	/** Is the button a Primary CTA, alternative or danger button? */
 	actionType?: BTNActionType
 	/** How lg should the button be? - Defaults to 'base'. */
@@ -32,12 +33,11 @@ export interface IButtonProps
 	isLoading?: boolean
 	className?: string
 	iconObj?: React.ReactNode
-	ref?: React.LegacyRef<HTMLButtonElement>
 }
 /**
  * Primary UI component for user interaction
  */
-const Button = ({
+const _Button = ({
 	actionType = "primary",
 	size = "sm",
 	label,
@@ -49,9 +49,10 @@ const Button = ({
 	asLink,
 	isLoading = false,
 	className,
-	ref,
 	...props
-}: IButtonProps) => {
+}: IButtonProps, 	
+	ref: React.LegacyRef<HTMLButtonElement>
+) => {
 	const iconStyles = cn(
 		{ "text-white h-5 w-5": actionType === "primary" || actionType === "danger" },
 		{ "text-purple-700 h-5 w-5 ": actionType === "secondary" },
@@ -143,5 +144,7 @@ const Button = ({
 		</button>
 	)
 }
+
+const Button = forwardRef<HTMLButtonElement, IButtonProps>(_Button)
 
 export default Button
