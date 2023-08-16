@@ -15,7 +15,7 @@ export const DefaultTextarea: Story = {
 		name: "description",
 		rows: 12,
 		cols: 18,
-		label: "Description",
+		label: { display: "Description" },
 		placeholder: dummyText
 	}
 }

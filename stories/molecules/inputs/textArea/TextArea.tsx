@@ -2,13 +2,19 @@ import React, { forwardRef, useEffect, useId, useState } from "react"
 import { default as cn } from "classnames"
 import InputLabel from "../InputLabel"
 import InputCounter from "../InputCounter"
+
+interface ILabelProps extends React.DetailedHTMLProps<React.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
+	display: string
+	htmlFor?: string
+}
+
 export interface ITextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "onChange"> {
 	/** Input ID */
 	id?: string
 	/** Input Name */
 	name?: string
 	/** Label for the input */
-	label?: string
+	label?: ILabelProps
 	/** Error state */
 	isError?: boolean
 	/** If field is required */
@@ -101,7 +107,7 @@ const Textarea: React.FC<ITextareaProps> = ({
 			<InputLabel
 				isPlaceholder
 				isActive
-				label={label}
+				label={label.display}
 				isRequired={isRequired}
 				id={id}
 				isError={isError}
