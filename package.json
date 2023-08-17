@@ -1,6 +1,6 @@
 {
 	"name": "@agility/plenum-ui",
-	"version": "2.0.0-rc17",
+	"version": "2.0.0-rc18",
 	"license": "MIT",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
@@ -65,6 +65,9 @@
 		"storybook": "^7.1.1",
 		"tailwindcss": "^3.2.4",
 		"typescript": "^5.1.6"
+	},
+	"resolutions": {
+		"jackspeak": "2.1.1"
 	},
 	"peerDependencies": {
 		"@floating-ui/react": "^0.25.0",
