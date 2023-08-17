@@ -41,7 +41,7 @@ const AnimatedLabelTextArea: React.FC<IAnimatedLabelTextAreaProps> = (props: IAn
 				)}
 				htmlFor={label?.htmlFor || id}
 			>
-				{label?.display} {`${hasValue}`}
+				{label?.display}
 				{required && <span className="text-red-600 ml-1">*</span>}
 			</label>
 
