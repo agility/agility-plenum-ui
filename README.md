@@ -75,6 +75,14 @@ npm run build
 yarn build
 ```
 
+### Build your project locally and watch for changes
+This will create symlinks for the current project and its necessary dependencies, so that it can be connected to other projects.
+It will also start the watch server, so it will automatically rebuild on any local changes.
+
+```
+yarn start:local
+```
+
 #### Use yarn link to locally test the library in another project:
 
 In the Plenum project directory after having run a build, run:
