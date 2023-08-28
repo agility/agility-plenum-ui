@@ -79,7 +79,12 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 								<DynamicIcon
 									{...{
 										...leadIcon,
-										className: cn("h-5 w-5 text-gray-400", leadIconClassNames, customIconClass),
+										className: cn(
+											"h-5 w-5 text-gray-400",
+											leadIconClassNames,
+											customIconClass,
+											leadIcon.className
+										),
 										outline: iconOutlined
 									}}
 								/>
@@ -123,7 +128,7 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 								<DynamicIcon
 									{...{
 										...trailIcon,
-										className: cn("h-5 w-5 text-gray-400", customIconClass),
+										className: cn("h-5 w-5 text-gray-400", customIconClass, trailIcon.className),
 										outline: iconOutlined
 									}}
 								/>
