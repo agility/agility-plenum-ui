@@ -37,20 +37,21 @@ export interface IButtonProps
 /**
  * Primary UI component for user interaction
  */
-const _Button = ({
-	actionType = "primary",
-	size = "sm",
-	label,
-	icon,
-	iconObj,
-	CustomSVGIcon,
-	fullWidth = false,
-	iconPosition = "trailing",
-	asLink,
-	isLoading = false,
-	className,
-	...props
-}: IButtonProps, 	
+const _Button = (
+	{
+		actionType = "primary",
+		size = "sm",
+		label,
+		icon,
+		iconObj,
+		CustomSVGIcon,
+		fullWidth = false,
+		iconPosition = "leading",
+		asLink,
+		isLoading = false,
+		className,
+		...props
+	}: IButtonProps,
 	ref: React.LegacyRef<HTMLButtonElement>
 ) => {
 	const iconStyles = cn(

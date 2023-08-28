@@ -20,7 +20,7 @@ import { ClassNameWithAutocomplete } from "utils/types"
 import { DynamicIcon, IDynamicIconProps, UnifiedIconName } from "@/stories/atoms/icons"
 
 export interface IItemProp extends HTMLAttributes<HTMLButtonElement> {
-	icon?: IDynamicIconProps | UnifiedIconName
+	icon?: IDynamicIconProps
 	iconPosition?: "trailing" | "leading"
 	label: string
 	onClick?(): void
@@ -128,6 +128,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 					onClick: () => {
 						setIsOpen(!isOpen)
 					},
+					type: "button",
 					...getReferenceProps()
 				}}
 			>
@@ -136,7 +137,10 @@ const Dropdown: React.FC<IDropdownProps> = ({
 				) : (
 					<>
 						<span className="pl-1">{label}</span>
-						<DynamicIcon icon="ChevronDownIcon" className={cn(defaultClassNames.iconClassname, iconClassname)} />
+						<DynamicIcon
+							icon="ChevronDownIcon"
+							className={cn(defaultClassNames.iconClassname, iconClassname)}
+						/>
 					</>
 				)}
 			</button>
@@ -148,31 +152,25 @@ const Dropdown: React.FC<IDropdownProps> = ({
 							{...getFloatingProps()}
 							className={cn(defaultClassNames.itemsClassname, itemsClassname)}
 							ref={refs.setFloating}
-							aria-labelledby={label}							
+							aria-labelledby={label}
 							style={{
 								position: context.strategy,
 								top: Math.round(context.y ?? 0),
 								left: Math.round(context.x ?? 0),
 								width: "max-content",
 								maxWidth: "min(calc(100vw - 10px), 25rem)",
-								...floatingStyles,
+								...floatingStyles
 							}}
 						>
-
-							<ul id={`${id}-list`} role="listbox" style={{...transitionStyles}}>
+							<ul id={`${id}-list`} role="listbox" style={{ ...transitionStyles }}>
 								{items.map((itemStack, idx) => {
 									return (
 										<React.Fragment key={`${idx}-list-${id}`}>
 											{itemStack.map(
-												({
-													onClick,
-													label,
-													key,
-													isEmphasized,
-													icon,
-													iconPosition,
-													...rest
-												}, idx) => {
+												(
+													{ onClick, label, key, isEmphasized, icon, iconPosition, ...rest },
+													idx
+												) => {
 													const active = activeItem && activeItem === key
 													const itemClass = cn(
 														defaultClassNames.itemClassname,
@@ -187,13 +185,19 @@ const Dropdown: React.FC<IDropdownProps> = ({
 														{
 															"bg-gray-100 text-gray-900": active
 														},
-														active ? cn(defaultClassNames.activeItemClassname, activeItemClassname) : "",
+														active
+															? cn(
+																	defaultClassNames.activeItemClassname,
+																	activeItemClassname
+															  )
+															: "",
 														{
 															"bg-gray-100 text-red-500 hover:text-red-500":
-															active && isEmphasized
-														})
-														return (
-															<li key={`${key}-${idx}`}>
+																active && isEmphasized
+														}
+													)
+													return (
+														<li key={`${key}-${idx}`}>
 															<button
 																{...{
 																	onClick: () => {
@@ -205,53 +209,29 @@ const Dropdown: React.FC<IDropdownProps> = ({
 																	...rest
 																}}
 															>
-																<div className={cn(defaultClassNames.iconSpacingClassname, iconSpacingClassname)}>
+																<div
+																	className={cn(
+																		defaultClassNames.iconSpacingClassname,
+																		iconSpacingClassname
+																	)}
+																>
 																	{icon &&
 																		(iconPosition === "leading" ||
-																		iconPosition === undefined) &&
+																			iconPosition === undefined) &&
 																		(typeof icon === "string" ? (
 																			<DynamicIcon
-																			{...{
-																				icon: icon,
-																				className: cn(
-																					{
-																						"text-red-500": isEmphasized
-																					},
-																					"opacity-60 group"
-																					)
-																				}}
-																				/>
-																				) : (
-																					<DynamicIcon
-																					{...{
-																						...icon,
-																						className: cn(
-																							icon.className,
+																				{...{
+																					icon: icon,
+																					className: cn(
 																						{
 																							"text-red-500": isEmphasized
 																						},
 																						"opacity-60 group"
-																						)
-																					}}
-																					/>
-																					))}
-																	<div className="whitespace-nowrap">{label}</div>
-																	{icon &&
-																		iconPosition === "trailing" &&
-																		(typeof icon === "string" ? (
-																			<DynamicIcon
-																			{...{
-																				icon: icon,
-																				className: cn(
-																					{
-																						"text-red-500": isEmphasized
-																					},
-																					"opacity-60 group"
 																					)
 																				}}
-																				/>
-																				) : (
-																					<DynamicIcon
+																			/>
+																		) : (
+																			<DynamicIcon
 																				{...{
 																					...icon,
 																					className: cn(
@@ -260,10 +240,39 @@ const Dropdown: React.FC<IDropdownProps> = ({
 																							"text-red-500": isEmphasized
 																						},
 																						"opacity-60 group"
-																						)
-																					}}
-																					/>
-																					))}
+																					)
+																				}}
+																			/>
+																		))}
+																	<div className="whitespace-nowrap">{label}</div>
+																	{icon &&
+																		iconPosition === "trailing" &&
+																		(typeof icon === "string" ? (
+																			<DynamicIcon
+																				{...{
+																					icon: icon,
+																					className: cn(
+																						{
+																							"text-red-500": isEmphasized
+																						},
+																						"opacity-60 group"
+																					)
+																				}}
+																			/>
+																		) : (
+																			<DynamicIcon
+																				{...{
+																					...icon,
+																					className: cn(
+																						icon.className,
+																						{
+																							"text-red-500": isEmphasized
+																						},
+																						"opacity-60 group"
+																					)
+																				}}
+																			/>
+																		))}
 																</div>
 															</button>
 														</li>

@@ -3,6 +3,12 @@ import { IItemProp } from "./DropdownComponent"
 export const dropdownDataBase: IItemProp[][] = [
 	[
 		{
+			icon: {
+				icon: "IconCopy"
+				// pos: "leading",
+				// className: "h-5 w-5",
+				// outline: false
+			},
 			key: "Copy",
 			label: "Copy",
 			onClick: () => {
@@ -12,6 +18,12 @@ export const dropdownDataBase: IItemProp[][] = [
 	],
 	[
 		{
+			icon: {
+				icon: "IconPlus"
+				// pos: "leading",
+				// className: "h-5 w-5",
+				// outline: false
+			},
 			key: "Add to Batch",
 			label: "Add to Batch",
 			onClick: () => {
@@ -19,6 +31,12 @@ export const dropdownDataBase: IItemProp[][] = [
 			}
 		},
 		{
+			icon: {
+				icon: "IconEye"
+				// pos: "leading",
+				// className: "h-5 w-5",
+				// outline: false
+			},
 			key: "View Batch",
 			label: "View Batch",
 			onClick: () => {
@@ -28,6 +46,12 @@ export const dropdownDataBase: IItemProp[][] = [
 	],
 	[
 		{
+			icon: {
+				icon: "IconTrash"
+				// pos: "leading",
+				// className: "h-5 w-5",
+				// outline: false
+			},
 			label: "Delete",
 			onClick: () => {
 				console.log("Delete action")

@@ -31,7 +31,8 @@ export function isUnifiedIconName(name: UnifiedIconName): name is UnifiedIconNam
 	return isTablerIcon(name) || isFAIcon(name)
 }
 
-export interface IDynamicIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+//export interface IDynamicIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+export interface IDynamicIconProps {
 	icon: UnifiedIconName
 	className?: ClassNameWithAutocomplete
 	outline?: boolean
