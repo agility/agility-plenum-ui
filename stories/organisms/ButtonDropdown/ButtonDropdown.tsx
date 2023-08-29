@@ -30,7 +30,7 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement,
 			<div
 				className={cn(
 					"w-[1px] rt",
-					button.actionType === "primary" ? "bg-purple-700" : "",
+					button.actionType === "primary" ? "bg-purple-700 " : "",
 					button.actionType === "secondary" ? "bg-purple-200" : "",
 					button.actionType === "alternative" ? "bg-gray-300" : ""
 				)}
@@ -50,16 +50,25 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement,
 							}}
 						/>
 					),
-					groupClassname: cn(
+					buttonClassname: cn(
 						"flex items-center justify-center rounded-l-none border !border-l-0 rounded-r  px-2 transition-all hover:!border-l-0",
 						button.actionType === "primary"
-							? "border-purple-600 bg-purple-600  !text-white  hover:border-purple-700 hover:bg-purple-700 active:!border-purple-800 active:!bg-purple-800 fill-white"
+							? cn(
+									"border-purple-600 bg-purple-600  !text-white  hover:border-purple-700 hover:bg-purple-700 active:!border-purple-800 active:bg-purple-800 fill-white",
+									"disabled:bg-purple-400 disabled:text-white disabled:hover:none disabled:active:bg-purple-400 disabled:border-purple-400"
+							  )
 							: "",
 						button.actionType === "secondary"
-							? "border-purple-50 bg-purple-50 !text-purple-700  hover:border-purple-100 hover:bg-purple-100 active:!border-purple-300 active:!bg-purple-300 fill-purple-700"
+							? cn(
+									"border-purple-50 bg-purple-50 text-purple-700  hover:border-purple-100 hover:bg-purple-100 active:border-purple-300 active:bg-purple-300 fill-purple-700",
+									"disabled:bg-purple-50 disabled:text-grey-50 disabled:hover:none disabled:active:bg-purple-50 disabled:border-purple-50"
+							  )
 							: "",
 						button.actionType === "alternative"
-							? "border-gray-300 bg-white !text-gray-700 fill-gray-700  hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100"
+							? cn(
+									"border-gray-300 bg-white text-gray-700 fill-gray-700  hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100",
+									"disabled:bg-gray-100 disabled:text-gray-500 disabled:hover:none disabled:active:bg-gray-100 disabled:border-gray-300"
+							  )
 							: ""
 					),
 					offsetOptions: offsetOptions ?? {

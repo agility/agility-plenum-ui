@@ -22,6 +22,18 @@ export const Danger: Story = {
 		}
 	}
 }
+
+export const DangerDisabled: Story = {
+	args: {
+		actionType: "danger",
+		label: "Danger Zone!",
+		disabled: true,
+		onClick: () => {
+			window.alert("Button clicked!")
+		}
+	}
+}
+
 export const DangerTrailingIcon: Story = {
 	args: {
 		...Danger.args,

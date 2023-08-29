@@ -28,6 +28,18 @@ export const Primary: Story = {
 		}
 	}
 }
+
+export const PrimaryDisabled: Story = {
+	args: {
+		actionType: "primary",
+		label: "Button",
+		disabled: true,
+		onClick: () => {
+			window.alert("Button clicked!")
+		}
+	}
+}
+
 export const PrimaryLeadingIcon: Story = {
 	args: {
 		...Primary.args,

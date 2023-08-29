@@ -22,6 +22,16 @@ export const Alternative: Story = {
 		}
 	}
 }
+export const AlternativeDisabled: Story = {
+	args: {
+		actionType: "alternative",
+		label: "Button",
+		disabled: true,
+		onClick: () => {
+			window.alert("Button clicked!")
+		}
+	}
+}
 export const AlternativeTrailingIcon: Story = {
 	args: {
 		...Alternative.args,

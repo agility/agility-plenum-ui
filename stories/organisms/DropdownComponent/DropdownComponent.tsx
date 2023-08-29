@@ -48,6 +48,7 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 		crossAxis: number
 		alignmentAxis: number | null
 	}>
+	disabled?: boolean
 }
 export const defaultClassNames = {
 	groupClassname: "flex inline-block text-left",
@@ -77,6 +78,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	CustomDropdownTrigger,
 	placement = "bottom-start",
 	offsetOptions,
+	disabled,
 	...props
 }: IDropdownProps): JSX.Element | null => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -132,6 +134,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 						setIsOpen(!isOpen)
 					},
 					type: "button",
+					disabled: disabled,
 					...getReferenceProps()
 				}}
 			>

@@ -79,18 +79,19 @@ const _Button = (
 				{ "px-[17px] py-[9px] text-base": size === "lg" },
 				{ "px-[25px] py-[13px] text-base": size === "xl" },
 				{
-					"bg-purple-600 text-white hover:border-purple-700 hover:bg-purple-700 ": actionType === "primary"
+					"bg-purple-600 text-white hover:border-purple-700 hover:bg-purple-700 disabled:bg-purple-400 disabled:focus-visible:ring-0":
+						actionType === "primary"
 				},
 				{
-					" bg-purple-50 text-purple-700 hover:bg-purple-200   focus-within:bg-purple-100  focus-visible:bg-purple-100 focus:bg-purple-100 active:bg-purple-100":
+					" bg-purple-50 text-purple-700 hover:bg-purple-200   focus-within:bg-purple-100  focus-visible:bg-purple-100 focus:bg-purple-100 active:bg-purple-100 disabled:bg-purple-50 disabled:text-purple-300 disabled:focus-visible:ring-0":
 						actionType === "secondary"
 				},
 				{
-					"border-gray-300 bg-white border  text-gray-700 hover:bg-gray-50 focus-visible:!border-gray-300 focus-within:!border-gray-300 focus:!border-gray-300 active:!border-gray-300":
+					"border-gray-300 bg-white border  text-gray-700 hover:bg-gray-50 focus-visible:!border-gray-300 focus-within:!border-gray-300 focus:!border-gray-300 active:!border-gray-300 disabled:bg-gray-50 disabled:text-gray-300 disabled:focus-visible:ring-0":
 						actionType === "alternative"
 				},
 				{
-					" bg-red-600 text-white hover:bg-red-700 <focus-visible:!></focus-visible:!>ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 ":
+					" bg-red-600 text-white hover:bg-red-700 <focus-visible:!></focus-visible:!>ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
 						actionType === "danger"
 				},
 				className ? className : ""

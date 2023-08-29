@@ -28,6 +28,18 @@ export const Secondary: Story = {
 		}
 	}
 }
+
+export const SecondaryDisabled: Story = {
+	args: {
+		actionType: "secondary",
+		label: "Button",
+		disabled: true,
+		onClick: () => {
+			window.alert("Button clicked!")
+		}
+	}
+}
+
 export const SecondaryTrailingIcon: Story = {
 	args: {
 		...Secondary.args,
