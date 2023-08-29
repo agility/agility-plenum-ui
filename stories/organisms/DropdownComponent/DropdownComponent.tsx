@@ -19,14 +19,17 @@ import {
 import { ClassNameWithAutocomplete } from "utils/types"
 import { DynamicIcon, IDynamicIconProps, UnifiedIconName } from "@/stories/atoms/icons"
 
-export interface IItemProp extends HTMLAttributes<HTMLButtonElement> {
+export interface IItemProp {
+	//Don't think this needs to extend HtmlButton... extends HTMLAttributes<HTMLButtonElement> {
 	icon?: IDynamicIconProps
 	iconPosition?: "trailing" | "leading"
 	label: string
 	onClick?(): void
 	isEmphasized?: boolean
 	key: React.Key
+	iconObj?: JSX.Element
 }
+
 export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 	items: IItemProp[][]
 	label: string
@@ -138,7 +141,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 					<>
 						<span className="pl-1">{label}</span>
 						<DynamicIcon
-							icon="ChevronDownIcon"
+							icon="IconChevronDown"
 							className={cn(defaultClassNames.iconClassname, iconClassname)}
 						/>
 					</>
@@ -168,7 +171,16 @@ const Dropdown: React.FC<IDropdownProps> = ({
 										<React.Fragment key={`${idx}-list-${id}`}>
 											{itemStack.map(
 												(
-													{ onClick, label, key, isEmphasized, icon, iconPosition, ...rest },
+													{
+														onClick,
+														label,
+														key,
+														isEmphasized,
+														icon,
+														iconPosition,
+														iconObj,
+														...rest
+													},
 													idx
 												) => {
 													const active = activeItem && activeItem === key
@@ -201,8 +213,11 @@ const Dropdown: React.FC<IDropdownProps> = ({
 															<button
 																{...{
 																	onClick: () => {
-																		setActiveItem(key)
 																		onClick && onClick()
+																		setTimeout(() => {
+																			//hide the dropdown after click
+																			setIsOpen(false)
+																		}, 150)
 																	},
 																	key: key,
 																	className: cn(itemClass, "w-full"),
@@ -215,6 +230,12 @@ const Dropdown: React.FC<IDropdownProps> = ({
 																		iconSpacingClassname
 																	)}
 																>
+																	{iconObj &&
+																		(iconPosition === "leading" ||
+																			iconPosition === undefined) && (
+																			<>{iconObj}</>
+																		)}
+
 																	{icon &&
 																		(iconPosition === "leading" ||
 																			iconPosition === undefined) &&
@@ -245,6 +266,10 @@ const Dropdown: React.FC<IDropdownProps> = ({
 																			/>
 																		))}
 																	<div className="whitespace-nowrap">{label}</div>
+																	{iconObj && iconPosition === "trailing" && (
+																		<>{iconObj}</>
+																	)}
+
 																	{icon &&
 																		iconPosition === "trailing" &&
 																		(typeof icon === "string" ? (

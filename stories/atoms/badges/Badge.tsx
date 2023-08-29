@@ -117,7 +117,7 @@ const Badge: React.FC<IBadgeProps> = ({
 						className: `${removeButton?.className || ""} group outline-0 `
 					}}
 				>
-					<DynamicIcon {...{ icon: "XIcon", className: removeButtonStyles }} />
+					<DynamicIcon {...{ icon: "IconX", className: removeButtonStyles }} />
 				</button>
 			)}
 		</div>

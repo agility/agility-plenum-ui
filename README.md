@@ -1,9 +1,8 @@
-
 [![Agility Yellow Triangle Logo withe gray text reading Agility to the right of the triangle](https://cdn.agilitycms.com/content-manager/images/logos/agility-logo-storybook-350.png)](https://agilitycms.com/)
-# Agility Plenum UI Library 
+
+# Agility Plenum UI Library
 
 Welcome to Plenum, the definitive UI library for working within the [Agility CMS](https://www.agilitycms.com/) ecosystem. Built with [Next.js 13](https://nextjs.org/) and [Storybook 7.1](https://storybook.js.org/), Plenum is a comprehensive collection of components and patterns designed for building user interfaces in Agility CMS, as well as your own applications within the Agility CMS ecosystem.
-
 
 ## Building for the Agility Marketplace
 
@@ -13,21 +12,21 @@ Contributions to extend and improve this library are welcome! Feel free to fork 
 
 ## Features
 
-- Comprehensive UI components library, designed for versatility and consistency.
-- Built with modern technologies like Next.js 13 and Storybook 7.1.
-- Includes automation scripts for efficient component creation.
-- Adopts Tailwind CSS for utility-first styling.
-- Easy to use, install, and integrate into your project.
-  
+-   Comprehensive UI components library, designed for versatility and consistency.
+-   Built with modern technologies like Next.js 13 and Storybook 7.1.
+-   Includes automation scripts for efficient component creation.
+-   Adopts Tailwind CSS for utility-first styling.
+-   Easy to use, install, and integrate into your project.
+
 ## Prerequisites
 
 Before you begin, ensure that Tailwind CSS is installed in your project. Follow the instructions here: [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/guides/nextjs)
 
-In your app entry point (i.e. \`_app.tsx\`), import the \`globals.css\` file from the previous step, and the \`tailwind.css\` file from Plenum:
+In your app entry point (i.e. \`\_app.tsx\`), import the \`globals.css\` file from the previous step, and the \`tailwind.css\` file from Plenum:
 
 ```jsx
-import "<RELATIVE_PATH>/globals.css";
-import "@agility/plenum-ui/dist/lib/tailwind.css";
+import "<RELATIVE_PATH>/globals.css"
+import "@agility/plenum-ui/dist/lib/tailwind.css"
 ```
 
 Make sure to add any additional styles before these two import statements to prevent overwriting the Plenum styling.
@@ -49,15 +48,13 @@ yarn add @agility/plenum-ui
 Import and use the Plenum components in your React components:
 
 ```jsx
-import { Component } from '@agility/plenum-ui';
-
-<Component {...{ComponentProps}} />
+import { Component } from "@agility/plenum-ui"
+;<Component {...{ ComponentProps }} />
 ```
 
 ## Scripts
 
 ### Development and Build Scripts
-
 
 #### Run your development server with Storybook:
 
@@ -76,6 +73,7 @@ yarn build
 ```
 
 ### Build your project locally and watch for changes
+
 This will create symlinks for the current project and its necessary dependencies, so that it can be connected to other projects.
 It will also start the watch server, so it will automatically rebuild on any local changes.
 
@@ -86,19 +84,26 @@ yarn start:local
 #### Use yarn link to locally test the library in another project:
 
 In the Plenum project directory after having run a build, run:
- ```bash 
+
+```bash
 yarn link.
 ```
-You should see the following in your terminal: 
+
+You should see the following in your terminal:
+
 ```bash
-yarn link v1.22.10 
+yarn link v1.22.10
 success Registered "@agility/plenum-ui".
 ```
-You can now run 
-```bash 
+
+You can now run
+
+```bash
 yarn link "@agility/plenum-ui"
 ```
-in the projects where you want to consume this package and it will be used instead. It should output a message like 
+
+in the projects where you want to consume this package and it will be used instead. It should output a message like
+
 ```bash
 yarn link v1.22.10
 success Using linked package for "@agility/plenum-ui".
@@ -178,7 +183,6 @@ yarn build:tsc
 
 These scripts cover various tasks related to development, build processes, linting, and handling specific aspects like Storybook and Tailwind CSS. Make sure to run the appropriate script for the task you want to perform.
 
-
 ### Component Generation Script
 
 We have a Node.js script that automates the creation of new components for our Storybook library. This script generates a component directory, along with the necessary files like \`Component.tsx\`, \`Component.stories.tsx\`, and \`index.tsx\`.
@@ -193,14 +197,14 @@ node create-component.js ComponentName DestinationDirectory
 
 This command takes two arguments:
 
-- \`ComponentName\` - The name of the new component you want to create. This should be in PascalCase (for example, "MyComponent").
-- \`DestinationDirectory\` - The directory where the new component will be created. This should be relative to the 'stories' directory. (for example, "atoms" or "Molecules").
+-   \`ComponentName\` - The name of the new component you want to create. This should be in PascalCase (for example, "MyComponent").
+-   \`DestinationDirectory\` - The directory where the new component will be created. This should be relative to the 'stories' directory. (for example, "atoms" or "Molecules").
 
 The script will create a new directory with the given component name inside the specified destination directory (under the 'stories' directory). Then, it will generate three files in the new directory:
 
-- \`ComponentName.tsx\` - This is the component file. It contains a basic React functional component structure.
-- \`ComponentName.stories.tsx\` - This is the Storybook story file. It sets up a basic story for the new component.
-- \`index.tsx\` - This file simply exports the new component. It's used for cleaner imports.
+-   \`ComponentName.tsx\` - This is the component file. It contains a basic React functional component structure.
+-   \`ComponentName.stories.tsx\` - This is the Storybook story file. It sets up a basic story for the new component.
+-   \`index.tsx\` - This file simply exports the new component. It's used for cleaner imports.
 
 #### Example
 
@@ -226,3 +230,42 @@ Each of the generated files will contain basic boilerplate code that you can sta
 ##### Notes
 
 This script does prompt the user before overwriting existing directories, so you can run it with confidence. Always use PascalCase for component names, and ensure the destination directory exists or can be created. If you encounter any issues, you can create the component and its files manually
+
+## Advanced
+
+Old School Yarn Link Instructions :)
+
+```
+cd THIS_PACKAGE
+yarn link
+yarn install
+cd node_modules/react
+yarn link
+cd ../../node_modules/react-dom
+yarn link
+cd YOUR_PROJECT
+yarn link PACKAGE_YOU_DEBUG_LOCALLY
+yarn link react
+yarn link react-dom
+```
+
+Then, when you are done
+
+```
+cd YOUR_PROJECT
+yarn unlink "@agility/plenum-ui"
+yarn unlink react
+yarn link react-dom
+
+cd THIS_PACKAGE
+yarn unlink
+cd node_modules/react
+yarn unlink
+cd ../../node_modules/react-dom
+yarn unlink
+
+```
+
+```
+
+```

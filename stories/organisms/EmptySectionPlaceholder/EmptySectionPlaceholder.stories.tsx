@@ -39,7 +39,7 @@ export const CallsToAction: Story = {
 			{
 				actionType: "alternative",
 				icon: {
-					icon: "UploadIcon",
+					icon: "IconUpload",
 					outline: true
 				},
 				iconPosition: "leading",
@@ -49,7 +49,7 @@ export const CallsToAction: Story = {
 			{
 				actionType: "alternative",
 				icon: {
-					icon: "ViewGridIcon",
+					icon: "IconGridDots",
 					outline: true
 				},
 				size: "lg",
@@ -64,7 +64,7 @@ export const CallsToAction: Story = {
 export const NoActions: Story = {
 	args: {
 		icon: {
-			icon: "PencilAltIcon",
+			icon: "IconPencil",
 			className: "h-5 w-5 text-gray-400 ",
 			outline: true
 		},

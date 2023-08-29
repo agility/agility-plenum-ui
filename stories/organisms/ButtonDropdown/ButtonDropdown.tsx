@@ -16,7 +16,6 @@ export interface IButtonDropdownProps {
  * Primary UI component for user interaction
  */
 const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement, offsetOptions }) => {
-
 	return (
 		<div className="flex items-stretch focus-within:ring-purple-600 focus-within:ring-2 focus-within:ring-offset-white focus-within:ring-offset-2 rounded-[3px]">
 			<Button
@@ -42,7 +41,7 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement,
 					CustomDropdownTrigger: (
 						<DynamicIcon
 							{...{
-								icon: "ChevronDownIcon",
+								icon: "IconChevronDown",
 								className: cn("h-5 w-5", {
 									"text-white": button.actionType === "primary",
 									"text-purple-700": button.actionType === "secondary",

@@ -10,7 +10,7 @@ export const dropdownDataBase: IItemProp[][] = [
 				// outline: false
 			},
 			key: "Copy",
-			label: "Copy",
+			label: "Copy to Clipboard",
 			onClick: () => {
 				console.log("Copy action")
 			}
@@ -66,13 +66,13 @@ export const dropdownDataWithIcons: IItemProp[][] = [
 	[
 		{
 			icon: {
-				icon: "IconClipboardCopy",
+				icon: "IconCopy",
 				className: "h-5 w-5",
 				outline: false
 			},
 			iconPosition: "leading",
 			key: "Copy",
-			label: "Copy",
+			label: "Copy Item",
 			onClick: () => {
 				console.log("Copy action")
 			}

@@ -29,7 +29,7 @@ export const TablerIconSolid: Story = {
 }
 export const TablerIconOutline: Story = {
 	args: {
-		icon: "TrashIcon",
+		icon: "IconTrash",
 		outline: true
 	}
 }

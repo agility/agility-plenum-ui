@@ -33,7 +33,7 @@ export const PrimaryLeadingIcon: Story = {
 		...Primary.args,
 		icon: {
 			...defaultIcon,
-			icon: "CheckIcon",
+			icon: "IconCheck",
 			outline: false
 		},
 		iconPosition: "leading"
@@ -42,7 +42,7 @@ export const PrimaryLeadingIcon: Story = {
 export const PrimarySimpleIconName: Story = {
 	args: {
 		...Primary.args,
-		icon: "CheckIcon",
+		icon: "IconCheck",
 		iconPosition: "leading"
 	}
 }

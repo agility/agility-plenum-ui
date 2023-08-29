@@ -1,7 +1,7 @@
 import { IDynamicIconProps } from "../../icons"
 
 const defaultIcon: IDynamicIconProps = {
-	icon: "BellIcon",
+	icon: "IconBell",
 	className: "w-5 h-5",
 	outline: true
 }

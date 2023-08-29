@@ -24,6 +24,6 @@ export const DefaultFormInputWithAddons: Story = {
 		leadLabel: "Search",
 		addonOffset: 60,
 		labelClass: "text-gray-900",
-		trailIcon: { icon: "SearchIcon" }
+		trailIcon: { icon: "IconSearch" }
 	}
 }

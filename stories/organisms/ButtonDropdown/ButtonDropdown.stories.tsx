@@ -12,13 +12,14 @@ const dropdownDataWithIcons: IItemProp[][] = [
 	[
 		{
 			icon: {
-				icon: "IconClipboardCopy"
+				icon: "IconCopy"
 
 				// className: "h-5 w-5",
 				// outline: false
 			},
+			iconPosition: "leading",
 			key: "Copy",
-			label: "Copy",
+			label: "Copy The Thing",
 			onClick: () => {
 				console.log("Copy action")
 			}
@@ -45,7 +46,7 @@ const dropdownDataWithIcons: IItemProp[][] = [
 				className: "h-5 w-5",
 				outline: false
 			},
-			iconPosition: "trailing",
+			iconPosition: "leading",
 			key: "View Batch",
 			label: "View Batch",
 			onClick: () => {

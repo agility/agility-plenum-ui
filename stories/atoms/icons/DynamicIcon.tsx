@@ -2,19 +2,17 @@ import React from "react"
 // TODO: Fix heroicons support
 import * as SolidIcons from "@heroicons/react/solid"
 import * as OutlineIcons from "@heroicons/react/outline"
-import * as TablerIconComponents from "@tabler/icons-react"
 import * as FA from "react-icons/fa"
 import { tablerIconNames, TablerIconName } from "./tablerIconNames"
 import { default as cn } from "classnames"
 
-import TablerIcon from "./TablerIcon"
 import { ClassNameWithAutocomplete } from "@/utils/types"
+import TablerIcon from "./TablerIcon"
 
 export type IconName = keyof typeof SolidIcons | keyof typeof OutlineIcons
-
 export type FAIconName = keyof typeof FA
 
-export type UnifiedIconName = IconName | TablerIconName | FAIconName
+export type UnifiedIconName = TablerIconName | IconName | FAIconName
 
 export function isHeroIcon(name: UnifiedIconName): name is keyof typeof SolidIcons | keyof typeof OutlineIcons {
 	return name in SolidIcons || name in OutlineIcons
@@ -27,12 +25,12 @@ export function isTablerIcon(name: UnifiedIconName): name is TablerIconName {
 export function isFAIcon(name: UnifiedIconName): name is keyof typeof FA {
 	return name in FA
 }
+
 export function isUnifiedIconName(name: UnifiedIconName): name is UnifiedIconName {
-	return isTablerIcon(name) || isFAIcon(name)
+	return isTablerIcon(name) // || isHeroIcon(name) || isFAIcon(name)
 }
 
-//export interface IDynamicIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
-export interface IDynamicIconProps {
+export interface IDynamicIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
 	icon: UnifiedIconName
 	className?: ClassNameWithAutocomplete
 	outline?: boolean
@@ -63,6 +61,7 @@ export const DynamicIcon = ({
 			/>
 		)
 	}
+
 	if (isFAIcon(icon)) {
 		const Icon = FA[icon]
 		return (

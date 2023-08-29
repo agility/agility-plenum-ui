@@ -44,7 +44,7 @@ export const SecondaryLeadingIcon: Story = {
 export const SecondarySimpleIconName: Story = {
 	args: {
 		...Secondary.args,
-		icon: "BellIcon",
+		icon: "IconBell",
 		iconPosition: "leading"
 	}
 }

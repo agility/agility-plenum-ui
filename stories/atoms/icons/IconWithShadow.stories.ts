@@ -11,13 +11,13 @@ type Story = StoryObj<typeof IconWithShadow>
 
 export const HeroIconSolid: Story = {
 	args: {
-		icon: "CubeTransparentIcon",
+		icon: "IconCube",
 		outline: false
 	}
 }
 export const HeroIconOutline: Story = {
 	args: {
-		icon: "CubeTransparentIcon",
+		icon: "IconCube",
 		outline: true
 	}
 }
@@ -35,7 +35,7 @@ export const TablerIconOutline: Story = {
 }
 export const FAIcon: Story = {
 	args: {
-		icon: "FaGithub",
+		icon: "IconBrandGithub",
 		outline: true
 	}
 }

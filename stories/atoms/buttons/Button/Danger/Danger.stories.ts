@@ -27,7 +27,7 @@ export const DangerTrailingIcon: Story = {
 		...Danger.args,
 		icon: {
 			...defaultIcon,
-			icon: "TrashIcon"
+			icon: "IconTrash"
 		},
 		iconPosition: "trailing"
 	}
@@ -41,7 +41,7 @@ export const DangerLeadingIcon: Story = {
 export const DangerSimpleIconName: Story = {
 	args: {
 		...Danger.args,
-		icon: "TrashIcon",
+		icon: "IconTrash",
 		iconPosition: "leading"
 	}
 }
