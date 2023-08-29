@@ -59,7 +59,6 @@ const Checkbox: FC<ICheckboxProps> = ({
 	)
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(e)
 		const targetValue = e.target.value
 		const targetChecked = e.target.checked
 		typeof onChange === "function" && onChange(targetValue, targetChecked)
