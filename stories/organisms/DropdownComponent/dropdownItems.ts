@@ -14,9 +14,8 @@ export const dropdownDataBase: IItemProp[][] = [
 			onClick: () => {
 				console.log("Copy action")
 			}
-		}
-	],
-	[
+		},
+
 		{
 			icon: {
 				icon: "IconPlus"
@@ -42,9 +41,7 @@ export const dropdownDataBase: IItemProp[][] = [
 			onClick: () => {
 				console.log("View Batch action")
 			}
-		}
-	],
-	[
+		},
 		{
 			icon: {
 				icon: "IconTrash"
