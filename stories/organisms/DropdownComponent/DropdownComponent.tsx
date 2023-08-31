@@ -116,9 +116,6 @@ const Dropdown: React.FC<IDropdownProps> = ({
 		listRef,
 		activeIndex,
 		onNavigate: (index) => {
-			if (index !== null && items[index].length > 0) {
-				setActiveIndex(index + 1)
-			}
 			setActiveIndex(index)
 		}
 	})
