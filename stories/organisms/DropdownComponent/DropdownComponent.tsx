@@ -106,17 +106,16 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	const click = useClick(context)
 	const dismiss = useDismiss(context)
 	const role = useRole(context)
-	useEffect(() => {
-		if (activeItem) {
-			setActiveIndex(items.findIndex((itemStack) => itemStack.some((item) => item.key === activeItem)))
-		}
-	}, [activeItem, items])
+
 
 	const listNavigation = useListNavigation(context, {
 		listRef,
 		activeIndex,
 		onNavigate: (index) => {
-			setActiveIndex(index)
+			console.log(index)
+			if (index !== null && listRef.current[index]) {
+				listRef.current[index]?.focus()
+			}
 		}
 	})
 
@@ -247,15 +246,17 @@ const Dropdown: React.FC<IDropdownProps> = ({
 																}, 150)
 															},
 															key: key,
+															id: key.toString(),
 															className: cn(itemClass, "w-full"),
 															...rest,
 															...getItemProps()
 														}}
 														ref={(node) => {
-															if (items[index].length > 0) {
-																listRef.current[index + 1] = node
+															//If the list ref already contains a node with the same id do nothing, otherwise add it
+															if (listRef.current.some((item) => item?.id === key)) {
+																return
 															}
-															listRef.current[index] = node
+															listRef.current.push(node)
 														}}
 														key={key}
 													>

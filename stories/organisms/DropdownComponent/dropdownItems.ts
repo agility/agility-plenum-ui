@@ -118,5 +118,33 @@ export const dropdownDataWithIcons: IItemProp[][] = [
 			},
 			isEmphasized: true
 		}
+	],
+	[
+		{
+			icon: {
+				icon: "IconFolderPlus",
+				className: "h-5 w-5",
+				outline: false
+			},
+			iconPosition: "leading",
+			key: "Add to Batch",
+			label: "Add to Batch",
+			onClick: () => {
+				console.log("Add to Batch action")
+			}
+		},
+		{
+			icon: {
+				icon: "IconEye",
+				className: "h-5 w-5",
+				outline: false
+			},
+			iconPosition: "leading",
+			key: "View Batch",
+			label: "View Batch",
+			onClick: () => {
+				console.log("View Batch action")
+			}
+		}
 	]
 ]
