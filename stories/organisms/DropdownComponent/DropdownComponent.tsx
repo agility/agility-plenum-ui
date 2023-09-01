@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useEffect, useRef, useState } from "react"
+import React, { HTMLAttributes, useEffect, useMemo, useRef, useState } from "react"
 import { default as cn } from "classnames"
 import {
 	useFloating,
@@ -87,12 +87,18 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	const [isOpen, setIsOpen] = useState(false)
 	const [activeItem, setActiveItem] = useState<React.Key | null>(null)
 	const [activeIndex, setActiveIndex] = useState<number | null>(null)
+
 	const listRef = useRef<(HTMLButtonElement | null)[]>([])
 
 	// Floating UI logic
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
-		onOpenChange: setIsOpen,
+		onOpenChange: (bool) => {
+			console.log("onOpenChange", bool)
+			listRef.current = []
+			setActiveIndex(null)
+			setIsOpen(bool)
+		},
 		placement,
 		middleware: [
 			offset(offsetOptions ?? 10),
@@ -106,14 +112,12 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	const click = useClick(context)
 	const dismiss = useDismiss(context)
 	const role = useRole(context)
-
-
 	const listNavigation = useListNavigation(context, {
 		listRef,
 		activeIndex,
 		onNavigate: (index) => {
-			console.log(index)
 			if (index !== null && listRef.current[index]) {
+				setActiveIndex(index)
 				listRef.current[index]?.focus()
 			}
 		}
@@ -125,16 +129,138 @@ const Dropdown: React.FC<IDropdownProps> = ({
 		role,
 		listNavigation
 	])
+
+	const ItemComponents = useMemo(
+		() =>
+			items.map((itemStack, stackIndex) => {
+				return itemStack.map((item, itemIndex) => {
+					const { key, label, icon, iconObj, iconPosition, isEmphasized, onClick, ...rest } = item
+					const active = activeItem && activeItem === key
+					const itemClass = cn(
+						defaultClassNames.itemClassname,
+						itemClassname,
+						"group flex cursor-pointer items-center px-4 py-2 text-sm transition-all",
+						{
+							"text-red-500": isEmphasized
+						},
+						{
+							"text-gray-900": !isEmphasized
+						},
+						{
+							"bg-gray-100 text-gray-900": active
+						},
+						active ? cn(defaultClassNames.activeItemClassname, activeItemClassname) : "",
+						{
+							"bg-gray-100 text-red-500 hover:text-red-500": active && isEmphasized
+						}
+					)
+					return (
+						<button
+							{...{
+								onClick: () => {
+									onClick && onClick()
+									setTimeout(() => {
+										//hide the dropdown after click
+										setIsOpen(false)
+									}, 150)
+								},
+								key: key,
+								id: key.toString(),
+								className: cn(itemClass, "w-full"),
+								...rest,
+								...getItemProps()
+							}}
+							ref={(node) => {
+								//If the list ref already contains a node with the same id do nothing, otherwise add it
+								if (listRef.current.some((item) => item?.id === key)) {
+									return
+								}
+								listRef.current.push(node)
+							}}
+							key={key}
+						>
+							<div className={cn(defaultClassNames.iconSpacingClassname, iconSpacingClassname)}>
+								{iconObj && (iconPosition === "leading" || iconPosition === undefined) && (
+									<>{iconObj}</>
+								)}
+								{icon &&
+									(iconPosition === "leading" || iconPosition === undefined) &&
+									(typeof icon === "string" ? (
+										<DynamicIcon
+											{...{
+												icon: icon,
+												className: cn(
+													{
+														"text-red-500": isEmphasized
+													},
+													"opacity-60 group"
+												)
+											}}
+										/>
+									) : (
+										<DynamicIcon
+											{...{
+												...icon,
+												className: cn(
+													icon.className,
+													{
+														"text-red-500": isEmphasized
+													},
+													"opacity-60 group"
+												)
+											}}
+										/>
+									))}
+								<div className="whitespace-nowrap">{label}</div>
+								{iconObj && iconPosition === "trailing" && <>{iconObj}</>}
+								{icon &&
+									iconPosition === "trailing" &&
+									(typeof icon === "string" ? (
+										<DynamicIcon
+											{...{
+												icon: icon,
+												className: cn(
+													{
+														"text-red-500": isEmphasized
+													},
+													"opacity-60 group"
+												)
+											}}
+										/>
+									) : (
+										<DynamicIcon
+											{...{
+												...icon,
+												className: cn(
+													icon.className,
+													{
+														"text-red-500": isEmphasized
+													},
+													"opacity-60 group"
+												)
+											}}
+										/>
+									))}
+							</div>
+						</button>
+					)
+				})
+			}),
+		[activeItem, activeItemClassname, getItemProps, iconSpacingClassname, itemClassname, items]
+	)
+
 	const { isMounted, styles: transitionStyles } = useTransitionStyles(context, {
 		duration: {
 			open: 200,
 			close: 200
 		},
 		initial: {
-			opacity: 0
+			opacity: 0,
+			scale: 95
 		},
 		open: {
-			opacity: 1
+			opacity: 1,
+			scale: 100
 		}
 	})
 	return (
@@ -164,9 +290,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 					<span className="">{CustomDropdownTrigger}</span>
 				) : (
 					<>
-						<span className="pl-1">
-							{label} {activeIndex}
-						</span>
+						<span className="pl-1">{label}</span>
 						<DynamicIcon
 							icon="IconChevronDown"
 							className={cn(defaultClassNames.iconClassname, iconClassname)}
@@ -194,147 +318,11 @@ const Dropdown: React.FC<IDropdownProps> = ({
 									left: Math.round(context.x ?? 0),
 									width: "max-content",
 									maxWidth: "min(calc(100vw - 10px), 25rem)",
-									...floatingStyles
+									...floatingStyles,
+									...transitionStyles
 								}}
 							>
-								<div id={`${id}-list`} role="listbox" style={{ ...transitionStyles }}>
-									{items.map((itemStack, index) => {
-										return itemStack.map(
-											(
-												{
-													onClick,
-													label,
-													key,
-													isEmphasized,
-													icon,
-													iconPosition,
-													iconObj,
-													...rest
-												},
-												idx
-											) => {
-												const active = activeItem && activeItem === key
-												const itemClass = cn(
-													defaultClassNames.itemClassname,
-													itemClassname,
-													"group flex cursor-pointer items-center px-4 py-2 text-sm transition-all",
-													{
-														"text-red-500": isEmphasized
-													},
-													{
-														"text-gray-900": !isEmphasized
-													},
-													{
-														"bg-gray-100 text-gray-900": active
-													},
-													active
-														? cn(defaultClassNames.activeItemClassname, activeItemClassname)
-														: "",
-													{
-														"bg-gray-100 text-red-500 hover:text-red-500":
-															active && isEmphasized
-													}
-												)
-												return (
-													<button
-														{...{
-															onClick: () => {
-																onClick && onClick()
-																setTimeout(() => {
-																	//hide the dropdown after click
-																	setIsOpen(false)
-																}, 150)
-															},
-															key: key,
-															id: key.toString(),
-															className: cn(itemClass, "w-full"),
-															...rest,
-															...getItemProps()
-														}}
-														ref={(node) => {
-															//If the list ref already contains a node with the same id do nothing, otherwise add it
-															if (listRef.current.some((item) => item?.id === key)) {
-																return
-															}
-															listRef.current.push(node)
-														}}
-														key={key}
-													>
-														<div
-															className={cn(
-																defaultClassNames.iconSpacingClassname,
-																iconSpacingClassname
-															)}
-														>
-															{iconObj &&
-																(iconPosition === "leading" ||
-																	iconPosition === undefined) && <>{iconObj}</>}
-															{icon &&
-																(iconPosition === "leading" ||
-																	iconPosition === undefined) &&
-																(typeof icon === "string" ? (
-																	<DynamicIcon
-																		{...{
-																			icon: icon,
-																			className: cn(
-																				{
-																					"text-red-500": isEmphasized
-																				},
-																				"opacity-60 group"
-																			)
-																		}}
-																	/>
-																) : (
-																	<DynamicIcon
-																		{...{
-																			...icon,
-																			className: cn(
-																				icon.className,
-																				{
-																					"text-red-500": isEmphasized
-																				},
-																				"opacity-60 group"
-																			)
-																		}}
-																	/>
-																))}
-															<div className="whitespace-nowrap">{label}</div>
-															{iconObj && iconPosition === "trailing" && <>{iconObj}</>}
-															{icon &&
-																iconPosition === "trailing" &&
-																(typeof icon === "string" ? (
-																	<DynamicIcon
-																		{...{
-																			icon: icon,
-																			className: cn(
-																				{
-																					"text-red-500": isEmphasized
-																				},
-																				"opacity-60 group"
-																			)
-																		}}
-																	/>
-																) : (
-																	<DynamicIcon
-																		{...{
-																			...icon,
-																			className: cn(
-																				icon.className,
-																				{
-																					"text-red-500": isEmphasized
-																				},
-																				"opacity-60 group"
-																			)
-																		}}
-																	/>
-																))}
-														</div>
-													</button>
-												)
-											}
-										)
-									})}
-								</div>
+								{ItemComponents}
 							</div>
 						</FloatingFocusManager>
 					</FloatingPortal>
