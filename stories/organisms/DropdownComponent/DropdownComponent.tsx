@@ -157,18 +157,18 @@ const Dropdown: React.FC<IDropdownProps> = ({
 					return (
 						<button
 							{...{
+								key: key,
+								id: key.toString(),
+								className: cn(itemClass, "w-full"),
+								...rest,
+								...getItemProps(),
 								onClick: () => {
 									onClick && onClick()
 									setTimeout(() => {
 										//hide the dropdown after click
 										setIsOpen(false)
 									}, 150)
-								},
-								key: key,
-								id: key.toString(),
-								className: cn(itemClass, "w-full"),
-								...rest,
-								...getItemProps()
+								}
 							}}
 							ref={(node) => {
 								//If the list ref already contains a node with the same id do nothing, otherwise add it
