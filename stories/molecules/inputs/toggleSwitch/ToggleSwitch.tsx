@@ -18,7 +18,8 @@ export interface IToggleSwitchProps {
 	id: string
 	variant?: "base" | "short"
 	withIcon?: IDynamicIconProps
-	disabled?: boolean
+	disabled?: boolean,
+	groupClassName?: string
 }
 
 const ToggleSwitch: React.FC<IToggleSwitchProps> = ({
@@ -30,13 +31,14 @@ const ToggleSwitch: React.FC<IToggleSwitchProps> = ({
 	id,
 	variant = "base",
 	withIcon,
-	disabled
+	disabled,
+	groupClassName,
 }) => {
 	const [checked, setChecked] = useState<boolean>(isChecked)
 	useEffect(() => setChecked(isChecked), [isChecked])
 
 	return (
-		<Switch.Group as={"div"} className={"flex items-center gap-2"}>
+		<Switch.Group as={"div"} className={cn("flex items-center gap-2", groupClassName)}>
 			{label && (label.xPosition === "left" || !label?.xPosition) && (
 				<Switch.Label className={label.className}>{label.text}</Switch.Label>
 			)}
