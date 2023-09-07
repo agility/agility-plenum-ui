@@ -73,7 +73,7 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement 
 					),
 					offsetOptions: offsetOptions ?? {
 						crossAxis: 0,
-						mainAxis: 4, //up/down
+						mainAxis: -4, //up/down
 						alignmentAxis: 0 //left/right
 					},
 					placement

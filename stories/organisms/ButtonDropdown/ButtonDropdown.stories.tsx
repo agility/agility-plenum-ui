@@ -89,7 +89,7 @@ export const Primary: Story = {
 		},
 		offsetOptions: {
 			crossAxis: 0,
-			mainAxis: 4, //up/down
+			mainAxis: 0, //up/down
 			alignmentAxis: 0 //left/right
 		},
 		placement: "bottom-end"
