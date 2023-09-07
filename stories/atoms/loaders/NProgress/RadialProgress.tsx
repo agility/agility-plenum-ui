@@ -31,8 +31,6 @@ const RadialProgress: React.FC<IRadialProgressProps> = ({
   }
   const drawPercentage = useMemo(() => {
     const roundCircum = Math.round(2 * r * Math.PI)
-    console.log(roundCircum, "circumference")
-    console.log(inputValue, "input value")
     return (inputValue * roundCircum) / 50
   }, [inputValue, r])
 

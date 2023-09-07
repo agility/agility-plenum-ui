@@ -16,7 +16,7 @@ export const DefaultCheckbox: Story = {
 		isError: false,
 		message: "",
 		onChange: (value: string) => {
-			console.log(`onChange ${value}`)
+
 		}
 	}
 }

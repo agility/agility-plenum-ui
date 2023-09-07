@@ -17,10 +17,10 @@ export const DefaultRadio: Story = {
 		message: "",
 		name: "radio-group",
 		onChange: (value: string, checked: boolean) => {
-			console.log(`onChange ${value} ${checked}`)
+
 		},
 		onClick: (value: string, checked: boolean) => {
-			console.log(`onClick ${value} ${checked}`)
+
 		}
 	}
 }

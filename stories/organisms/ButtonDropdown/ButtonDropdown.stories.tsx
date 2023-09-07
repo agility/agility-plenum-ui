@@ -21,7 +21,7 @@ const dropdownDataWithIcons: IItemProp[][] = [
 			key: "Copy",
 			label: "Copy The Thing",
 			onClick: () => {
-				console.log("Copy action")
+
 			}
 		}
 	],

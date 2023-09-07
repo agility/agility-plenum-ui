@@ -13,7 +13,7 @@ export const DefaultToggleSwitch: Story = {
   args: {
     isChecked: false,
     onChange: (v: boolean) => {
-      console.log(v, "v")
+
     },
     label: {
       text: "label me",
@@ -53,21 +53,20 @@ export const Checked: Story = {
   },
 }
 export const WithIcon: Story = {
-  args: {
-    ...DefaultToggleSwitch.args,
-    label: {
-      text: "label me three",
-      className: "text-lg text-gray-400",
-      xPosition: "left",
-    },
-    withIcon: {
-      name: "IconCheck",
-      type: "solid",
-    },
-    variant: "base",
-    id: "toggle-switch-4",
-    name: "toggle four",
-  },
+	args: {
+		...DefaultToggleSwitch.args,
+		label: {
+			text: "label me three",
+			className: "text-lg text-gray-400",
+			xPosition: "left"
+		},
+		withIcon: {
+			icon: "IconCheck"
+		},
+		variant: "base",
+		id: "toggle-switch-4",
+		name: "toggle four"
+	}
 }
 export const NoLabel: Story = {
   args: {

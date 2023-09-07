@@ -94,7 +94,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
 		onOpenChange: (bool) => {
-			console.log("onOpenChange", bool)
+
 			listRef.current = []
 			setActiveIndex(null)
 			setIsOpen(bool)
