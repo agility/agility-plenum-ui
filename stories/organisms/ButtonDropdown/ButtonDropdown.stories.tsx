@@ -87,6 +87,11 @@ export const Primary: Story = {
 			label: "Dropdown",
 			id: "dropdown-primary"
 		},
+		offsetOptions: {
+			crossAxis: 0,
+			mainAxis: 4, //up/down
+			alignmentAxis: 0 //left/right
+		},
 		placement: "bottom-end"
 	}
 }

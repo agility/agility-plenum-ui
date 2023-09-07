@@ -15,7 +15,7 @@ export interface IButtonDropdownProps {
 /**
  * Primary UI component for user interaction
  */
-const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement, offsetOptions }) => {
+const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement = "bottom-end", offsetOptions }) => {
 	return (
 		<div className="flex items-stretch focus-within:ring-purple-600 focus-within:ring-2 focus-within:ring-offset-white focus-within:ring-offset-2 rounded-[3px]">
 			<Button
@@ -73,8 +73,8 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement,
 					),
 					offsetOptions: offsetOptions ?? {
 						crossAxis: 0,
-						mainAxis: 5, //up/down
-						alignmentAxis: -10 //left/right
+						mainAxis: 4, //up/down
+						alignmentAxis: 0 //left/right
 					},
 					placement
 				}}
