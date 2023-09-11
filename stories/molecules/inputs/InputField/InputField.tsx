@@ -1,4 +1,4 @@
-import React from "react"
+import React, { forwardRef } from "react"
 import { default as cn } from "classnames"
 
 export type AcceptedInputTypes =
@@ -41,26 +41,27 @@ export interface IInputFieldProps extends Omit<React.InputHTMLAttributes<HTMLInp
 	/** Placeholder text */
 	placeholder?: string
 	/**ref for input */
-	ref?: React.Ref<HTMLInputElement>
 }
 
-const InputField: React.FC<IInputFieldProps> = ({
-	type,
-	id,
-	name,
-	value,
-	isFocused,
-	isError,
-	isReadonly,
-	isDisabled,
-	handleChange,
-	required,
-	clientSideCheck = true,
-	className,
-	placeholder,
-	ref,
-	...rest
-}) => {
+const InputField = (
+	{
+		type,
+		id,
+		name,
+		value,
+		isFocused,
+		isError,
+		isReadonly,
+		isDisabled,
+		handleChange,
+		required,
+		clientSideCheck = true,
+		className,
+		placeholder,
+		...rest
+	}: IInputFieldProps,
+	ref: React.Ref<HTMLInputElement>
+) => {
 	return (
 		<input
 			{...{
@@ -91,4 +92,5 @@ const InputField: React.FC<IInputFieldProps> = ({
 	)
 }
 
-export default InputField
+const _InputField = forwardRef<HTMLInputElement, IInputFieldProps>(InputField)
+export default _InputField
