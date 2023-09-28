@@ -68,6 +68,7 @@ const _Button = (
 	const loaderSize = cn({ "h-4 w-4": size === "sm" }, { "h-5 w-5": size === "md" }, { "h-6 w-6 ": size === "lg" })
 
 	return asLink ? (
+		//@ts-ignore
 		<a
 			{...{
 				href: asLink.href,
@@ -98,7 +99,8 @@ const _Button = (
 							actionType === "danger"
 					},
 					className ? className : ""
-				)
+				),
+				onClick: props.onClick
 			}}
 		>
 			{" "}
