@@ -28,6 +28,10 @@ export interface ISelectProps {
 	value?: string
 
 	className?: string
+
+	onFocus?: () => void
+
+	onBlur?: () => void
 }
 const Select: React.FC<ISelectProps> = ({
 	label,
@@ -39,7 +43,9 @@ const Select: React.FC<ISelectProps> = ({
 	isError,
 	isRequired,
 	value,
-	className
+	className,
+	onFocus,
+	onBlur
 }) => {
 	const [selectedOption, setSelectedOption] = useState<string>(value || options[0].value)
 	const uniqueID = useId()
@@ -84,6 +90,8 @@ const Select: React.FC<ISelectProps> = ({
 				onChange={handleChange}
 				disabled={isDisabled}
 				value={selectedOption}
+				onFocus={onFocus}
+				onBlur={onBlur}
 			>
 				{options.map(({ value, label }) => {
 					return (
