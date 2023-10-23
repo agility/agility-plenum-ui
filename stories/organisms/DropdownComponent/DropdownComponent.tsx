@@ -51,7 +51,9 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 		crossAxis: number
 		alignmentAxis: number | null
 	}>
-	disabled?: boolean
+	disabled?: boolean,
+	onFocus?: () => void
+	onBlur?: () => void
 }
 export const defaultClassNames = {
 	groupClassname: "flex inline-block text-left",
@@ -82,6 +84,8 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	placement = "bottom-start",
 	offsetOptions,
 	disabled,
+	onFocus,
+	onBlur,
 	...props
 }: IDropdownProps): JSX.Element | null => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -93,7 +97,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	// Floating UI logic
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
-		onOpenChange: (bool) => {
+		onOpenChange: (bool: boolean) => {
 
 			listRef.current = []
 			setActiveIndex(null)
@@ -115,7 +119,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	const listNavigation = useListNavigation(context, {
 		listRef,
 		activeIndex,
-		onNavigate: (index) => {
+		onNavigate: (index: number) => {
 			if (index !== null && listRef.current[index]) {
 				setActiveIndex(index)
 				listRef.current[index]?.focus()
@@ -129,6 +133,14 @@ const Dropdown: React.FC<IDropdownProps> = ({
 		role,
 		listNavigation
 	])
+
+	useEffect(() => {
+		if (isOpen) {
+			onFocus && onFocus()
+		}else{
+			onBlur && onBlur()
+		}
+	}, [isOpen, onBlur, onFocus])
 
 	const ItemComponents = useMemo(
 		() =>
