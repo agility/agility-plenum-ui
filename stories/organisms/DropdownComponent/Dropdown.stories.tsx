@@ -39,6 +39,30 @@ export const WithLabelAndIcons: Story = {
 		items: [...dropdownDataWithIcons]
 	}
 }
+export const WithCustomItemLabelsAndIcons: Story = {
+	args: {
+		...defaultArgs,
+		items: [
+			...dropdownDataWithIcons,
+			[
+				{
+					icon: { icon: "Icon123" },
+					label: (
+						<div className="flex items-baseline gap-x-2">
+							sdfsdf{" "}
+							<div className="flex space-x-1">
+								<div className="h-1 w-1 animate-[bounce_1s_infinite] rounded-full bg-gray-500"></div>
+								<div className="h-1 w-1 animate-[bounce_1s_infinite_0.2s] rounded-full bg-gray-500"></div>
+								<div className="h-1 w-1 animate-[bounce_1s_infinite_0.4s] rounded-full bg-gray-500"></div>
+							</div>
+						</div>
+					),
+					key: "sdfsdf"
+				}
+			]
+		]
+	}
+}
 export const WithIcons: Story = {
 	args: {
 		...defaultArgs,

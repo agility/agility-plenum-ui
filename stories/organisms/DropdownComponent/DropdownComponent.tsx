@@ -26,7 +26,7 @@ export interface IItemProp {
 	//Don't think this needs to extend HtmlButton... extends HTMLAttributes<HTMLButtonElement> {
 	icon?: IDynamicIconProps
 	iconPosition?: "trailing" | "leading"
-	label: string
+	label: string | JSX.Element
 	onClick?(): void
 	isEmphasized?: boolean
 	key: React.Key
@@ -51,7 +51,7 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 		crossAxis: number
 		alignmentAxis: number | null
 	}>
-	disabled?: boolean,
+	disabled?: boolean
 	onFocus?: () => void
 	onBlur?: () => void
 }
@@ -98,7 +98,6 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
 		onOpenChange: (bool: boolean) => {
-
 			listRef.current = []
 			setActiveIndex(null)
 			setIsOpen(bool)
@@ -119,7 +118,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	const listNavigation = useListNavigation(context, {
 		listRef,
 		activeIndex,
-		onNavigate: (index: number) => {
+		onNavigate: (index: number | null) => {
 			if (index !== null && listRef.current[index]) {
 				setActiveIndex(index)
 				listRef.current[index]?.focus()
@@ -137,7 +136,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	useEffect(() => {
 		if (isOpen) {
 			onFocus && onFocus()
-		}else{
+		} else {
 			onBlur && onBlur()
 		}
 	}, [isOpen, onBlur, onFocus])
