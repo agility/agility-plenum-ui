@@ -83,7 +83,7 @@ const _Button = (
 					{ "px-[17px] py-[9px] text-base": size === "lg" },
 					{ "px-[25px] py-[13px] text-base": size === "xl" },
 					{
-						"bg-purple-600 text-white hover:border-purple-700 hover:bg-purple-700 disabled:bg-purple-400 disabled:focus-visible:ring-0":
+						"bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0":
 							actionType === "primary"
 					},
 					{
@@ -159,7 +159,7 @@ const _Button = (
 				{ "px-[17px] py-[9px] text-base": size === "lg" },
 				{ "px-[25px] py-[13px] text-base": size === "xl" },
 				{
-					"bg-purple-600 text-white hover:border-purple-700 hover:bg-purple-700 disabled:bg-purple-400 disabled:focus-visible:ring-0":
+					"bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0":
 						actionType === "primary"
 				},
 				{
