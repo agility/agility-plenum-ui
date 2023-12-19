@@ -32,7 +32,7 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement 
 				className={cn(
 					"w-[1px] rt",
 					button.actionType === "primary"
-						? "bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0"
+						? "bg-violet-800 text-violet-100 hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0"
 						: "",
 					button.actionType === "secondary" ? "bg-purple-200 " : "",
 					button.actionType === "alternative" ? "bg-gray-300" : ""
@@ -46,7 +46,7 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement 
 							{...{
 								icon: "IconChevronDown",
 								className: cn("h-5 w-5", {
-									"text-white": button.actionType === "primary",
+									"text-violet-100": button.actionType === "primary",
 									"text-purple-700 ": button.actionType === "secondary",
 									"text-gray-700": button.actionType === "alternative"
 								})
