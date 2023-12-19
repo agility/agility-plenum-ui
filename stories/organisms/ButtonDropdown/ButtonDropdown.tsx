@@ -23,15 +23,18 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement 
 					...button,
 					className: cn(
 						button.className,
-						"!rounded-r-none !border-r-0 hover:!border-r-0 !focus:ring-transparent !focus-visible:ring-transparent !focus-within:ring-transparent !focus:ring-0 !focus-within:ring-0 !focus-visible:ring-0 !focus:ring-offset-0 !focus-visible:ring-offset-0 !focus-within:ring-offset-0 !ring-0 outline-none focus:outline-none focus-visible:outline-none focus-within:outline-none !ring-offset-0"
+						"!rounded-r-none !border-r-0 hover:!border-r-0 !focus:ring-transparent !focus-visible:ring-transparent !focus-within:ring-transparent !focus:ring-0 !focus-within:ring-0 !focus-visible:ring-0 !focus:ring-offset-0 !focus-visible:ring-offset-0 !focus-within:ring-offset-0 !ring-0 outline-none focus:outline-none focus-visible:outline-none focus-within:outline-none !ring-offset-0",
+						"border-r-transparent"
 					)
 				}}
 			/>
 			<div
 				className={cn(
 					"w-[1px] rt",
-					button.actionType === "primary" ? "bg-purple-700 " : "",
-					button.actionType === "secondary" ? "bg-purple-200" : "",
+					button.actionType === "primary"
+						? "bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0"
+						: "",
+					button.actionType === "secondary" ? "bg-purple-200 " : "",
 					button.actionType === "alternative" ? "bg-gray-300" : ""
 				)}
 			></div>
@@ -44,7 +47,7 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement 
 								icon: "IconChevronDown",
 								className: cn("h-5 w-5", {
 									"text-white": button.actionType === "primary",
-									"text-purple-700": button.actionType === "secondary",
+									"text-purple-700 ": button.actionType === "secondary",
 									"text-gray-700": button.actionType === "alternative"
 								})
 							}}
@@ -54,14 +57,14 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, placement 
 						"flex items-center justify-center rounded-l-none border !border-l-0 rounded-r  px-2 transition-all hover:!border-l-0",
 						button.actionType === "primary"
 							? cn(
-									"border-purple-600 bg-purple-600  !text-white  hover:border-purple-700 hover:bg-purple-700 active:!border-purple-800 active:bg-purple-800 fill-white",
-									"disabled:bg-purple-400 disabled:text-white disabled:hover:none disabled:active:bg-purple-400 disabled:border-purple-400"
+									"border-violet-700 bg-violet-800  !text-white  hover:border-violet-700 hover:bg-violet-700 active:!border-violet-800 active:bg-violet-800 fill-white",
+									"disabled:bg-violet-400 disabled:text-white disabled:hover:none disabled:active:bg-violet-400 disabled:border-violet-400"
 							  )
 							: "",
 						button.actionType === "secondary"
 							? cn(
-									"border-purple-50 bg-purple-50 text-purple-700  hover:border-purple-100 hover:bg-purple-100 active:border-purple-300 active:bg-purple-300 fill-purple-700",
-									"disabled:bg-purple-50 disabled:text-grey-50 disabled:hover:none disabled:active:bg-purple-50 disabled:border-purple-50"
+									"border-purple-400 bg-purple-50 text-purple-700   hover:bg-purple-100 active:bg-purple-300 fill-purple-700",
+									"disabled:bg-purple-50 disabled:text-grey-50 disabled:hover:none disabled:active:bg-purple-50 "
 							  )
 							: "",
 						button.actionType === "alternative"
