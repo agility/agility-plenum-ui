@@ -57,7 +57,7 @@ const _Button = (
 	const iconStyles = cn(
 		{ "text-white h-5 w-5": actionType === "primary" || actionType === "danger" },
 		{ "text-purple-700 h-5 w-5 ": actionType === "secondary" },
-		{ "text-gray-700  h-5 w-5": actionType === "alternative" }
+		{ "text-gray-400  h-5 w-5": actionType === "alternative" }
 	)
 	const loaderColors = cn(
 		{ "border-r-white": actionType === "primary" },
