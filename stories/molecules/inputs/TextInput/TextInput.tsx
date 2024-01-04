@@ -153,7 +153,7 @@ const TextInput = (
 				</div>
 				{isShowCounter && (
 					<div className="shrink-0">
-						<InputCounter current={Number(value?.length)} limit={maxLength} />
+						<InputCounter current={Number(value?.length)} limit={maxLength ?? 150} />
 					</div>
 				)}
 			</div>

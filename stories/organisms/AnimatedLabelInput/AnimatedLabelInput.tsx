@@ -53,7 +53,7 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 				</label>
 
 				<div className="flex flex-row space-x-3">
-					<div className="grow transition-all">
+					<div className="grow">
 						{message && (
 							<span className={cn("mt-1 block text-sm", isError ? "text-red-500" : "text-gray-500")}>
 								{message}
@@ -62,7 +62,7 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 					</div>
 					{isShowCounter && (
 						<div className="shrink-0">
-							<InputCounter current={Number(value?.length)} limit={maxLength} />
+							<InputCounter current={Number(value?.length)} limit={maxLength ?? 150} />
 						</div>
 					)}
 				</div>
