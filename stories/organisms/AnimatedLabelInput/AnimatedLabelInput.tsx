@@ -23,6 +23,7 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 	const { id, containerStyles, message, required, isError, label, value, isShowCounter, maxLength, handleChange, ...input } = props
 
 	const [hasValue, setHasValue] = React.useState<boolean>(!!value)
+	const [valueLength, setValueLength] = React.useState<number>(0)
 
 	return (
 		<>
@@ -33,6 +34,7 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 					value={value}
 					handleChange={(v) => {
 						setHasValue(!!v)
+						setValueLength(v.length)
 						if (handleChange) handleChange(v)
 					}}
 					{...input}
@@ -62,7 +64,7 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 					</div>
 					{isShowCounter && (
 						<div className="shrink-0">
-							<InputCounter current={Number(value?.length)} limit={maxLength ?? 150} />
+							<InputCounter current={Number(valueLength)} limit={maxLength ?? 150} />
 						</div>
 					)}
 				</div>
