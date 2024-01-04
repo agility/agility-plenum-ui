@@ -59,12 +59,12 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 								{message}
 							</span>
 						)}
-						{isShowCounter && (
-							<div className="shrink-0">
-								<InputCounter current={Number(value?.length)} limit={maxLength} />
-							</div>
-						)}
 					</div>
+					{isShowCounter && (
+						<div className="shrink-0">
+							<InputCounter current={Number(value?.length)} limit={maxLength} />
+						</div>
+					)}
 				</div>
 			</div>
 		</>
