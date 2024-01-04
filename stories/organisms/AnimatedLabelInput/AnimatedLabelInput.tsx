@@ -1,6 +1,7 @@
 import React from "react"
 import { default as cn } from "classnames"
 import InputField, { IInputFieldProps } from "@/stories/molecules/inputs/InputField"
+import InputCounter from "@/stories/molecules/inputs/InputCounter"
 
 interface ILabelProps extends React.DetailedHTMLProps<React.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
 	display: string
@@ -12,12 +13,14 @@ export interface IAnimatedLabelInputProps extends Omit<IInputFieldProps, "handle
 	message?: string
 	required?: boolean
 	isError?: boolean
+	isShowCounter?: boolean
+	maxLength?: number
 	label: ILabelProps
 	handleChange: (value: string) => void
 }
 
 const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimatedLabelInputProps) => {
-	const { id, containerStyles, message, required, isError, label, value, handleChange, ...input } = props
+	const { id, containerStyles, message, required, isError, label, value, isShowCounter, maxLength, handleChange, ...input } = props
 
 	const [hasValue, setHasValue] = React.useState<boolean>(!!value)
 
@@ -55,6 +58,11 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 							<span className={cn("mt-1 block text-sm", isError ? "text-red-500" : "text-gray-500")}>
 								{message}
 							</span>
+						)}
+						{isShowCounter && (
+							<div className="shrink-0">
+								<InputCounter current={Number(value?.length)} limit={maxLength} />
+							</div>
 						)}
 					</div>
 				</div>
