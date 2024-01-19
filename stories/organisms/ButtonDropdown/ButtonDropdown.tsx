@@ -8,7 +8,7 @@ import Dropdown, { IDropdownProps, defaultClassNames } from "../DropdownComponen
 export interface IButtonDropdownProps {
 	button: IButtonProps
 	dropDown: IDropdownProps
-	hideDivider?: false
+	hideDivider?: boolean
 	placement?: IDropdownProps["placement"]
 	offsetOptions?: IDropdownProps["offsetOptions"]
 }
