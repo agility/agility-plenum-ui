@@ -81,7 +81,7 @@ const InputField = (
 				"aria-invalid": isError,
 				"aria-disabled": isDisabled,
 				className: cn(
-					"peer w-full rounded border border-gray-200  px-3 text-sm font-normal  leading-5 outline-offset-0 ring-offset-0 focus:border-purple-600 focus:ring-purple-600   ",
+					"peer w-full rounded border border-gray-300  px-3 text-sm font-normal  leading-5 outline-offset-0 ring-offset-0 focus:border-purple-600 focus:ring-purple-600   ",
 					isError ? "!border-red-600 !text-red-600 focus:!ring-red-600" : "",
 					isReadonly ? "!border-gray-400 !text-gray-500 focus:!ring-gray-400" : "",
 					className
