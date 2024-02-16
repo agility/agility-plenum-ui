@@ -222,7 +222,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 											}}
 										/>
 									))}
-								<div className="whitespace-nowrap">{label}</div>
+								<div className="break-all line-clamp-1">{label}</div>
 								{iconObj && iconPosition === "trailing" && <>{iconObj}</>}
 								{icon &&
 									iconPosition === "trailing" &&

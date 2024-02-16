@@ -126,12 +126,15 @@ const TextInput = (
 				id={id}
 				className={cn(
 					"w-full rounded border py-2 px-3 text-sm font-normal leading-5",
-					{ "border-gray-300": !isFocus && !isError },
+					{ "border-gray-300": !isFocus && !isError && !isDisabled },
 					{
-						"!border-purple-500 shadow-none outline-purple-500 focus:!ring-purple-500": isFocus && !isError
+						"!border-purple-500 shadow-none outline-purple-500 focus:!ring-purple-500": isFocus && !isError && !isDisabled
 					},
 					{
 						"!border-red-500 shadow-none focus:ring-red-500": isError
+					},
+					{
+						"placeholder:text-gray-300 !border-gray-300 !outline-gray-300 focus:!ring-gray-300" : isDisabled
 					},
 					className
 				)}

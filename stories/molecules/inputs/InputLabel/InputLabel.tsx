@@ -31,7 +31,7 @@ const InputLabel: FC<IInputLabelProps> = ({
 		{ "text-xs text-gray-700 px-1 top-[10px] bg-white": isPlaceholder && isActive },
 		{ "text-xs text-red-500 px-1 top-[10px] bg-white": isPlaceholder && isError },
 		{ "text-red-500 bg-white": !isPlaceholder && isError },
-		{ "text-gray-700/[.5]": isDisabled }
+		{ "text-gray-500/[.5]": isDisabled }
 	)
 	if (!label) return null
 	return (
