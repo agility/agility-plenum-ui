@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer {
+	* {
+		/* set the default outline color on focus */
+		outline-color: #7933dd;
+
+	}
+
+	/*
+	vertical splitter on the InnerContainer component
+
+	.reflex-container.vertical > .reflex-splitter {
+		border-right: 1px solid #f9fafb;
+		border-left: 1px solid #f9fafb;
+		z-index: 2 !important;
+	}
+
+	.reflex-container.vertical > .reflex-splitter:hover {
+		border-right: 1px solid #eee;
+		border-left: 1px solid #eee;
+	}
+
+	.reflex-container.vertical > .reflex-splitter:active {
+		border-right: 1px solid #ddd;
+		border-left: 1px solid #ddd;
+	} */
+
+
+	/*
+	scroll bar overrides
+	*/
+	.scroll-black {
+		scrollbar-width: thin; /* "auto" or "thin" */
+		scrollbar-color: #aaa; /* scroll thumb and track */
+	}
+
+	.scroll-black::-webkit-scrollbar {
+		width: 6px; /* width of the entire scrollbar */
+		height: 6px;
+	}
+
+	.scroll-black::-webkit-scrollbar-track {
+		background: 0; /* color of the tracking area */
+	}
+	.scroll-black::-webkit-scrollbar-thumb {
+		background-color: #aaa; /* color of the scroll thumb */
+		border-radius: 20px; /* roundness of the scroll thumb */
+	}
+
+	.scroll-transparent {
+		scrollbar-width: thin; /* "auto" or "thin" */
+		scrollbar-color: #00000000; /* scroll thumb and track */
+	}
+
+	.scroll-transparent::-webkit-scrollbar {
+		width: 6px; /* width of the entire scrollbar */
+		height: 6px;
+	}
+
+	.scroll-transparent::-webkit-scrollbar-track {
+		background: 0; /* color of the tracking area */
+	}
+	.scroll-transparent::-webkit-scrollbar-thumb {
+		background-color: #00000000; /* color of the scroll thumb */
+		border-radius: 20px; /* roundness of the scroll thumb */
+	}
+
+	.scroll-none {
+		scrollbar-width: none; /* "auto" or "thin" */
+		scrollbar-color: #00000000; /* scroll thumb and track */
+	}
+
+	.scroll-none::-webkit-scrollbar {
+		width: 0; /* width of the entire scrollbar */
+		height: 0;
+	}
+
+	.scroll-none::-webkit-scrollbar-track {
+		background: 0; /* color of the tracking area */
+	}
+
+	/* .scroll-none::-webkit-scrollbar-thumb {
+	} */
+
+	.scrollbar-gutter {
+		scrollbar-gutter: stable;
+	}
+
+	.content-graph g text {
+		font-weight: bold;
+		font-size: 13px !important;
+	}
+
+
+
+
+}
