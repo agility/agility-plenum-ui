@@ -20,9 +20,7 @@ const dropdownDataWithIcons: IItemProp[][] = [
 			iconPosition: "leading",
 			key: "Copy",
 			label: "Copy The Thing",
-			onClick: () => {
-
-			}
+			onClick: () => {}
 		}
 	],
 	[
@@ -86,11 +84,6 @@ export const Primary: Story = {
 			items: dropdownDataWithIcons,
 			label: "Dropdown",
 			id: "dropdown-primary"
-		},
-		offsetOptions: {
-			crossAxis: 0,
-			mainAxis: 0, //up/down
-			alignmentAxis: 0 //left/right
 		},
 		placement: "bottom-end"
 	}

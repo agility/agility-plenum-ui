@@ -104,7 +104,13 @@ const Dropdown: React.FC<IDropdownProps> = ({
 		},
 		placement,
 		middleware: [
-			offset(offsetOptions ?? 10),
+			offset(
+				offsetOptions ?? {
+					crossAxis: 0,
+					mainAxis: -4, //up/down
+					alignmentAxis: 0 //left/right
+				}
+			),
 			autoPlacement({
 				allowedPlacements: [placement, "bottom-start", "bottom-end", "bottom"]
 			}),
