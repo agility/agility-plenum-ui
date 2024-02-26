@@ -9,7 +9,6 @@ const meta: Meta<typeof TextInput> = {
 	argTypes: {},
 	decorators: [
 		(Story, context) => {
-			console.log(context)
 			if (context.name === "Default Text Input Story Dark BG") {
 				return (
 					<div className="bg-transparent-black-03 rounded p-6">
