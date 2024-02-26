@@ -20,7 +20,19 @@ export interface IAnimatedLabelInputProps extends Omit<IInputFieldProps, "handle
 }
 
 const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimatedLabelInputProps) => {
-	const { id, containerStyles, message, required, isError, label, value, isShowCounter, maxLength, handleChange, ...input } = props
+	const {
+		id,
+		containerStyles,
+		message,
+		required,
+		isError,
+		label,
+		value,
+		isShowCounter,
+		maxLength,
+		handleChange,
+		...input
+	} = props
 
 	const [hasValue, setHasValue] = React.useState<boolean>(!!value)
 	const [valueLength, setValueLength] = React.useState<number>(0)
@@ -39,20 +51,31 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 					}}
 					{...input}
 				/>
-				<label
+				<div
 					className={cn(
-						"absolute z-10 ml-[3px] inline-block bg-white text-sm transition-all text-gray-500 left-1 px-1",
+						"absolute z-10 ml-[3px] inline-block bg-label-gradient-idle text-sm transition-all text-gray-500 left-1 px-1",
 						hasValue ? "!-top-[8px] !ml-[.172rem] !text-xs text-gray-600" : "top-[9px]",
 						"peer-placeholder-shown:!-top-[8px] peer-placeholder-shown:!ml-[.172rem] peer-placeholder-shown:!text-xs peer-placeholder-shown:text-gray-600",
-						"group-focus-within:!-top-[8px] group-focus-within:!ml-[.172rem] group-focus-within:!text-xs group-focus-within:text-gray-600",
+						"group-focus-within:!-top-[8px] group-focus-within:!bg-label-gradient-focus group-focus-within:!ml-[.172rem] group-focus-within:!text-xs group-focus-within:text-gray-600",
 
 						isError && "!text-red-600"
 					)}
-					htmlFor={id}
 				>
-					{label.display}
-					{required && <span className="text-red-600 ml-1">*</span>}
-				</label>
+					<label
+						// className={cn(
+						// 	"absolute z-10 ml-[3px] inline-block  text-sm transition-all text-gray-500 left-1 px-1",
+						// 	hasValue ? "!-top-[8px] !ml-[.172rem] !text-xs text-gray-600" : "top-[9px]",
+						// 	"peer-placeholder-shown:!-top-[8px] peer-placeholder-shown:!ml-[.172rem] peer-placeholder-shown:!text-xs peer-placeholder-shown:text-gray-600",
+						// 	"group-focus-within:!-top-[8px] group-focus-within:!ml-[.172rem] group-focus-within:!text-xs group-focus-within:text-gray-600",
+
+						// 	isError && "!text-red-600"
+						// )}
+						htmlFor={id}
+					>
+						{label.display}
+						{required && <span className="text-red-600 ml-1">*</span>}
+					</label>
+				</div>
 
 				<div className="flex flex-row space-x-3">
 					<div className="grow">
