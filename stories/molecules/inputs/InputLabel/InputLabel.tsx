@@ -24,13 +24,13 @@ const InputLabel: FC<IInputLabelProps> = ({
 	label
 }: IInputLabelProps) => {
 	const labelStyles = cn(
-		"z-[2]",
+		"z-[2] bg-label-gradient-idle group-focus-within:bg-label-gradient-focus",
 		{ "inline-block font-medium transition-all text-sm text-gray-700 ": !isPlaceholder },
 		{ "inline-block font-medium ml-2 relative transition-all": isPlaceholder },
 		{ "text-sm text-gray-400 px-2 top-8": isPlaceholder && !isActive },
-		{ "text-xs text-gray-700 px-1 top-[10px] bg-white": isPlaceholder && isActive },
-		{ "text-xs text-red-500 px-1 top-[10px] bg-white": isPlaceholder && isError },
-		{ "text-red-500 bg-white": !isPlaceholder && isError },
+		{ "text-xs text-gray-700 px-1 top-[10px] ": isPlaceholder && isActive },
+		{ "text-xs text-red-500 px-1 top-[10px] ": isPlaceholder && isError },
+		{ "text-red-500 ": !isPlaceholder && isError },
 		{ "text-gray-500/[.5]": isDisabled }
 	)
 	if (!label) return null
