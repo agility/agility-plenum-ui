@@ -103,7 +103,7 @@ const Textarea: React.FC<ITextareaProps> = ({
 
 	//with label
 	return (
-		<div>
+		<div className="group">
 			<InputLabel
 				isPlaceholder
 				isActive

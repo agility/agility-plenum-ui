@@ -63,7 +63,7 @@ const Select: React.FC<ISelectProps> = ({
 		typeof onChange == "function" && onChange(targetValue)
 		setSelectedOption(targetValue)
 	}
-	const wrapperStyle = cn({ "opacity-50": isDisabled })
+	const wrapperStyle = cn("group", { "opacity-50": isDisabled })
 	return (
 		<div className={wrapperStyle}>
 			{label && (

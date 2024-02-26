@@ -39,6 +39,10 @@ module.exports = {
 			mulish: ["Mulish", "sans-serif"]
 		},
 		extend: {
+			backgroundImage: (theme) => ({
+				"label-gradient-focus": "linear-gradient(to top, #FFF 9px, transparent 9px)",
+				"label-gradient-idle": "linear-gradient(to top, #FFF 8px, transparent 8px)"
+			}),
 			gridTemplateColumns: {
 				// Simple 16 column grid
 				mainContainer: "max-content 1fr 1fr"
@@ -59,6 +63,7 @@ module.exports = {
 				"transparent-white-80": "rgba(255, 255, 255, 0.8)",
 				"transparent-white-90": "rgba(255, 255, 255, 0.9)",
 
+				"transparent-black-03": "rgba(0, 0, 0, 0.03)",
 				"transparent-black-05": "rgba(0, 0, 0, 0.05)",
 				"transparent-black-10": "rgba(0, 0, 0, 0.1)",
 				"transparent-black-20": "rgba(0, 0, 0, 0.2)",
@@ -229,6 +234,58 @@ module.exports = {
 				"7xl": ["4.5rem", "4.5rem"],
 				"8xl": ["6rem", "6rem"],
 				"9xl": ["8rem", "8rem"]
+			},
+			animation: {
+				enter: "fadeInLeft 300ms ease-out",
+				exit: "fadeOutLeft 300ms ease-in forwards",
+				quickBounce: "quickBounce 200ms ease-out forwards",
+				fadeIn: "fadeIn 400ms ease-in-out forwards"
+			},
+
+			keyframes: {
+				fadeIn: {
+					"0%": {
+						opacity: "0"
+					},
+					"100%": {
+						opacity: "1"
+					}
+				},
+				fadeInLeft: {
+					"0%": {
+						opacity: "0",
+						transform: "translate(-2rem)"
+					},
+					"100%": {
+						opacity: "1",
+						transform: "translate(0)"
+					}
+				},
+				quickBounce: {
+					"0%": {
+						transform: "translateY(0px)"
+					},
+					"50%": {
+						transform: "translateY(-8px)"
+					},
+					"100%": {
+						transform: "translateY(-4px)"
+					}
+				},
+				fadeOutLeft: {
+					"0%": {
+						opacity: "1",
+						transform: "translate(0)"
+					},
+					"100%": {
+						opacity: "0",
+						transform: "translate(-2rem)"
+					}
+				}
+			},
+			transitionProperty: {
+				left: "left",
+				height: "height"
 			}
 		}
 	},
