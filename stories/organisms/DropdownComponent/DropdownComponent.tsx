@@ -176,7 +176,12 @@ const Dropdown: React.FC<IDropdownProps> = ({
 							{...{
 								key: key,
 								id: key.toString(),
-								className: cn(itemClass, "w-full"),
+								className: cn(
+									itemClass,
+									itemIndex === 0 && "rounded-tl rounded-tr",
+									itemIndex === itemStack.length - 1 && "rounded-bl rounded-br",
+									"w-full"
+								),
 								...rest,
 								...getItemProps(),
 								onClick: () => {
