@@ -40,6 +40,31 @@ export const dropdownDataBase: IItemProp[][] = [
 	]
 ]
 
+export const multipleGroups: IItemProp[][] = [
+	[
+		{
+			icon: { icon: "IconArrowUp" },
+			key: "moveUp",
+			label: "Move up",
+			onClick: () => {
+				window.alert("moved up")
+			}
+		},
+		{ icon: { icon: "IconArrowDown" }, key: "moveDown", label: "Moved down", onClick: () => {} }
+	],
+	[
+		{ icon: { icon: "IconCheck" }, key: "publish", label: "Publish", onClick: () => {} },
+		{ icon: { icon: "IconEyeOff" }, key: "unpublish", label: "Unpublish", onClick: () => {} }
+	],
+	[
+		{ icon: { icon: "IconEyeCheck" }, key: "reqApproval", label: "Request Approval", onClick: () => {} },
+		{ icon: { icon: "IconThumbUp" }, key: "approve", label: "Approve", onClick: () => {} },
+		{ icon: { icon: "IconBan" }, key: "decline", label: "Decline", onClick: () => {} }
+	],
+	[{ icon: { icon: "IconCopy" }, key: "Copy", label: "Copy", onClick: () => {} }],
+	[{ icon: { icon: "IconTrash" }, key: "delete", label: "Delete", onClick: () => {} }]
+]
+
 export const dropdownDataWithIcons: IItemProp[][] = [
 	[
 		{
