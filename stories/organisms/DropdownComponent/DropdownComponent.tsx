@@ -57,8 +57,7 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 }
 export const defaultClassNames = {
 	groupClassname: "flex inline-block text-left",
-	itemsClassname:
-		"mt-2 origin-bottom-right rounded bg-white shadow-lg z-[99999] divide-y divide-gray-100  border border-gray-300  ",
+	itemsClassname: "mt-2 origin-bottom-right rounded bg-white shadow-lg z-[99999] border border-gray-300  ",
 	itemClassname:
 		"group flex font-muli  cursor-pointer items-center px-4 py-2 text-sm transition-all hover:bg-gray-100 hover:text-gray-900 justify-between gap-4 ",
 	activeItemClassname: "block px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 hover:text-gray-900",
@@ -178,8 +177,15 @@ const Dropdown: React.FC<IDropdownProps> = ({
 								id: key.toString(),
 								className: cn(
 									itemClass,
-									itemIndex === 0 && "rounded-tl rounded-tr",
-									itemIndex === itemStack.length - 1 && "rounded-bl rounded-br",
+									//Round the corners of the first item in the first stack and the last item in the last stack
+									itemIndex === 0 && stackIndex === 0 && "rounded-tl rounded-tr",
+									itemIndex === itemStack.length - 1 &&
+										stackIndex === items.length - 1 &&
+										"rounded-bl rounded-br",
+									//Add dividing line between stacks
+									stackIndex !== items.length - 1 &&
+										itemIndex === itemStack.length - 1 &&
+										"border-b border-b-gray-100",
 									"w-full"
 								),
 								...rest,
