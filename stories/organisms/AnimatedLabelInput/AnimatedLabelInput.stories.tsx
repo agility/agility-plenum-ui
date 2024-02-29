@@ -5,47 +5,34 @@ const meta: Meta<typeof AnimatedLabelInput> = {
 	title: "Design System/organisms/Animated Label Input",
 	component: AnimatedLabelInput,
 	tags: ["autodocs"],
-	argTypes: {},
-	decorators: [
-		(Story, context) => {
-			if (context.name === "Default Animated Label Inputs Dark BG Story") {
-				return (
-					<div className="bg-transparent-black-03 p-6">
-						<Story />
-					</div>
-				)
-			}
-			return <Story />
-		}
-	]
+	argTypes: {}
+}
+const DefaultArgs: IAnimatedLabelInputProps = {
+	id: "test",
+	containerStyles: "w-full",
+	label: {
+		display: "Label with White BG"
+	},
+	handleChange: (value: string) => {
+		console.log(value)
+	},
+	type: "text",
+	value: ""
 }
 
 export default meta
 type Story = StoryObj<typeof AnimatedLabelInput>
-export const DefaultAnimatedLabelInputsStory: Story = {
+
+export const DefaultStory: Story = {
 	args: {
-		id: "test",
-		label: {
-			display: "Label"
-		}
-	} as IAnimatedLabelInputProps
-}
-export const DefaultAnimatedLabelInputsDarkBGStory: Story = {
-	args: {
-		id: "test",
-		label: {
-			display: "Label with Dark BG"
-		},
-		value: "Value"
+		...DefaultArgs
 	} as IAnimatedLabelInputProps
 }
 
-export const DefaultAnimatedLabelInputsStoryWithPlaceHolder: Story = {
+export const WithPlaceHolderStory: Story = {
 	args: {
-		id: "test",
-		label: {
-			display: "Label"
-		},
+		...DefaultArgs,
+		label: { display: "label with placeholder" },
 		placeholder: "Placeholder"
 	} as IAnimatedLabelInputProps
 }
