@@ -40,8 +40,8 @@ module.exports = {
 		},
 		extend: {
 			backgroundImage: (theme) => ({
-				"label-gradient-focus": "linear-gradient(to top, #FFF 9px, transparent 9px)",
-				"label-gradient-idle": "linear-gradient(to top, #FFF 8px, transparent 8px)"
+				"label-gradient-focus": "linear-gradient(to top, #FFF 10px, transparent 10px)",
+				"label-gradient-idle": "linear-gradient(to top, #FFF 10px, transparent 10px)"
 			}),
 			gridTemplateColumns: {
 				// Simple 16 column grid
