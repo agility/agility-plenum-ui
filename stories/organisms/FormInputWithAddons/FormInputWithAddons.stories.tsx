@@ -27,3 +27,22 @@ export const DefaultFormInputWithAddons: Story = {
 		trailIcon: { icon: "IconSearch" }
 	}
 }
+export const FormInputWithAddonBTN: Story = {
+	args: {
+		id: "appSearch",
+		name: "appSearch",
+		addonOffset: 60,
+		labelClass: "text-gray-900",
+		addonBTN: {
+			icon: {
+				icon: "IconPencil",
+				className: "h-5 w-5 text-gray-400"
+			},
+			ctaLabel: "Edit",
+			align: "right",
+			onClickHandler: () => {
+				alert("Button Clicked")
+			}
+		}
+	}
+}

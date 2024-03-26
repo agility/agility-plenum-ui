@@ -2,6 +2,7 @@ import { DynamicIcon, IDynamicIconProps } from "@/stories/atoms/icons"
 import React, { useLayoutEffect, useRef, useState } from "react"
 import { default as cn } from "classnames"
 import InputField, { IInputFieldProps, AcceptedInputTypes } from "@/stories/molecules/inputs/InputField"
+import NestedInputButton, { INestedInputButtonProps } from "@/stories/molecules/inputs/NestedInputButton"
 
 export interface IFormInputWithAddonsProps extends Omit<IInputFieldProps, "type"> {
 	leadIcon?: IDynamicIconProps
@@ -18,6 +19,7 @@ export interface IFormInputWithAddonsProps extends Omit<IInputFieldProps, "type"
 	leadIconClassNames?: string
 	customIconClass?: string
 	type: AcceptedInputTypes
+	addonBTN?: INestedInputButtonProps
 }
 
 const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
@@ -43,6 +45,7 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 	leadIconClassNames,
 	customIconClass,
 	type,
+	addonBTN,
 	...rest
 }) => {
 	// #region logic to determine the width of the lead and or trailing labels in order to offset the input padding by the appropriate amount.
@@ -136,6 +139,11 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 						)}
 						{trailLabel && trailLabel}
 					</label>
+				)}
+				{addonBTN && (
+					<div className="absolute top-0 bottom-0 right-0 flex items-center ">
+						<NestedInputButton {...addonBTN} />
+					</div>
 				)}
 			</div>
 		</div>

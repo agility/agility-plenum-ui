@@ -27,7 +27,7 @@ const NestedInputButton: React.FC<INestedInputButtonProps> = ({
 		onClickHandler && onClickHandler()
 	}
 	const buttonStyle = cn(
-		"relative inline-flex items-center space-x-2 px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500",
+		"relative flex items-center space-x-2 px-4 py-2 leading-5 border border-gray-300 text-sm font-medium focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500",
 		{
 			"rounded-r text-gray-500 -ml-px": align === "right"
 		},
@@ -55,7 +55,7 @@ const NestedInputButton: React.FC<INestedInputButtonProps> = ({
 	)
 	return (
 		<button {...{ ...buttonProps, className: buttonStyle, onClick: handleClick }}>
-			{icon && <DynamicIcon {...{ ...icon, className: "text-gray-400" }} />}
+			{icon && <DynamicIcon {...{ ...icon, className: "text-gray-400 h-5 w-5" }} />}
 			{ctaLabel && <span>{ctaLabel}</span>}
 		</button>
 	)
