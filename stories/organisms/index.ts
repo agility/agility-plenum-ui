@@ -5,7 +5,7 @@ import Dropdown, { IDropdownProps, IItemProp } from "./DropdownComponent"
 import EmptySectionPlaceholder, { IEmptySectionPlaceholderProps } from "./EmptySectionPlaceholder"
 import FormInputWithAddons, { IFormInputWithAddonsProps } from "./FormInputWithAddons"
 import TextInputSelect, { ITextInputSelectProps } from "./TextInputSelect"
-
+import AnimatedFormInputWithAddons, { IAnimatedFormInputWithAddons } from "./AnimatedFormInputWithAddons"
 export type {
 	IAnimatedLabelInputProps,
 	IAnimatedLabelTextAreaProps,
@@ -14,7 +14,8 @@ export type {
 	IEmptySectionPlaceholderProps,
 	IItemProp,
 	IFormInputWithAddonsProps,
-	ITextInputSelectProps
+	ITextInputSelectProps,
+	IAnimatedFormInputWithAddons
 }
 export {
 	AnimatedLabelInput,
@@ -23,5 +24,6 @@ export {
 	Dropdown,
 	EmptySectionPlaceholder,
 	FormInputWithAddons,
-	TextInputSelect
+	TextInputSelect,
+	AnimatedFormInputWithAddons
 }

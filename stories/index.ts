@@ -66,7 +66,9 @@ import {
 	EmptySectionPlaceholder,
 	FormInputWithAddons,
 	TextInputSelect,
-	ITextInputSelectProps
+	ITextInputSelectProps,
+	IAnimatedFormInputWithAddons,
+	AnimatedFormInputWithAddons
 } from "./organisms"
 
 export type {
@@ -101,7 +103,8 @@ export type {
 	FAIconName,
 	BTNActionType,
 	ITextInputProps,
-	ISimpleSelectOptions
+	ISimpleSelectOptions,
+	IAnimatedFormInputWithAddons
 }
 export {
 	Avatar,
@@ -132,5 +135,6 @@ export {
 	isTablerIcon,
 	isUnifiedIconName,
 	TextInput,
-	TextInputSelect
+	TextInputSelect,
+	AnimatedFormInputWithAddons
 }
