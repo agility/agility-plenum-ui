@@ -50,7 +50,16 @@ const NestedInputButton: React.FC<INestedInputButtonProps> = ({
 		}
 	)
 	return (
-		<button {...{ ...buttonProps }}>
+		<button
+			{...{
+				...buttonProps,
+				className: buttonStyle,
+				onClick: (e) => {
+					e.preventDefault()
+					onClick && onClick(e)
+				}
+			}}
+		>
 			{icon && <DynamicIcon {...{ ...icon, className: "text-gray-400 h-5 w-5" }} />}
 			{ctaLabel && <span>{ctaLabel}</span>}
 		</button>
