@@ -23,7 +23,7 @@ const DefaultArgs: IAnimatedFormInputWithAddons = {
 		icon: { icon: "IconPencil" },
 		align: "right",
 		ctaLabel: "Edit",
-		onClickHandler: () => {
+		onClick: () => {
 			alert("clicked")
 		}
 	}
