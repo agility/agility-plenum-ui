@@ -5,7 +5,7 @@ import { DynamicIcon, UnifiedIconName, IDynamicIconProps } from "../../icons"
 
 // import Loader from "../loaders/loader/Loader"
 
-export type BTNActionType = "primary" | "secondary" | "alternative" | "danger"
+export type BTNActionType = "primary" | "secondary" | "alternative" | "danger" | "warning"
 
 export interface IButtonProps
 	extends Omit<React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "ref"> {
@@ -55,15 +55,17 @@ const _Button = (
 	ref: React.LegacyRef<HTMLButtonElement>
 ) => {
 	const iconStyles = cn(
-		{ "text-white h-5 w-5": actionType === "primary" || actionType === "danger" },
-		{ "text-purple-700 h-5 w-5 ": actionType === "secondary" },
-		{ "text-gray-400  h-5 w-5": actionType === "alternative" }
+		{ "text-white h-5 w-5 stroke-[1.5]": actionType === "primary" || actionType === "danger" },
+		{ "text-purple-700 h-5 w-5 stroke-[1.5]": actionType === "secondary" },
+		{ "text-gray-400  h-5 w-5 stroke-[1.5]": actionType === "alternative" },
+		{ "text-transparent-black-40 h-5 w-5 stroke-[1.5]": actionType === "warning" }
 	)
 	const loaderColors = cn(
 		{ "border-r-white": actionType === "primary" },
 		{ "border-purple-200 border-r-purple-700": actionType === "secondary" },
 		{ "border-gray-200 border-r-gray-700": actionType === "alternative" },
-		{ "border-red-800 border-r-white": actionType === "danger" }
+		{ "border-red-800 border-r-white": actionType === "danger" },
+		{ "border-yellow-800 border-r-transparent-black-70": actionType === "warning" }
 	)
 	const loaderSize = cn({ "h-4 w-4": size === "sm" }, { "h-5 w-5": size === "md" }, { "h-6 w-6 ": size === "lg" })
 
@@ -97,6 +99,10 @@ const _Button = (
 					{
 						" bg-red-600 text-white hover:bg-red-700 <focus-visible:!></focus-visible:!>ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
 							actionType === "danger"
+					},
+					{
+						" bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 <focus-visible:!></focus-visible:!>ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-400 disabled:text-transparent-black-70 disabled:focus-visible:ring-0":
+							actionType === "warning"
 					},
 					className ? className : ""
 				),
@@ -173,6 +179,10 @@ const _Button = (
 				{
 					" bg-red-600 text-white hover:bg-red-700 <focus-visible:!></focus-visible:!>ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
 						actionType === "danger"
+				},
+				{
+					" bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 <focus-visible:!></focus-visible:!>ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-300 disabled:text-transparent-black-30 disabled:focus-visible:ring-0":
+						actionType === "warning"
 				},
 				className ? className : ""
 			)}
