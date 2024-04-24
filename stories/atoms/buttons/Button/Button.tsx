@@ -165,7 +165,7 @@ const _Button = (
 				{ "px-[17px] py-[9px] text-base": size === "lg" },
 				{ "px-[25px] py-[13px] text-base": size === "xl" },
 				{
-					"bg-violet-800 text-violet-100 hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0":
+					"bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0":
 						actionType === "primary"
 				},
 				{
