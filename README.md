@@ -42,6 +42,28 @@ npm install @agility/plenum-ui
 # Using yarn:
 yarn add @agility/plenum-ui
 ```
+## Peer Dependencies
+
+Before installing Plenum, please ensure the following peer dependencies are installed in your project as they are crucial for the proper functioning of the components:
+
+| Dependency             | Version    |
+|------------------------|------------|
+| @floating-ui/react     | ^0.25.0    |
+| @headlessui/react      | ^1.7.10    |
+| @headlessui/tailwindcss| ^0.1.2     |
+| @heroicons/react       | ^1.0.5     |
+| @tabler/icons          | ^2.26.0    |
+| @tabler/icons-react    | ^2.27.0    |
+| react-icons            | ^4.10.1    |
+
+To install these dependencies, run the following command using npm or yarn:
+
+```bash
+npm install @floating-ui/react@^0.25.0 @headlessui/react@^1.7.10 @headlessui/tailwindcss@^0.1.2 @heroicons/react@^1.0.5 @tabler/icons@^2.26.0 @tabler/icons-react@^2.27.0 react-icons@^4.10.1
+# or
+yarn add @floating-ui/react@^0.25.0 @headlessui/react@^1.7.10 @headlessui/tailwindcss@^0.1.2 @heroicons/react@^1.0.5 @tabler/icons@^2.26.0 @tabler/icons-react@^2.27.0 react-icons@^4.10.1
+```
+
 
 ## Usage
 
@@ -49,7 +71,7 @@ Import and use the Plenum components in your React components:
 
 ```jsx
 import { Component } from "@agility/plenum-ui"
-;<Component {...{ ComponentProps }} />
+<Component {...{ ComponentProps }} />
 ```
 
 ## Scripts
