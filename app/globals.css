@@ -1,13 +1,264 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer {
 	* {
 		/* set the default outline color on focus */
 		outline-color: #7933dd;
-
 	}
-
+	/* Thin - 100 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Thin.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Thin.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Thin.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Thin.eot")
+				format("embedded-opentype");
+		font-weight: 100;
+		font-style: normal;
+	}
+	/* Thin Italic - 100 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Thin_Italic.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Thin_Italic.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Thin_Italic.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Thin_Italic.eot")
+				format("embedded-opentype");
+		font-weight: 100;
+		font-style: italic;
+	}
+	/* Extra-Light - 200 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_ExtraLight.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_ExtraLight.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_ExtraLight.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_ExtraLight.eot")
+				format("embedded-opentype");
+		font-weight: 200;
+		font-style: normal;
+	}
+	/* Extra-Light Italic - 200 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_ExtraLight_Italic.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_ExtraLight_Italic.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_ExtraLight_Italic.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_ExtraLight_Italic.eot")
+				format("embedded-opentype");
+		font-weight: 200;
+		font-style: italic;
+	}
+	/* Light - 300 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Light.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Light.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Light.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Light.eot")
+				format("embedded-opentype");
+		font-weight: 300;
+		font-style: normal;
+	}
+	/* Light Italic - 300 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Light_Italic.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Light_Italic.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Light_Italic.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Light_Italic.eot")
+				format("embedded-opentype");
+		font-weight: 300;
+		font-style: italic;
+	}
+	/* Regular - 400 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Regular-1.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Regular-1.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Regular-1.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Regular-1.eot")
+				format("embedded-opentype");
+		font-weight: 400;
+		font-style: normal;
+	}
+	/* Regular Italic - 400 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Italic.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Italic.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Italic.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Italic.eot")
+				format("embedded-opentype");
+		font-weight: 400;
+		font-style: italic;
+	}
+	/* Medium - 500 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Medium.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Medium.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Medium.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Medium.eot")
+				format("embedded-opentype");
+		font-weight: 500;
+		font-style: normal;
+	}
+	/* Medium Italic - 500 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Medium_Italic.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Medium_Italic.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Medium_Italic.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Medium_Italic.eot")
+				format("embedded-opentype");
+		font-weight: 500;
+		font-style: italic;
+	}
+	/* Demi-Bold - 600 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_DemiBold.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_DemiBold.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_DemiBold.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_DemiBold.eot")
+				format("embedded-opentype");
+		font-weight: 600;
+		font-style: normal;
+	}
+	/* Demi-Bold Italic - 600 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_DemiBold_Italic.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_DemiBold_Italic.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_DemiBold_Italic.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_DemiBold_Italic.eot")
+				format("embedded-opentype");
+		font-weight: 600;
+		font-style: italic;
+	}
+	/* Bold - 700 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Bold.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Bold.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Bold.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Bold.eot")
+				format("embedded-opentype");
+		font-weight: 700;
+		font-style: normal;
+	}
+	/* Bold Italic - 700 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Bold_Italic.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Bold_Italic.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Bold_Italic.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Bold_Italic.eot")
+				format("embedded-opentype");
+		font-weight: 700;
+		font-style: italic;
+	}
+	/* Extra-Bold - 800 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_ExtraBold.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_ExtraBold.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_ExtraBold.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_ExtraBold.eot")
+				format("embedded-opentype");
+		font-weight: 800;
+		font-style: normal;
+	}
+	/* Extra-Bold Italic - 800 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_ExtraBold_Italic.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_ExtraBold_Italic.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_ExtraBold_Italic.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_ExtraBold_Italic.eot")
+				format("embedded-opentype");
+		font-weight: 800;
+		font-style: italic;
+	}
+	/* Black - 900 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Black.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Black.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Black.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Black.eot")
+				format("embedded-opentype");
+		font-weight: 900;
+		font-style: normal;
+	}
+	/* Black Italic - 900 */
+	@font-face {
+		font-family: "TTInterphasesPro";
+		src: url("https://cdn.aglty.io/content-manager/fonts/interphases/woff2/TT_Interphases_Pro_Black_Italic.woff2")
+				format("woff2"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/woff/TT_Interphases_Pro_Black_Italic.woff")
+				format("woff"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/ttf/TT_Interphases_Pro_Black_Italic.ttf")
+				format("truetype"),
+			url("https://cdn.aglty.io/content-manager/fonts/interphases/eot/TT_Interphases_Pro_Black_Italic.eot")
+				format("embedded-opentype");
+		font-weight: 900;
+		font-style: italic;
+	}
 	/*
 	vertical splitter on the InnerContainer component
 
@@ -26,7 +277,6 @@
 		border-right: 1px solid #ddd;
 		border-left: 1px solid #ddd;
 	} */
-
 
 	/*
 	scroll bar overrides
@@ -92,8 +342,4 @@
 		font-weight: bold;
 		font-size: 13px !important;
 	}
-
-
-
-
 }
