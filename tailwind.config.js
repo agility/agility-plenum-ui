@@ -1,48 +1,56 @@
-/* eslint-disable no-undef */
-const defaultTheme = require("tailwindcss/defaultTheme")
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ["./src/**/*.{js,ts,jsx,tsx}"],
+	mode: "development",
+
+	content: [
+		"./app/**/*.{js,ts,jsx,tsx}",
+		"./pages/**/*.{js,ts,jsx,tsx}",
+		"./components/**/*/.{js,ts,jsx,tsx}",
+		"./stories/**/*.{js,ts,jsx,tsx}",
+		"./.storybook/*.{js,ts,jsx,tsx}"
+	],
+	safelist: [
+		"text-xs",
+		"text-sm",
+		"text-base",
+		"text-lg",
+		"text-xl",
+		"text-2xl",
+		"text-3xl",
+		"text-4xl",
+		"text-5xl",
+		"text-6xl",
+		"font-thin",
+		"font-extralight",
+		"font-light",
+		"font-normal",
+		"font-medium",
+		"font-semibold",
+		"font-bold",
+		"font-extrabold",
+		"font-black",
+		{
+			pattern:
+				/^(bg|text|border(-(t|r|b|l))?)-((gray)|(red)|(orange)|(yellow)|(blue)|(light-blue)|(cyan)|(green)|(purple)|(teal)|(violet)|(pink)|(rose))-(50|100|200|300|400|500|600|700|800|900)|(mx|my|m|px|py|p)-\d.$/
+		}
+	],
 	theme: {
-		screens: {
-			"6xs": "320px",
-			"3xs": "360px",
-			"2xs": "375px",
-			xs: "414px",
-			sm: "640px",
-			md: "768px",
-			lg: "1024px",
-			xl: "1173px",
-			"2xl": "1294px",
-			"3xl": "1424px",
-			"4xl": "1920px",
-			"5xl": "2560px"
-		},
-
 		extend: {
-			flex: {
-				"unset!": "unset !important"
-			},
-			boxShadow: {
-				"actions-bar": "0px 2px 4px rgba(0, 0, 0, 0.06)"
-			},
 			fontFamily: {
-				sans: ["TTInterphasesPro", "monospace"]
+				sans: ["TTInterphasesPro", "sans-serif"]
 			},
-
+			backgroundImage: (theme) => ({
+				"label-gradient-focus": "linear-gradient(to top, #FFF 10px, transparent 10px)",
+				"label-gradient-idle": "linear-gradient(to top, #FFF 10px, transparent 10px)"
+			}),
 			gridTemplateColumns: {
 				// Simple 16 column grid
-				mainContainer: "max-content 1fr 1fr",
-				diffContainer: " 0.5fr 3fr",
-				moduleCard: "min-content 1fr"
+				mainContainer: "max-content 1fr 1fr"
 			},
-
 			gridTemplateRows: {
 				// Simple 16 column grid
 				header: "max-content 1fr 1fr"
 			},
-
 			colors: {
 				"transparent-white-05": "rgba(255, 255, 255, 0.05)",
 				"transparent-white-10": "rgba(255, 255, 255, 0.1)",
@@ -209,11 +217,9 @@ module.exports = {
 				"rose-800": "#9F1239",
 				"rose-900": "#881337"
 			},
-
 			fontWeight: {
 				medium: 600
 			},
-
 			fontSize: {
 				xs: ["0.75rem", "1rem"],
 				sm: ["0.875rem", "1.25rem"],
@@ -229,22 +235,11 @@ module.exports = {
 				"8xl": ["6rem", "6rem"],
 				"9xl": ["8rem", "8rem"]
 			},
-			transitionTimingFunction: {
-				"in-expo": "cubic-bezier(0.95, 0.05, 0.795, 0.035)",
-				"out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
-				"tab-underline": "cubic-bezier(.7,0,.28,1)"
-			},
-			transitionProperty: {
-				left: "left",
-				height: "height"
-			},
-
 			animation: {
 				enter: "fadeInLeft 300ms ease-out",
 				exit: "fadeOutLeft 300ms ease-in forwards",
 				quickBounce: "quickBounce 200ms ease-out forwards",
-				fadeIn: "fadeIn 400ms ease-in-out forwards",
-				drawLine: "drawLine 1s ease-tab-underline forwards"
+				fadeIn: "fadeIn 400ms ease-in-out forwards"
 			},
 
 			keyframes: {
@@ -286,21 +281,13 @@ module.exports = {
 						opacity: "0",
 						transform: "translate(-2rem)"
 					}
-				},
-				drawLine: {
-					"0%": {
-						width: "0%"
-					},
-					"100%": {
-						width: "100%"
-					}
 				}
+			},
+			transitionProperty: {
+				left: "left",
+				height: "height"
 			}
 		}
 	},
-	plugins: [
-		require("@tailwindcss/forms"),
-		require("@tailwindcss/typography"),
-		require("@headlessui/tailwindcss")({ prefix: "ui" })
-	]
+	plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography"), require("@headlessui/tailwindcss")]
 }
