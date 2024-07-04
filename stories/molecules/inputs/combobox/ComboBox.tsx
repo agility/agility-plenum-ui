@@ -87,7 +87,7 @@ const Combobox = <T extends Record<string, unknown>>({
 			: items.filter((item) => {
 					return `${item[displayProperty]}`.toLowerCase().includes(query.toLowerCase())
 			  })
-	const labelStyles = cn("block text-sm font-medium text-gray-700")
+	const labelStyles = cn("block text-sm text-gray-700")
 	const buttonStyles = cn("absolute inset-y-0 right-0 flex items-center rounded-r px-2 focus:outline-none")
 	const optionStyles = cn(
 		"absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
@@ -151,7 +151,7 @@ const Combobox = <T extends Record<string, unknown>>({
 							>
 								{({ active, selected }) => (
 									<>
-										<span className={classNames("block truncate", selected ? "font-semibold" : "")}>
+										<span className={classNames("block truncate", selected ? "font-medium" : "")}>
 											{`${item[displayProperty]}`}
 										</span>
 

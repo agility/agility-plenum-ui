@@ -35,7 +35,7 @@ export const InputSelect: FC<InputSelectProps> = ({
 	return (
 		<select
 			className={cn(
-				"relative z-10 inline-flex items-center space-x-2 border border-gray-300 bg-white px-4 py-2 pr-7 text-sm font-medium",
+				"relative z-10 inline-flex items-center space-x-2 border border-gray-300 bg-white px-4 py-2 pr-7 text-sm ",
 				"focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500",
 				align === "right"
 					? "-ml-px rounded-r border-l-white text-gray-700"

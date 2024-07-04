@@ -23,7 +23,7 @@ const NestedInputButton: React.FC<INestedInputButtonProps> = ({
 	const { ...buttonProps } = props
 	const { onClick } = buttonProps
 	const buttonStyle = cn(
-		"relative flex items-center space-x-2 px-4 py-2 leading-5 border border-gray-300 text-sm font-medium focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500",
+		"relative flex items-center space-x-2 px-4 py-2 leading-5 border border-gray-300 text-sm  focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500",
 		{
 			"rounded-r text-gray-500 -ml-px": align === "right"
 		},
