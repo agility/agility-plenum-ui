@@ -77,7 +77,7 @@ const _Button = (
 				target: asLink.target,
 				title: asLink.title,
 				className: cn(
-					"inline-flex items-center justify-center gap-x-2  font-medium rounded-[3px] !ring-offset-white outline-none   focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
+					"inline-flex items-center justify-center gap-x-2  font rounded-[3px] !ring-offset-white outline-none   focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
 					{ "w-full": fullWidth },
 					{ "px-[11px] py-[7px] text-xs": size === "xs" },
 					{ "px-[13px] py-[9px] text-sm": size === "sm" },
@@ -157,7 +157,7 @@ const _Button = (
 		<button
 			type="button"
 			className={cn(
-				"inline-flex items-center justify-center gap-x-2  font-medium rounded-[3px] !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
+				"inline-flex items-center justify-center gap-x-2 rounded-[3px] !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
 				{ "w-full": fullWidth },
 				{ "px-[11px] py-[7px] text-xs": size === "xs" },
 				{ "px-[13px] py-[9px] text-sm": size === "sm" },

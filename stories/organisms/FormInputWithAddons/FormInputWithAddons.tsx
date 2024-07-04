@@ -62,7 +62,7 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 	return (
 		<div className={cn("group flex flex-col", containerClassName)}>
 			{!leadLabel && !trailLabel && topLabel && (
-				<label htmlFor={id} className={cn("flex items-center text-sm font-medium text-gray-600", labelClass)}>
+				<label htmlFor={id} className={cn("flex items-center text-sm  text-gray-600", labelClass)}>
 					{topLabel}
 				</label>
 			)}

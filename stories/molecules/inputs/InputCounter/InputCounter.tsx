@@ -10,7 +10,7 @@ export interface IInputCounterProps {
 /** Primary UI component for user interaction */
 const InputCounter: FC<IInputCounterProps> = ({ current = 0, limit }) => {
 	return (
-		<div className="mt-3 text-center text-xs leading-4 font-medium text-gray-500 flex gap-1">
+		<div className="mt-3 text-center text-xs leading-4  text-gray-500 flex gap-1">
 			<div className="currentCount">{current ?? 0}</div>
 			{(limit || 0) > 0 && (
 				<>

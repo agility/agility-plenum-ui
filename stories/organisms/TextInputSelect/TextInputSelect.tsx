@@ -110,7 +110,7 @@ const TextInputSelect: FC<ITextInputSelectProps> = ({
 		setIsFocus(false)
 		// add other focus effects here
 	}
-	const labelStyles = cn("block inline-block font-medium transition-all text-sm text-gray-700 mb-1", {
+	const labelStyles = cn("block inline-block transition-all text-sm text-gray-700 mb-1", {
 		"text-red-500 bg-white": isError
 	})
 

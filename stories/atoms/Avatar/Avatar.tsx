@@ -44,7 +44,7 @@ const Avatar: FC<IAvatarProps> = ({ src, status, size = "md", alt = "Avatar imag
 		"h-14 w-14": size === "lg",
 		"h-16 w-16": size === "xl"
 	})
-	const fontStyles = cn("font-medium leading-none text-white uppercase", {
+	const fontStyles = cn(" leading-none text-white uppercase", {
 		"text-xs": size === "xxs" || size === "xs",
 		"text-sm": size === "sm",
 		"text-base": size === "md",

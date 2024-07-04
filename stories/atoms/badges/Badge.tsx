@@ -31,7 +31,7 @@ const Badge: React.FC<IBadgeProps> = ({
 	actionButton
 }) => {
 	const badgeStyles = cn(
-		"text-sm flex items-center font-medium py-[2px] focus:ring-1 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-white outline-0",
+		"text-sm flex items-center py-[2px] focus:ring-1 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-white outline-0",
 		{
 			"rounded-[3px]": variant === "rounded",
 			"rounded-full px-[6px]": variant === "pill",

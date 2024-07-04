@@ -34,7 +34,7 @@ const EmptySectionPlaceholder: React.FC<IEmptySectionPlaceholderProps> = ({
 			{CallToActionComponent ? (
 				CallToActionComponent
 			) : (
-				<p className="mb-2 block text-sm font-medium text-gray-600">{primaryMessage}</p>
+				<p className="mb-2 block text-sm  text-gray-600">{primaryMessage}</p>
 			)}
 			{actions.length > 0 ? (
 				<div className={cn("mt-2 flex gap-2", isWide ? "" : "flex-col items-center")}>
