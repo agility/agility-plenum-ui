@@ -75,4 +75,12 @@ export const WithIcons: Story = {
 		CustomDropdownTrigger: <IconElement />
 	}
 }
+
+export const WithFloatingArrow: Story = {
+	args: {
+		...defaultArgs,
+		showFloatingArrow: true
+	}
+}
+
 export default meta
