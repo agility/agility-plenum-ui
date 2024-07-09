@@ -362,7 +362,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 								{ItemComponents}
 								{showFloatingArrow && 
 									<FloatingArrow ref={arrowRef} context={context} strokeWidth={1} 
-									className={cn(defaultClassNames.itemsClassname, itemsClassname, "fill-white [&>path:first-of-type]:stroke-gray-300 [&>path:last-of-type]:stroke-white")}/>}
+									className={cn("fill-white [&>path:first-of-type]:stroke-gray-300 [&>path:last-of-type]:stroke-white")}/>}
 							</div>
 						</FloatingFocusManager>
 					</FloatingPortal>
