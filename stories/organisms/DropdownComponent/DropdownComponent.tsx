@@ -15,7 +15,9 @@ import {
 	FloatingList,
 	useTransitionStyles,
 	Placement,
-	useListNavigation
+	useListNavigation,
+	FloatingArrow,
+	arrow
 } from "@floating-ui/react"
 
 import { ClassNameWithAutocomplete } from "utils/types"
@@ -54,6 +56,7 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 	disabled?: boolean
 	onFocus?: () => void
 	onBlur?: () => void
+	showFloatingArrow?: boolean
 }
 export const defaultClassNames = {
 	groupClassname: "flex inline-block text-left",
@@ -85,6 +88,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	disabled,
 	onFocus,
 	onBlur,
+	showFloatingArrow = false,
 	...props
 }: IDropdownProps): JSX.Element | null => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -92,6 +96,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
 	const listRef = useRef<(HTMLButtonElement | null)[]>([])
+	const arrowRef = React.useRef(null)
 
 	// Floating UI logic
 	const { refs, floatingStyles, context } = useFloating({
@@ -113,7 +118,11 @@ const Dropdown: React.FC<IDropdownProps> = ({
 			autoPlacement({
 				allowedPlacements: [placement, "bottom-start", "bottom-end", "bottom"]
 			}),
-			shift({ rootBoundary: "document" })
+			shift({ rootBoundary: "document" }),
+			arrow({
+				element: arrowRef,
+				padding: 4
+			})
 		],
 		whileElementsMounted: autoUpdate
 	})
@@ -351,6 +360,9 @@ const Dropdown: React.FC<IDropdownProps> = ({
 								}}
 							>
 								{ItemComponents}
+								{showFloatingArrow && 
+									<FloatingArrow ref={arrowRef} context={context} strokeWidth={1} 
+									className={cn(defaultClassNames.itemsClassname, itemsClassname, "fill-white [&>path:first-of-type]:stroke-gray-300 [&>path:last-of-type]:stroke-white")}/>}
 							</div>
 						</FloatingFocusManager>
 					</FloatingPortal>
