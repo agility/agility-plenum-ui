@@ -21,8 +21,7 @@ import {
 } from "@floating-ui/react"
 
 import { ClassNameWithAutocomplete } from "utils/types"
-import { DynamicIcon, IDynamicIconProps, UnifiedIconName } from "@/stories/atoms/icons"
-import { list } from "postcss"
+import { DynamicIcon, IDynamicIconProps } from "@/stories/atoms/icons"
 
 export interface IItemProp {
 	//Don't think this needs to extend HtmlButton... extends HTMLAttributes<HTMLButtonElement> {
@@ -56,6 +55,7 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 	disabled?: boolean
 	onFocus?: () => void
 	onBlur?: () => void
+	showOnHover?: boolean
 	showFloatingArrow?: boolean
 }
 export const defaultClassNames = {
@@ -89,6 +89,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	onFocus,
 	onBlur,
 	showFloatingArrow = false,
+	showOnHover = false,
 	...props
 }: IDropdownProps): JSX.Element | null => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -318,6 +319,9 @@ const Dropdown: React.FC<IDropdownProps> = ({
 					onClick: () => {
 						setIsOpen(!isOpen)
 					},
+					onMouseOver: () => {
+						showOnHover && setIsOpen(true)
+					},
 					type: "button",
 					disabled: disabled,
 					...getReferenceProps()
@@ -349,6 +353,9 @@ const Dropdown: React.FC<IDropdownProps> = ({
 								className={cn(defaultClassNames.itemsClassname, itemsClassname)}
 								ref={refs.setFloating}
 								aria-labelledby={label}
+								onMouseLeave={() => { 
+									showOnHover && setIsOpen(false) 
+								}}
 								style={{
 									position: context.strategy,
 									top: Math.round(context.y ?? 0),

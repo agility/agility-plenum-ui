@@ -76,11 +76,19 @@ export const WithIcons: Story = {
 	}
 }
 
+export const ShowOnHover: Story = {
+	args: {
+		...defaultArgs,
+		showOnHover: true
+	}
+}
+
 export const WithFloatingArrow: Story = {
 	args: {
 		...defaultArgs,
 		showFloatingArrow: true
 	}
 }
+
 
 export default meta
