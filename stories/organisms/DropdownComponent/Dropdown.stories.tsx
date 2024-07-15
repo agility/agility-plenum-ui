@@ -83,4 +83,11 @@ export const WithFloatingArrow: Story = {
 	}
 }
 
+
+export const ShowOnHover: Story = {
+	args: {
+		...defaultArgs,
+		showOnHover: true
+	}
+}
 export default meta
