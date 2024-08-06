@@ -33,6 +33,7 @@ export interface IButtonProps
 	isLoading?: boolean
 	className?: string
 	iconObj?: React.ReactNode
+	iconClassName?: string
 }
 /**
  * Primary UI component for user interaction
@@ -50,16 +51,22 @@ const _Button = (
 		asLink,
 		isLoading = false,
 		className,
+		iconClassName,
 		...props
 	}: IButtonProps,
 	ref: React.LegacyRef<HTMLButtonElement>
 ) => {
-	const iconStyles = cn(
+	let iconStyles = cn(
 		{ "text-white h-5 w-5 stroke-[1.5]": actionType === "primary" || actionType === "danger" },
 		{ "text-purple-700 h-5 w-5 stroke-[1.5]": actionType === "secondary" },
-		{ "text-gray-400  h-5 w-5 stroke-[1.5]": actionType === "alternative" },
+		{ "text-gray-400 h-5 w-5 stroke-[1.5]": actionType === "alternative" },
 		{ "text-transparent-black-40 h-5 w-5 stroke-[1.5]": actionType === "warning" }
 	)
+
+	if (iconClassName) {
+		iconStyles = cn(iconStyles, iconClassName)
+	}
+
 	const loaderColors = cn(
 		{ "border-r-white": actionType === "primary" },
 		{ "border-purple-200 border-r-purple-700": actionType === "secondary" },
