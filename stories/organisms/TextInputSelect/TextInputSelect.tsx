@@ -49,6 +49,7 @@ export interface ITextInputSelectProps {
 	onChange?(value: string): void
 	/** Callback on input select field */
 	onSelectOption?(value: string): void
+	selectInputClassName?: string
 }
 
 const TextInputSelect: FC<ITextInputSelectProps> = ({
@@ -70,7 +71,8 @@ const TextInputSelect: FC<ITextInputSelectProps> = ({
 	prefix,
 	onChange,
 	onSelectOption,
-	value: externalValue
+	value: externalValue,
+	selectInputClassName
 }: ITextInputSelectProps) => {
 	const [isFocus, setIsFocus] = useState<boolean>(Boolean(isFocused))
 	const [value, setValue] = useState<string>(defaultValue || "")
@@ -168,7 +170,7 @@ const TextInputSelect: FC<ITextInputSelectProps> = ({
 						align={"right"}
 						onSelectOption={onSelectOption}
 						isDisabled={isDisabled}
-						className={cn(isError ? "border-red-500" : "")}
+						className={cn(selectInputClassName, isError ? "border-red-500" : "")}
 					/>
 				)}
 			</div>
