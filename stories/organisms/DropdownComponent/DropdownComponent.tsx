@@ -46,6 +46,7 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 	buttonClassname?: ClassNameWithAutocomplete
 	iconClassname?: ClassNameWithAutocomplete
 	iconSpacingClassname?: ClassNameWithAutocomplete
+	dividerClassname?: ClassNameWithAutocomplete
 	placement?: Placement
 	offsetOptions?: Partial<{
 		mainAxis: number
@@ -67,7 +68,8 @@ export const defaultClassNames = {
 	buttonClassname:
 		"py-[2px] flex items-center  rounded outline-purple-500 transition-all text-gray-400 hover:text-gray-600 ",
 	iconClassname: "ml-1 h-5 w-6",
-	iconSpacingClassname: "flex items-center gap-x-4"
+	iconSpacingClassname: "flex items-center gap-x-4",
+	dividerClassname: "border-b border-b-gray-100"
 }
 
 /** Comment */
@@ -82,6 +84,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	buttonClassname,
 	iconClassname,
 	iconSpacingClassname,
+	dividerClassname,
 	CustomDropdownTrigger,
 	placement = "bottom-start",
 	offsetOptions,
@@ -195,8 +198,8 @@ const Dropdown: React.FC<IDropdownProps> = ({
 									//Add dividing line between stacks
 									stackIndex !== items.length - 1 &&
 										itemIndex === itemStack.length - 1 &&
-										"border-b border-b-gray-100",
-									"w-full"
+										`${dividerClassname ? dividerClassname : defaultClassNames.dividerClassname}`,
+										"w-full"
 								),
 								...rest,
 								...getItemProps(),
