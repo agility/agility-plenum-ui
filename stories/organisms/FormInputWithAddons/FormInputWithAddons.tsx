@@ -20,6 +20,7 @@ export interface IFormInputWithAddonsProps extends Omit<IInputFieldProps, "type"
 	customIconClass?: string
 	type: AcceptedInputTypes
 	addonBTN?: INestedInputButtonProps
+	ref: React.RefObject<HTMLInputElement>
 }
 
 const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
@@ -46,6 +47,7 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 	customIconClass,
 	type,
 	addonBTN,
+	ref,
 	...rest
 }) => {
 	// #region logic to determine the width of the lead and or trailing labels in order to offset the input padding by the appropriate amount.
@@ -114,7 +116,8 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 						style: {
 							paddingRight: `${trailLabelWidth + addonOffset}px`,
 							paddingLeft: `${leadLabelWidth + addonOffset}px`
-						}
+						},
+						ref
 					}}
 				/>
 				{(trailLabel || trailIcon) && (
