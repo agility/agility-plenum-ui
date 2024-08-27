@@ -20,7 +20,7 @@ export interface IFormInputWithAddonsProps extends Omit<IInputFieldProps, "type"
 	customIconClass?: string
 	type: AcceptedInputTypes
 	addonBTN?: INestedInputButtonProps
-	inputRef: React.RefObject<HTMLInputElement>
+	inputRef?: React.RefObject<HTMLInputElement>
 }
 
 const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
