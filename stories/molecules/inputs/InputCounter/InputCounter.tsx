@@ -1,10 +1,10 @@
-import React, { FC } from "react"
+import { FC } from "react";
 
 export interface IInputCounterProps {
 	/** Counter limit */
-	limit: number | undefined
+	limit: number | undefined;
 	/** Counter current number */
-	current: number
+	current: number;
 }
 
 /** Primary UI component for user interaction */
@@ -19,6 +19,6 @@ const InputCounter: FC<IInputCounterProps> = ({ current = 0, limit }) => {
 				</>
 			)}
 		</div>
-	)
-}
-export default InputCounter
+	);
+};
+export default InputCounter;
