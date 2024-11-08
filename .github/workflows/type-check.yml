@@ -1,0 +1,28 @@
+name: Type Check
+
+on:
+    push:
+        branches:
+            - main # Run type checking on pushes to the main branch
+    pull_request:
+        branches:
+            - main # Run type checking on pull requests to the main branch
+
+jobs:
+    type-check:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3 # Checks out the repository code
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "18" # Specify the Node.js version you want
+
+            - name: Install dependencies
+              run: yarn install # Or `npm install` if you're using npm
+
+            - name: Run TypeScript type check
+              run: npx tsc --noEmit --skipLibCheck

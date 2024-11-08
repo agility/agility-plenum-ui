@@ -1,16 +1,16 @@
-import React, { FC } from "react"
-import { default as cn } from "classnames"
+import { FC } from "react";
+import { default as cn } from "classnames";
 
 export interface IInputLabelProps {
 	/** Prop comment */
-	isPlaceholder?: boolean
-	id: string
-	isRequired?: boolean
-	isDisabled?: boolean
-	isError?: boolean
-	isActive?: boolean
-	isFocused?: boolean
-	label?: string
+	isPlaceholder?: boolean;
+	id: string;
+	isRequired?: boolean;
+	isDisabled?: boolean;
+	isError?: boolean;
+	isActive?: boolean;
+	isFocused?: boolean;
+	label?: string;
 }
 
 /** Comment */
@@ -32,14 +32,14 @@ const InputLabel: FC<IInputLabelProps> = ({
 		{ "text-red-500 bg-white": !isPlaceholder && isError },
 		{ "text-gray-500/[.5]": isDisabled },
 		{ "inline-block  transition-all text-sm text-gray-700 mb-1": !isPlaceholder }
-	)
-	if (!label) return null
+	);
+	if (!label) return null;
 	return (
 		<label htmlFor={id} className={labelStyles}>
 			{label}
 			{isRequired && <span className="text-red-500"> *</span>}
 		</label>
-	)
-}
+	);
+};
 
-export default InputLabel
+export default InputLabel;
