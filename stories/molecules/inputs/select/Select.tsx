@@ -96,6 +96,7 @@ const Select: React.FC<ISelectProps> = ({
 				{options.map(({ value, label }) => {
 					return (
 						<option key={value} value={value}>
+						<option key={value} value={label}>
 							{label}
 						</option>
 					)
