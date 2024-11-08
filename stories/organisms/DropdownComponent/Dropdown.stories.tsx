@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
 import { DynamicIcon } from "@/stories/atoms/icons"
-import { dropdownDataBase, dropdownDataWithIcons } from "./dropdownItems"
+import { dropdownDataBase, dropdownDataWithIcons, multipleGroups } from "./dropdownItems"
 import Dropdown, { defaultClassNames } from "./DropdownComponent"
 
 const meta: Meta<typeof Dropdown> = {
@@ -18,12 +18,17 @@ const IconElement = () => (
 const defaultArgs: Story["args"] = {
 	items: [...dropdownDataBase],
 	label: "Dropdown",
-
 	placement: "bottom-end"
 }
 export const WithLabel: Story = {
 	args: {
 		...defaultArgs
+	}
+}
+export const MultipleGroups: Story = {
+	args: {
+		...defaultArgs,
+		items: multipleGroups
 	}
 }
 
@@ -70,4 +75,20 @@ export const WithIcons: Story = {
 		CustomDropdownTrigger: <IconElement />
 	}
 }
+
+export const ShowOnHover: Story = {
+	args: {
+		...defaultArgs,
+		showOnHover: true
+	}
+}
+
+export const WithFloatingArrow: Story = {
+	args: {
+		...defaultArgs,
+		showFloatingArrow: true
+	}
+}
+
+
 export default meta

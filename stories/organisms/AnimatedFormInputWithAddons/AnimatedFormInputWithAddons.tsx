@@ -2,12 +2,13 @@ import React from "react"
 import { default as cn } from "classnames"
 import InputField, { IInputFieldProps } from "@/stories/molecules/inputs/InputField"
 import InputCounter from "@/stories/molecules/inputs/InputCounter"
+import { INestedInputButtonProps, NestedInputButton } from "@/stories/molecules"
 
 interface ILabelProps extends React.DetailedHTMLProps<React.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
 	display: string
 }
 
-export interface IAnimatedLabelInputProps extends Omit<IInputFieldProps, "handleChange"> {
+export interface IAnimatedFormInputWithAddons extends Omit<IInputFieldProps, "handleChange"> {
 	id: string
 	containerStyles?: string
 	message?: string
@@ -18,9 +19,10 @@ export interface IAnimatedLabelInputProps extends Omit<IInputFieldProps, "handle
 	label: ILabelProps
 	handleChange: (value: string) => void
 	labelClassName?: string
+	addonBTN: INestedInputButtonProps
 }
 
-const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimatedLabelInputProps) => {
+const AnimatedFormInputWithAddons: React.FC<IAnimatedFormInputWithAddons> = (props: IAnimatedFormInputWithAddons) => {
 	const {
 		id,
 		containerStyles,
@@ -33,6 +35,7 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 		maxLength,
 		handleChange,
 		labelClassName,
+		addonBTN,
 		...input
 	} = props
 
@@ -53,6 +56,12 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 					}}
 					{...input}
 				/>
+
+				{addonBTN && (
+					<div className="absolute top-0 bottom-0 right-0 flex items-center ">
+						<NestedInputButton {...addonBTN} />
+					</div>
+				)}
 				<div
 					className={cn(
 						"absolute z-10 ml-[3px] inline-block bg-white text-sm transition-all text-gray-500 left-1 px-1",
@@ -68,7 +77,6 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 						{required && <span className="text-red-600 ml-1">*</span>}
 					</label>
 				</div>
-
 				<div className="flex flex-row space-x-3">
 					<div className="grow">
 						{message && (
@@ -88,4 +96,4 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 	)
 }
 
-export default AnimatedLabelInput
+export default AnimatedFormInputWithAddons

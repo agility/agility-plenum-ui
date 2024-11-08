@@ -1,46 +1,46 @@
-import React, { forwardRef, useEffect, useId, useState } from "react"
-import { default as cn } from "classnames"
-import InputLabel from "../InputLabel"
-import InputCounter from "../InputCounter"
+import React, { useId } from "react";
+import { default as cn } from "classnames";
+import InputLabel from "../InputLabel";
+import InputCounter from "../InputCounter";
 
 interface ILabelProps extends React.DetailedHTMLProps<React.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
-	display: string
-	htmlFor?: string
+	display: string;
+	htmlFor?: string;
 }
 
 export interface ITextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "onChange"> {
 	/** Input ID */
-	id?: string
+	id?: string;
 	/** Input Name */
-	name?: string
+	name?: string;
 	/** Label for the input */
-	label?: ILabelProps
+	label?: ILabelProps;
 	/** Error state */
-	isError?: boolean
+	isError?: boolean;
 	/** If field is required */
-	isRequired?: boolean
+	isRequired?: boolean;
 	/** Disabled state */
-	isDisabled?: boolean
+	isDisabled?: boolean;
 	/** Set default value */
-	defaultValue?: string
+	defaultValue?: string;
 
-	value?: string
+	value?: string;
 
 	/** Message shown under the text field */
-	message?: string
+	message?: string;
 	/** Input character counter */
-	isShowCounter?: boolean
+	isShowCounter?: boolean;
 	/** Max length of input character  */
-	maxLength?: number
+	maxLength?: number;
 	/** Callback on change */
-	onChange?(value: string): void
+	onChange?(value: string): void;
 	/** Number of rows */
-	rows?: number
+	rows?: number;
 	/** Number of cols */
-	cols?: number
-	placeholder?: string
-	className?: string
-	ref?: React.LegacyRef<HTMLTextAreaElement>
+	cols?: number;
+	placeholder?: string;
+	className?: string;
+	ref?: React.LegacyRef<HTMLTextAreaElement>;
 }
 
 const Textarea: React.FC<ITextareaProps> = ({
@@ -63,11 +63,11 @@ const Textarea: React.FC<ITextareaProps> = ({
 	ref,
 	...rest
 }) => {
-	const uniqueID = useId()
+	const uniqueID = useId();
 
-	const discriptionStyles = cn("text-sm mt-1 block", { "text-gray-500": !isError }, { "text-red-500": isError })
+	const discriptionStyles = cn("text-sm mt-1 block", { "text-gray-500": !isError }, { "text-red-500": isError });
 
-	if (!id) id = `ta-${uniqueID}`
+	if (!id) id = `ta-${uniqueID}`;
 
 	if (!label) {
 		return (
@@ -75,9 +75,9 @@ const Textarea: React.FC<ITextareaProps> = ({
 				ref={ref}
 				maxLength={maxLength}
 				onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-					const targetValue = e.target.value
+					const targetValue = e.target.value;
 					if (onChange) {
-						onChange(targetValue)
+						onChange(targetValue);
 					}
 				}}
 				rows={rows}
@@ -98,12 +98,12 @@ const Textarea: React.FC<ITextareaProps> = ({
 				placeholder={placeholder}
 				{...rest}
 			/>
-		)
+		);
 	}
 
 	//with label
 	return (
-		<div>
+		<div className="group">
 			<InputLabel
 				isPlaceholder
 				isActive
@@ -119,9 +119,9 @@ const Textarea: React.FC<ITextareaProps> = ({
 					ref={ref}
 					maxLength={maxLength}
 					onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-						const targetValue = e.target.value
+						const targetValue = e.target.value;
 						if (onChange) {
-							onChange(targetValue)
+							onChange(targetValue);
 						}
 					}}
 					rows={rows}
@@ -152,7 +152,7 @@ const Textarea: React.FC<ITextareaProps> = ({
 				)}
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default Textarea
+export default Textarea;

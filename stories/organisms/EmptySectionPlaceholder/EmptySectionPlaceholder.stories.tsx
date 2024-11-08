@@ -15,7 +15,7 @@ type Story = StoryObj<typeof EmptySectionPlaceholder>
 const MissingAttachmentCTA = () => {
 	const fileInputRef = useRef<HTMLInputElement>(null)
 	return (
-		<div className="mb-2 block text-sm font-medium text-gray-600">
+		<div className="mb-2 block text-sm  text-gray-600">
 			<input type="file" className="hidden" ref={fileInputRef} />
 			<button
 				className="hover:underline hover:text-gray-700 transition-all"

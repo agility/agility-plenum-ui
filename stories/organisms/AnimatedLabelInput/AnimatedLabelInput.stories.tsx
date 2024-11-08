@@ -7,24 +7,32 @@ const meta: Meta<typeof AnimatedLabelInput> = {
 	tags: ["autodocs"],
 	argTypes: {}
 }
+const DefaultArgs: IAnimatedLabelInputProps = {
+	id: "test",
+	containerStyles: "w-full",
+	label: {
+		display: "Label with White BG"
+	},
+	handleChange: (value: string) => {
+		console.log(value)
+	},
+	type: "text",
+	value: ""
+}
 
 export default meta
 type Story = StoryObj<typeof AnimatedLabelInput>
-export const DefaultAnimatedLabelInputsStory: Story = {
+
+export const DefaultStory: Story = {
 	args: {
-		id: "test",
-		label: {
-			display: "Label"
-		}
+		...DefaultArgs
 	} as IAnimatedLabelInputProps
 }
 
-export const DefaultAnimatedLabelInputsStoryWithPlaceHolder: Story = {
+export const WithPlaceHolderStory: Story = {
 	args: {
-		id: "test",
-		label: {
-			display: "Label"
-		},
+		...DefaultArgs,
+		label: { display: "label with placeholder" },
 		placeholder: "Placeholder"
 	} as IAnimatedLabelInputProps
 }

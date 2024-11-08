@@ -2,6 +2,7 @@ import { DynamicIcon, IDynamicIconProps } from "@/stories/atoms/icons"
 import React, { useLayoutEffect, useRef, useState } from "react"
 import { default as cn } from "classnames"
 import InputField, { IInputFieldProps, AcceptedInputTypes } from "@/stories/molecules/inputs/InputField"
+import NestedInputButton, { INestedInputButtonProps } from "@/stories/molecules/inputs/NestedInputButton"
 
 export interface IFormInputWithAddonsProps extends Omit<IInputFieldProps, "type"> {
 	leadIcon?: IDynamicIconProps
@@ -18,6 +19,8 @@ export interface IFormInputWithAddonsProps extends Omit<IInputFieldProps, "type"
 	leadIconClassNames?: string
 	customIconClass?: string
 	type: AcceptedInputTypes
+	addonBTN?: INestedInputButtonProps
+	inputRef?: React.RefObject<HTMLInputElement>
 }
 
 const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
@@ -43,6 +46,8 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 	leadIconClassNames,
 	customIconClass,
 	type,
+	addonBTN,
+	inputRef,
 	...rest
 }) => {
 	// #region logic to determine the width of the lead and or trailing labels in order to offset the input padding by the appropriate amount.
@@ -59,7 +64,7 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 	return (
 		<div className={cn("group flex flex-col", containerClassName)}>
 			{!leadLabel && !trailLabel && topLabel && (
-				<label htmlFor={id} className={cn("flex items-center text-sm font-medium text-gray-600", labelClass)}>
+				<label htmlFor={id} className={cn("flex items-center text-sm  text-gray-600", labelClass)}>
 					{topLabel}
 				</label>
 			)}
@@ -111,7 +116,8 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 						style: {
 							paddingRight: `${trailLabelWidth + addonOffset}px`,
 							paddingLeft: `${leadLabelWidth + addonOffset}px`
-						}
+						},
+						inputRef
 					}}
 				/>
 				{(trailLabel || trailIcon) && (
@@ -136,6 +142,11 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 						)}
 						{trailLabel && trailLabel}
 					</label>
+				)}
+				{addonBTN && (
+					<div className="absolute top-0 bottom-0 right-0 flex items-center ">
+						<NestedInputButton {...addonBTN} />
+					</div>
 				)}
 			</div>
 		</div>

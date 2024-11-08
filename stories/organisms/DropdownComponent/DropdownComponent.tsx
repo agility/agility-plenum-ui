@@ -15,12 +15,13 @@ import {
 	FloatingList,
 	useTransitionStyles,
 	Placement,
-	useListNavigation
+	useListNavigation,
+	FloatingArrow,
+	arrow
 } from "@floating-ui/react"
 
 import { ClassNameWithAutocomplete } from "utils/types"
-import { DynamicIcon, IDynamicIconProps, UnifiedIconName } from "@/stories/atoms/icons"
-import { list } from "postcss"
+import { DynamicIcon, IDynamicIconProps } from "@/stories/atoms/icons"
 
 export interface IItemProp {
 	//Don't think this needs to extend HtmlButton... extends HTMLAttributes<HTMLButtonElement> {
@@ -45,6 +46,7 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 	buttonClassname?: ClassNameWithAutocomplete
 	iconClassname?: ClassNameWithAutocomplete
 	iconSpacingClassname?: ClassNameWithAutocomplete
+	dividerClassname?: ClassNameWithAutocomplete
 	placement?: Placement
 	offsetOptions?: Partial<{
 		mainAxis: number
@@ -54,18 +56,20 @@ export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
 	disabled?: boolean
 	onFocus?: () => void
 	onBlur?: () => void
+	showOnHover?: boolean
+	showFloatingArrow?: boolean
 }
 export const defaultClassNames = {
 	groupClassname: "flex inline-block text-left",
-	itemsClassname:
-		"mt-2 origin-bottom-right rounded bg-white shadow-lg z-[99999] divide-y divide-gray-100  border border-gray-300  ",
+	itemsClassname: "mt-2 origin-bottom-right rounded bg-white shadow-lg z-[99999] border border-gray-300  ",
 	itemClassname:
-		"group flex font-muli  cursor-pointer items-center px-4 py-2 text-sm transition-all hover:bg-gray-100 hover:text-gray-900 justify-between gap-4 ",
+		"group flex font-sans  cursor-pointer items-center px-4 py-2 text-sm transition-all hover:bg-gray-100 hover:text-gray-900 justify-between gap-4 ",
 	activeItemClassname: "block px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 hover:text-gray-900",
 	buttonClassname:
 		"py-[2px] flex items-center  rounded outline-purple-500 transition-all text-gray-400 hover:text-gray-600 ",
 	iconClassname: "ml-1 h-5 w-6",
-	iconSpacingClassname: "flex items-center gap-x-4"
+	iconSpacingClassname: "flex items-center gap-x-4",
+	dividerClassname: "border-b border-b-gray-100"
 }
 
 /** Comment */
@@ -80,12 +84,15 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	buttonClassname,
 	iconClassname,
 	iconSpacingClassname,
+	dividerClassname,
 	CustomDropdownTrigger,
 	placement = "bottom-start",
 	offsetOptions,
 	disabled,
 	onFocus,
 	onBlur,
+	showFloatingArrow = false,
+	showOnHover = false,
 	...props
 }: IDropdownProps): JSX.Element | null => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -93,6 +100,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
 	const listRef = useRef<(HTMLButtonElement | null)[]>([])
+	const arrowRef = React.useRef(null)
 
 	// Floating UI logic
 	const { refs, floatingStyles, context } = useFloating({
@@ -114,7 +122,11 @@ const Dropdown: React.FC<IDropdownProps> = ({
 			autoPlacement({
 				allowedPlacements: [placement, "bottom-start", "bottom-end", "bottom"]
 			}),
-			shift({ rootBoundary: "document" })
+			shift({ rootBoundary: "document" }),
+			arrow({
+				element: arrowRef,
+				padding: 4
+			})
 		],
 		whileElementsMounted: autoUpdate
 	})
@@ -176,7 +188,19 @@ const Dropdown: React.FC<IDropdownProps> = ({
 							{...{
 								key: key,
 								id: key.toString(),
-								className: cn(itemClass, "w-full"),
+								className: cn(
+									itemClass,
+									//Round the corners of the first item in the first stack and the last item in the last stack
+									itemIndex === 0 && stackIndex === 0 && "rounded-tl rounded-tr",
+									itemIndex === itemStack.length - 1 &&
+										stackIndex === items.length - 1 &&
+										"rounded-bl rounded-br",
+									//Add dividing line between stacks
+									stackIndex !== items.length - 1 &&
+										itemIndex === itemStack.length - 1 &&
+										`${dividerClassname ? dividerClassname : defaultClassNames.dividerClassname}`,
+										"w-full"
+								),
 								...rest,
 								...getItemProps(),
 								onClick: () => {
@@ -298,6 +322,9 @@ const Dropdown: React.FC<IDropdownProps> = ({
 					onClick: () => {
 						setIsOpen(!isOpen)
 					},
+					onMouseOver: () => {
+						showOnHover && setIsOpen(true)
+					},
 					type: "button",
 					disabled: disabled,
 					...getReferenceProps()
@@ -329,6 +356,9 @@ const Dropdown: React.FC<IDropdownProps> = ({
 								className={cn(defaultClassNames.itemsClassname, itemsClassname)}
 								ref={refs.setFloating}
 								aria-labelledby={label}
+								onMouseLeave={() => { 
+									showOnHover && setIsOpen(false) 
+								}}
 								style={{
 									position: context.strategy,
 									top: Math.round(context.y ?? 0),
@@ -340,6 +370,9 @@ const Dropdown: React.FC<IDropdownProps> = ({
 								}}
 							>
 								{ItemComponents}
+								{showFloatingArrow && 
+									<FloatingArrow ref={arrowRef} context={context} strokeWidth={1} 
+									className={cn("fill-white [&>path:first-of-type]:stroke-gray-300 [&>path:last-of-type]:stroke-white")}/>}
 							</div>
 						</FloatingFocusManager>
 					</FloatingPortal>

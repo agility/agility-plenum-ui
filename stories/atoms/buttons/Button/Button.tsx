@@ -5,7 +5,7 @@ import { DynamicIcon, UnifiedIconName, IDynamicIconProps } from "../../icons"
 
 // import Loader from "../loaders/loader/Loader"
 
-export type BTNActionType = "primary" | "secondary" | "alternative" | "danger"
+export type BTNActionType = "primary" | "secondary" | "alternative" | "danger" | "warning"
 
 export interface IButtonProps
 	extends Omit<React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "ref"> {
@@ -33,6 +33,7 @@ export interface IButtonProps
 	isLoading?: boolean
 	className?: string
 	iconObj?: React.ReactNode
+	iconClassName?: string
 }
 /**
  * Primary UI component for user interaction
@@ -50,20 +51,28 @@ const _Button = (
 		asLink,
 		isLoading = false,
 		className,
+		iconClassName,
 		...props
 	}: IButtonProps,
 	ref: React.LegacyRef<HTMLButtonElement>
 ) => {
-	const iconStyles = cn(
-		{ "text-white h-5 w-5": actionType === "primary" || actionType === "danger" },
-		{ "text-purple-700 h-5 w-5 ": actionType === "secondary" },
-		{ "text-gray-400  h-5 w-5": actionType === "alternative" }
+	let iconStyles = cn(
+		{ "text-white h-5 w-5 stroke-[1.5]": actionType === "primary" || actionType === "danger" },
+		{ "text-purple-700 h-5 w-5 stroke-[1.5]": actionType === "secondary" },
+		{ "text-gray-400 h-5 w-5 stroke-[1.5]": actionType === "alternative" },
+		{ "text-transparent-black-40 h-5 w-5 stroke-[1.5]": actionType === "warning" }
 	)
+
+	if (iconClassName) {
+		iconStyles = cn(iconStyles, iconClassName)
+	}
+
 	const loaderColors = cn(
 		{ "border-r-white": actionType === "primary" },
 		{ "border-purple-200 border-r-purple-700": actionType === "secondary" },
 		{ "border-gray-200 border-r-gray-700": actionType === "alternative" },
-		{ "border-red-800 border-r-white": actionType === "danger" }
+		{ "border-red-800 border-r-white": actionType === "danger" },
+		{ "border-yellow-800 border-r-transparent-black-70": actionType === "warning" }
 	)
 	const loaderSize = cn({ "h-4 w-4": size === "sm" }, { "h-5 w-5": size === "md" }, { "h-6 w-6 ": size === "lg" })
 
@@ -75,7 +84,7 @@ const _Button = (
 				target: asLink.target,
 				title: asLink.title,
 				className: cn(
-					"inline-flex items-center justify-center gap-x-2  font-medium rounded-[3px] !ring-offset-white outline-none   focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
+					"inline-flex items-center justify-center gap-x-2  font rounded-[3px] !ring-offset-white outline-none   focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
 					{ "w-full": fullWidth },
 					{ "px-[11px] py-[7px] text-xs": size === "xs" },
 					{ "px-[13px] py-[9px] text-sm": size === "sm" },
@@ -97,6 +106,10 @@ const _Button = (
 					{
 						" bg-red-600 text-white hover:bg-red-700 <focus-visible:!></focus-visible:!>ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
 							actionType === "danger"
+					},
+					{
+						" bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 <focus-visible:!></focus-visible:!>ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-400 disabled:text-transparent-black-70 disabled:focus-visible:ring-0":
+							actionType === "warning"
 					},
 					className ? className : ""
 				),
@@ -151,7 +164,7 @@ const _Button = (
 		<button
 			type="button"
 			className={cn(
-				"inline-flex items-center justify-center gap-x-2  font-medium rounded-[3px] !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
+				"inline-flex items-center justify-center gap-x-2 rounded-[3px] !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
 				{ "w-full": fullWidth },
 				{ "px-[11px] py-[7px] text-xs": size === "xs" },
 				{ "px-[13px] py-[9px] text-sm": size === "sm" },
@@ -159,7 +172,7 @@ const _Button = (
 				{ "px-[17px] py-[9px] text-base": size === "lg" },
 				{ "px-[25px] py-[13px] text-base": size === "xl" },
 				{
-					"bg-violet-800 text-violet-100 hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0":
+					"bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0":
 						actionType === "primary"
 				},
 				{
@@ -173,6 +186,10 @@ const _Button = (
 				{
 					" bg-red-600 text-white hover:bg-red-700 <focus-visible:!></focus-visible:!>ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
 						actionType === "danger"
+				},
+				{
+					" bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 <focus-visible:!></focus-visible:!>ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-300 disabled:text-transparent-black-30 disabled:focus-visible:ring-0":
+						actionType === "warning"
 				},
 				className ? className : ""
 			)}

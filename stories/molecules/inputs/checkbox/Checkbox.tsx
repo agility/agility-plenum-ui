@@ -26,6 +26,8 @@ export interface ICheckboxProps {
 	hasBorder?: boolean
 	/** any arbitrary classNames to add to the wrapper */
 	className?: string
+	/** Label ClassName */
+	labelClassName?: string
 }
 
 /** Comment */
@@ -41,6 +43,7 @@ const Checkbox: FC<ICheckboxProps> = ({
 	onChange,
 	hasBorder,
 	className,
+	labelClassName,
 	...props
 }: ICheckboxProps) => {
 	const uniqueID = useId()
@@ -83,9 +86,10 @@ const Checkbox: FC<ICheckboxProps> = ({
 				/>
 			</div>
 			<div className="ml-3 text-sm ">
-				<label htmlFor={id} className="font-medium text-gray-700">
+				<>
 					<InputLabel label={label} isRequired={isRequired} id={id} />
-				</label>
+				</>
+
 				{message && (
 					<p id={`${id}-description`} className="text-gray-500">
 						{message}
