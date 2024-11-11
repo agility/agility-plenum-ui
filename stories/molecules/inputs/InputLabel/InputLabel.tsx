@@ -1,3 +1,6 @@
+// If we remove React from this import, manager app fails with no React reference found
+// TODO: investigate this further
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { FC } from "react";
 import { default as cn } from "classnames";
 
