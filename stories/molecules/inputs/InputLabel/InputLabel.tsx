@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { default as cn } from "classnames";
 
 export interface IInputLabelProps {
