@@ -1,16 +1,16 @@
-const { execSync } = require("child_process")
-const esbuild = require("esbuild")
-const path = require("path")
-const { Generator } = require('npm-dts');
+const { execSync } = require("child_process");
+const esbuild = require("esbuild");
+const path = require("path");
+const { Generator } = require("npm-dts");
 
 new Generator({
 	entry: path.resolve(__dirname, "stories/index.ts"),
-	output: path.resolve(__dirname, 'dist/index.d.ts'),
+	output: path.resolve(__dirname, "dist/index.d.ts"),
 	tsc: "--emitDeclarationOnly --project tsconfig.lib.json"
 }).generate();
 
 // Run TypeScript to generate type declarations using the new tsconfig.lib.json
-execSync("tsc --emitDeclarationOnly --project tsconfig.lib.json", { stdio: "inherit" })
+execSync("tsc --emitDeclarationOnly --project tsconfig.lib.json", { stdio: "inherit" });
 
 const context = {
 	logLevel: "info",
@@ -21,8 +21,8 @@ const context = {
 	target: ["esnext"],
 	minify: true,
 	pure: ["React.createElement"],
-	jsx: 'transform',
-	loader: { '.js': 'jsx' },
+	jsx: "automatic",
+	loader: { ".js": "jsx" },
 	outdir: path.resolve(__dirname, "dist"),
 	sourcemap: true,
 	external: [
@@ -38,9 +38,7 @@ const context = {
 		"react-icons"
 	],
 	format: "esm"
-}
+};
 
 // Build script using esbuild
-esbuild
-	.build(context)
-	.catch(() => process.exit(1))
+esbuild.build(context).catch(() => process.exit(1));
