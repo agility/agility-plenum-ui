@@ -1,37 +1,33 @@
-import React, { useEffect, useState } from "react"
-import InputLabel from "@/stories/molecules/inputs/InputLabel"
-import { useId } from "@/utils/useId"
-import { default as cn } from "classnames"
+import React, { useEffect, useState } from "react";
+import InputLabel from "@/stories/molecules/inputs/InputLabel";
+import { useId } from "@/utils/useId";
+import { default as cn } from "classnames";
 
 export interface ISimpleSelectOptions {
-	label: string
-	value: string
+	label: string;
+	value: string;
 }
 export interface ISelectProps {
 	/** Label */
-	label?: string
+	label?: string;
 	/** Select ID prop */
-	id?: string
+	id?: string;
 	/** Select name prop */
-	name?: string
+	name?: string;
 	/** List of options to display in the select menu */
-	options: ISimpleSelectOptions[]
+	options: ISimpleSelectOptions[];
 	/** Select name prop */
-	onChange?(value: string): void
+	onChange?(value: string): void;
 	/** Select disabled state */
-	isDisabled?: boolean
+	isDisabled?: boolean;
 	/** Select error state */
-	isError?: boolean
+	isError?: boolean;
 	/** Select required state */
-	isRequired?: boolean
-
-	value?: string
-
-	className?: string
-
-	onFocus?: () => void
-
-	onBlur?: () => void
+	isRequired?: boolean;
+	value?: string;
+	className?: string;
+	onFocus?: () => void;
+	onBlur?: () => void;
 }
 const Select: React.FC<ISelectProps> = ({
 	label,
@@ -47,23 +43,23 @@ const Select: React.FC<ISelectProps> = ({
 	onFocus,
 	onBlur
 }) => {
-	const [selectedOption, setSelectedOption] = useState<string>(value || options[0].value)
-	const uniqueID = useId()
-	if (!id) id = `select-${uniqueID}`
-	if (!name) name = id
+	const [selectedOption, setSelectedOption] = useState<string>(value || options[0].value);
+	const uniqueID = useId();
+	if (!id) id = `select-${uniqueID}`;
+	if (!name) name = id;
 
 	useEffect(() => {
 		if (value !== undefined && value !== null) {
-			setSelectedOption(value)
+			setSelectedOption(value);
 		}
-	}, [value])
+	}, [value]);
 
 	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		const targetValue = e.target.value
-		typeof onChange == "function" && onChange(targetValue)
-		setSelectedOption(targetValue)
-	}
-	const wrapperStyle = cn("group", { "opacity-50": isDisabled })
+		const targetValue = e.target.value;
+		typeof onChange == "function" && onChange(targetValue);
+		setSelectedOption(targetValue);
+	};
+	const wrapperStyle = cn("group", { "opacity-50": isDisabled });
 	return (
 		<div className={wrapperStyle}>
 			{label && (
@@ -95,14 +91,14 @@ const Select: React.FC<ISelectProps> = ({
 			>
 				{options.map(({ value, label }) => {
 					return (
-						<option key={value} value={label}>
+						<option key={value} value={value}>
 							{label}
 						</option>
-					)
+					);
 				})}
 			</select>
 		</div>
-	)
-}
+	);
+};
 
-export default Select
+export default Select;
