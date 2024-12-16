@@ -14,6 +14,7 @@ export interface IInputLabelProps {
 	isActive?: boolean;
 	isFocused?: boolean;
 	label?: string;
+	truncateLabel?: boolean;
 }
 
 /** Comment */
@@ -24,7 +25,8 @@ const InputLabel: FC<IInputLabelProps> = ({
 	isDisabled,
 	isActive,
 	isError,
-	label
+	label,
+	truncateLabel = false
 }: IInputLabelProps) => {
 	const labelStyles = cn(
 		"z-[2] ",
@@ -39,7 +41,7 @@ const InputLabel: FC<IInputLabelProps> = ({
 	if (!label) return null;
 	return (
 		<label htmlFor={id} className={labelStyles}>
-			{label}
+			<div className={truncateLabel ? "break-all line-clamp-1" : ""}>{label}</div>
 			{isRequired && <span className="text-red-500"> *</span>}
 		</label>
 	);

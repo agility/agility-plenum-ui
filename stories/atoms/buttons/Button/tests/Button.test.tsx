@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import Button from "../Button";
 import { render, screen, fireEvent } from "@testing-library/react";
 
@@ -58,28 +59,28 @@ describe("<Button>", () => {
 			expect(buttonElement).toHaveClass("px-[13px]");
 		});
 
-		it("redners with size xs", () => {
+		it("renders with size xs", () => {
 			render(<Button {...defaultProps} size="xs" />);
 
 			const buttonElement = screen.getByRole("button");
 			expect(buttonElement).toHaveClass("px-[11px]");
 		});
 
-		it("redners with size md", () => {
+		it("renders with size md", () => {
 			render(<Button {...defaultProps} size="md" />);
 
 			const buttonElement = screen.getByRole("button");
 			expect(buttonElement).toHaveClass("px-[17px] text-sm");
 		});
 
-		it("redners with size lg", () => {
+		it("renders with size lg", () => {
 			render(<Button {...defaultProps} size="lg" />);
 
 			const buttonElement = screen.getByRole("button");
 			expect(buttonElement).toHaveClass("px-[17px] text-base");
 		});
 
-		it("redners with size xl", () => {
+		it("renders with size xl", () => {
 			render(<Button {...defaultProps} size="xl" />);
 
 			const buttonElement = screen.getByRole("button");
@@ -104,7 +105,7 @@ describe("<Button>", () => {
 	});
 
 	it("calls onClick when clicked", () => {
-		const handleClick = vitest.fn();
+		const handleClick = vi.fn();
 		render(<Button {...defaultProps} onClick={handleClick} />);
 
 		const buttonElement = screen.getByRole("button");

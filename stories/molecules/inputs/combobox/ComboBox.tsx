@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from "react"
-import { default as cn } from "classnames"
-import { Combobox as HeadlessUICombobox } from "@headlessui/react"
-import InputLabel from "@/stories/molecules/inputs/InputLabel"
-import { DynamicIcon } from "@/stories/atoms/icons"
+import { useState, useEffect } from "react";
+import { default as cn } from "classnames";
+import { Combobox as HeadlessUICombobox } from "@headlessui/react";
+import InputLabel from "@/stories/molecules/inputs/InputLabel";
+import { DynamicIcon } from "@/stories/atoms/icons";
 
 export interface IComboboxProps<T extends Record<string, unknown>> {
 	/** Label */
-	label?: string
+	label?: string;
 	/** ID */
-	id: string
+	id: string;
 	/** Array of items to display */
-	items: T[]
+	items: T[];
 	/** the item property to use as the key */
-	keyProperty: string
+	keyProperty: string;
 
 	/** the item property to use as the display */
-	displayProperty: string
+	displayProperty: string;
 	/** Placeholder */
-	placeholder?: string
+	placeholder?: string;
 	/** Callback to trigger on change */
-	onChange?(value: T | undefined): void
+	onChange?(value: T | undefined | null): void;
 	/** Select disabled state */
-	isDisabled?: boolean
+	isDisabled?: boolean;
 	/** Select error state */
-	isError?: boolean
+	isError?: boolean;
 	/** Select required state */
-	isRequired?: boolean
+	isRequired?: boolean;
 	/** Message shown under field */
-	message?: string
+	message?: string;
 
-	displayValue?: string
+	displayValue?: string;
 
 	/**
 	 * Whether this item is nullable or not.
@@ -37,11 +37,11 @@ export interface IComboboxProps<T extends Record<string, unknown>> {
 	 * @type {boolean}
 	 * @memberof ComboboxProps
 	 */
-	nullable?: boolean
+	nullable?: boolean;
 }
 
 function classNames(...classes: string[]) {
-	return classes.filter(Boolean).join(" ")
+	return classes.filter(Boolean).join(" ");
 }
 
 const Combobox = <T extends Record<string, unknown>>({
@@ -59,44 +59,44 @@ const Combobox = <T extends Record<string, unknown>>({
 	id,
 	nullable
 }: IComboboxProps<T>) => {
-	const [query, setQuery] = useState<string>("")
-	const [selectedItem, setSelectedItem] = useState<T | undefined>()
+	const [query, setQuery] = useState<string>("");
+	const [selectedItem, setSelectedItem] = useState<T | undefined | null>();
 
-	const onChangeValue = (value: T | undefined) => {
+	const onChangeValue = (value: T | undefined | null) => {
 		if (value && selectedItem && value[keyProperty] === selectedItem[keyProperty]) {
-			setSelectedItem(undefined)
+			setSelectedItem(undefined);
 		} else {
-			setSelectedItem(value)
+			setSelectedItem(value);
 		}
-	}
+	};
 
 	useEffect(() => {
 		if (displayValue) {
-			const dv = items.find((i) => i[displayProperty] === displayValue)
-			setSelectedItem(dv)
+			const dv = items.find((i) => i[displayProperty] === displayValue);
+			setSelectedItem(dv);
 		}
-	}, [displayValue])
+	}, [displayValue]);
 
 	useEffect(() => {
-		typeof onChange === "function" && onChange(selectedItem)
-	}, [selectedItem])
+		typeof onChange === "function" && onChange(selectedItem);
+	}, [selectedItem]);
 
 	const filteredItems =
 		query === ""
 			? items
 			: items.filter((item) => {
-					return `${item[displayProperty]}`.toLowerCase().includes(query.toLowerCase())
-			  })
-	const labelStyles = cn("block text-sm text-gray-700")
-	const buttonStyles = cn("absolute inset-y-0 right-0 flex items-center rounded-r px-2 focus:outline-none")
+					return `${item[displayProperty]}`.toLowerCase().includes(query.toLowerCase());
+			  });
+	const labelStyles = cn("block text-sm text-gray-700");
+	const buttonStyles = cn("absolute inset-y-0 right-0 flex items-center rounded-r px-2 focus:outline-none");
 	const optionStyles = cn(
 		"absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-	)
+	);
 	return (
 		<HeadlessUICombobox
 			as="div"
 			value={selectedItem}
-			onChange={(e: T | undefined) => onChangeValue(e)}
+			onChange={(e: T | null) => onChangeValue(e)}
 			disabled={isDisabled}
 			nullable={nullable ? undefined : false}
 		>
@@ -180,6 +180,6 @@ const Combobox = <T extends Record<string, unknown>>({
 				)}
 			</div>
 		</HeadlessUICombobox>
-	)
-}
-export default Combobox
+	);
+};
+export default Combobox;
