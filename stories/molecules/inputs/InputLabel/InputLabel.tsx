@@ -15,6 +15,7 @@ export interface IInputLabelProps {
 	isFocused?: boolean;
 	label?: string;
 	truncateLabel?: boolean;
+	fullWidthLabel?: boolean;
 }
 
 /** Comment */
@@ -26,7 +27,8 @@ const InputLabel: FC<IInputLabelProps> = ({
 	isActive,
 	isError,
 	label,
-	truncateLabel = false
+	truncateLabel = false,
+	fullWidthLabel = false
 }: IInputLabelProps) => {
 	const labelStyles = cn(
 		"z-[2] ",
@@ -36,7 +38,8 @@ const InputLabel: FC<IInputLabelProps> = ({
 		{ "text-xs text-red-500 px-1 top-[10px] bg-white": isPlaceholder && isError },
 		{ "text-red-500 bg-white": !isPlaceholder && isError },
 		{ "text-gray-500/[.5]": isDisabled },
-		{ "inline-block  transition-all text-sm text-gray-700 mb-1": !isPlaceholder }
+		{ "inline-block  transition-all text-sm text-gray-700 mb-1": !isPlaceholder },
+		{ "block w-full": fullWidthLabel }
 	);
 	if (!label) return null;
 	return (

@@ -28,6 +28,8 @@ export interface ICheckboxProps {
 	className?: string;
 	/** Truncate label */
 	truncateLabel?: boolean;
+	/** Full width label */
+	fullWidthLabel?: boolean;
 }
 
 /** Comment */
@@ -44,6 +46,7 @@ const Checkbox: FC<ICheckboxProps> = ({
 	hasBorder,
 	className,
 	truncateLabel = false,
+	fullWidthLabel = false,
 	...props
 }: ICheckboxProps) => {
 	const uniqueID = useId();
@@ -85,9 +88,15 @@ const Checkbox: FC<ICheckboxProps> = ({
 					{...props}
 				/>
 			</div>
-			<div className="ml-3 text-sm flex items-center">
+			<div className="ml-3 text-sm flex items-center w-full">
 				<>
-					<InputLabel label={label} isRequired={isRequired} id={id} truncateLabel={truncateLabel} />
+					<InputLabel
+						label={label}
+						isRequired={isRequired}
+						id={id}
+						truncateLabel={truncateLabel}
+						fullWidthLabel={fullWidthLabel}
+					/>
 				</>
 
 				{message && (

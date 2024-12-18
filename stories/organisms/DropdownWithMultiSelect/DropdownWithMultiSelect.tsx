@@ -28,13 +28,13 @@ const DropdownWithMultiSelect = ({ label, options }: Props) => {
 			<PopoverPanel
 				transition
 				anchor={{
-					to: "bottom end",
+					to: "bottom start",
 					gap: 8
 				}}
-				className="bg-white !max-h-[240px] w-[200px] rounded-[3px] border border-gray-300 shadow-lg z-40"
+				className="bg-white !max-h-[240px] w-[250px] rounded-[3px] border border-gray-300 shadow-lg z-40"
 			>
 				{options.map((option) => {
-					const inputWrapperStyles = cn("py-[8px] px-3 text-gray-500 hover:bg-[rgba(0,0,0,0.03)]", {
+					const inputWrapperStyles = cn("py-2 px-3 text-gray-500 hover:bg-[rgba(0,0,0,0.03)]", {
 						"text-gray-700": option.isSelected
 					});
 					return (
@@ -46,6 +46,7 @@ const DropdownWithMultiSelect = ({ label, options }: Props) => {
 								onChange={option.onClick}
 								className="!min-h-0"
 								truncateLabel
+								fullWidthLabel
 							/>
 						</div>
 					);
