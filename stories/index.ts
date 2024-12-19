@@ -1,4 +1,4 @@
-//Atomic Components, props, and type gaurds.
+//Atomic Components, props, and type guards.
 import {
 	IAvatarProps,
 	IBadgeProps,
@@ -24,8 +24,8 @@ import {
 	isHeroIcon,
 	isTablerIcon,
 	isUnifiedIconName
-} from "./atoms"
-// Molecular Components, props, and type gaurds.
+} from "./atoms";
+// Molecular Components, props, and type guards.
 import {
 	ICheckboxProps,
 	IComboboxProps,
@@ -49,8 +49,8 @@ import {
 	TextInput,
 	ITextInputProps,
 	ISimpleSelectOptions
-} from "./molecules"
-// Organism Components, props, and type gaurds.
+} from "./molecules";
+// Organism Components, props, and type guards.
 import {
 	IAnimatedLabelInputProps,
 	AnimatedLabelTextArea,
@@ -68,8 +68,10 @@ import {
 	TextInputSelect,
 	ITextInputSelectProps,
 	IAnimatedFormInputWithAddons,
-	AnimatedFormInputWithAddons
-} from "./organisms"
+	AnimatedFormInputWithAddons,
+	DropdownWithMultiSelect,
+	MultiSelectItemProps
+} from "./organisms";
 
 export type {
 	IAvatarProps,
@@ -104,8 +106,9 @@ export type {
 	BTNActionType,
 	ITextInputProps,
 	ISimpleSelectOptions,
-	IAnimatedFormInputWithAddons
-}
+	IAnimatedFormInputWithAddons,
+	MultiSelectItemProps
+};
 export {
 	Avatar,
 	Checkbox,
@@ -136,5 +139,6 @@ export {
 	isUnifiedIconName,
 	TextInput,
 	TextInputSelect,
-	AnimatedFormInputWithAddons
-}
+	AnimatedFormInputWithAddons,
+	DropdownWithMultiSelect
+};

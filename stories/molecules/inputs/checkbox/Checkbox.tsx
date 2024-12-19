@@ -1,33 +1,35 @@
-import React, { FC } from "react"
-import { default as cn } from "classnames"
-import InputLabel from "@/stories/molecules/inputs/InputLabel"
-import { useId } from "@/utils/useId"
+import React, { FC } from "react";
+import { default as cn } from "classnames";
+import InputLabel from "@/stories/molecules/inputs/InputLabel";
+import { useId } from "@/utils/useId";
 
 export interface ICheckboxProps {
 	/** Checkbox label */
-	label: string
+	label: string;
 	/** Checkbox ID */
-	id?: string
+	id?: string;
 	/** Disabled state */
-	isDisabled?: boolean
+	isDisabled?: boolean;
 	/** value */
-	value?: string
+	value?: string;
 	/** Check state */
-	isChecked?: boolean
+	isChecked?: boolean;
 	/** If field is required */
-	isRequired?: boolean
+	isRequired?: boolean;
 	/** Error state */
-	isError?: boolean
+	isError?: boolean;
 	/** Message or description */
-	message?: string
+	message?: string;
 	/** Callback on input change */
-	onChange?(value: string, isChecked: boolean): void
+	onChange?(value: string, isChecked: boolean): void;
 	/** Has a border around the checkbox and label */
-	hasBorder?: boolean
+	hasBorder?: boolean;
 	/** any arbitrary classNames to add to the wrapper */
-	className?: string
-	/** Label ClassName */
-	labelClassName?: string
+	className?: string;
+	/** Truncate label */
+	truncateLabel?: boolean;
+	/** Full width label */
+	fullWidthLabel?: boolean;
 }
 
 /** Comment */
@@ -43,29 +45,30 @@ const Checkbox: FC<ICheckboxProps> = ({
 	onChange,
 	hasBorder,
 	className,
-	labelClassName,
+	truncateLabel = false,
+	fullWidthLabel = false,
 	...props
 }: ICheckboxProps) => {
-	const uniqueID = useId()
-	if (!id) id = `cb-${uniqueID}`
+	const uniqueID = useId();
+	if (!id) id = `cb-${uniqueID}`;
 
 	const checkboxStyles = cn(
 		"rounded-sm border-gray-300 text-sm font-normal leading-5 text-purple-600 focus:ring-purple-600",
 		{ "border-red-500 shadow-none": isError }
-	)
+	);
 	const wrapperStyles = cn(
 		"relative flex items-center min-h-[38px]",
 		{ "opacity-50": isDisabled },
 		{ "rounded-sm border border-1 px-3 border-gray-200": hasBorder },
 		{ "py-3": hasBorder && message },
 		className
-	)
+	);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const targetValue = e.target.value
-		const targetChecked = e.target.checked
-		typeof onChange === "function" && onChange(targetValue, targetChecked)
-	}
+		const targetValue = e.target.value;
+		const targetChecked = e.target.checked;
+		typeof onChange === "function" && onChange(targetValue, targetChecked);
+	};
 
 	return (
 		<div className={wrapperStyles}>
@@ -80,14 +83,20 @@ const Checkbox: FC<ICheckboxProps> = ({
 					disabled={isDisabled}
 					checked={isChecked}
 					onChange={(e) => {
-						handleChange(e)
+						handleChange(e);
 					}}
 					{...props}
 				/>
 			</div>
-			<div className="ml-3 text-sm ">
+			<div className="ml-3 text-sm flex items-center w-full">
 				<>
-					<InputLabel label={label} isRequired={isRequired} id={id} />
+					<InputLabel
+						label={label}
+						isRequired={isRequired}
+						id={id}
+						truncateLabel={truncateLabel}
+						fullWidthLabel={fullWidthLabel}
+					/>
 				</>
 
 				{message && (
@@ -97,6 +106,6 @@ const Checkbox: FC<ICheckboxProps> = ({
 				)}
 			</div>
 		</div>
-	)
-}
-export default Checkbox
+	);
+};
+export default Checkbox;
