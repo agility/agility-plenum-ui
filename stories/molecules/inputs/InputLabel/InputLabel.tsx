@@ -41,10 +41,13 @@ const InputLabel: FC<IInputLabelProps> = ({
 		{ "inline-block  transition-all text-sm text-gray-700 mb-1": !isPlaceholder },
 		{ "block w-full": fullWidthLabel }
 	);
+
 	if (!label) return null;
 	return (
 		<label htmlFor={id} className={labelStyles}>
-			<div className={truncateLabel ? "break-all line-clamp-1" : ""}>{label}</div>
+			<div className={truncateLabel ? "break-all line-clamp-1" : ""} title={label}>
+				{label}
+			</div>
 			{isRequired && <span className="text-red-500"> *</span>}
 		</label>
 	);
