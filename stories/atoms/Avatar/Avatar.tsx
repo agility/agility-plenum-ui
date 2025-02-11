@@ -1,33 +1,41 @@
-import React, { FC, useMemo } from "react"
-import { default as cn } from "classnames"
+import React, { FC, useMemo } from "react";
+import { default as cn } from "classnames";
 // import Image from "next/image"
 export interface IAvatarProps {
 	/**
 	 * source url for the avatar
 	 */
-	src?: string
+	src?: string;
 	/**
 	 * Initials we use as fallback if no src is passed
 	 */
-	initials?: string
+	initials?: string;
 	/**
 	 * optional status
 	 */
-	status?: "offline" | "online" | "busy"
+	status?: "offline" | "online" | "busy";
 	/**
 	 * avatar picture size (also affects status indicator)
 	 */
-	size?: "xxs" | "xs" | "sm" | "md" | "lg" | "xl"
+	size?: "xxs" | "xs" | "sm" | "md" | "lg" | "xl";
 	/**
 	 * avatar img alt
 	 */
-	alt?: string
+	alt?: string;
+	draggable?: boolean;
 }
 
 /**
  * Avatar component that shows profile image or name initials of the user
  */
-const Avatar: FC<IAvatarProps> = ({ src, status, size = "md", alt = "Avatar image", initials }: IAvatarProps) => {
+const Avatar: FC<IAvatarProps> = ({
+	src,
+	status,
+	size = "md",
+	alt = "Avatar image",
+	initials,
+	draggable = false
+}: IAvatarProps) => {
 	const imageStyles = cn("rounded-full", {
 		"h-6 w-6": size === "xxs",
 		"h-8 w-8": size === "xs",
@@ -35,7 +43,7 @@ const Avatar: FC<IAvatarProps> = ({ src, status, size = "md", alt = "Avatar imag
 		"h-12 w-12": size === "md",
 		"h-14 w-14": size === "lg",
 		"h-16 w-16": size === "xl"
-	})
+	});
 	const initialsStyles = cn("inline-flex items-center justify-center rounded-full bg-gray-500", {
 		"h-6 w-6": size === "xxs",
 		"h-8 w-8": size === "xs",
@@ -43,14 +51,14 @@ const Avatar: FC<IAvatarProps> = ({ src, status, size = "md", alt = "Avatar imag
 		"h-12 w-12": size === "md",
 		"h-14 w-14": size === "lg",
 		"h-16 w-16": size === "xl"
-	})
+	});
 	const fontStyles = cn(" leading-none text-white uppercase", {
 		"text-xs": size === "xxs" || size === "xs",
 		"text-sm": size === "sm",
 		"text-base": size === "md",
 		"text-lg": size === "lg",
 		"text-xl": size === "xl"
-	})
+	});
 	const defaultAvatarStyles = cn("inline-block rounded-full overflow-hidden bg-gray-100", {
 		"h-6 w-6": size === "xxs",
 		"h-8 w-8": size === "xs",
@@ -58,7 +66,7 @@ const Avatar: FC<IAvatarProps> = ({ src, status, size = "md", alt = "Avatar imag
 		"h-12 w-12": size === "md",
 		"h-14 w-14": size === "lg",
 		"h-16 w-16": size === "xl"
-	})
+	});
 
 	const statusStyles = cn("absolute top-0 right-0 block rounded-full ring-2 ring-white", {
 		"h-1.5 w-1.5": size === "xxs",
@@ -70,40 +78,48 @@ const Avatar: FC<IAvatarProps> = ({ src, status, size = "md", alt = "Avatar imag
 		"bg-gray-300": status === "offline",
 		"bg-red-400": status === "busy",
 		"bg-green-400": status === "online"
-	})
+	});
 	const imageSize: number = useMemo(() => {
-		let imageSize: number = 0
+		let imageSize: number = 0;
 		switch (size) {
 			case "xxs":
-				imageSize = 24
-				break
+				imageSize = 24;
+				break;
 			case "xs":
-				imageSize = 32
-				break
+				imageSize = 32;
+				break;
 			case "sm":
-				imageSize = 40
-				break
+				imageSize = 40;
+				break;
 			case "md":
-				imageSize = 48
-				break
+				imageSize = 48;
+				break;
 			case "lg":
-				imageSize = 56
-				break
+				imageSize = 56;
+				break;
 			case "xl":
-				imageSize = 64
-				break
+				imageSize = 64;
+				break;
 			default:
-				imageSize = 48
-				break
+				imageSize = 48;
+				break;
 		}
-		return imageSize
-	}, [size])
+		return imageSize;
+	}, [size]);
 
 	return (
 		<span className="inline-block relative">
 			{src ? (
 				// eslint-disable-next-line @next/next/no-img-element
-				<img className={imageStyles} width={imageSize} height={imageSize} src={src} alt={alt} loading="eager" />
+				<img
+					className={imageStyles}
+					width={imageSize}
+					height={imageSize}
+					src={src}
+					alt={alt}
+					loading="eager"
+					draggable={draggable}
+				/>
 			) : initials ? (
 				<span className={initialsStyles}>
 					<span className={fontStyles}>{initials}</span>
@@ -117,7 +133,7 @@ const Avatar: FC<IAvatarProps> = ({ src, status, size = "md", alt = "Avatar imag
 			)}
 			{status && <span className={statusStyles}></span>}
 		</span>
-	)
-}
+	);
+};
 
-export default Avatar
+export default Avatar;
