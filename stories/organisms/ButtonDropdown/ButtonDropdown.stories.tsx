@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import ButtonDropdown from "."
-import { IItemProp } from "../DropdownComponent"
+import type { Meta, StoryObj } from "@storybook/react";
+import ButtonDropdown from ".";
+import { IItemProp } from "../DropdownComponent";
 
 const meta: Meta<typeof ButtonDropdown> = {
 	title: "Design System/Organisms/Button Dropdown",
 	component: ButtonDropdown,
 	tags: ["autodocs"],
 	argTypes: {}
-}
+};
 const dropdownDataWithIcons: IItemProp[][] = [
 	[
 		{
@@ -34,7 +34,7 @@ const dropdownDataWithIcons: IItemProp[][] = [
 			key: "Add to Batch",
 			label: "Add to Batch",
 			onClick: () => {
-				console.log("Add to Batch action")
+				console.log("Add to Batch action");
 			}
 		},
 		{
@@ -48,7 +48,7 @@ const dropdownDataWithIcons: IItemProp[][] = [
 			key: "View Batch",
 			label: "View Batch",
 			onClick: () => {
-				console.log("View Batch action")
+				console.log("View Batch action");
 			}
 		}
 	],
@@ -64,15 +64,15 @@ const dropdownDataWithIcons: IItemProp[][] = [
 			key: "Delete",
 			label: "Delete",
 			onClick: () => {
-				console.log("Delete action")
+				console.log("Delete action");
 			},
 			isEmphasized: true
 		}
 	]
-]
+];
 
-export default meta
-type Story = StoryObj<typeof ButtonDropdown>
+export default meta;
+type Story = StoryObj<typeof ButtonDropdown>;
 
 export const Primary: Story = {
 	args: {
@@ -87,7 +87,7 @@ export const Primary: Story = {
 		},
 		placement: "bottom-end"
 	}
-}
+};
 export const Secondary: Story = {
 	args: {
 		button: {
@@ -101,7 +101,7 @@ export const Secondary: Story = {
 		},
 		placement: "bottom-end"
 	}
-}
+};
 export const Alternative: Story = {
 	args: {
 		button: {
@@ -115,4 +115,55 @@ export const Alternative: Story = {
 		},
 		placement: "bottom-end"
 	}
-}
+};
+
+export const DisabledPrimary: Story = {
+	args: {
+		button: {
+			label: "Primary",
+			actionType: "primary",
+			disabled: true
+		},
+		dropDown: {
+			label: "Dropdown",
+			id: "dropdown-disabled-primary",
+			items: dropdownDataWithIcons,
+			disabled: true
+		},
+		placement: "bottom-end"
+	}
+};
+
+export const DisabledSecondary: Story = {
+	args: {
+		button: {
+			label: "Secondary",
+			actionType: "secondary",
+			disabled: true
+		},
+		dropDown: {
+			label: "Dropdown",
+			id: "dropdown-disabled-secondary",
+			items: dropdownDataWithIcons,
+			disabled: true
+		},
+		placement: "bottom-end"
+	}
+};
+
+export const DisabledAlternative: Story = {
+	args: {
+		button: {
+			label: "Alternative",
+			actionType: "alternative",
+			disabled: true
+		},
+		dropDown: {
+			label: "Dropdown",
+			id: "dropdown-disabled-alternative",
+			items: dropdownDataWithIcons,
+			disabled: true
+		},
+		placement: "bottom-end"
+	}
+};

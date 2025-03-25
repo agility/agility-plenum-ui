@@ -1,22 +1,33 @@
-import React, { FC } from "react"
-import { default as cn } from "classnames"
-import Button, { IButtonProps } from "@/stories/atoms/buttons/Button"
-
-import { DynamicIcon } from "@/stories/atoms/icons"
-import Dropdown, { IDropdownProps, defaultClassNames } from "../DropdownComponent"
+import { FC } from "react";
+import { default as cn } from "classnames";
+import Button, { IButtonProps } from "@/stories/atoms/buttons/Button";
+import { DynamicIcon } from "@/stories/atoms/icons";
+import Dropdown, { IDropdownProps, defaultClassNames } from "../DropdownComponent";
 
 export interface IButtonDropdownProps {
-	button: IButtonProps
-	dropDown: IDropdownProps
-	hideDivider?: boolean
-	placement?: IDropdownProps["placement"]
-	offsetOptions?: IDropdownProps["offsetOptions"]
+	button: IButtonProps;
+	dropDown: IDropdownProps;
+	hideDivider?: boolean;
+	placement?: IDropdownProps["placement"];
+	offsetOptions?: IDropdownProps["offsetOptions"];
 }
 
 /**
  * Primary UI component for user interaction
  */
-const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, hideDivider = false, placement = "bottom-end", offsetOptions }) => {
+const ButtonDropdown: FC<IButtonDropdownProps> = ({
+	button,
+	dropDown,
+	hideDivider = false,
+	placement = "bottom-end",
+	offsetOptions
+}) => {
+	const iconTextColours = {
+		primary: dropDown.disabled ? "text-gray-300" : "text-violet-100",
+		secondary: dropDown.disabled ? "text-gray-400" : "text-purple-700",
+		alternative: dropDown.disabled ? "text-gray-500" : "text-gray-700"
+	};
+
 	return (
 		<div className="flex items-stretch focus-within:ring-purple-600 focus-within:ring-2 focus-within:ring-offset-white focus-within:ring-offset-2 rounded-[3px]">
 			<Button
@@ -29,29 +40,37 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, hideDivide
 					)
 				}}
 			/>
-			{!hideDivider && <div
-				className={cn(
-					"w-[1px] rt",
-					button.actionType === "primary"
-						? "bg-violet-700 text-violet-100 hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0"
-						: "",
-					button.actionType === "secondary" ? "bg-purple-200 " : "",
-					button.actionType === "alternative" ? "bg-gray-300" : ""
-				)}
-			></div>}
+			{!hideDivider && (
+				<div
+					className={cn(
+						"w-[1px] rt",
+						button.actionType === "primary"
+							? "bg-violet-700 text-violet-100 hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0"
+							: "",
+						button.actionType === "secondary" ? "bg-purple-200 " : "",
+						button.actionType === "alternative" ? "bg-gray-300" : ""
+					)}
+				></div>
+			)}
 			<Dropdown
 				{...{
 					CustomDropdownTrigger: (
 						<DynamicIcon
 							{...{
 								icon: "IconChevronDown",
-								className: cn("h-5 w-5", {
-									"text-violet-100": button.actionType === "primary",
-									"text-purple-700 ": button.actionType === "secondary",
-									"text-gray-700": button.actionType === "alternative"
-								},
-								dropDown.iconClassname
-								),
+								className: cn(
+									"h-5 w-5 disabled:!bg-gray-50 disabled:focus-visible:ring-0",
+									{
+										"text-white": dropDown.disabled && button.actionType === "primary",
+										"text-purple-300": dropDown.disabled && button.actionType === "secondary",
+										"text-gray-300": dropDown.disabled && button.actionType === "alternative",
+
+										"text-violet-100": !dropDown.disabled && button.actionType === "primary",
+										"text-purple-700": !dropDown.disabled && button.actionType === "secondary",
+										"text-gray-700": !dropDown.disabled && button.actionType === "alternative"
+									},
+									dropDown.iconClassname
+								)
 							}}
 						/>
 					),
@@ -72,7 +91,7 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, hideDivide
 						button.actionType === "alternative"
 							? cn(
 									"border-gray-300 bg-white text-gray-700 fill-gray-700  hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100",
-									"disabled:bg-gray-100 disabled:text-gray-500 disabled:hover:none disabled:active:bg-gray-100 disabled:border-gray-300"
+									"disabled:bg-gray-50 disabled:text-gray-300 disabled:hover:none disabled:active:bg-gray-100 disabled:border-gray-300"
 							  )
 							: "",
 						dropDown.buttonClassname
@@ -83,11 +102,11 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({ button, dropDown, hideDivide
 						alignmentAxis: 0 //left/right
 					},
 					placement,
-					...(dropDown as IDropdownProps),
+					...(dropDown as IDropdownProps)
 				}}
 			/>
 			<div className="hidden !bg-purple-100 !text-purple-600 transition-all hover:bg-purple-200 focus:bg-purple-300" />
 		</div>
-	)
-}
-export default ButtonDropdown
+	);
+};
+export default ButtonDropdown;
