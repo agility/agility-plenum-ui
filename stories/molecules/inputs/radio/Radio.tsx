@@ -1,30 +1,30 @@
-import InputLabel from "@/stories/molecules/inputs/InputLabel"
-import { useId } from "@/utils/useId"
-import React from "react"
-import { default as cn } from "classnames"
+import InputLabel from "@/stories/molecules/inputs/InputLabel";
+import { useId } from "@/utils/useId";
+import React from "react";
+import { default as cn } from "classnames";
 export interface IRadioProps {
 	/** group name */
-	name?: string
+	name?: string;
 	/** Radio label */
-	label: string
+	label: string;
 	/** Radio ID */
-	id?: string
+	id?: string;
 	/** Disabled state */
-	isDisabled?: boolean
+	isDisabled?: boolean;
 	/** Check state */
-	isChecked?: boolean
+	isChecked?: boolean;
 	/** If field is required */
-	isRequired?: boolean
+	isRequired?: boolean;
 	/** Error state */
-	isError?: boolean
+	isError?: boolean;
 	/** Message or description */
-	message?: string
+	message?: string;
 	/** value */
-	value?: string
+	value?: string;
 	/** Callback on input change */
-	onChange?(value: string, isChecked: boolean): void
+	onChange?(value: string, isChecked: boolean): void;
 	/** Callback on click */
-	onClick?(value: string, isChecked: boolean): void
+	onClick?(value: string, isChecked: boolean): void;
 }
 const Radio: React.FC<IRadioProps> = ({
 	label,
@@ -39,24 +39,24 @@ const Radio: React.FC<IRadioProps> = ({
 	onClick,
 	value
 }) => {
-	const uniqueID = useId()
-	if (!id) id = `input-${uniqueID}`
-	if (!name) name = id
+	const uniqueID = useId();
+	if (!id) id = `input-${uniqueID}`;
+	if (!name) name = id;
 
 	const checboxStyles = cn("focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300", {
 		"border-red-500 shadow-none": isError
-	})
-	const wrapperStyles = cn("relative flex items-start", { "opacity-50": isDisabled })
+	});
+	const wrapperStyles = cn("relative flex items-start", { "opacity-50": isDisabled });
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const targetValue = e.currentTarget.value
-		const targetChecked = e.currentTarget.checked
-		typeof onChange === "function" && onChange(targetValue, targetChecked)
-	}
+		const targetValue = e.currentTarget.value;
+		const targetChecked = e.currentTarget.checked;
+		typeof onChange === "function" && onChange(targetValue, targetChecked);
+	};
 	const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
-		const targetValue = e.currentTarget.value
-		const targetChecked = e.currentTarget.checked
-		typeof onClick === "function" && onClick(targetValue, targetChecked)
-	}
+		const targetValue = e.currentTarget.value;
+		const targetChecked = e.currentTarget.checked;
+		typeof onClick === "function" && onClick(targetValue, targetChecked);
+	};
 	return (
 		<div className={wrapperStyles}>
 			<div className="flex items-center h-5">
@@ -68,12 +68,12 @@ const Radio: React.FC<IRadioProps> = ({
 					value={value}
 					className={checboxStyles}
 					disabled={isDisabled}
-					defaultChecked={isChecked}
+					checked={isChecked}
 					onChange={(e) => {
-						handleChange(e)
+						handleChange(e);
 					}}
 					onClick={(e) => {
-						handleClick(e)
+						handleClick(e);
 					}}
 				/>
 			</div>
@@ -86,7 +86,7 @@ const Radio: React.FC<IRadioProps> = ({
 				)}
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default Radio
+export default Radio;
