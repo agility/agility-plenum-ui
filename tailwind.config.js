@@ -239,7 +239,8 @@ module.exports = {
 				enter: "fadeInLeft 300ms ease-out",
 				exit: "fadeOutLeft 300ms ease-in forwards",
 				quickBounce: "quickBounce 200ms ease-out forwards",
-				fadeIn: "fadeIn 400ms ease-in-out forwards"
+				fadeIn: "fadeIn 400ms ease-in-out forwards",
+				spinSlower: "spin 1s linear infinite"
 			},
 
 			keyframes: {
@@ -290,4 +291,4 @@ module.exports = {
 		}
 	},
 	plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography"), require("@headlessui/tailwindcss")]
-}
+};
