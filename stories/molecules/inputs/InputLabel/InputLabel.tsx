@@ -31,7 +31,7 @@ const InputLabel: FC<IInputLabelProps> = ({
 	fullWidthLabel = false
 }: IInputLabelProps) => {
 	const labelStyles = cn(
-		"z-[2] ",
+		"z-[2] inline-flex gap-1",
 		{ "inline-block ml-2 relative transition-all": isPlaceholder },
 		{ "text-sm text-gray-400 px-2 top-8": isPlaceholder && !isActive },
 		{ "text-xs text-gray-700 px-1 top-[10px] bg-white": isPlaceholder && isActive },
