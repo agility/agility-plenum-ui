@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
 export interface ISelectSearchOption {
 	value: string;
@@ -10,9 +10,18 @@ export interface ISelectSearchProps {
 	placeholder?: string;
 	label?: string;
 	onChange: (value: string) => void;
+	isRequired?: boolean;
+	message?: string;
 }
 
-const SelectSearch: React.FC<ISelectSearchProps> = ({ options, placeholder = "Select...", label, onChange }) => {
+const SelectSearch: React.FC<ISelectSearchProps> = ({
+	options,
+	placeholder = "Select...",
+	label,
+	onChange,
+	isRequired = false,
+	message
+}) => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [isOpen, setIsOpen] = useState(false);
 	const [highlightIndex, setHighlightIndex] = useState(-1);
@@ -32,42 +41,29 @@ const SelectSearch: React.FC<ISelectSearchProps> = ({ options, placeholder = "Se
 	};
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (!isOpen && e.key === "ArrowDown") {
-			setIsOpen(true);
-			setHighlightIndex(0);
-			return;
-		}
-
-		switch (e.key) {
-			case "ArrowDown":
-				setHighlightIndex((prev) => (prev < filteredOptions.length - 1 ? prev + 1 : prev));
-				break;
-			case "ArrowUp":
-				setHighlightIndex((prev) => (prev > 0 ? prev - 1 : prev));
-				break;
-			case "Enter":
-				if (highlightIndex >= 0 && filteredOptions[highlightIndex]) {
-					const selected = filteredOptions[highlightIndex];
-					onChange(selected.value);
-					setSearchTerm(selected.label);
-					setIsOpen(false);
-				}
-				break;
-			case "Escape":
-				setIsOpen(false);
-				break;
+		if (!isOpen) return;
+		if (e.key === "ArrowDown") {
+			e.preventDefault();
+			setHighlightIndex((prev) => (prev + 1) % filteredOptions.length);
+		} else if (e.key === "ArrowUp") {
+			e.preventDefault();
+			setHighlightIndex((prev) => (prev <= 0 ? filteredOptions.length - 1 : prev - 1));
+		} else if (e.key === "Enter" && highlightIndex >= 0) {
+			e.preventDefault();
+			const selected = filteredOptions[highlightIndex];
+			onChange(selected.value);
+			setSearchTerm(selected.label);
+			setIsOpen(false);
+		} else if (e.key === "Escape") {
+			setIsOpen(false);
 		}
 	};
-
-	useEffect(() => {
-		if (!isOpen) setHighlightIndex(-1);
-	}, [isOpen]);
 
 	return (
 		<div className="select-search relative" role="combobox" aria-expanded={isOpen}>
 			{label && (
 				<label htmlFor="select-search-input" className="block mb-2 cursor-pointer" onClick={handleLabelClick}>
-					{label}
+					{label} {isRequired && <span className="text-red-500">*</span>}
 				</label>
 			)}
 			<div className="flex items-center gap-2">
@@ -84,7 +80,9 @@ const SelectSearch: React.FC<ISelectSearchProps> = ({ options, placeholder = "Se
 					onFocus={() => setIsOpen(true)}
 					onKeyDown={handleKeyDown}
 					className="border rounded px-3 py-2 w-full"
-					aria-controls="select-search-listbox"
+					aria-required={isRequired}
+					aria-invalid={isRequired && !searchTerm}
+					aria-describedby={message ? "select-search-message" : undefined}
 				/>
 				{searchTerm && (
 					<button
@@ -100,7 +98,6 @@ const SelectSearch: React.FC<ISelectSearchProps> = ({ options, placeholder = "Se
 
 			{isOpen && (
 				<ul
-					id="select-search-listbox"
 					role="listbox"
 					className="absolute w-full border rounded mt-1 max-h-48 overflow-auto bg-white shadow z-10"
 				>
@@ -108,6 +105,7 @@ const SelectSearch: React.FC<ISelectSearchProps> = ({ options, placeholder = "Se
 						filteredOptions.map((opt, index) => (
 							<li
 								key={opt.value}
+								id={`option-${index}`}
 								role="option"
 								aria-selected={highlightIndex === index}
 								className={`px-3 py-2 cursor-pointer ${
@@ -126,6 +124,15 @@ const SelectSearch: React.FC<ISelectSearchProps> = ({ options, placeholder = "Se
 						<li className="px-3 py-2 text-gray-500">No results</li>
 					)}
 				</ul>
+			)}
+
+			{message && (
+				<p
+					id="select-search-message"
+					className={`text-sm mt-1 ${isRequired && !searchTerm ? "text-red-500" : "text-gray-500"}`}
+				>
+					{message}
+				</p>
 			)}
 		</div>
 	);
