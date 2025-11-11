@@ -6,6 +6,8 @@ import {
 	INestedInputButtonProps,
 	IRadioProps,
 	ISelectProps,
+	ISelectSearchProps,
+	ISelectSearchOption,
 	ISimpleSelectOptions,
 	ITextareaProps,
 	IToggleSwitchProps,
@@ -17,11 +19,12 @@ import {
 	NestedInputButton,
 	Radio,
 	Select,
+	SelectSearch,
 	Textarea,
 	ToggleSwitch,
 	ITextInputProps,
 	TextInput
-} from "./inputs"
+} from "./inputs";
 
 export type {
 	ICheckboxProps,
@@ -32,11 +35,13 @@ export type {
 	IRadioProps,
 	ISelectProps,
 	ISimpleSelectOptions,
+	ISelectSearchProps,
+	ISelectSearchOption,
 	ITextareaProps,
 	IToggleSwitchProps,
 	AcceptedInputTypes,
 	ITextInputProps
-}
+};
 export {
 	Checkbox,
 	Combobox,
@@ -45,7 +50,8 @@ export {
 	NestedInputButton,
 	Radio,
 	Select,
+	SelectSearch,
 	Textarea,
 	ToggleSwitch,
 	TextInput
-}
+};
