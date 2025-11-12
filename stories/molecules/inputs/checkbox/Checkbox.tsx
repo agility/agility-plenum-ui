@@ -96,7 +96,7 @@ const Checkbox: FC<ICheckboxProps> = ({
 						id={id}
 						truncateLabel={truncateLabel}
 						fullWidthLabel={fullWidthLabel}
-						isCheckbox={true}
+						noMarginBottom={true}
 					/>
 				</>
 

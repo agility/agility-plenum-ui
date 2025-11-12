@@ -16,7 +16,7 @@ export interface IInputLabelProps {
 	label?: string;
 	truncateLabel?: boolean;
 	fullWidthLabel?: boolean;
-	isCheckbox?: boolean;
+	noMarginBottom?: boolean;
 }
 
 /** Comment */
@@ -30,7 +30,7 @@ const InputLabel: FC<IInputLabelProps> = ({
 	label,
 	truncateLabel = false,
 	fullWidthLabel = false,
-	isCheckbox = false
+	noMarginBottom = false
 }: IInputLabelProps) => {
 	const labelStyles = cn(
 		"z-[2] inline-flex gap-1",
@@ -42,7 +42,7 @@ const InputLabel: FC<IInputLabelProps> = ({
 		{ "text-gray-500/[.5]": isDisabled },
 		{ "inline-block  transition-all text-sm text-gray-700": !isPlaceholder },
 		{ "block w-full": fullWidthLabel },
-		{ "mb-1": !isCheckbox }
+		{ "mb-1": !noMarginBottom }
 	);
 
 	if (!label) return null;
