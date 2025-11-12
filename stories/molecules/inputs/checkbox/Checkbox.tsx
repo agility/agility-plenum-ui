@@ -88,7 +88,7 @@ const Checkbox: FC<ICheckboxProps> = ({
 					{...props}
 				/>
 			</div>
-			<div className="ml-3 text-sm flex items-center w-full">
+			<div className="ml-2 text-sm flex items-center w-full">
 				<>
 					<InputLabel
 						label={label}
@@ -96,6 +96,7 @@ const Checkbox: FC<ICheckboxProps> = ({
 						id={id}
 						truncateLabel={truncateLabel}
 						fullWidthLabel={fullWidthLabel}
+						isCheckbox={true}
 					/>
 				</>
 
