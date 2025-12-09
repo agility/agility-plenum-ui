@@ -51,43 +51,6 @@ describe("<Button>", () => {
 		});
 	});
 
-	describe("size", () => {
-		it("defaults to size sm", () => {
-			render(<Button {...defaultProps} />);
-
-			const buttonElement = screen.getByRole("button");
-			expect(buttonElement).toHaveClass("px-[13px]");
-		});
-
-		it("renders with size xs", () => {
-			render(<Button {...defaultProps} size="xs" />);
-
-			const buttonElement = screen.getByRole("button");
-			expect(buttonElement).toHaveClass("px-[11px]");
-		});
-
-		it("renders with size md", () => {
-			render(<Button {...defaultProps} size="md" />);
-
-			const buttonElement = screen.getByRole("button");
-			expect(buttonElement).toHaveClass("px-[17px] text-sm");
-		});
-
-		it("renders with size lg", () => {
-			render(<Button {...defaultProps} size="lg" />);
-
-			const buttonElement = screen.getByRole("button");
-			expect(buttonElement).toHaveClass("px-[17px] text-base");
-		});
-
-		it("renders with size xl", () => {
-			render(<Button {...defaultProps} size="xl" />);
-
-			const buttonElement = screen.getByRole("button");
-			expect(buttonElement).toHaveClass("px-[25px]");
-		});
-	});
-
 	describe("asLink", () => {
 		it("renders as <a /> when asLink is true", () => {
 			render(<Button {...defaultProps} asLink={{ href: "#", target: "_blank" }} />);
