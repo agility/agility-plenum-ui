@@ -1,39 +1,36 @@
-import Loader from "stories/atoms/loaders/Loader"
-import { default as cn } from "classnames"
-import React, { HTMLAttributeAnchorTarget, forwardRef } from "react"
-import { DynamicIcon, UnifiedIconName, IDynamicIconProps } from "../../icons"
+import { default as cn } from "classnames";
+import React, { HTMLAttributeAnchorTarget, forwardRef } from "react";
+import { DynamicIcon, UnifiedIconName, IDynamicIconProps } from "../../icons";
 
-// import Loader from "../loaders/loader/Loader"
-
-export type BTNActionType = "primary" | "secondary" | "alternative" | "danger" | "warning"
+export type BTNActionType = "primary" | "secondary" | "alternative" | "danger" | "danger-secondary" | "warning";
 
 export interface IButtonProps
 	extends Omit<React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "ref"> {
 	/** Is the button a Primary CTA, alternative or danger button? */
-	actionType?: BTNActionType
+	actionType?: BTNActionType;
 	/** How lg should the button be? - Defaults to 'base'. */
-	size?: "xs" | "sm" | "md" | "lg" | "xl"
+	size?: "xs" | "sm" | "md" | "lg" | "xl";
 	/** The Button's text content. */
-	label: string
+	label: string;
 	/** The Icon to be displayed inside the button. */
-	icon?: IDynamicIconProps | UnifiedIconName
+	icon?: IDynamicIconProps | UnifiedIconName;
 	/** Does the button width grow to fill it's container? */
-	fullWidth?: boolean
+	fullWidth?: boolean;
 	/** Optionally render as anchor tag */
 	asLink?: {
-		href: string
-		target: HTMLAttributeAnchorTarget
-		title?: string
-	}
+		href: string;
+		target: HTMLAttributeAnchorTarget;
+		title?: string;
+	};
 	/** The placement of the icon relative to the text content. */
-	iconPosition?: "trailing" | "leading"
+	iconPosition?: "trailing" | "leading";
 	/** Use an custom svg element */
-	CustomSVGIcon?: JSX.Element
+	CustomSVGIcon?: JSX.Element;
 	/** Is the associated content loading? */
-	isLoading?: boolean
-	className?: string
-	iconObj?: React.ReactNode
-	iconClassName?: string
+	isLoading?: boolean;
+	className?: string;
+	iconObj?: React.ReactNode;
+	iconClassName?: string;
 }
 /**
  * Primary UI component for user interaction
@@ -61,10 +58,10 @@ const _Button = (
 		{ "text-purple-700 h-5 w-5 stroke-[1.5]": actionType === "secondary" },
 		{ "text-gray-400 h-5 w-5 stroke-[1.5]": actionType === "alternative" },
 		{ "text-transparent-black-40 h-5 w-5 stroke-[1.5]": actionType === "warning" }
-	)
+	);
 
 	if (iconClassName) {
-		iconStyles = cn(iconStyles, iconClassName)
+		iconStyles = cn(iconStyles, iconClassName);
 	}
 
 	const loaderColors = cn(
@@ -73,8 +70,8 @@ const _Button = (
 		{ "border-gray-200 border-r-gray-700": actionType === "alternative" },
 		{ "border-red-800 border-r-white": actionType === "danger" },
 		{ "border-yellow-800 border-r-transparent-black-70": actionType === "warning" }
-	)
-	const loaderSize = cn({ "h-4 w-4": size === "sm" }, { "h-5 w-5": size === "md" }, { "h-6 w-6 ": size === "lg" })
+	);
+	const loaderSize = cn({ "h-4 w-4": size === "sm" }, { "h-5 w-5": size === "md" }, { "h-6 w-6 ": size === "lg" });
 
 	return asLink ? (
 		//@ts-ignore
@@ -164,13 +161,13 @@ const _Button = (
 		<button
 			type="button"
 			className={cn(
-				"inline-flex items-center justify-center gap-x-2 rounded-[3px] !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
+				" px-4 py-2 inline-flex items-center justify-center gap-x-2 rounded !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
 				{ "w-full": fullWidth },
-				{ "px-[11px] py-[7px] text-xs": size === "xs" },
-				{ "px-[13px] py-[9px] text-sm": size === "sm" },
-				{ "px-[17px] py-[9px] text-sm": size === "md" },
-				{ "px-[17px] py-[9px] text-base": size === "lg" },
-				{ "px-[25px] py-[13px] text-base": size === "xl" },
+				{ "text-xs": size === "xs" },
+				{ "text-sm": size === "sm" },
+				{ "text-sm": size === "md" },
+				{ "text-base": size === "lg" },
+				{ "text-base": size === "xl" },
 				{
 					"bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0":
 						actionType === "primary"
@@ -184,11 +181,15 @@ const _Button = (
 						actionType === "alternative"
 				},
 				{
-					" bg-red-600 text-white hover:bg-red-700 <focus-visible:!></focus-visible:!>ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
+					"bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
 						actionType === "danger"
 				},
 				{
-					" bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 <focus-visible:!></focus-visible:!>ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-300 disabled:text-transparent-black-30 disabled:focus-visible:ring-0":
+					"border-gray-300 border bg-white text-red-600 hover:bg-red-50 focus-visible:!ring-red-500 focus:!ring-red-500 active:bg-red-100 active:ring-red-500 focus-within:!ring-red-500 disabled:bg-white disabled:text-red-300 disabled:!ring-0 disabled:focus-visible:ring-0":
+						actionType === "danger-secondary"
+				},
+				{
+					"bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 focus-visible:!ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-300 disabled:text-transparent-black-30 disabled:focus-visible:ring-0":
 						actionType === "warning"
 				},
 				className ? className : ""
@@ -241,9 +242,9 @@ const _Button = (
 					<div className={cn("h-4 rounded-full w-4 border-2 m-0 animate-spin", loaderColors, loaderSize)} />
 				))}
 		</button>
-	)
-}
+	);
+};
 
-const Button = forwardRef<HTMLButtonElement, IButtonProps>(_Button)
+const Button = forwardRef<HTMLButtonElement, IButtonProps>(_Button);
 
-export default Button
+export default Button;
