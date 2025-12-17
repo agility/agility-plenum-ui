@@ -218,7 +218,7 @@ module.exports = {
 				"rose-900": "#881337"
 			},
 			fontWeight: {
-				medium: 600
+				medium: 500
 			},
 			fontSize: {
 				xs: ["0.75rem", "1rem"],
