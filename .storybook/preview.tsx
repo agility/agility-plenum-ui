@@ -1,13 +1,14 @@
-import { Preview } from "@storybook/react"
-import Layout from "./Layout"
-import React from "react"
-import "../app/globals.css"
+import { Preview } from "@storybook/react";
+import Layout from "./Layout";
+import React from "react";
+import "../app/globals.css";
 // import "./fonts.css"
 
 const preview: Preview = {
 	parameters: {
 		options: {
 			storySort: {
+				method: "alphabetical",
 				order: ["atoms", "molecules", "organisms"]
 			}
 		},
@@ -26,5 +27,5 @@ const preview: Preview = {
 			</Layout>
 		)
 	]
-}
-export default preview
+};
+export default preview;

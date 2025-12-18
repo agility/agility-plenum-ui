@@ -23,7 +23,13 @@ import {
 	isFAIcon,
 	isHeroIcon,
 	isTablerIcon,
-	isUnifiedIconName
+	isUnifiedIconName,
+	Heading,
+	HeadingProps,
+	Label,
+	LabelProps,
+	Paragraph,
+	ParagraphProps
 } from "./atoms";
 // Molecular Components, props, and type guards.
 import {
@@ -107,7 +113,10 @@ export type {
 	ITextInputProps,
 	ISimpleSelectOptions,
 	IAnimatedFormInputWithAddons,
-	MultiSelectItemProps
+	MultiSelectItemProps,
+	HeadingProps,
+	LabelProps,
+	ParagraphProps
 };
 export {
 	Avatar,
@@ -140,5 +149,8 @@ export {
 	TextInput,
 	TextInputSelect,
 	AnimatedFormInputWithAddons,
-	DropdownWithMultiSelect
+	DropdownWithMultiSelect,
+	Heading,
+	Label,
+	Paragraph
 };
