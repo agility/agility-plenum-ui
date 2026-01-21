@@ -1,7 +1,7 @@
 import { default as cn } from "classnames";
 
 type ParagraphAs = "span" | "p" | "label" | "strong" | "em";
-type ParagraphSize = "lg" | "md" | "sm" | "xs";
+type ParagraphSize = "xl" | "lg" | "md" | "sm" | "xs";
 
 export interface ParagraphProps {
 	as?: ParagraphAs;
@@ -11,10 +11,11 @@ export interface ParagraphProps {
 }
 
 const paragraphStyles: Record<ParagraphSize, string> = {
-	lg: "text-lg",
-	md: "text-base",
-	sm: "text-sm",
-	xs: "text-xs leading-[20px]"
+	xl: "text-lg",
+	lg: "text-base",
+	md: "text-sm",
+	sm: "text-xs",
+	xs: "text-[10px] leading-[12px]"
 };
 
 export default function Paragraph({ as = "p", size = "md", children, className }: ParagraphProps) {

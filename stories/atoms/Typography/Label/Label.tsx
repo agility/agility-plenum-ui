@@ -21,5 +21,5 @@ const labelStyles: Record<LabelSize, string> = {
 export default function Label({ as = "span", size = "md", children, className }: LabelProps) {
 	const Tag = as;
 
-	return <Tag className={cn("gray-900 font-medium", labelStyles[size], className)}>{children}</Tag>;
+	return <Tag className={cn("gray-900 font-normal", labelStyles[size], className)}>{children}</Tag>;
 }
