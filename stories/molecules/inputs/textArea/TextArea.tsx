@@ -104,15 +104,7 @@ const Textarea: React.FC<ITextareaProps> = ({
 	//with label
 	return (
 		<div className="group">
-			<InputLabel
-				isPlaceholder
-				isActive
-				label={label.display}
-				isRequired={isRequired}
-				id={id}
-				isError={isError}
-				isDisabled={isDisabled}
-			/>
+			<InputLabel isActive label={label.display} isRequired={isRequired} id={id} isDisabled={isDisabled} />
 
 			<div>
 				<textarea

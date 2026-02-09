@@ -3,6 +3,7 @@
 //@ts-ignore
 import React, { FC } from "react";
 import { default as cn } from "classnames";
+import Label from "../../../atoms/Typography/Label/Label";
 
 export interface IInputLabelProps {
 	/** Prop comment */
@@ -26,33 +27,27 @@ const InputLabel: FC<IInputLabelProps> = ({
 	isRequired,
 	isDisabled,
 	isActive,
-	isError,
 	label,
 	truncateLabel = false,
 	fullWidthLabel = false,
 	noMarginBottom = false
 }: IInputLabelProps) => {
 	const labelStyles = cn(
-		"z-[2] inline-flex gap-1",
-		{ "inline-block ml-2 relative transition-all": isPlaceholder },
-		{ "text-sm text-gray-400 px-2 top-8": isPlaceholder && !isActive },
-		{ "text-xs text-gray-700 px-1 top-[10px] bg-white": isPlaceholder && isActive },
-		{ "text-xs text-red-500 px-1 top-[10px] bg-white": isPlaceholder && isError },
-		{ "text-red-500 bg-white": !isPlaceholder && isError },
+		"inline-flex gap-1 text-gray-700",
+		{ "text-gray-400 top-8": !isActive },
+		{ "text-gray-700 bg-white": isActive },
 		{ "text-gray-500/[.5]": isDisabled },
-		{ "inline-block  transition-all text-sm text-gray-700": !isPlaceholder },
 		{ "block w-full": fullWidthLabel },
-		{ "mb-1": !noMarginBottom }
+		{ "mb-1": !noMarginBottom },
+		{ "break-all line-clamp-1": truncateLabel }
 	);
 
 	if (!label) return null;
 	return (
-		<label htmlFor={id} className={labelStyles}>
-			<div className={truncateLabel ? "break-all line-clamp-1" : ""} title={label}>
-				{label}
-			</div>
-			{isRequired && <span className="text-red-500"> *</span>}
-		</label>
+		<Label as="label" size="md" className={labelStyles} htmlFor={id}>
+			{label}
+			{isRequired && <span className="text-red-600"> *</span>}
+		</Label>
 	);
 };
 

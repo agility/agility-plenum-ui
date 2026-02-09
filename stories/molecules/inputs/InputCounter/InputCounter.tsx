@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Paragraph from "../../../atoms/Typography/Paragraph/Paragraph";
 
 export interface IInputCounterProps {
 	/** Counter limit */
@@ -9,16 +10,11 @@ export interface IInputCounterProps {
 
 /** Primary UI component for user interaction */
 const InputCounter: FC<IInputCounterProps> = ({ current = 0, limit }) => {
+	if (!limit) return null;
 	return (
-		<div className="mt-3 text-center text-xs leading-4  text-gray-500 flex gap-1">
-			<div className="currentCount">{current ?? 0}</div>
-			{(limit || 0) > 0 && (
-				<>
-					<div>/</div>
-					<div className="limitCount">{limit}</div>
-				</>
-			)}
-		</div>
+		<Paragraph size="md" className="text-gray-500">
+			{current ?? 0} / {limit}
+		</Paragraph>
 	);
 };
 export default InputCounter;
