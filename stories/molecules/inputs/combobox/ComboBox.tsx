@@ -102,15 +102,7 @@ const Combobox = <T extends Record<string, unknown>>({
 		>
 			{label && (
 				<HeadlessUICombobox.Label className={labelStyles}>
-					<InputLabel
-						isPlaceholder
-						isActive
-						label={label}
-						isRequired={isRequired}
-						id={id}
-						isError={isError}
-						isDisabled={isDisabled}
-					/>
+					<InputLabel isActive label={label} isRequired={isRequired} id={id} isDisabled={isDisabled} />
 				</HeadlessUICombobox.Label>
 			)}
 			<div className="relative">

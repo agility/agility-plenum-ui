@@ -8,6 +8,7 @@ export interface LabelProps {
 	size?: LabelSize;
 	children: React.ReactNode;
 	className?: string;
+	htmlFor?: string;
 }
 
 const labelStyles: Record<LabelSize, string> = {
@@ -18,8 +19,12 @@ const labelStyles: Record<LabelSize, string> = {
 	xs: "text-[10px] leading-[14px] tracking[-0.2px]"
 };
 
-export default function Label({ as = "span", size = "md", children, className }: LabelProps) {
+export default function Label({ as = "span", size = "md", children, className, htmlFor = "" }: LabelProps) {
 	const Tag = as;
 
-	return <Tag className={cn("gray-900 font-normal", labelStyles[size], className)}>{children}</Tag>;
+	return (
+		<Tag htmlFor={htmlFor} className={cn("gray-900 font-normal", labelStyles[size], className)}>
+			{children}
+		</Tag>
+	);
 }

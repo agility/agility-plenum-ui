@@ -3,6 +3,7 @@ import { default as cn } from "classnames";
 import InputLabel from "../InputLabel";
 import InputField, { AcceptedInputTypes } from "../InputField";
 import InputCounter from "../InputCounter";
+import Paragraph from "../../../atoms/Typography/Paragraph/Paragraph";
 
 export interface ITextInputProps {
 	/** Input type*/
@@ -118,15 +119,7 @@ const TextInput = (
 
 	return (
 		<div className="relative group">
-			<InputLabel
-				isPlaceholder={true}
-				label={label}
-				isRequired={isRequired}
-				id={id}
-				isError={isError}
-				isActive={true}
-				isDisabled={isDisabled}
-			/>
+			<InputLabel label={label} isRequired={isRequired} id={id} isActive={true} isDisabled={isDisabled} />
 			<InputField
 				onFocus={handleInputFocus}
 				onBlur={handleInputBlur}
@@ -139,17 +132,16 @@ const TextInput = (
 				name={name}
 				id={id}
 				className={cn(
-					"w-full rounded border py-2 px-3 text-sm font-normal leading-5",
+					"w-full rounded border py-2 px-3 text-sm font-normal leading-5 hover:border-gray-500 placeholder:text-gray-500 ",
 					{ "border-gray-300": !isFocus && !isError && !isDisabled },
 					{
-						"!border-purple-500 shadow-none outline-purple-500 focus:!ring-purple-500":
-							isFocus && !isError && !isDisabled
+						"!border-violet-700 shadow-none": isFocus && !isError && !isDisabled
 					},
 					{
 						"!border-red-500 shadow-none focus:ring-red-500": isError
 					},
 					{
-						"placeholder:text-gray-300 !border-gray-300 !outline-gray-300 focus:!ring-gray-300": isDisabled
+						"!border-gray-300 !outline-gray-300 focus:!ring-gray-300": isDisabled
 					},
 					className
 				)}
@@ -164,9 +156,9 @@ const TextInput = (
 			<div className="flex flex-row space-x-3">
 				<div className="grow">
 					{message && (
-						<span className={cn("mt-1 block text-sm", isError ? "text-red-500" : "text-gray-500")}>
+						<Paragraph size="md" className={isError ? "text-red-600" : "text-gray-500"}>
 							{message}
-						</span>
+						</Paragraph>
 					)}
 				</div>
 				{isShowCounter && (

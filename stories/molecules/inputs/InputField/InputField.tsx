@@ -1,5 +1,5 @@
-import React, { forwardRef } from "react"
-import { default as cn } from "classnames"
+import React, { forwardRef } from "react";
+import { default as cn } from "classnames";
 
 export type AcceptedInputTypes =
 	| "date"
@@ -13,33 +13,33 @@ export type AcceptedInputTypes =
 	| "tel"
 	| "text"
 	| "url"
-	| "currency"
+	| "currency";
 
 export interface IInputFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
 	/** Callback on change */
-	handleChange: (value: string) => void
+	handleChange: (value: string) => void;
 	/** Input ID*/
-	id?: string
+	id?: string;
 	/** Input Name */
-	name?: string
+	name?: string;
 	/** Force the focus state on the input */
-	isFocused?: boolean
+	isFocused?: boolean;
 	/** Error condition */
-	isError?: boolean
+	isError?: boolean;
 	/** Disabled state */
-	isDisabled?: boolean
+	isDisabled?: boolean;
 	/** Readonly state */
-	isReadonly?: boolean
+	isReadonly?: boolean;
 	/** Input value */
-	value: string
+	value: string;
 	/** Type of Text Input to Render eg. "text", "email" */
-	type: AcceptedInputTypes
+	type: AcceptedInputTypes;
 	/** If field is required */
-	required?: boolean
+	required?: boolean;
 	/** use input psuedo classes for :valid and :invalid styles. on by default */
-	clientSideCheck?: boolean
+	clientSideCheck?: boolean;
 	/** Placeholder text */
-	placeholder?: string
+	placeholder?: string;
 	/**ref for input */
 }
 
@@ -71,7 +71,7 @@ const InputField = (
 				name,
 				value,
 				onChange: (e) => {
-					if (handleChange) handleChange(e.target.value)
+					if (handleChange) handleChange(e.target.value);
 				},
 				autoFocus: isFocused,
 				readOnly: isReadonly,
@@ -81,7 +81,7 @@ const InputField = (
 				"aria-invalid": isError,
 				"aria-disabled": isDisabled,
 				className: cn(
-					"peer w-full rounded border border-gray-300  px-3 text-sm font-normal  leading-5 outline-offset-0 ring-offset-0 focus:border-purple-600 focus:ring-purple-600   ",
+					"peer w-full rounded border border-gray-300 px-3 text-sm font-normal leading-5 outline-offset-0 ring-offset-0 focus:border-violet-700 focus:ring-0   ",
 					isError ? "!border-red-600 !text-red-600 focus:!ring-red-600" : "",
 					isReadonly ? "!border-gray-400 !text-gray-500 focus:!ring-gray-400" : "",
 					className
@@ -89,8 +89,8 @@ const InputField = (
 				...rest
 			}}
 		/>
-	)
-}
+	);
+};
 
-const _InputField = forwardRef<HTMLInputElement, IInputFieldProps>(InputField)
-export default _InputField
+const _InputField = forwardRef<HTMLInputElement, IInputFieldProps>(InputField);
+export default _InputField;

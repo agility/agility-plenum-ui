@@ -62,17 +62,7 @@ const Select: React.FC<ISelectProps> = ({
 	const wrapperStyle = cn("group", { "opacity-50": isDisabled });
 	return (
 		<div className={wrapperStyle}>
-			{label && (
-				<InputLabel
-					isPlaceholder
-					isActive
-					label={label}
-					isRequired={isRequired}
-					id={id}
-					isError={isError}
-					isDisabled={isDisabled}
-				/>
-			)}
+			{label && <InputLabel isActive label={label} isRequired={isRequired} id={id} isDisabled={isDisabled} />}
 			<select
 				id={id}
 				name={name}
