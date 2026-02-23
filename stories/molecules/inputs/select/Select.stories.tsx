@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import Select from "./Select"
+import type { Meta, StoryObj } from "@storybook/react";
+import Select from "./Select";
 
 const meta: Meta<typeof Select> = {
 	title: "Design System/Molecules/Inputs/Select",
@@ -13,15 +13,15 @@ const meta: Meta<typeof Select> = {
 					<div className="bg-transparent-black-03 rounded p-6">
 						<Story />
 					</div>
-				)
+				);
 			}
-			return <Story />
+			return <Story />;
 		}
 	]
-}
+};
 
-export default meta
-type TStory = StoryObj<typeof Select>
+export default meta;
+type TStory = StoryObj<typeof Select>;
 
 export const DefaultSelect: TStory = {
 	args: {
@@ -34,9 +34,10 @@ export const DefaultSelect: TStory = {
 		],
 		isDisabled: false,
 		isError: false,
-		isRequired: false
+		isRequired: false,
+		message: "Message"
 	}
-}
+};
 export const DefaultSelectDarkBG: TStory = {
 	args: {
 		label: "Label",
@@ -48,6 +49,7 @@ export const DefaultSelectDarkBG: TStory = {
 		],
 		isDisabled: false,
 		isError: false,
-		isRequired: false
+		isRequired: false,
+		message: "Message"
 	}
-}
+};

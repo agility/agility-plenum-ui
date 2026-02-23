@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import InputLabel from "@/stories/molecules/inputs/InputLabel";
 import { useId } from "@/utils/useId";
 import { default as cn } from "classnames";
+import Paragraph from "@/stories/atoms/Typography/Paragraph/Paragraph";
 
 export interface ISimpleSelectOptions {
 	label: string;
@@ -28,6 +29,7 @@ export interface ISelectProps {
 	className?: string;
 	onFocus?: () => void;
 	onBlur?: () => void;
+	message?: string;
 }
 const Select: React.FC<ISelectProps> = ({
 	label,
@@ -41,7 +43,8 @@ const Select: React.FC<ISelectProps> = ({
 	value,
 	className,
 	onFocus,
-	onBlur
+	onBlur,
+	message
 }) => {
 	const [selectedOption, setSelectedOption] = useState<string>(value || options[0].value);
 	const uniqueID = useId();
@@ -87,6 +90,11 @@ const Select: React.FC<ISelectProps> = ({
 					);
 				})}
 			</select>
+			{message && (
+				<Paragraph size="md" className={isError ? "text-red-600" : "text-gray-500"}>
+					{message}
+				</Paragraph>
+			)}
 		</div>
 	);
 };

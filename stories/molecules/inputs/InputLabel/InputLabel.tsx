@@ -3,7 +3,7 @@
 //@ts-ignore
 import React, { FC } from "react";
 import { default as cn } from "classnames";
-import Label from "../../../atoms/Typography/Label/Label";
+import Label from "@/stories/atoms/Typography/Label/Label";
 
 export interface IInputLabelProps {
 	/** Prop comment */
