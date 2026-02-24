@@ -3,7 +3,7 @@ import { default as cn } from "classnames";
 import InputLabel from "../InputLabel";
 import InputField, { AcceptedInputTypes } from "../InputField";
 import InputCounter from "../InputCounter";
-import Paragraph from "../../../atoms/Typography/Paragraph/Paragraph";
+import Paragraph from "@/stories/atoms/Typography/Paragraph/Paragraph";
 
 export interface ITextInputProps {
 	/** Input type*/

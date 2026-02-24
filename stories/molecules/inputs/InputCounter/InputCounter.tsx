@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Paragraph from "../../../atoms/Typography/Paragraph/Paragraph";
+import Paragraph from "@/stories/atoms/Typography/Paragraph/Paragraph";
 
 export interface IInputCounterProps {
 	/** Counter limit */
