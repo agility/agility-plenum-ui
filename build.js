@@ -34,8 +34,7 @@ const context = {
 		"@heroicons/react",
 		"@tabler/icons",
 		"@tabler/icons-react",
-		"classnames",
-		"react-icons"
+		"classnames"
 	],
 	format: "esm"
 };

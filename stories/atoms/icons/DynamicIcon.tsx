@@ -1,8 +1,7 @@
 import React from "react"
-// TODO: Fix heroicons support
-import * as SolidIcons from "@heroicons/react/solid"
-import * as OutlineIcons from "@heroicons/react/outline"
-import * as FA from "react-icons/fa"
+// TODO: Fix heroicons support — using import type to avoid bundling full icon sets
+import type * as SolidIcons from "@heroicons/react/solid"
+import type * as OutlineIcons from "@heroicons/react/outline"
 import { tablerIconNames, TablerIconName } from "./tablerIconNames"
 import { default as cn } from "classnames"
 
@@ -10,24 +9,20 @@ import { ClassNameWithAutocomplete } from "@/utils/types"
 import TablerIcon from "./TablerIcon"
 
 export type IconName = keyof typeof SolidIcons | keyof typeof OutlineIcons
-export type FAIconName = keyof typeof FA
 
-export type UnifiedIconName = TablerIconName | IconName | FAIconName
+export type UnifiedIconName = TablerIconName | IconName
 
+// isHeroIcon: heroicon support is pending (TODO: Fix heroicons support)
 export function isHeroIcon(name: UnifiedIconName): name is keyof typeof SolidIcons | keyof typeof OutlineIcons {
-	return name in SolidIcons || name in OutlineIcons
+	return false
 }
 
 export function isTablerIcon(name: UnifiedIconName): name is TablerIconName {
 	return tablerIconNames.includes(name as TablerIconName)
 }
 
-export function isFAIcon(name: UnifiedIconName): name is keyof typeof FA {
-	return name in FA
-}
-
 export function isUnifiedIconName(name: UnifiedIconName): name is UnifiedIconName {
-	return isTablerIcon(name) // || isHeroIcon(name) || isFAIcon(name)
+	return isTablerIcon(name)
 }
 
 export interface IDynamicIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
@@ -62,29 +57,5 @@ export const DynamicIcon = ({
 		)
 	}
 
-	if (isFAIcon(icon)) {
-		const Icon = FA[icon]
-		return (
-			<i {...{ ...props, className: "flex items-center justify-center" }}>
-				<Icon
-					className={cn(className, {
-						"h-5 w-5 text-gray-600": !className
-					})}
-				/>
-			</i>
-		)
-	}
-	if (isHeroIcon(icon)) {
-		const Icon = outline ? OutlineIcons[icon] : SolidIcons[icon]
-		return (
-			<i {...{ ...props, className: "flex items-center justify-center" }}>
-				<Icon
-					className={cn(className, {
-						"h-5 w-5 text-gray-600": !className
-					})}
-				/>
-			</i>
-		)
-	}
 	return <></>
 }
