@@ -39,12 +39,11 @@ describe("DropdownWithMultiSelect", () => {
 		vi.stubGlobal("ResizeObserver", ResizeObserver);
 	});
 
-	it("renders a button", () => {
+	it("renders a button", async () => {
 		const { container } = render(<DropdownWithMultiSelect {...defaultProps} />);
 		const button = screen.getByRole("button", { name: /Filters/i });
 		expect(button).toBeInTheDocument();
-		const icon = container.querySelector("svg");
-		expect(icon).toBeInTheDocument();
+		await waitFor(() => expect(container.querySelector("svg")).toBeInTheDocument());
 	});
 
 	it("opens the popover and shows options", async () => {
