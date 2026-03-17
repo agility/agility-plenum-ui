@@ -1,10 +1,11 @@
 {
 	"name": "@agility/plenum-ui",
-	"version": "2.2.6",
+	"version": "2.2.7",
 	"license": "MIT",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"sideEffects": ["**/*.css"],
 	"engines": {
 		"node": ">= 18.0.0"
 	},
@@ -73,7 +74,6 @@
 		"jest-environment-jsdom": "^29.7.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"react-icons": "^4.10.1",
 		"rimraf": "^5.0.1",
 		"storybook": "^7.1.1",
 		"ts-node": "^10.9.2",
@@ -88,7 +88,6 @@
 		"@tabler/icons-react": "^2.27.0",
 		"classnames": "^2.3.2",
 		"react": "18.2.0",
-		"react-dom": "18.2.0",
-		"react-icons": "^4.10.1"
+		"react-dom": "18.2.0"
 	}
 }

@@ -3,13 +3,11 @@ import Badge, { IBadgeProps } from "./badges";
 import { Button, Capsule, BTNActionType, IButtonProps, ICapsuleProps } from "./buttons";
 import {
 	DynamicIcon,
-	FAIconName,
 	IDynamicIconProps,
 	IIconWithShadowProps,
 	IconName,
 	IconWithShadow,
 	UnifiedIconName,
-	isFAIcon,
 	isHeroIcon,
 	isTablerIcon,
 	isUnifiedIconName
@@ -32,7 +30,6 @@ export type {
 	ParagraphProps,
 	UnifiedIconName,
 	IconName,
-	FAIconName,
 	BTNActionType
 };
 export {
@@ -47,7 +44,6 @@ export {
 	Heading,
 	Label,
 	Paragraph,
-	isFAIcon,
 	isHeroIcon,
 	isTablerIcon,
 	isUnifiedIconName
