@@ -12,7 +12,7 @@ import {
 	isTablerIcon,
 	isUnifiedIconName
 } from "./icons";
-import { ILoaderProps, IRadialProgressProps, Loader, RadialProgress } from "./loaders";
+import { ILoaderProps, Loader } from "./loaders";
 import { Heading, HeadingProps } from "./Typography/Heading";
 import { Label, LabelProps } from "./Typography/Label";
 import { Paragraph, ParagraphProps } from "./Typography/Paragraph";
@@ -24,7 +24,6 @@ export type {
 	IDynamicIconProps,
 	IIconWithShadowProps,
 	ILoaderProps,
-	IRadialProgressProps,
 	HeadingProps,
 	LabelProps,
 	ParagraphProps,
@@ -40,7 +39,6 @@ export {
 	DynamicIcon,
 	IconWithShadow,
 	Loader,
-	RadialProgress,
 	Heading,
 	Label,
 	Paragraph,

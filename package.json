@@ -1,6 +1,6 @@
 {
 	"name": "@agility/plenum-ui",
-	"version": "2.2.8",
+	"version": "2.2.9",
 	"license": "MIT",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
