@@ -176,7 +176,7 @@ const Select: React.FC<ISelectProps> = ({
 				</div>
 
 				{message && (
-					<Paragraph size="md" className={isError ? "text-red-600" : "text-gray-500"}>
+					<Paragraph size="md" className={isError ? "text-red-600" : "text-gray-500 pt-xxsm"}>
 						{message}
 					</Paragraph>
 				)}
