@@ -9,7 +9,7 @@ RESET='\033[0m'
 DIR="$PWD"
 
 # The required yarn version to use this script
-REQUIRED_YARN_VERSION="1.22.19"
+REQUIRED_YARN_VERSION="1.22.22"
 
 # Get the installed Yarn version
 INSTALLED_YARN_VERSION=$(yarn --version 2>/dev/null)
