@@ -164,9 +164,9 @@ const Select: React.FC<ISelectProps> = ({
 							>
 								{({ selected }) => (
 									<div className="py-xxsm px-sm flex items-center gap-xsm">
-										<span>{option.label}</span>
+										<Paragraph size="md">{option.label}</Paragraph>
 										{option.description ? (
-											<span className="text-neutral-500 font-normal">{option.description}</span>
+											<Paragraph size="md" className="text-neutral-500">{option.description}</Paragraph>
 										) : null}
 									</div>
 								)}
