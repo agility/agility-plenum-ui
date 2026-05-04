@@ -306,7 +306,7 @@ module.exports = {
 				exit: "fadeOutLeft 300ms ease-in forwards",
 				quickBounce: "quickBounce 200ms ease-out forwards",
 				fadeIn: "fadeIn 400ms ease-in-out forwards",
-				spinSlower: "spin 1s linear infinite"
+				spinSlower: "spin 0.8s linear infinite"
 			},
 
 			keyframes: {
