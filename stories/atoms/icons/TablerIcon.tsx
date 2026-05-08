@@ -24,7 +24,8 @@ export interface ITablerIconProps extends React.DetailedHTMLProps<React.HTMLAttr
 
 const TablerIcon: React.FC<ITablerIconProps> = ({
 	icon,
-	className = "w-6 h-6 text-gray-600"
+	className = "w-6 h-6 text-gray-600",
+	...rest
 }: ITablerIconProps): JSX.Element | null => {
 	const [Icon, setIcon] = useState<ComponentType<any> | null>(
 		iconRegistry && icon ? (iconRegistry[icon] ?? null) : null
@@ -38,7 +39,7 @@ const TablerIcon: React.FC<ITablerIconProps> = ({
 
 	if (!Icon) return null;
 	return (
-		<i>
+		<i {...rest}>
 			<Icon className={className} />
 		</i>
 	);
