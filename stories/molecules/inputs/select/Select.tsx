@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import InputLabel from "@/stories/molecules/inputs/InputLabel";
-import { DynamicIcon } from "@/stories/atoms/icons/DynamicIcon";
+import { DynamicIcon, UnifiedIconName } from "@/stories/atoms/icons/DynamicIcon";
 import { useId } from "@/utils/useId";
 import { default as cn } from "classnames";
 import {
@@ -15,8 +15,9 @@ import { Paragraph } from "@/stories/atoms/Typography/Paragraph";
 export interface ISimpleSelectOptions {
 	label: string;
 	value: string;
-	emoji?: string;
+	icon?: UnifiedIconName;
 	description?: string;
+	caption?: string;
 }
 
 export interface ISelectProps {
@@ -44,6 +45,7 @@ export interface ISelectProps {
 	inputRef?: React.RefObject<HTMLInputElement>;
 	placeholder?: string;
 	dropdownMaxHeight?: number;
+	dropdownMaxWidth?: number;
 }
 
 const Select: React.FC<ISelectProps> = ({
@@ -62,7 +64,8 @@ const Select: React.FC<ISelectProps> = ({
 	message,
 	inputRef,
 	placeholder = "Select",
-	dropdownMaxHeight = 240
+	dropdownMaxHeight = 240,
+	dropdownMaxWidth = 240
 }) => {
 	const uniqueID = useId();
 	if (!id) id = `select-${uniqueID}`;
@@ -142,13 +145,15 @@ const Select: React.FC<ISelectProps> = ({
 						style={
 							{
 								"--anchor-max-height": `${dropdownMaxHeight}px`,
-								minWidth: containerWidth
+								"--dropdown-max-width": `${dropdownMaxWidth}px`,
+								minWidth: Math.max(containerWidth ?? 0, 60)
 							} as React.CSSProperties
 						}
 						className={cn(
 							"z-[9999] overflow-auto rounded bg-white py-1",
 							"text-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none",
-							"[--anchor-gap:8px]"
+							"[--anchor-gap:8px]",
+							"![max-width:var(--dropdown-max-width)]"
 						)}
 					>
 						{options.map((option) => (
@@ -163,10 +168,40 @@ const Select: React.FC<ISelectProps> = ({
 								}
 							>
 								{({ selected }) => (
-									<div className="py-xxsm px-sm flex items-center gap-xsm">
-										<Paragraph size="md">{option.label}</Paragraph>
-										{option.description ? (
-											<Paragraph size="md" className="text-neutral-500">{option.description}</Paragraph>
+									<div className="flex justify-between items-center py-xxsm px-sm gap-4">
+										<div className="flex flex-col flex-1 min-w-0">
+											<div className="flex items-center gap-xsm">
+												<Paragraph
+													size="md"
+													className="text-neutral-700 truncate min-w-0"
+													title={option.label}
+													onMouseEnter={(e) => {
+														const el = e.currentTarget;
+														if (el.scrollWidth <= el.clientWidth) el.removeAttribute("title");
+													}}
+													onMouseLeave={(e) => {
+														e.currentTarget.setAttribute("title", option.label);
+													}}
+												>
+													{option.label}
+												</Paragraph>
+												{option.description ? (
+													<Paragraph size="md" className="text-neutral-500">
+														{option.description}
+													</Paragraph>
+												) : null}
+											</div>
+											{option.caption ? (
+												<Paragraph size="sm" className="text-neutral-500">
+													{option.caption}
+												</Paragraph>
+											) : null}
+										</div>
+										{option.icon ? (
+											<DynamicIcon
+												icon={option.icon}
+												className="shrink-0 w-5 h-5 text-neutral-500"
+											/>
 										) : null}
 									</div>
 								)}
