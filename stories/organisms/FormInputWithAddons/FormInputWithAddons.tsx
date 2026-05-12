@@ -121,27 +121,52 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 					}}
 				/>
 				{(trailLabel || trailIcon) && (
-					<label
-						ref={trailLabelRef}
-						htmlFor={id}
-						className={cn(
-							"right absolute top-0 bottom-0 right-3 flex items-center justify-center text-sm !text-gray-500 ",
-							labelClass
-						)}
-					>
-						{trailIcon && (
-							<span>
-								<DynamicIcon
-									{...{
-										...trailIcon,
-										className: cn("h-5 w-5 text-gray-400", customIconClass, trailIcon.className),
-										outline: iconOutlined
-									}}
-								/>
-							</span>
-						)}
-						{trailLabel && trailLabel}
-					</label>
+					trailIcon?.onClick ? (
+						<button
+							ref={trailLabelRef as unknown as React.RefObject<HTMLButtonElement>}
+							type="button"
+							onClick={(e) => { e.preventDefault(); trailIcon.onClick!(e as unknown as React.MouseEvent<HTMLElement>); }}
+							className={cn(
+								"right absolute top-0 bottom-0 right-3 flex items-center justify-center text-sm !text-gray-500 bg-transparent border-0 p-0 cursor-pointer",
+								labelClass
+							)}
+						>
+							{trailIcon && (
+								<span>
+									<DynamicIcon
+										{...{
+											...trailIcon,
+											className: cn("h-5 w-5 text-gray-400", customIconClass, trailIcon.className),
+											outline: iconOutlined
+										}}
+									/>
+								</span>
+							)}
+							{trailLabel && trailLabel}
+						</button>
+					) : (
+						<label
+							ref={trailLabelRef}
+							htmlFor={id}
+							className={cn(
+								"right absolute top-0 bottom-0 right-3 flex items-center justify-center text-sm !text-gray-500 ",
+								labelClass
+							)}
+						>
+							{trailIcon && (
+								<span>
+									<DynamicIcon
+										{...{
+											...trailIcon,
+											className: cn("h-5 w-5 text-gray-400", customIconClass, trailIcon.className),
+											outline: iconOutlined
+										}}
+									/>
+								</span>
+							)}
+							{trailLabel && trailLabel}
+						</label>
+					)
 				)}
 				{addonBTN && (
 					<div className="absolute top-0 bottom-0 right-0 flex items-center ">

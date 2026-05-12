@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import FormInputWithAddons, { IFormInputWithAddonsProps } from "./FormInputWithAddons";
+import { action } from "@storybook/addon-actions";
+import FormInputWithAddons from "./FormInputWithAddons";
 
 const meta: Meta<typeof FormInputWithAddons> = {
 	title: "Design System/organisms/Form Input With Addons",
@@ -27,6 +28,19 @@ export const DefaultFormInputWithAddons: Story = {
 		trailIcon: { icon: "IconSearch" }
 	}
 };
+export const TrailIconWithOnClick: Story = {
+	args: {
+		id: "appSearch",
+		name: "appSearch",
+		type: "text",
+		placeholder: "Search...",
+		trailIcon: {
+			icon: "IconX",
+			onClick: action("trailIcon clicked")
+		}
+	}
+};
+
 export const FormInputWithAddonBTN: Story = {
 	args: {
 		id: "appSearch",
