@@ -61,8 +61,14 @@ export const DefaultSelect: TStory = {
 		id: "select",
 		name: "select",
 		options: [
-			{ label: "Canada", value: "value1", description: "A description for Canada." },
-			{ label: "USA", value: "value2" }
+			{
+				label: "All",
+				value: ""
+			},
+			{
+				label: "Canadian French blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+				value: "fr-ca"
+			}
 		],
 		isDisabled: false,
 		isError: false,

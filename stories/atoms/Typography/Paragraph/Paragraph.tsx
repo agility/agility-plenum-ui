@@ -3,7 +3,7 @@ import { default as cn } from "classnames";
 type ParagraphAs = "span" | "p" | "label" | "strong" | "em";
 type ParagraphSize = "xl" | "lg" | "md" | "sm" | "xs";
 
-export interface ParagraphProps {
+export interface ParagraphProps extends React.HTMLAttributes<HTMLElement> {
 	as?: ParagraphAs;
 	size?: ParagraphSize;
 	children: React.ReactNode;
@@ -18,8 +18,8 @@ const paragraphStyles: Record<ParagraphSize, string> = {
 	xs: "text-[10px] leading-[12px]"
 };
 
-export default function Paragraph({ as = "p", size = "md", children, className }: ParagraphProps) {
+export default function Paragraph({ as = "p", size = "md", children, className, ...rest }: ParagraphProps) {
 	const Tag = as;
 
-	return <Tag className={cn("gray-900 font-normal", paragraphStyles[size], className)}>{children}</Tag>;
+	return <Tag className={cn("gray-900 font-normal", paragraphStyles[size], className)} {...rest}>{children}</Tag>;
 }
