@@ -11,6 +11,7 @@ import {
 	ComboboxOption
 } from "@headlessui/react";
 import { Paragraph } from "@/stories/atoms/Typography/Paragraph";
+import { Label } from "@/stories/atoms/Typography/Label";
 
 export interface ISimpleSelectOptions {
 	label: string;
@@ -18,6 +19,12 @@ export interface ISimpleSelectOptions {
 	icon?: UnifiedIconName;
 	description?: string;
 	caption?: string;
+}
+
+interface LabelAction {
+	label: string;
+	onClick: () => void;
+	className?: string;
 }
 
 export interface ISelectProps {
@@ -46,6 +53,7 @@ export interface ISelectProps {
 	placeholder?: string;
 	dropdownMaxHeight?: number;
 	dropdownMaxWidth?: number;
+	labelAction?: LabelAction;
 }
 
 const Select: React.FC<ISelectProps> = ({
@@ -65,7 +73,8 @@ const Select: React.FC<ISelectProps> = ({
 	inputRef,
 	placeholder = "Select",
 	dropdownMaxHeight = 240,
-	dropdownMaxWidth = 240
+	dropdownMaxWidth = 240,
+	labelAction
 }) => {
 	const uniqueID = useId();
 	if (!id) id = `select-${uniqueID}`;
@@ -101,7 +110,25 @@ const Select: React.FC<ISelectProps> = ({
 
 	return (
 		<div className={wrapperStyle}>
-			{label && <InputLabel id={`${id}-label`} label={label} isRequired={isRequired} />}
+			{(label || labelAction) && (
+				<div className="flex items-center justify-between">
+					{label && (
+						<InputLabel
+							id={`${id}-label`}
+							label={label}
+							isRequired={isRequired}
+							noMarginBottom={!!labelAction}
+						/>
+					)}
+					{labelAction && (
+						<button type="button" onClick={labelAction.onClick}>
+							<Label size="sm" className={cn("text-primary-700", labelAction.className)}>
+								{labelAction.label}
+							</Label>
+						</button>
+					)}
+				</div>
+			)}
 
 			<HeadlessCombobox value={selectedOption} onChange={handleChange} disabled={isDisabled} immediate by="value">
 				<div ref={containerRef} className="relative w-full">
@@ -177,7 +204,8 @@ const Select: React.FC<ISelectProps> = ({
 													title={option.label}
 													onMouseEnter={(e) => {
 														const el = e.currentTarget;
-														if (el.scrollWidth <= el.clientWidth) el.removeAttribute("title");
+														if (el.scrollWidth <= el.clientWidth)
+															el.removeAttribute("title");
 													}}
 													onMouseLeave={(e) => {
 														e.currentTarget.setAttribute("title", option.label);

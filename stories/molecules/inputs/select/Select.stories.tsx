@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 import Select from "./Select";
 
 const meta: Meta<typeof Select> = {
@@ -87,6 +88,24 @@ export const ManyOptions: TStory = {
 		isError: false,
 		isRequired: false,
 		message: "Scroll to see all options"
+	}
+};
+
+export const WithLabelAction: TStory = {
+	args: {
+		label: "Batch",
+		id: "select-label-action",
+		name: "select-label-action",
+		isRequired: true,
+		options: [
+			{ label: "Batch 1", value: "batch-1" },
+			{ label: "Batch 2", value: "batch-2" },
+			{ label: "Batch 3", value: "batch-3" }
+		],
+		labelAction: {
+			label: "Add new batch",
+			onClick: action("labelAction clicked")
+		}
 	}
 };
 
