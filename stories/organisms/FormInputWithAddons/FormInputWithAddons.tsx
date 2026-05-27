@@ -99,25 +99,22 @@ const FormInputWithAddons: React.FC<IFormInputWithAddonsProps> = ({
 					</label>
 				)}
 				<InputField
-					{...{
-						...rest,
-						handleChange,
-						value,
-						id,
-						name,
-						type,
-						autoComplete: "off",
-						disabled: isDisabled,
-						placeholder: placeholder || "",
-						isReadonly,
-						isError,
-						className,
-						// add padding to accomodate inner labels and icons
-						style: {
-							paddingRight: `${trailLabelWidth + addonOffset}px`,
-							paddingLeft: `${leadLabelWidth + addonOffset}px`
-						},
-						inputRef
+					{...rest}
+					ref={inputRef}
+					handleChange={handleChange}
+					value={value}
+					id={id}
+					name={name}
+					type={type}
+					autoComplete="off"
+					disabled={isDisabled}
+					placeholder={placeholder || ""}
+					isReadonly={isReadonly}
+					isError={isError}
+					className={className}
+					style={{
+						paddingRight: `${trailLabelWidth + addonOffset}px`,
+						paddingLeft: `${leadLabelWidth + addonOffset}px`
 					}}
 				/>
 				{(trailLabel || trailIcon) && (

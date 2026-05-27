@@ -40,7 +40,6 @@ export interface IInputFieldProps extends Omit<React.InputHTMLAttributes<HTMLInp
 	clientSideCheck?: boolean;
 	/** Placeholder text */
 	placeholder?: string;
-	/**ref for input */
 }
 
 const InputField = (
@@ -58,8 +57,10 @@ const InputField = (
 		clientSideCheck = true,
 		className,
 		placeholder,
+		// Strip non-DOM props that callers may pass via spread so they don't leak to the <input>.
+		inputRef: _inputRef,
 		...rest
-	}: IInputFieldProps,
+	}: IInputFieldProps & { inputRef?: React.Ref<HTMLInputElement> },
 	ref: React.Ref<HTMLInputElement>
 ) => {
 	return (
