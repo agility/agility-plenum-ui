@@ -13,7 +13,7 @@ export interface IAvatarProps {
 	/**
 	 * optional status
 	 */
-	status?: "offline" | "online" | "busy";
+	status?: "offline" | "online" | "busy" | "new";
 	/**
 	 * avatar picture size (also affects status indicator)
 	 */
@@ -77,7 +77,8 @@ const Avatar: FC<IAvatarProps> = ({
 		"h-4 w-4": size === "xl",
 		"bg-gray-300": status === "offline",
 		"bg-red-400": status === "busy",
-		"bg-green-400": status === "online"
+		"bg-green-400": status === "online",
+		"bg-primary-800": status === "new"
 	});
 	const imageSize: number = useMemo(() => {
 		let imageSize: number = 0;
