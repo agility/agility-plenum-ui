@@ -1,5 +1,5 @@
-import React, { HTMLAttributes, useEffect, useMemo, useRef, useState } from "react"
-import { default as cn } from "classnames"
+import React, { HTMLAttributes, useEffect, useMemo, useRef, useState } from "react";
+import { default as cn } from "classnames";
 import {
 	useFloating,
 	autoUpdate,
@@ -18,59 +18,80 @@ import {
 	useListNavigation,
 	FloatingArrow,
 	arrow
-} from "@floating-ui/react"
-
-import { ClassNameWithAutocomplete } from "utils/types"
-import { DynamicIcon, IDynamicIconProps } from "@/stories/atoms/icons"
+} from "@floating-ui/react";
+import { Paragraph } from "@/stories/atoms/Typography/Paragraph/index";
+import { ClassNameWithAutocomplete } from "utils/types";
+import { DynamicIcon, IDynamicIconProps } from "@/stories/atoms/icons";
 
 export interface IItemProp {
 	//Don't think this needs to extend HtmlButton... extends HTMLAttributes<HTMLButtonElement> {
-	icon?: IDynamicIconProps
-	iconPosition?: "trailing" | "leading"
-	label: string | JSX.Element
-	onClick?(): void
-	isEmphasized?: boolean
-	key: React.Key
-	iconObj?: JSX.Element
+	icon?: IDynamicIconProps;
+	iconPosition?: "trailing" | "leading";
+	label: string | JSX.Element;
+	onClick?(): void;
+	isEmphasized?: boolean;
+	key: React.Key;
+	iconObj?: JSX.Element;
 }
 
 export interface IDropdownProps extends HTMLAttributes<HTMLDivElement> {
-	items: IItemProp[][]
-	label: string
-	CustomDropdownTrigger?: React.ReactNode
-	id: string
-	groupClassname?: ClassNameWithAutocomplete
-	itemsClassname?: ClassNameWithAutocomplete
-	itemClassname?: ClassNameWithAutocomplete
-	activeItemClassname?: ClassNameWithAutocomplete
-	buttonClassname?: ClassNameWithAutocomplete
-	iconClassname?: ClassNameWithAutocomplete
-	iconSpacingClassname?: ClassNameWithAutocomplete
-	dividerClassname?: ClassNameWithAutocomplete
-	placement?: Placement
+	items: IItemProp[][];
+	label: string;
+	CustomDropdownTrigger?: React.ReactNode;
+	id: string;
+	groupClassname?: ClassNameWithAutocomplete;
+	itemsClassname?: ClassNameWithAutocomplete;
+	itemClassname?: ClassNameWithAutocomplete;
+	activeItemClassname?: ClassNameWithAutocomplete;
+	buttonClassname?: ClassNameWithAutocomplete;
+	iconClassname?: ClassNameWithAutocomplete;
+	iconSpacingClassname?: ClassNameWithAutocomplete;
+	dividerClassname?: ClassNameWithAutocomplete;
+	placement?: Placement;
 	offsetOptions?: Partial<{
-		mainAxis: number
-		crossAxis: number
-		alignmentAxis: number | null
-	}>
-	disabled?: boolean
-	onFocus?: () => void
-	onBlur?: () => void
-	showOnHover?: boolean
-	showFloatingArrow?: boolean
+		mainAxis: number;
+		crossAxis: number;
+		alignmentAxis: number | null;
+	}>;
+	disabled?: boolean;
+	onFocus?: () => void;
+	onBlur?: () => void;
+	showOnHover?: boolean;
+	showFloatingArrow?: boolean;
 }
 export const defaultClassNames = {
 	groupClassname: "flex inline-block text-left",
-	itemsClassname: "mt-2 origin-bottom-right rounded bg-white shadow-lg z-[99999] border border-gray-300  ",
+	itemsClassname: "mt-2 origin-bottom-right rounded bg-white shadow-lg z-[99999] border border-gray-300 p-1",
 	itemClassname:
-		"group flex font-sans  cursor-pointer items-center px-4 py-2 text-sm transition-all hover:bg-gray-100 hover:text-gray-900 justify-between gap-4 ",
+		"group flex font-sans  cursor-pointer items-center px-3 py-1 text-sm transition-all hover:bg-gray-100 hover:text-gray-900 justify-between gap-4 ",
 	activeItemClassname: "block px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 hover:text-gray-900",
 	buttonClassname:
 		"py-[2px] flex items-center  rounded outline-purple-500 transition-all text-gray-400 hover:text-gray-600 ",
 	iconClassname: "ml-1 h-5 w-6",
-	iconSpacingClassname: "flex items-center gap-x-4",
+	iconSpacingClassname: "flex items-center gap-x-2",
 	dividerClassname: "border-b border-b-gray-100"
-}
+};
+
+const itemIconClassName = "opacity-60 group h-5 w-5";
+
+/** Renders an item's icon, whether it was passed as an icon name or as a full DynamicIcon prop object */
+const ItemIcon = ({ icon, isEmphasized }: Pick<IItemProp, "icon" | "isEmphasized">): JSX.Element | null => {
+	if (!icon) {
+		return null;
+	}
+	//Only ever emit one text color, otherwise the two compete and stylesheet order decides the winner
+	const iconColor = {
+		"text-error-600": isEmphasized,
+		"text-neutral-500": !isEmphasized
+	};
+	return (
+		<DynamicIcon
+			{...(typeof icon === "string"
+				? { icon, className: cn(itemIconClassName, iconColor) }
+				: { ...icon, className: cn(icon.className, itemIconClassName, iconColor) })}
+		/>
+	);
+};
 
 /** Comment */
 const Dropdown: React.FC<IDropdownProps> = ({
@@ -95,20 +116,20 @@ const Dropdown: React.FC<IDropdownProps> = ({
 	showOnHover = false,
 	...props
 }: IDropdownProps): JSX.Element | null => {
-	const [isOpen, setIsOpen] = useState(false)
-	const [activeItem, setActiveItem] = useState<React.Key | null>(null)
-	const [activeIndex, setActiveIndex] = useState<number | null>(null)
+	const [isOpen, setIsOpen] = useState(false);
+	const [activeItem, setActiveItem] = useState<React.Key | null>(null);
+	const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-	const listRef = useRef<(HTMLButtonElement | null)[]>([])
-	const arrowRef = React.useRef(null)
+	const listRef = useRef<(HTMLButtonElement | null)[]>([]);
+	const arrowRef = React.useRef(null);
 
 	// Floating UI logic
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
 		onOpenChange: (bool: boolean) => {
-			listRef.current = []
-			setActiveIndex(null)
-			setIsOpen(bool)
+			listRef.current = [];
+			setActiveIndex(null);
+			setIsOpen(bool);
 		},
 		placement,
 		middleware: [
@@ -129,60 +150,56 @@ const Dropdown: React.FC<IDropdownProps> = ({
 			})
 		],
 		whileElementsMounted: autoUpdate
-	})
-	const click = useClick(context)
-	const dismiss = useDismiss(context)
-	const role = useRole(context)
+	});
+	const click = useClick(context);
+	const dismiss = useDismiss(context);
+	const role = useRole(context);
 	const listNavigation = useListNavigation(context, {
 		listRef,
 		activeIndex,
 		onNavigate: (index: number | null) => {
 			if (index !== null && listRef.current[index]) {
-				setActiveIndex(index)
-				listRef.current[index]?.focus()
+				setActiveIndex(index);
+				listRef.current[index]?.focus();
 			}
 		}
-	})
+	});
 
 	const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
 		click,
 		dismiss,
 		role,
 		listNavigation
-	])
+	]);
 
 	useEffect(() => {
 		if (isOpen) {
-			onFocus && onFocus()
+			onFocus && onFocus();
 		} else {
-			onBlur && onBlur()
+			onBlur && onBlur();
 		}
-	}, [isOpen, onBlur, onFocus])
+	}, [isOpen, onBlur, onFocus]);
 
 	const ItemComponents = useMemo(
 		() =>
 			items.map((itemStack, stackIndex) => {
-				return itemStack.map((item, itemIndex) => {
-					const { key, label, icon, iconObj, iconPosition, isEmphasized, onClick, ...rest } = item
-					const active = activeItem && activeItem === key
+				const isLastStack = stackIndex === items.length - 1;
+				const stackItems = itemStack.map((item, itemIndex) => {
+					const { key, label, icon, iconObj, iconPosition, isEmphasized, onClick, ...rest } = item;
+					const active = activeItem && activeItem === key;
+					const isLeading = iconPosition === "leading" || iconPosition === undefined;
 					const itemClass = cn(
 						defaultClassNames.itemClassname,
 						itemClassname,
-						"group flex cursor-pointer items-center px-4 py-2 text-sm transition-all",
+						"group flex cursor-pointer items-center px-3 py-1 text-sm transition-all",
 						{
-							"text-red-500": isEmphasized
+							"text-error-600": isEmphasized,
+							"text-gray-900": !isEmphasized,
+							"bg-gray-100 text-gray-900": active,
+							"bg-gray-100 text-error-600 hover:text-error-600": active && isEmphasized
 						},
-						{
-							"text-gray-900": !isEmphasized
-						},
-						{
-							"bg-gray-100 text-gray-900": active
-						},
-						active ? cn(defaultClassNames.activeItemClassname, activeItemClassname) : "",
-						{
-							"bg-gray-100 text-red-500 hover:text-red-500": active && isEmphasized
-						}
-					)
+						active ? cn(defaultClassNames.activeItemClassname, activeItemClassname) : ""
+					);
 					return (
 						<button
 							{...{
@@ -192,103 +209,73 @@ const Dropdown: React.FC<IDropdownProps> = ({
 									itemClass,
 									//Round the corners of the first item in the first stack and the last item in the last stack
 									itemIndex === 0 && stackIndex === 0 && "rounded-tl rounded-tr",
-									itemIndex === itemStack.length - 1 &&
-										stackIndex === items.length - 1 &&
-										"rounded-bl rounded-br",
-									//Add dividing line between stacks
-									stackIndex !== items.length - 1 &&
-										itemIndex === itemStack.length - 1 &&
-										`${dividerClassname ? dividerClassname : defaultClassNames.dividerClassname}`,
-										"w-full"
+									itemIndex === itemStack.length - 1 && isLastStack && "rounded-bl rounded-br",
+									"w-full"
 								),
 								...rest,
 								...getItemProps(),
 								onClick: () => {
-									onClick && onClick()
+									onClick && onClick();
 									setTimeout(() => {
 										//hide the dropdown after click
-										setIsOpen(false)
-									}, 150)
+										setIsOpen(false);
+									}, 150);
 								}
 							}}
 							ref={(node) => {
 								//If the list ref already contains a node with the same id do nothing, otherwise add it
 								if (listRef.current.some((item) => item?.id === key)) {
-									return
+									return;
 								}
-								listRef.current.push(node)
+								listRef.current.push(node);
 							}}
 							key={key}
 						>
 							<div className={cn(defaultClassNames.iconSpacingClassname, iconSpacingClassname)}>
-								{iconObj && (iconPosition === "leading" || iconPosition === undefined) && (
-									<>{iconObj}</>
-								)}
-								{icon &&
-									(iconPosition === "leading" || iconPosition === undefined) &&
-									(typeof icon === "string" ? (
-										<DynamicIcon
-											{...{
-												icon: icon,
-												className: cn(
-													{
-														"text-red-500": isEmphasized
-													},
-													"opacity-60 group"
-												)
-											}}
-										/>
-									) : (
-										<DynamicIcon
-											{...{
-												...icon,
-												className: cn(
-													icon.className,
-													{
-														"text-red-500": isEmphasized
-													},
-													"opacity-60 group"
-												)
-											}}
-										/>
-									))}
-								<div className="break-all line-clamp-1">{label}</div>
-								{iconObj && iconPosition === "trailing" && <>{iconObj}</>}
-								{icon &&
-									iconPosition === "trailing" &&
-									(typeof icon === "string" ? (
-										<DynamicIcon
-											{...{
-												icon: icon,
-												className: cn(
-													{
-														"text-red-500": isEmphasized
-													},
-													"opacity-60 group"
-												)
-											}}
-										/>
-									) : (
-										<DynamicIcon
-											{...{
-												...icon,
-												className: cn(
-													icon.className,
-													{
-														"text-red-500": isEmphasized
-													},
-													"opacity-60 group"
-												)
-											}}
-										/>
-									))}
+								{isLeading && iconObj}
+								{isLeading && <ItemIcon {...{ icon, isEmphasized }} />}
+								<Paragraph
+									size="md"
+									className={cn("break-all line-clamp-1", {
+										"text-error-600": isEmphasized,
+										"text-neutral-700": !isEmphasized
+									})}
+								>
+									{label}
+								</Paragraph>
+								{!isLeading && iconObj}
+								{!isLeading && <ItemIcon {...{ icon, isEmphasized }} />}
 							</div>
 						</button>
-					)
-				})
+					);
+				});
+
+				if (isLastStack) {
+					return stackItems;
+				}
+
+				return (
+					<React.Fragment key={`${id}-stack-${stackIndex}`}>
+						{stackItems}
+						{/* Dividing line between stacks, with 4px of breathing room above and below */}
+						<div
+							role="separator"
+							className={cn("my-1", dividerClassname ?? defaultClassNames.dividerClassname)}
+						/>
+					</React.Fragment>
+				);
 			}),
-		[activeItem, activeItemClassname, getItemProps, iconSpacingClassname, itemClassname, items]
-	)
+		[
+			activeItem,
+			activeItemClassname,
+			dividerClassname,
+			getItemProps,
+			iconSpacingClassname,
+			id,
+			itemClassname,
+			items
+		]
+	);
 
 	const { isMounted, styles: transitionStyles } = useTransitionStyles(context, {
 		duration: {
@@ -303,7 +290,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
 			opacity: 1,
 			scale: 100
 		}
-	})
+	});
 	return (
 		<div
 			{...{
@@ -320,10 +307,10 @@ const Dropdown: React.FC<IDropdownProps> = ({
 					ref: refs.setReference,
 					className: cn(defaultClassNames.buttonClassname, buttonClassname),
 					onClick: () => {
-						setIsOpen(!isOpen)
+						setIsOpen(!isOpen);
 					},
 					onMouseOver: () => {
-						showOnHover && setIsOpen(true)
+						showOnHover && setIsOpen(true);
 					},
 					type: "button",
 					disabled: disabled,
@@ -356,8 +343,8 @@ const Dropdown: React.FC<IDropdownProps> = ({
 								className={cn(defaultClassNames.itemsClassname, itemsClassname)}
 								ref={refs.setFloating}
 								aria-labelledby={label}
-								onMouseLeave={() => { 
-									showOnHover && setIsOpen(false) 
+								onMouseLeave={() => {
+									showOnHover && setIsOpen(false);
 								}}
 								style={{
 									position: context.strategy,
@@ -370,16 +357,23 @@ const Dropdown: React.FC<IDropdownProps> = ({
 								}}
 							>
 								{ItemComponents}
-								{showFloatingArrow && 
-									<FloatingArrow ref={arrowRef} context={context} strokeWidth={1} 
-									className={cn("fill-white [&>path:first-of-type]:stroke-gray-300 [&>path:last-of-type]:stroke-white")}/>}
+								{showFloatingArrow && (
+									<FloatingArrow
+										ref={arrowRef}
+										context={context}
+										strokeWidth={1}
+										className={cn(
+											"fill-white [&>path:first-of-type]:stroke-gray-300 [&>path:last-of-type]:stroke-white"
+										)}
+									/>
+								)}
 							</div>
 						</FloatingFocusManager>
 					</FloatingPortal>
 				</FloatingList>
 			)}
 		</div>
-	)
-}
+	);
+};
 
-export default Dropdown
+export default Dropdown;
