@@ -1,4 +1,5 @@
 import { default as cn } from "classnames";
+import { twMerge } from "tailwind-merge";
 import React, { HTMLAttributeAnchorTarget, forwardRef } from "react";
 import { DynamicIcon, UnifiedIconName, IDynamicIconProps } from "../../icons";
 
@@ -8,7 +9,7 @@ export interface IButtonProps
 	extends Omit<React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "ref"> {
 	/** Is the button a Primary CTA, alternative or danger button? */
 	actionType?: BTNActionType;
-	/** How lg should the button be? - Defaults to 'base'. */
+	/** How lg should the button be? - Defaults to 'sm'. Explicitly passing "xs" or "sm" also opts the button out of the default min-w-[150px] floor. */
 	size?: "xs" | "sm" | "md" | "lg" | "xl";
 	/** The Button's text content. */
 	label: string;
@@ -38,7 +39,7 @@ export interface IButtonProps
 const _Button = (
 	{
 		actionType = "primary",
-		size = "sm",
+		size,
 		label,
 		icon,
 		iconObj,
@@ -53,6 +54,10 @@ const _Button = (
 	}: IButtonProps,
 	ref: React.LegacyRef<HTMLButtonElement>
 ) => {
+	const resolvedSize = size ?? "sm";
+	// The 150px floor only applies to labeled buttons that haven't explicitly opted into a
+	// compact size — icon-only buttons and explicit size="xs"/"sm" call sites keep their own width.
+	const applyMinWidth = !!label && size !== "xs" && size !== "sm";
 	let iconStyles = cn(
 		{ "text-white h-5 w-5 stroke-[1.5]": actionType === "primary" || actionType === "danger" },
 		{ "text-purple-700 h-5 w-5 stroke-[1.5]": actionType === "secondary" },
@@ -71,7 +76,11 @@ const _Button = (
 		{ "border-red-800 border-r-white": actionType === "danger" },
 		{ "border-yellow-800 border-r-transparent-black-70": actionType === "warning" }
 	);
-	const loaderSize = cn({ "h-4 w-4": size === "sm" }, { "h-5 w-5": size === "md" }, { "h-6 w-6 ": size === "lg" });
+	const loaderSize = cn(
+		{ "h-4 w-4": resolvedSize === "sm" },
+		{ "h-5 w-5": resolvedSize === "md" },
+		{ "h-6 w-6 ": resolvedSize === "lg" }
+	);
 
 	return asLink ? (
 		//@ts-ignore
@@ -80,35 +89,38 @@ const _Button = (
 				href: asLink.href,
 				target: asLink.target,
 				title: asLink.title,
-				className: cn(
-					"inline-flex items-center justify-center gap-x-2  font rounded-[3px] !ring-offset-white outline-none   focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
-					{ "w-full": fullWidth },
-					{ "px-[11px] py-[7px] text-xs": size === "xs" },
-					{ "px-[13px] py-[9px] text-sm": size === "sm" },
-					{ "px-[17px] py-[9px] text-sm": size === "md" },
-					{ "px-[17px] py-[9px] text-base": size === "lg" },
-					{ "px-[25px] py-[13px] text-base": size === "xl" },
-					{
-						"bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:hover:bg-violet-400 disabled:focus-visible:ring-0":
-							actionType === "primary"
-					},
-					{
-						" bg-purple-50  border-purple-400 border hover:border-purple-500 text-purple-700 hover:bg-purple-100   focus-within:bg-purple-100  focus-visible:bg-purple-100 focus:bg-purple-100 active:bg-purple-100 disabled:bg-purple-50 disabled:hover:bg-purple-50 disabled:text-purple-300 disabled:focus-visible:ring-0":
-							actionType === "secondary"
-					},
-					{
-						"border-gray-300 bg-white border  text-gray-700 hover:bg-gray-50 focus-visible:!border-gray-300 focus-within:!border-gray-300 focus:!border-gray-300 active:!border-gray-300 disabled:bg-gray-50 disabled:hover:bg-gray-50 disabled:text-gray-300 disabled:focus-visible:ring-0":
-							actionType === "alternative"
-					},
-					{
-						" bg-red-600 text-white hover:bg-red-700 <focus-visible:!></focus-visible:!>ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
-							actionType === "danger"
-					},
-					{
-						" bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 <focus-visible:!></focus-visible:!>ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-400 disabled:hover:bg-yellow-400 disabled:text-transparent-black-70 disabled:focus-visible:ring-0":
-							actionType === "warning"
-					},
-					className ? className : ""
+				className: twMerge(
+					cn(
+						"inline-flex items-center justify-center gap-x-2  font rounded-[3px] !ring-offset-white outline-none   focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
+						{ "min-w-[150px]": applyMinWidth },
+						{ "w-full": fullWidth },
+						{ "px-[11px] py-[7px] text-xs": resolvedSize === "xs" },
+						{ "px-[13px] py-[9px] text-sm": resolvedSize === "sm" },
+						{ "px-[17px] py-[9px] text-sm": resolvedSize === "md" },
+						{ "px-[17px] py-[9px] text-base": resolvedSize === "lg" },
+						{ "px-[25px] py-[13px] text-base": resolvedSize === "xl" },
+						{
+							"bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:hover:bg-violet-400 disabled:focus-visible:ring-0":
+								actionType === "primary"
+						},
+						{
+							" bg-purple-50  border-purple-400 border hover:border-purple-500 text-purple-700 hover:bg-purple-100   focus-within:bg-purple-100  focus-visible:bg-purple-100 focus:bg-purple-100 active:bg-purple-100 disabled:bg-purple-50 disabled:hover:bg-purple-50 disabled:text-purple-300 disabled:focus-visible:ring-0":
+								actionType === "secondary"
+						},
+						{
+							"border-gray-300 bg-white border  text-gray-700 hover:bg-gray-50 focus-visible:!border-gray-300 focus-within:!border-gray-300 focus:!border-gray-300 active:!border-gray-300 disabled:bg-gray-50 disabled:hover:bg-gray-50 disabled:text-gray-300 disabled:focus-visible:ring-0":
+								actionType === "alternative"
+						},
+						{
+							" bg-red-600 text-white hover:bg-red-700 <focus-visible:!></focus-visible:!>ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
+								actionType === "danger"
+						},
+						{
+							" bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 <focus-visible:!></focus-visible:!>ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-400 disabled:hover:bg-yellow-400 disabled:text-transparent-black-70 disabled:focus-visible:ring-0":
+								actionType === "warning"
+						},
+						className ? className : ""
+					)
 				),
 				onClick: props.onClick
 			}}
@@ -160,39 +172,42 @@ const _Button = (
 	) : (
 		<button
 			type="button"
-			className={cn(
-				" px-4 py-2 inline-flex items-center justify-center gap-x-2 rounded !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all h-9",
-				{ "w-full": fullWidth },
-				{ "text-xs": size === "xs" },
-				{ "text-sm": size === "sm" },
-				{ "text-sm": size === "md" },
-				{ "text-base": size === "lg" },
-				{ "text-base": size === "xl" },
-				{
-					"bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:hover:bg-violet-400 disabled:focus-visible:ring-0":
-						actionType === "primary"
-				},
-				{
-					" bg-purple-50  border-purple-400 border hover:border-purple-500 text-purple-700 hover:bg-purple-100   focus-within:bg-purple-100  focus-visible:bg-purple-100 focus:bg-purple-100 active:bg-purple-100 disabled:bg-purple-50 disabled:hover:bg-purple-50 disabled:text-purple-300 disabled:focus-visible:ring-0":
-						actionType === "secondary"
-				},
-				{
-					"border-gray-300 bg-white border  text-gray-700 hover:bg-gray-50 focus-visible:!border-gray-300 focus-within:!border-gray-300 focus:!border-gray-300 active:!border-gray-300 disabled:bg-gray-50 disabled:hover:bg-gray-50 disabled:text-gray-300 disabled:focus-visible:ring-0":
-						actionType === "alternative"
-				},
-				{
-					"bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
-						actionType === "danger"
-				},
-				{
-					"border-gray-300 border bg-white text-red-600 hover:bg-red-50 focus-visible:!ring-red-500 focus:!ring-red-500 active:bg-red-100 active:ring-red-500 focus-within:!ring-red-500 disabled:bg-white disabled:hover:bg-white disabled:text-red-300 disabled:!ring-0 disabled:focus-visible:ring-0":
-						actionType === "danger-secondary"
-				},
-				{
-					"bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 focus-visible:!ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-300 disabled:hover:bg-yellow-300 disabled:text-transparent-black-30 disabled:focus-visible:ring-0":
-						actionType === "warning"
-				},
-				className ? className : ""
+			className={twMerge(
+				cn(
+					" px-4 py-2 inline-flex items-center justify-center gap-x-2 rounded !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all h-9",
+					{ "min-w-[150px]": applyMinWidth },
+					{ "w-full": fullWidth },
+					{ "text-xs": resolvedSize === "xs" },
+					{ "text-sm": resolvedSize === "sm" },
+					{ "text-sm": resolvedSize === "md" },
+					{ "text-base": resolvedSize === "lg" },
+					{ "text-base": resolvedSize === "xl" },
+					{
+						"bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:hover:bg-violet-400 disabled:focus-visible:ring-0":
+							actionType === "primary"
+					},
+					{
+						" bg-purple-50  border-purple-400 border hover:border-purple-500 text-purple-700 hover:bg-purple-100   focus-within:bg-purple-100  focus-visible:bg-purple-100 focus:bg-purple-100 active:bg-purple-100 disabled:bg-purple-50 disabled:hover:bg-purple-50 disabled:text-purple-300 disabled:focus-visible:ring-0":
+							actionType === "secondary"
+					},
+					{
+						"border-gray-300 bg-white border  text-gray-700 hover:bg-gray-50 focus-visible:!border-gray-300 focus-within:!border-gray-300 focus:!border-gray-300 active:!border-gray-300 disabled:bg-gray-50 disabled:hover:bg-gray-50 disabled:text-gray-300 disabled:focus-visible:ring-0":
+							actionType === "alternative"
+					},
+					{
+						"bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
+							actionType === "danger"
+					},
+					{
+						"border-gray-300 border bg-white text-red-600 hover:bg-red-50 focus-visible:!ring-red-500 focus:!ring-red-500 active:bg-red-100 active:ring-red-500 focus-within:!ring-red-500 disabled:bg-white disabled:hover:bg-white disabled:text-red-300 disabled:!ring-0 disabled:focus-visible:ring-0":
+							actionType === "danger-secondary"
+					},
+					{
+						"bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 focus-visible:!ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-300 disabled:hover:bg-yellow-300 disabled:text-transparent-black-30 disabled:focus-visible:ring-0":
+							actionType === "warning"
+					},
+					className ? className : ""
+				)
 			)}
 			ref={ref}
 			{...props}
