@@ -1,4 +1,4 @@
-import { default as cn } from "classnames";
+import { cn } from "@/utils/cn";
 
 type ParagraphAs = "span" | "p" | "label" | "strong" | "em";
 type ParagraphSize = "xl" | "lg" | "md" | "sm" | "xs";

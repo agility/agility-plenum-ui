@@ -1,4 +1,4 @@
-import { default as cn } from "classnames";
+import { cn } from "@/utils/cn";
 
 type LabelAs = "span" | "p" | "label" | "strong" | "em";
 type LabelSize = "xl" | "lg" | "md" | "sm" | "xs";
@@ -23,7 +23,7 @@ export default function Label({ as = "span", size = "md", children, className, h
 	const Tag = as;
 
 	return (
-		<Tag htmlFor={htmlFor} className={cn("gray-900 font-normal", labelStyles[size], className)}>
+		<Tag htmlFor={htmlFor} className={cn("text-gray-900 font-normal", labelStyles[size], className)}>
 			{children}
 		</Tag>
 	);

@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.5.2
+
+### Changed — Typography class merging (Paragraph, Label, Heading)
+
+**Consumer `className` conflicts now win deterministically.** `Paragraph`, `Label`, and
+`Heading` now run their class list through [`tailwind-merge`](https://github.com/dcastil/tailwind-merge)
+(via a new shared `cn` helper in `utils/cn.ts`), with your `className` merged last.
+Previously the winner of a conflict (e.g. `className="text-gray-100"` against the
+default `text-gray-900`) depended on stylesheet order — effectively alphabetical — so
+some overrides silently lost. Now a consumer class that targets the same CSS property
+as a default always replaces it; no `!text-*` workarounds needed. Non-conflicting
+classes are unaffected.
+
+### Fixed — Heading default color
+
+`Heading`'s default class string contained `gray-900` (missing the `text-` prefix),
+which was a dead class — headings actually inherited their color from the surrounding
+context. It is now `text-gray-900`. **This is a visual change** for any consumer who
+relied on `Heading` inheriting a non-gray-900 color from its parent; pass an explicit
+text color via `className` to restore the previous appearance (it now reliably wins,
+per the change above).
+
 ## 2.5.0
 
 ### Changed — Button / ButtonDropdown minimum widths
