@@ -55,7 +55,7 @@ const _Button = (
 	ref: React.LegacyRef<HTMLButtonElement>
 ) => {
 	const resolvedSize = size ?? "sm";
-	// The 150px floor only applies to labeled buttons that haven't explicitly opted into a
+	// The 130px floor only applies to labeled buttons that haven't explicitly opted into a
 	// compact size — icon-only buttons and explicit size="xs"/"sm" call sites keep their own width.
 	const applyMinWidth = !!label && size !== "xs" && size !== "sm";
 	let iconStyles = cn(
@@ -175,7 +175,7 @@ const _Button = (
 			className={twMerge(
 				cn(
 					" px-4 py-2 inline-flex items-center justify-center gap-x-2 rounded !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all h-9",
-					{ "min-w-[150px]": applyMinWidth },
+					{ "min-w-[130px]": applyMinWidth },
 					{ "w-full": fullWidth },
 					{ "text-xs": resolvedSize === "xs" },
 					{ "text-sm": resolvedSize === "sm" },

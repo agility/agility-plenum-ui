@@ -68,41 +68,41 @@ describe("<Button>", () => {
 	});
 
 	describe("min-width floor", () => {
-		it("applies min-w-[150px] to a labeled button with no explicit size", () => {
+		it("applies min-w-[130px] to a labeled button with no explicit size", () => {
 			render(<Button {...defaultProps} />);
 
-			expect(screen.getByRole("button")).toHaveClass("min-w-[150px]");
+			expect(screen.getByRole("button")).toHaveClass("min-w-[130px]");
 		});
 
-		it("applies min-w-[150px] at explicit size md", () => {
+		it("applies min-w-[130px] at explicit size md", () => {
 			render(<Button {...defaultProps} size="md" />);
 
-			expect(screen.getByRole("button")).toHaveClass("min-w-[150px]");
+			expect(screen.getByRole("button")).toHaveClass("min-w-[130px]");
 		});
 
 		it("does not apply to an icon-only button (no label)", () => {
 			render(<Button label="" icon="IconDots" />);
 
-			expect(screen.getByRole("button")).not.toHaveClass("min-w-[150px]");
+			expect(screen.getByRole("button")).not.toHaveClass("min-w-[130px]");
 		});
 
 		it("does not apply at explicit size sm", () => {
 			render(<Button {...defaultProps} size="sm" />);
 
-			expect(screen.getByRole("button")).not.toHaveClass("min-w-[150px]");
+			expect(screen.getByRole("button")).not.toHaveClass("min-w-[130px]");
 		});
 
 		it("does not apply at explicit size xs", () => {
 			render(<Button {...defaultProps} size="xs" />);
 
-			expect(screen.getByRole("button")).not.toHaveClass("min-w-[150px]");
+			expect(screen.getByRole("button")).not.toHaveClass("min-w-[130px]");
 		});
 
 		it("is overridden by a consumer min-w-* class", () => {
 			render(<Button {...defaultProps} className="min-w-0" />);
 
 			const buttonElement = screen.getByRole("button");
-			expect(buttonElement).not.toHaveClass("min-w-[150px]");
+			expect(buttonElement).not.toHaveClass("min-w-[130px]");
 			expect(buttonElement).toHaveClass("min-w-0");
 		});
 	});
