@@ -37,7 +37,7 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 			className={twMerge(
 				// min-w-[150px] is the floor for the WHOLE control (button portion + divider + trigger);
 				// the button portion grows to fill it. Consumer className is merged last so min-w-0 opts out.
-				"inline-flex items-stretch rounded-[3px] min-w-[150px]",
+				"inline-flex items-stretch rounded-[3px] min-w-[130px]",
 				className
 			)}
 		>

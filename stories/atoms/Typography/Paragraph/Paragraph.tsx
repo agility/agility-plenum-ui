@@ -21,5 +21,9 @@ const paragraphStyles: Record<ParagraphSize, string> = {
 export default function Paragraph({ as = "p", size = "md", children, className, ...rest }: ParagraphProps) {
 	const Tag = as;
 
-	return <Tag className={cn("gray-900 font-normal", paragraphStyles[size], className)} {...rest}>{children}</Tag>;
+	return (
+		<Tag className={cn("text-gray-900 font-normal", paragraphStyles[size], className)} {...rest}>
+			{children}
+		</Tag>
+	);
 }
