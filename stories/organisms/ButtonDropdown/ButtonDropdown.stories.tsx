@@ -151,6 +151,41 @@ export const DisabledSecondary: Story = {
 	}
 };
 
+/** Default width behaviour: the whole control (button + divider + trigger) has a 150px min TOTAL width. */
+export const DefaultMinTotalWidth: Story = {
+	args: {
+		button: {
+			label: "Go",
+			actionType: "primary"
+		},
+		dropDown: {
+			items: dropdownDataWithIcons,
+			label: "Dropdown",
+			id: "dropdown-min-total-width"
+		},
+		placement: "bottom-end"
+	}
+};
+
+/** Compact override: wrapper min-w-0 removes the 150px total floor, and consumer button.className max-w-* caps the button portion. */
+export const CompactOverride: Story = {
+	args: {
+		button: {
+			label: "New Page",
+			actionType: "secondary",
+			size: "sm",
+			className: "max-w-[122px]"
+		},
+		dropDown: {
+			items: dropdownDataWithIcons,
+			label: "Dropdown",
+			id: "dropdown-compact-override"
+		},
+		className: "min-w-0",
+		placement: "bottom-end"
+	}
+};
+
 export const DisabledAlternative: Story = {
 	args: {
 		button: {

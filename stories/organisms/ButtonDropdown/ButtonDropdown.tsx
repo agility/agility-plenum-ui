@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { default as cn } from "classnames";
+import { twMerge } from "tailwind-merge";
 import Button, { IButtonProps } from "@/stories/atoms/buttons/Button";
 import { DynamicIcon } from "@/stories/atoms/icons";
 import Dropdown, { IDropdownProps, defaultClassNames } from "../DropdownComponent";
@@ -10,6 +11,8 @@ export interface IButtonDropdownProps {
 	hideDivider?: boolean;
 	placement?: IDropdownProps["placement"];
 	offsetOptions?: IDropdownProps["offsetOptions"];
+	/** Classes applied to the wrapper div (merged last) — e.g. pass "min-w-0" to opt out of the 150px total-width floor. */
+	className?: string;
 }
 
 /**
@@ -20,7 +23,8 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 	dropDown,
 	hideDivider = false,
 	placement = "bottom-end",
-	offsetOptions
+	offsetOptions,
+	className
 }) => {
 	const iconTextColours = {
 		primary: dropDown.disabled ? "text-gray-300" : "text-violet-100",
@@ -29,14 +33,27 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 	};
 
 	return (
-		<div className="flex items-stretch focus-within:ring-purple-600 focus-within:ring-2 focus-within:ring-offset-white focus-within:ring-offset-2 rounded-[3px]">
+		<div
+			className={twMerge(
+				// min-w-[150px] is the floor for the WHOLE control (button portion + divider + trigger);
+				// the button portion grows to fill it. Consumer className is merged last so min-w-0 opts out.
+				"inline-flex items-stretch rounded-[3px] min-w-[150px]",
+				className
+			)}
+		>
 			<Button
 				{...{
 					...button,
-					className: cn(
-						button.className,
-						"!rounded-r-none !border-r-0 hover:!border-r-0 !focus:ring-transparent !focus-visible:ring-transparent !focus-within:ring-transparent !focus:ring-0 !focus-within:ring-0 !focus-visible:ring-0 !focus:ring-offset-0 !focus-visible:ring-offset-0 !focus-within:ring-offset-0 !ring-0 outline-none focus:outline-none focus-visible:outline-none focus-within:outline-none !ring-offset-0",
-						"border-r-transparent"
+					className: twMerge(
+						// The Button keeps its own standard focus ring (2px, offset 2), matching the trigger's below.
+						cn(
+							"grow min-w-0 !rounded-r-none !border-r-0 hover:!border-r-0",
+							// While focused, lift the button above the divider/trigger so the right
+							// side of its ring isn't painted under them.
+							"relative focus:z-10 focus-visible:z-10 focus-within:z-10 active:z-10",
+							"border-r-transparent"
+						),
+						button.className
 					)
 				}}
 			/>
@@ -59,13 +76,12 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 							{...{
 								icon: "IconChevronDown",
 								className: cn(
-									"h-5 w-5 disabled:!bg-gray-50 disabled:focus-visible:ring-0",
+									"h-5 w-5 stroke-1 disabled:!bg-gray-50 disabled:focus-visible:ring-0",
 									{
-										"text-white": dropDown.disabled && button.actionType === "primary",
+										"text-white": button.actionType === "primary",
 										"text-purple-300": dropDown.disabled && button.actionType === "secondary",
 										"text-gray-300": dropDown.disabled && button.actionType === "alternative",
 
-										"text-violet-100": !dropDown.disabled && button.actionType === "primary",
 										"text-purple-700": !dropDown.disabled && button.actionType === "secondary",
 										"text-gray-700": !dropDown.disabled && button.actionType === "alternative"
 									},
@@ -76,6 +92,11 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 					),
 					buttonClassname: cn(
 						"flex items-center justify-center rounded-l-none border !border-l-0 rounded-r  px-2 transition-all hover:!border-l-0",
+						// Focus ring for the trigger only, matching Button's ring style (2px, offset 2). !outline-none
+						// beats the outline-purple-500 in the Dropdown's defaultClassNames (plain cn, no twMerge).
+						// relative keeps it in the same paint phase as the (relative) button, so its ring's
+						// left edge isn't painted under the button; z-10 on focus lifts it fully on top.
+						"!outline-none !ring-offset-white focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2 focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 relative focus:z-10 focus-visible:z-10",
 						button.actionType === "primary"
 							? cn(
 									"border-violet-700 bg-violet-800  !text-white  hover:border-violet-700 hover:bg-violet-700 active:!border-violet-800 active:bg-violet-800 fill-white",
