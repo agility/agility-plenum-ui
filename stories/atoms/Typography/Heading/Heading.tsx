@@ -1,4 +1,4 @@
-import { default as cn } from "classnames";
+import { cn } from "@/utils/cn";
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -21,6 +21,8 @@ export default function Heading({ level, children, className }: HeadingProps) {
 	const Tag = `h${level}` as const;
 
 	return (
-		<Tag className={cn("gray-900 font-medium tracking-[-0.8px]", headingStyles[level], className)}>{children}</Tag>
+		<Tag className={cn("text-gray-900 font-medium tracking-[-0.8px]", headingStyles[level], className)}>
+			{children}
+		</Tag>
 	);
 }
