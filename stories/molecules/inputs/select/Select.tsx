@@ -118,6 +118,7 @@ const Select: React.FC<ISelectProps> = ({
 							label={label}
 							isRequired={isRequired}
 							noMarginBottom={!!labelAction}
+							isActive
 						/>
 					)}
 					{labelAction && (
