@@ -26,7 +26,7 @@ const InputLabel: FC<IInputLabelProps> = ({
 	id,
 	isRequired,
 	isDisabled,
-	isActive,
+	isActive = true,
 	label,
 	truncateLabel = false,
 	fullWidthLabel = false,
