@@ -1,5 +1,30 @@
 # Changelog
 
+## 2.5.6
+
+### Fixed — Select no longer opens on focus
+
+**Select no longer opens on focus; opens on click or keyboard activation only.**
+
+Previously `Select` (Headless UI `Combobox` with `immediate`) popped its options open the
+moment its input received focus. Tabbing through a form opened every `Select` in turn, and
+any consumer that programmatically focused the first field on load opened the dropdown on
+page load.
+
+The options now open only on an explicit user action:
+
+-   a pointer click anywhere on the field (the display input or the chevron), or
+-   Enter, Space, ArrowDown, ArrowUp or Alt+ArrowDown while the input is focused.
+
+They do **not** open when focus arrives via Tab / Shift+Tab or via `element.focus()` from
+code, matching a native `<select>`.
+
+Markup note: the field wrapper is now the Headless `ComboboxButton` rendered as a `<div>`
+(carrying Headless's `aria-haspopup` / `aria-expanded` / `aria-controls` / `tabindex="-1"`
+attributes), and the chevron is now a visual-only `<span>` rather than a `<button>`. The
+`role="combobox"` input, its `readOnly` state, `displayValue`, `onFocus` / `onBlur`
+passthrough, `isDisabled`, `isError` and the public `ISelectProps` interface are unchanged.
+
 ## 2.5.2
 
 ### Changed — Typography class merging (Paragraph, Label, Heading)
