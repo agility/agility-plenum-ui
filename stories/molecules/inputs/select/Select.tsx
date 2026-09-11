@@ -131,42 +131,54 @@ const Select: React.FC<ISelectProps> = ({
 				</div>
 			)}
 
-			<HeadlessCombobox value={selectedOption} onChange={handleChange} disabled={isDisabled} immediate by="value">
+			<HeadlessCombobox value={selectedOption} onChange={handleChange} disabled={isDisabled} by="value">
 				<div ref={containerRef} className="relative w-full">
-					<div
+					{/*
+					 * The ComboboxButton is rendered as a <div> wrapping the whole field so that a
+					 * pointer click anywhere in it (input or chevron) toggles the options, and so
+					 * Enter / Space pressed on the focused input bubble up to Headless UI's button
+					 * key handler and open the options. The options do NOT open on focus (Tab or
+					 * element.focus()) because the Combobox is no longer `immediate`.
+					 */}
+					<ComboboxButton
+						as="div"
 						className={cn(
 							"relative w-full cursor-default overflow-hidden rounded border bg-white text-left shadow-sm",
 							"focus-within:border-primary-800 focus-within:ring-1 focus-within:ring-primary-800",
 							{ "border-red-500": isError, "border-gray-300": !isError }
 						)}
 					>
-						<ComboboxInput
-							id={id}
-							name={name}
-							ref={inputRef}
-							readOnly
-							displayValue={(option: ISimpleSelectOptions | null) => (option ? option.label : "")}
-							placeholder={placeholder}
-							onFocus={onFocus}
-							onBlur={onBlur}
-							className={cn(
-								"w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-700",
-								"placeholder:text-gray-400",
-								"focus:outline-none focus:ring-0",
-								"bg-transparent cursor-default"
-							)}
-						/>
-
-						<ComboboxButton className="absolute inset-y-0 right-0 flex items-center pr-3">
-							{({ open }) => (
-								<DynamicIcon
-									icon="IconChevronDown"
-									className={cn("h-4 w-4 text-gray-400 transition-transform", { "rotate-180": open })}
-									aria-hidden="true"
+						{({ open }) => (
+							<>
+								<ComboboxInput
+									id={id}
+									name={name}
+									ref={inputRef}
+									readOnly
+									displayValue={(option: ISimpleSelectOptions | null) => (option ? option.label : "")}
+									placeholder={placeholder}
+									onFocus={onFocus}
+									onBlur={onBlur}
+									className={cn(
+										"w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-700",
+										"placeholder:text-gray-400",
+										"focus:outline-none focus:ring-0",
+										"bg-transparent cursor-default"
+									)}
 								/>
-							)}
-						</ComboboxButton>
-					</div>
+
+								<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+									<DynamicIcon
+										icon="IconChevronDown"
+										className={cn("h-4 w-4 text-gray-400 transition-transform", {
+											"rotate-180": open
+										})}
+										aria-hidden="true"
+									/>
+								</span>
+							</>
+						)}
+					</ComboboxButton>
 
 					<ComboboxOptions
 						anchor="bottom start"
