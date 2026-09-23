@@ -181,6 +181,7 @@ const Select: React.FC<ISelectProps> = ({
 					</ComboboxButton>
 
 					<ComboboxOptions
+						modal={false}
 						anchor="bottom start"
 						style={
 							{
