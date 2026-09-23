@@ -129,7 +129,7 @@ const Combobox = <T extends Record<string, unknown>>({
 				</HeadlessUICombobox.Button>
 
 				{filteredItems.length > 0 && (
-					<HeadlessUICombobox.Options className={optionStyles}>
+					<HeadlessUICombobox.Options modal={false} className={optionStyles}>
 						{filteredItems.map((item, index) => (
 							<HeadlessUICombobox.Option
 								key={`${item[keyProperty]}-${index}`}

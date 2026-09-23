@@ -187,4 +187,20 @@ describe("<Select>", () => {
 			expect(onBlur).toHaveBeenCalledTimes(1);
 		});
 	});
+
+	describe("document scroll", () => {
+		it("does not lock document scroll while the options are open", async () => {
+			render(<Select {...defaultProps} />);
+			const html = document.documentElement;
+
+			pointerClick(getInput());
+			await expectOpen();
+
+			// Headless UI's modal scroll lock sets overflow: hidden and a padding-right equal to
+			// the scrollbar width on <html>. A select dropdown must not do that, because it shifts
+			// the consumer app sideways and leaves a blank bar where the scrollbar was.
+			expect(html.style.overflow).toBe("");
+			expect(html.style.paddingRight).toBe("");
+		});
+	});
 });
