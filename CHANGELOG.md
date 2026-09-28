@@ -1,5 +1,72 @@
 # Changelog
 
+## 2.6.0
+
+**Visual change for every form.** Single-line inputs are now 2px shorter, and focus styles are
+thinner and consistent. Check forms that set their own input heights or focus styles.
+
+### Changed: single-line controls are 36px, matching Button
+
+Inputs had no fixed height. `py-2` + `leading-5` + a 1px border made them 38px, while the default
+`Button` is `h-9` (36px), so an input next to a button sat 2px taller. The height also changed
+depending on whether `@tailwindcss/forms` was loaded and in which order: 22–24px without it, and
+42px when a consumer's forms styles loaded after plenum's.
+
+These are now a fixed `h-9` (36px) with `py-0` and the text vertically centred, whatever CSS is loaded:
+
+| Control | Before | After |
+| --- | --- | --- |
+| `InputField` (and so `TextInput`, including `date` / `datetime-local`) | 38px | 36px |
+| `FormInputWithAddons`, `AnimatedLabelInput`, `AnimatedFormInputWithAddons` | 38px | 36px |
+| `NestedInputButton` (the add-on button inside the above) | 38px | 36px |
+| `TextInputSelect`: input and native `<select>` segment | 38px | 36px |
+| `Select`: the bordered wrapper (the input fills it with `h-full`) | 38px | 36px |
+| `Combobox` input and chevron | 38px | 36px |
+| `DropdownWithMultiSelect` trigger | 38px | 36px |
+
+Add-on segments and nested buttons now match the input, so each combined control is one flush 36px
+row. The floating labels in `AnimatedLabelInput` / `AnimatedFormInputWithAddons` moved from
+`top-[9px]` to `top-[8px]` to stay centred. `Button`, `ButtonDropdown`, `TextArea` and
+`AnimatedLabelTextArea` are unchanged.
+
+`InputField` still appends your `className` after its own classes. If you forced a height (for
+example `h-9`) you can remove it now. If you pass vertical padding such as `py-2`, remove it; the
+height is fixed, so the padding only shrinks the text area.
+
+### Changed: text inputs and select triggers focus with a single 1px violet-700 border
+
+-   **Text inputs** (`InputField`, `TextInput`, `FormInputWithAddons`, the animated-label inputs,
+    `TextInputSelect`, `Combobox`) previously showed about 2px on focus: a 1px violet border plus
+    `@tailwindcss/forms`' 1px blue ring. `InputField` already had `focus:ring-0`, but it has the same
+    specificity as the forms rule, so it lost whenever the consumer's forms styles loaded after
+    plenum's. Focus is now only the 1px `violet-700` border. The ring is removed with
+    `focus:!ring-0` and the browser outline with `focus:outline-none`, so this holds with or without
+    `@tailwindcss/forms` and regardless of stylesheet order.
+-   **`Select`** used a deliberate 2px (`focus-within:border-primary-800 focus-within:ring-1`). It
+    now uses the same single 1px `violet-700` border, with `focus-within:ring-0`.
+-   **`TextInputSelect`'s `<select>`**, **`Combobox`** and **`NestedInputButton`** used
+    `focus:ring-1 focus:ring-purple-500` plus a purple border. They now use the same 1px `violet-700`
+    border. `NestedInputButton` and the `DropdownWithMultiSelect` trigger show it for keyboard focus
+    only (`focus-visible`).
+-   **Error and readonly states keep their red / gray border on focus.** Previously `Select` and
+    `Combobox` in error turned purple on focus. `TextInput` and `TextInputSelect` now also set
+    `aria-invalid="true"` on the input when `isError` is set.
+
+### Changed: button and toggle focus rings show for keyboard focus only
+
+`Button` (both the `<button>` and `asLink` variants), both halves of `ButtonDropdown`, `Capsule` and
+`ToggleSwitch` applied their 2px purple ring on `focus`, `focus-within` and `active`, so it also
+appeared on mouse click. The ring is now `focus-visible` only: it shows for keyboard focus (WCAG
+2.4.7) but not after a click. `Checkbox` and `Radio` do the same: the forms plugin's `:focus` ring is
+zeroed, and a 2px ring shows on `focus-visible`. This also removes some malformed class strings in
+the `asLink` danger/warning and `Capsule` danger variants.
+
+### Added
+
+-   Story **Design System / molecules / inputs / Form Control States**: every control in default,
+    error and disabled states, keyboard and mouse focus (choose the control in Controls), and an
+    input next to a default `Button` in one row.
+
 ## 2.5.6
 
 ### Fixed — Select no longer opens on focus

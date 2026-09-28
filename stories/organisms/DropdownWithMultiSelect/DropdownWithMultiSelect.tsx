@@ -18,7 +18,7 @@ interface Props {
 const DropdownWithMultiSelect = ({ label, options }: Props) => {
 	return (
 		<Popover className="group">
-			<PopoverButton className="flex justify-between gap-4 text-sm py-2 px-4 rounded-[3px] border border-gray-300 bg-white">
+			<PopoverButton className="flex h-9 items-center justify-between gap-4 text-sm leading-5 py-0 px-4 rounded-[3px] border border-gray-300 bg-white focus:outline-none focus-visible:border-violet-700">
 				{label}
 				<DynamicIcon
 					icon="IconChevronDown"

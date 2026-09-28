@@ -132,7 +132,7 @@ const TextInputSelect: FC<ITextInputSelectProps> = ({
 						inputOptions={inputOptions}
 						align="left"
 						onSelectOption={onSelectOption}
-						className={cn(isError ? "border-red-500" : "")}
+						isError={isError}
 						isDisabled={isDisabled}
 					/>
 				)}
@@ -151,12 +151,12 @@ const TextInputSelect: FC<ITextInputSelectProps> = ({
 						name={name}
 						id={id}
 						className={cn(
-							"w-full border border-gray-300 py-2 px-3 text-sm font-normal leading-5",
-							"focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm",
+							"w-full border border-gray-300 px-3 text-sm font-normal leading-5",
 							selectLocation === "right" ? `rounded-l` : `rounded-r`,
-							isError ? "border-red-500" : "",
+							isError ? "!border-red-500" : "",
 							prefix ? `pl-7` : ""
 						)}
+						aria-invalid={isError || undefined}
 						isDisabled={isDisabled}
 						defaultValue={defaultValue}
 						value={value}
@@ -170,7 +170,8 @@ const TextInputSelect: FC<ITextInputSelectProps> = ({
 						align={"right"}
 						onSelectOption={onSelectOption}
 						isDisabled={isDisabled}
-						className={cn(selectInputClassName, isError ? "border-red-500" : "")}
+						isError={isError}
+						className={selectInputClassName}
 					/>
 				)}
 			</div>

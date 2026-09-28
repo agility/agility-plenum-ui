@@ -56,7 +56,7 @@ const AnimatedLabelInput: React.FC<IAnimatedLabelInputProps> = (props: IAnimated
 				<div
 					className={cn(
 						"absolute z-10 ml-[3px] inline-block bg-white text-sm transition-all text-gray-500 left-1 px-1",
-						hasValue ? "!-top-[8px] !ml-[.172rem] !text-xs text-gray-600" : "top-[9px]",
+						hasValue ? "!-top-[8px] !ml-[.172rem] !text-xs text-gray-600" : "top-[8px]",
 						"peer-placeholder-shown:!-top-[8px] peer-placeholder-shown:!ml-[.172rem] peer-placeholder-shown:!text-xs peer-placeholder-shown:text-gray-600",
 						"group-focus-within:!-top-[8px] group-focus-within:!bg-label-gradient-focus group-focus-within:!ml-[.172rem] group-focus-within:!text-xs group-focus-within:text-gray-600",
 

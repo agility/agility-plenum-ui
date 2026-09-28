@@ -91,7 +91,7 @@ const _Button = (
 				title: asLink.title,
 				className: twMerge(
 					cn(
-						"inline-flex items-center justify-center gap-x-2  font rounded-[3px] !ring-offset-white outline-none   focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all",
+						"inline-flex items-center justify-center gap-x-2  font rounded-[3px] !ring-offset-white outline-none   focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2 transition-all",
 						{ "min-w-[130px]": applyMinWidth },
 						{ "w-full": fullWidth },
 						{ "px-[11px] py-[7px] text-xs": resolvedSize === "xs" },
@@ -112,11 +112,11 @@ const _Button = (
 								actionType === "alternative"
 						},
 						{
-							" bg-red-600 text-white hover:bg-red-700 <focus-visible:!></focus-visible:!>ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
+							" bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
 								actionType === "danger"
 						},
 						{
-							" bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 <focus-visible:!></focus-visible:!>ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-400 disabled:hover:bg-yellow-400 disabled:text-transparent-black-70 disabled:focus-visible:ring-0":
+							" bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 focus-visible:!ring-yellow-500 disabled:bg-yellow-400 disabled:hover:bg-yellow-400 disabled:text-transparent-black-70 disabled:focus-visible:ring-0":
 								actionType === "warning"
 						},
 						className ? className : ""
@@ -174,7 +174,7 @@ const _Button = (
 			type="button"
 			className={twMerge(
 				cn(
-					" px-4 py-2 inline-flex items-center justify-center gap-x-2 rounded !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2  focus-within:ring-2 focus-within:ring-purple-600 focus-within:ring-offset-2  focus:ring-2 focus:ring-purple-600 focus:ring-offset-2  active:ring-2 active:ring-purple-600 active:ring-offset-2 transition-all h-9",
+					" px-4 py-2 inline-flex items-center justify-center gap-x-2 rounded !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2 transition-all h-9",
 					{ "min-w-[130px]": applyMinWidth },
 					{ "w-full": fullWidth },
 					{ "text-xs": resolvedSize === "xs" },
@@ -195,15 +195,15 @@ const _Button = (
 							actionType === "alternative"
 					},
 					{
-						"bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 focus:!ring-red-500 active:!ring-red-500 focus-within:!ring-red-500 disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
+						"bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
 							actionType === "danger"
 					},
 					{
-						"border-gray-300 border bg-white text-red-600 hover:bg-red-50 focus-visible:!ring-red-500 focus:!ring-red-500 active:bg-red-100 active:ring-red-500 focus-within:!ring-red-500 disabled:bg-white disabled:hover:bg-white disabled:text-red-300 disabled:!ring-0 disabled:focus-visible:ring-0":
+						"border-gray-300 border bg-white text-red-600 hover:bg-red-50 focus-visible:!ring-red-500 active:bg-red-100 disabled:bg-white disabled:hover:bg-white disabled:text-red-300 disabled:!ring-0 disabled:focus-visible:ring-0":
 							actionType === "danger-secondary"
 					},
 					{
-						"bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 focus-visible:!ring-yellow-500 focus:!ring-yellow-500 active:!ring-yellow-500 focus-within:!ring-yellow-500 disabled:bg-yellow-300 disabled:hover:bg-yellow-300 disabled:text-transparent-black-30 disabled:focus-visible:ring-0":
+						"bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 focus-visible:!ring-yellow-500 disabled:bg-yellow-300 disabled:hover:bg-yellow-300 disabled:text-transparent-black-30 disabled:focus-visible:ring-0":
 							actionType === "warning"
 					},
 					className ? className : ""

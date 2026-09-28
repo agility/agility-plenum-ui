@@ -23,7 +23,9 @@ const NestedInputButton: React.FC<INestedInputButtonProps> = ({
 	const { ...buttonProps } = props
 	const { onClick } = buttonProps
 	const buttonStyle = cn(
-		"relative flex items-center space-x-2 px-4 py-2 leading-5 border border-gray-300 text-sm  focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500",
+		// h-9 matches InputField so the input and add-on form one flush 36px row. Keyboard focus uses the
+		// same 1px violet border as the input; z-10 lifts it over the input's overlapping edge.
+		"relative flex h-9 items-center space-x-2 px-4 py-0 leading-5 border border-gray-300 text-sm focus:outline-none focus-visible:z-10 focus-visible:!border-violet-700",
 		{
 			"rounded-r text-gray-500 -ml-px": align === "right"
 		},

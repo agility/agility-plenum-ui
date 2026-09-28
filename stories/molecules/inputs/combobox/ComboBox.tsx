@@ -108,16 +108,19 @@ const Combobox = <T extends Record<string, unknown>>({
 			<div className="relative">
 				<div className="relative">
 					<HeadlessUICombobox.Input
-						className={`w-full rounded border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm ${
-							isError ? "border-red-500" : ""
-						}`}
+						className={cn(
+							"h-9 w-full rounded border py-0 pl-3 pr-10 text-sm leading-5",
+							// Same focus treatment as InputField: a single 1px violet border, no ring.
+							"focus:outline-none focus:!ring-0",
+							isError ? "!border-red-500" : "border-gray-300 focus:!border-violet-700"
+						)}
 						onChange={(event) => setQuery(event.target.value)}
 						displayValue={(item: Record<string, unknown>) => `${item ? item[displayProperty] : ""}`}
 						placeholder={placeholder}
 					/>
 					{selectedItem && nullable && (
 						<button
-							className="absolute right-8 top-[1px] h-9 w-5 text-gray-400 hover:text-gray-500"
+							className="absolute inset-y-0 right-8 flex w-5 items-center text-gray-400 hover:text-gray-500"
 							onClick={() => setSelectedItem(undefined)}
 						>
 							<DynamicIcon icon="IconX" className="h-4 w-4 " aria-hidden="true" />
