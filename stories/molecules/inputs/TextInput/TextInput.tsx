@@ -132,19 +132,20 @@ const TextInput = (
 				name={name}
 				id={id}
 				className={cn(
-					"w-full rounded border py-2 px-3 text-sm font-normal leading-5 hover:border-gray-500 placeholder:text-gray-500 ",
+					"w-full rounded border px-3 text-sm font-normal leading-5 hover:border-gray-500 placeholder:text-gray-500 ",
 					{ "border-gray-300": !isFocus && !isError && !isDisabled },
 					{
-						"!border-violet-700 shadow-none": isFocus && !isError && !isDisabled
+						"!border-violet-700": isFocus && !isError && !isDisabled
 					},
 					{
-						"!border-red-500 shadow-none focus:ring-red-500": isError
+						"!border-red-500": isError
 					},
 					{
-						"!border-gray-300 !outline-gray-300 focus:!ring-gray-300": isDisabled
+						"!border-gray-300 !outline-gray-300": isDisabled
 					},
 					className
 				)}
+				aria-invalid={isError || undefined}
 				isDisabled={isDisabled}
 				isReadonly={isReadonly}
 				value={value}

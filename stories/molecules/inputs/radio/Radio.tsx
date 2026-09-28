@@ -43,9 +43,14 @@ const Radio: React.FC<IRadioProps> = ({
 	if (!id) id = `input-${uniqueID}`;
 	if (!name) name = id;
 
-	const checboxStyles = cn("focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300", {
-		"border-red-500 shadow-none": isError
-	});
+	const checboxStyles = cn(
+		"h-4 w-4 text-purple-600 border-gray-300",
+		// @tailwindcss/forms rings radios on :focus (so also on click); show the ring for keyboard focus only.
+		"focus:outline-none focus:!ring-0 focus:!ring-offset-0 focus-visible:!ring-2 focus-visible:!ring-purple-500 focus-visible:!ring-offset-2",
+		{
+			"border-red-500 shadow-none": isError
+		}
+	);
 	const wrapperStyles = cn("relative flex items-start", { "opacity-50": isDisabled });
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const targetValue = e.currentTarget.value;

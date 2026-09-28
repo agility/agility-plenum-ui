@@ -13,6 +13,7 @@ export interface InputSelectProps {
 	onSelectOption?(value: string): void
 	className?: string
 	isDisabled?: boolean
+	isError?: boolean
 }
 
 /** Comment */
@@ -21,7 +22,8 @@ export const InputSelect: FC<InputSelectProps> = ({
 	onSelectOption,
 	align = "right",
 	className,
-	isDisabled
+	isDisabled,
+	isError
 }: InputSelectProps): JSX.Element | null => {
 	const [selectedOption, setSelectedOption] = useState<string>(inputOptions[0].value)
 
@@ -35,8 +37,11 @@ export const InputSelect: FC<InputSelectProps> = ({
 	return (
 		<select
 			className={cn(
-				"relative z-10 inline-flex items-center space-x-2 border border-gray-300 bg-white px-4 py-2 pr-7 text-sm ",
-				"focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500",
+				// h-9 matches InputField so the input and select form one flush 36px row.
+				"relative z-10 inline-flex h-9 items-center space-x-2 border border-gray-300 bg-white px-4 py-0 pr-7 text-sm leading-5",
+				// Same focus treatment as InputField: a single 1px violet border, no ring.
+				"focus:outline-none focus:!ring-0",
+				isError ? "border-red-500" : "focus:!border-violet-700",
 				align === "right"
 					? "-ml-px rounded-r border-l-white text-gray-700"
 					: align === "left"

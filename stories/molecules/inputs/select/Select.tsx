@@ -143,9 +143,11 @@ const Select: React.FC<ISelectProps> = ({
 					<ComboboxButton
 						as="div"
 						className={cn(
-							"relative w-full cursor-default overflow-hidden rounded border bg-white text-left shadow-sm",
-							"focus-within:border-primary-800 focus-within:ring-1 focus-within:ring-primary-800",
-							{ "border-red-500": isError, "border-gray-300": !isError }
+							// The border lives on this wrapper, so it carries the 36px height (matching Button's h-9)
+							// and the focus style: a single 1px border, the same violet-700 as InputField.
+							"relative h-9 w-full cursor-default overflow-hidden rounded border bg-white text-left shadow-sm",
+							"focus-within:ring-0",
+							{ "border-red-500": isError, "border-gray-300 focus-within:border-violet-700": !isError }
 						)}
 					>
 						{({ open }) => (
@@ -160,9 +162,9 @@ const Select: React.FC<ISelectProps> = ({
 									onFocus={onFocus}
 									onBlur={onBlur}
 									className={cn(
-										"w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-700",
+										"h-full w-full border-none py-0 pl-3 pr-10 text-sm leading-5 text-gray-700",
 										"placeholder:text-gray-400",
-										"focus:outline-none focus:ring-0",
+										"focus:outline-none focus:!ring-0",
 										"bg-transparent cursor-default"
 									)}
 								/>

@@ -62,6 +62,8 @@ const InputField = (
 	}: IInputFieldProps,
 	ref: React.Ref<HTMLInputElement>
 ) => {
+	// Wrappers such as TextInput style their own error state and signal it through aria-invalid.
+	const isInvalid = isError || rest["aria-invalid"] === true || rest["aria-invalid"] === "true";
 	return (
 		<input
 			{...{
@@ -81,9 +83,14 @@ const InputField = (
 				"aria-invalid": isError,
 				"aria-disabled": isDisabled,
 				className: cn(
-					"peer w-full rounded border border-gray-300 px-3 text-sm font-normal leading-5 outline-offset-0 ring-offset-0 focus:border-violet-700 focus:ring-0   ",
-					isError ? "!border-red-600 !text-red-600 focus:!ring-red-600" : "",
-					isReadonly ? "!border-gray-400 !text-gray-500 focus:!ring-gray-400" : "",
+					// Fixed 36px height to line up with the default Button (h-9).
+					"peer h-9 w-full rounded border border-gray-300 px-3 py-0 text-sm font-normal leading-5 outline-offset-0 ring-offset-0",
+					// Focus is a single 1px border colour change. The `!` keeps @tailwindcss/forms' focus ring and
+					// blue border from winning when a consumer's forms styles load after plenum's stylesheet.
+					"focus:outline-none focus:!ring-0",
+					{ "focus:!border-violet-700": !isInvalid && !isReadonly },
+					isError ? "!border-red-600 !text-red-600" : "",
+					isReadonly ? "!border-gray-400 !text-gray-500" : "",
 					className
 				),
 				...rest
