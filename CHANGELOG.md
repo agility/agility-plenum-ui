@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.6.1
+
+### Changed: focus rings are 1px
+
+Keyboard focus rings were 2px wide with a 2px white offset (`ring-2 ring-offset-2`), which read as a
+thick double outline. They are now 1px. This applies to `Button` (both the `<button>` and `asLink`
+variants), both halves of `ButtonDropdown`, `Capsule`, `ToggleSwitch`, `Checkbox`, `Radio` and
+`Badge`. Rings still show for keyboard focus (`focus-visible`) only.
+
+-   **Outlined buttons** (secondary, alternative, danger-secondary), checkboxes, radios, toggles and
+    badges: a 1px ring directly on the edge, with no offset.
+-   **Filled buttons** (`Button` primary / danger / warning, `Capsule` primary / danger, and the
+    primary `ButtonDropdown` trigger): a 1px ring with a 1px white offset. Without the gap, a purple
+    or red ring against a fill of the same colour would be invisible (WCAG 2.4.7).
+
+Text inputs and select triggers are unchanged: they already focus with a single 1px violet-700 border.
+
 ## 2.6.0
 
 **Visual change for every form.** Single-line inputs are now 2px shorter, and focus styles are

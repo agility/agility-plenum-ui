@@ -36,6 +36,8 @@ export interface IButtonProps
 /**
  * Primary UI component for user interaction
  */
+// Keyboard focus is a 1px ring. Outlined buttons sit it directly on the edge; filled buttons add a 1px
+// white offset so a ring in the fill's own colour stays visible.
 const _Button = (
 	{
 		actionType = "primary",
@@ -91,7 +93,7 @@ const _Button = (
 				title: asLink.title,
 				className: twMerge(
 					cn(
-						"inline-flex items-center justify-center gap-x-2  font rounded-[3px] !ring-offset-white outline-none   focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2 transition-all",
+						"inline-flex items-center justify-center gap-x-2  font rounded-[3px] outline-none focus-visible:ring-1 focus-visible:ring-purple-600 transition-all",
 						{ "min-w-[130px]": applyMinWidth },
 						{ "w-full": fullWidth },
 						{ "px-[11px] py-[7px] text-xs": resolvedSize === "xs" },
@@ -100,7 +102,7 @@ const _Button = (
 						{ "px-[17px] py-[9px] text-base": resolvedSize === "lg" },
 						{ "px-[25px] py-[13px] text-base": resolvedSize === "xl" },
 						{
-							"bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:hover:bg-violet-400 disabled:focus-visible:ring-0":
+							"bg-violet-800 text-white focus-visible:ring-offset-1 focus-visible:ring-offset-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:hover:bg-violet-400 disabled:focus-visible:ring-0":
 								actionType === "primary"
 						},
 						{
@@ -112,11 +114,11 @@ const _Button = (
 								actionType === "alternative"
 						},
 						{
-							" bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
+							" bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 focus-visible:ring-offset-1 focus-visible:ring-offset-white disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
 								actionType === "danger"
 						},
 						{
-							" bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 focus-visible:!ring-yellow-500 disabled:bg-yellow-400 disabled:hover:bg-yellow-400 disabled:text-transparent-black-70 disabled:focus-visible:ring-0":
+							" bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 focus-visible:!ring-yellow-500 focus-visible:ring-offset-1 focus-visible:ring-offset-white disabled:bg-yellow-400 disabled:hover:bg-yellow-400 disabled:text-transparent-black-70 disabled:focus-visible:ring-0":
 								actionType === "warning"
 						},
 						className ? className : ""
@@ -174,7 +176,7 @@ const _Button = (
 			type="button"
 			className={twMerge(
 				cn(
-					" px-4 py-2 inline-flex items-center justify-center gap-x-2 rounded !ring-offset-white outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2 transition-all h-9",
+					" px-4 py-2 inline-flex items-center justify-center gap-x-2 rounded outline-none focus-visible:ring-1 focus-visible:ring-purple-600 transition-all h-9",
 					{ "min-w-[130px]": applyMinWidth },
 					{ "w-full": fullWidth },
 					{ "text-xs": resolvedSize === "xs" },
@@ -183,7 +185,7 @@ const _Button = (
 					{ "text-base": resolvedSize === "lg" },
 					{ "text-base": resolvedSize === "xl" },
 					{
-						"bg-violet-800 text-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:hover:bg-violet-400 disabled:focus-visible:ring-0":
+						"bg-violet-800 text-white focus-visible:ring-offset-1 focus-visible:ring-offset-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:hover:bg-violet-400 disabled:focus-visible:ring-0":
 							actionType === "primary"
 					},
 					{
@@ -195,7 +197,7 @@ const _Button = (
 							actionType === "alternative"
 					},
 					{
-						"bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
+						"bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 focus-visible:ring-offset-1 focus-visible:ring-offset-white disabled:bg-red-400 disabled:hover:bg-red-400 disabled:text-gray-50 disabled:focus-visible:ring-0":
 							actionType === "danger"
 					},
 					{
@@ -203,7 +205,7 @@ const _Button = (
 							actionType === "danger-secondary"
 					},
 					{
-						"bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 focus-visible:!ring-yellow-500 disabled:bg-yellow-300 disabled:hover:bg-yellow-300 disabled:text-transparent-black-30 disabled:focus-visible:ring-0":
+						"bg-yellow-500 text-transparent-black-70 hover:bg-yellow-700 focus-visible:!ring-yellow-500 focus-visible:ring-offset-1 focus-visible:ring-offset-white disabled:bg-yellow-300 disabled:hover:bg-yellow-300 disabled:text-transparent-black-30 disabled:focus-visible:ring-0":
 							actionType === "warning"
 					},
 					className ? className : ""

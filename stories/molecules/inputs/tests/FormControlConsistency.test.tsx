@@ -22,7 +22,8 @@ import DropdownWithMultiSelect from "@/stories/organisms/DropdownWithMultiSelect
  * Cross-component guard for the form-control consistency rules:
  *  - every single-line input-like control is a fixed 36px (h-9), matching the default Button;
  *  - text-like inputs and select triggers focus with a single 1px violet-700 border and no ring;
- *  - buttons and other non-text controls show their focus ring for keyboard focus (focus-visible) only.
+ *  - buttons and other non-text controls show a 1px focus ring for keyboard focus (focus-visible) only;
+ *    filled buttons add a 1px white offset so the ring stays visible against the fill.
  */
 
 const noop = vi.fn();
@@ -181,15 +182,46 @@ describe("buttons and toggles ring on keyboard focus only", () => {
 		(actionType) => {
 			render(<Button label="Save" actionType={actionType} />);
 			const button = screen.getByRole("button");
-			expect(button).toHaveClass("focus-visible:ring-2", "focus-visible:ring-purple-600", "focus-visible:ring-offset-2");
+			expect(button).toHaveClass("focus-visible:ring-1", "focus-visible:ring-purple-600");
 			expect(button.className.split(/\s+/).filter((c) => NON_KEYBOARD_RING.test(c))).toEqual([]);
 		}
 	);
 
+	it.each(["primary", "danger", "warning"] as const)(
+		"filled Button (%s) separates its 1px ring from the fill with a 1px white offset",
+		(actionType) => {
+			render(<Button label="Save" actionType={actionType} />);
+			expect(screen.getByRole("button")).toHaveClass(
+				"focus-visible:ring-1",
+				"focus-visible:ring-offset-1",
+				"focus-visible:ring-offset-white"
+			);
+		}
+	);
+
+	it.each(["secondary", "alternative", "danger-secondary"] as const)(
+		"outlined Button (%s) sits its ring on the edge with no offset",
+		(actionType) => {
+			render(<Button label="Save" actionType={actionType} />);
+			expect(screen.getByRole("button").className).not.toMatch(/ring-offset/);
+		}
+	);
+
+	it("primary ButtonDropdown trigger uses the same 1px white offset", () => {
+		render(
+			<ButtonDropdown
+				button={{ label: "Save", actionType: "primary" }}
+				dropDown={{ id: "more3", label: "More", items: [[{ key: "a", label: "A", onClick: noop }]] }}
+			/>
+		);
+		const [, trigger] = screen.getAllByRole("button");
+		expect(trigger).toHaveClass("focus-visible:ring-1", "focus-visible:ring-offset-1", "focus-visible:ring-offset-white");
+	});
+
 	it.each(["primary", "danger", "warning"] as const)("Button asLink (%s) has no mouse-focus ring", (actionType) => {
 		render(<Button label="Go" actionType={actionType} asLink={{ href: "#", target: "_self" }} />);
 		const link = screen.getByRole("link");
-		expect(link).toHaveClass("focus-visible:ring-2");
+		expect(link).toHaveClass("focus-visible:ring-1");
 		expect(link.className.split(/\s+/).filter((c) => NON_KEYBOARD_RING.test(c))).toEqual([]);
 		expect(link.className).not.toContain("<");
 	});
@@ -203,7 +235,7 @@ describe("buttons and toggles ring on keyboard focus only", () => {
 		);
 		const [main, trigger] = screen.getAllByRole("button");
 		for (const half of [main, trigger]) {
-			expect(half).toHaveClass("focus-visible:ring-2", "focus-visible:ring-purple-600");
+			expect(half).toHaveClass("focus-visible:ring-1", "focus-visible:ring-purple-600");
 			expect(half.className.split(/\s+/).filter((c) => NON_KEYBOARD_RING.test(c))).toEqual([]);
 		}
 	});
@@ -216,9 +248,30 @@ describe("buttons and toggles ring on keyboard focus only", () => {
 			</>
 		);
 		for (const control of [screen.getByRole("checkbox"), screen.getByRole("radio")]) {
-			expect(control).toHaveClass("focus:!ring-0", "focus:!ring-offset-0", "focus-visible:!ring-2");
+			expect(control).toHaveClass("focus:!ring-0", "focus:!ring-offset-0", "focus-visible:!ring-1");
 		}
 	});
+});
+
+/** Any focus ring, or ring offset, wider than 1px. */
+const THICK_RING = /(^|:)!?ring-([2-9]|\[)|(^|:)!?ring-offset-([2-9]|\[)/;
+
+it("focus rings and ring offsets are at most 1px", () => {
+	const { container } = render(
+		<>
+			<Button label="Save" />
+			<Button label="Go" asLink={{ href: "#", target: "_self" }} />
+			<Capsule label="Capsule" actionType="primary" />
+			<Checkbox label="Check" />
+			<Radio label="Pick" />
+			<ToggleSwitch id="t2" name="t2" isChecked={false} onChange={noop} />
+			<ButtonDropdown
+				button={{ label: "Save", actionType: "primary" }}
+				dropDown={{ id: "more2", label: "More", items: [[{ key: "a", label: "A", onClick: noop }]] }}
+			/>
+		</>
+	);
+	expect(classesOf(container).filter((c) => THICK_RING.test(c))).toEqual([]);
 });
 
 it("no form control applies a ring width on mouse focus, press or focus-within", () => {

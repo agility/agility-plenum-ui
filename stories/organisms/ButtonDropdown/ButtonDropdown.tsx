@@ -45,7 +45,7 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 				{...{
 					...button,
 					className: twMerge(
-						// The Button keeps its own standard focus ring (2px, offset 2), matching the trigger's below.
+						// The Button keeps its own standard focus ring (1px, no offset), matching the trigger's below.
 						cn(
 							"grow min-w-0 !rounded-r-none !border-r-0 hover:!border-r-0",
 							// While focused, lift the button above the divider/trigger so the right
@@ -92,14 +92,14 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 					),
 					buttonClassname: cn(
 						"flex items-center justify-center rounded-l-none border !border-l-0 rounded-r  px-2 transition-all hover:!border-l-0",
-						// Focus ring for the trigger only, matching Button's ring style (2px, offset 2). !outline-none
+						// Focus ring for the trigger only, matching Button's ring style (1px, no offset). !outline-none
 						// beats the outline-purple-500 in the Dropdown's defaultClassNames (plain cn, no twMerge).
 						// relative keeps it in the same paint phase as the (relative) button, so its ring's
 						// left edge isn't painted under the button; z-10 on focus lifts it fully on top.
-						"!outline-none !ring-offset-white focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2 relative focus-visible:z-10",
+						"!outline-none focus-visible:ring-1 focus-visible:ring-purple-600 relative focus-visible:z-10",
 						button.actionType === "primary"
 							? cn(
-									"border-violet-700 bg-violet-800  !text-white  hover:border-violet-700 hover:bg-violet-700 active:!border-violet-800 active:bg-violet-800 fill-white",
+									"border-violet-700 bg-violet-800 focus-visible:ring-offset-1 focus-visible:ring-offset-white !text-white  hover:border-violet-700 hover:bg-violet-700 active:!border-violet-800 active:bg-violet-800 fill-white",
 									"disabled:bg-violet-400 disabled:text-white disabled:hover:none disabled:active:bg-violet-400 disabled:border-violet-400"
 							  )
 							: "",

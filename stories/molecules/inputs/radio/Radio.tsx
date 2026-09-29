@@ -46,7 +46,7 @@ const Radio: React.FC<IRadioProps> = ({
 	const checboxStyles = cn(
 		"h-4 w-4 text-purple-600 border-gray-300",
 		// @tailwindcss/forms rings radios on :focus (so also on click); show the ring for keyboard focus only.
-		"focus:outline-none focus:!ring-0 focus:!ring-offset-0 focus-visible:!ring-2 focus-visible:!ring-purple-500 focus-visible:!ring-offset-2",
+		"focus:outline-none focus:!ring-0 focus:!ring-offset-0 focus-visible:!ring-1 focus-visible:!ring-purple-500",
 		{
 			"border-red-500 shadow-none": isError
 		}

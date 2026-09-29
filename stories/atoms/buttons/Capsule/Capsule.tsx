@@ -54,7 +54,7 @@ const Capsule = ({
 		<button
 			type="button"
 			className={cn(
-				"inline-flex items-center justify-center gap-x-2 text-sm  p-2  !ring-offset-white outline-none   focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2 transition-all",
+				"inline-flex items-center justify-center gap-x-2 text-sm  p-2 outline-none focus-visible:ring-1 focus-visible:ring-purple-600 transition-all",
 				{ "w-full": fullWidth },
 				{ "px-[11px] py-[7px] text-xs rounded-[15px]": size === "xs" },
 				{ "px-[15px] py-[9px] text-sm rounded-[17px]": size === "sm" },
@@ -62,7 +62,7 @@ const Capsule = ({
 				{ "px-[17px] py-[9px] text-base rounded-[21px]": size === "lg" },
 				{ "px-[25px] py-[13px] text-base rounded-[25px]": size === "xl" },
 				{
-					"bg-purple-600 text-white hover:border-purple-700 hover:bg-purple-700 ": actionType === "primary"
+					"bg-purple-600 text-white focus-visible:ring-offset-1 focus-visible:ring-offset-white hover:border-purple-700 hover:bg-purple-700 ": actionType === "primary"
 				},
 				{
 					" bg-purple-50 text-purple-700 hover:bg-purple-200   focus-within:bg-purple-100  focus-visible:bg-purple-100 focus:bg-purple-100 active:bg-purple-100":
@@ -73,7 +73,7 @@ const Capsule = ({
 						actionType === "alternative"
 				},
 				{
-					" bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 ":
+					"bg-red-600 text-white hover:bg-red-700 focus-visible:!ring-red-500 focus-visible:ring-offset-1 focus-visible:ring-offset-white":
 						actionType === "danger"
 				},
 				className ? className : ""
