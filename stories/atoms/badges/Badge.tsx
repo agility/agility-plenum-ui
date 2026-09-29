@@ -31,7 +31,7 @@ const Badge: React.FC<IBadgeProps> = ({
 	actionButton
 }) => {
 	const badgeStyles = cn(
-		"text-sm flex items-center py-[2px] focus:ring-1 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-white outline-0",
+		"text-sm flex items-center py-[2px] focus:ring-1 focus:ring-purple-600 outline-0",
 		{
 			"rounded-[3px]": variant === "rounded",
 			"rounded-full px-[6px]": variant === "pill",
@@ -64,7 +64,7 @@ const Badge: React.FC<IBadgeProps> = ({
 		"bg-gray-400 text-gray-400": color === "basic"
 	})
 	const removeButtonStyles: ClassNameWithAutocomplete = cn(
-		"h-4 w-4 group-focus-within:ring-1 group-focus-within:ring-purple-600 rounded-full  group-focus-within:ring-offset-[1px] group-focus-within:ring-offset-white outline-0",
+		"h-4 w-4 group-focus-within:ring-1 group-focus-within:ring-purple-600 rounded-full outline-0",
 		{
 			"text-purple-400": color === "primary",
 			"text-violet-400": color === "secondary",

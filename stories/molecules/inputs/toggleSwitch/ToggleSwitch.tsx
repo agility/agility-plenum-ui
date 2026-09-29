@@ -53,7 +53,7 @@ const ToggleSwitch: React.FC<IToggleSwitchProps> = ({
 				className={cn(
 					{ "w-9 h-4 transition-all": variant === "short", " h-6 w-11": variant === "base" },
 					checked && disabled ? "bg-purple-200" : checked ? "bg-purple-600" : "bg-gray-200",
-					"relative inline-flex items-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2"
+					"relative inline-flex items-center rounded-full focus:outline-none focus-visible:ring-1 focus-visible:ring-purple-600"
 				)}
 				disabled={disabled}
 			>
