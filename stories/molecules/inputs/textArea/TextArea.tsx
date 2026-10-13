@@ -65,7 +65,13 @@ const Textarea: React.FC<ITextareaProps> = ({
 }) => {
 	const uniqueID = useId();
 
-	const discriptionStyles = cn("text-sm mt-1 block", { "text-gray-500": !isError }, { "text-red-500": isError });
+	const discriptionStyles = cn(
+		"text-sm mt-1 block",
+		{ "text-gray-400": isDisabled },
+		{ "text-gray-500": !isError && !isDisabled },
+		{ "text-red-500": isError && !isDisabled }
+	);
+	const disabledStyles = "disabled:cursor-not-allowed disabled:text-gray-400 disabled:placeholder:text-gray-300";
 
 	if (!id) id = `ta-${uniqueID}`;
 
@@ -90,6 +96,7 @@ const Textarea: React.FC<ITextareaProps> = ({
 					{
 						"border-red-500 outline-red-500 focus:ring-red-500": isError
 					},
+					disabledStyles,
 					className
 				)}
 				disabled={isDisabled}
@@ -126,6 +133,7 @@ const Textarea: React.FC<ITextareaProps> = ({
 						{
 							"border-red-500 outline-red-500 focus:ring-red-500": isError
 						},
+						disabledStyles,
 						className
 					)}
 					disabled={isDisabled}

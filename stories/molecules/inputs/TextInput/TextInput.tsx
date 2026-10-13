@@ -157,7 +157,10 @@ const TextInput = (
 			<div className="flex flex-row space-x-3">
 				<div className="grow">
 					{message && (
-						<Paragraph size="md" className={isError ? "text-red-600" : "text-gray-500"}>
+						<Paragraph
+							size="md"
+							className={isDisabled ? "text-gray-400" : isError ? "text-red-600" : "text-gray-500"}
+						>
 							{message}
 						</Paragraph>
 					)}

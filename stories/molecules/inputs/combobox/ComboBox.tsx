@@ -112,7 +112,8 @@ const Combobox = <T extends Record<string, unknown>>({
 							"h-9 w-full rounded border py-0 pl-3 pr-10 text-sm leading-5",
 							// Same focus treatment as InputField: a single 1px violet border, no ring.
 							"focus:outline-none focus:!ring-0",
-							isError ? "!border-red-500" : "border-gray-300 focus:!border-violet-700"
+							isError ? "!border-red-500" : "border-gray-300 focus:!border-violet-700",
+							"disabled:cursor-not-allowed disabled:text-gray-400 disabled:placeholder:text-gray-300"
 						)}
 						onChange={(event) => setQuery(event.target.value)}
 						displayValue={(item: Record<string, unknown>) => `${item ? item[displayProperty] : ""}`}
@@ -169,7 +170,11 @@ const Combobox = <T extends Record<string, unknown>>({
 			</div>
 			<div className="grow">
 				{message && (
-					<span className={`mt-1 block text-sm ${isError ? `text-red-500` : `text-gray-500`}`}>
+					<span
+						className={`mt-1 block text-sm ${
+							isDisabled ? `text-gray-400` : isError ? `text-red-500` : `text-gray-500`
+						}`}
+					>
 						{message}
 					</span>
 				)}
