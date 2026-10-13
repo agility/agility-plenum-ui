@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.6.2
+
+### Fixed: disabled text fields look disabled
+
+`TextInput` (and `InputField`), `TextArea` and `Combobox` had no disabled styling on the field
+itself, so the placeholder, value and helper message looked the same as an enabled field. Only the
+label dimmed.
+
+-   **Field:** when disabled, the value is `gray-400`, the placeholder is `gray-300`, and the cursor
+    is `not-allowed`.
+-   **Helper message:** `gray-400` when disabled. This takes priority over the red error colour.
+
+`Select`, `Checkbox` and `Radio` already dim the whole control with `opacity-50` and are unchanged.
+
 ## 2.6.1
 
 ### Changed: focus rings are 1px

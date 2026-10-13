@@ -89,6 +89,8 @@ const InputField = (
 					// blue border from winning when a consumer's forms styles load after plenum's stylesheet.
 					"focus:outline-none focus:!ring-0",
 					{ "focus:!border-violet-700": !isInvalid && !isReadonly },
+					// Disabled: dim the value and placeholder so the field reads as inactive.
+					"disabled:cursor-not-allowed disabled:text-gray-400 disabled:placeholder:text-gray-300",
 					isError ? "!border-red-600 !text-red-600" : "",
 					isReadonly ? "!border-gray-400 !text-gray-500" : "",
 					className
