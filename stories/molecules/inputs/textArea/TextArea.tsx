@@ -91,7 +91,7 @@ const Textarea: React.FC<ITextareaProps> = ({
 				id={id}
 				cols={cols}
 				className={cn(
-					"peer block w-full rounded focus:border-purple-500 focus:ring-purple-500 sm:text-sm",
+					"peer block w-full rounded placeholder:text-gray-500 focus:border-purple-500 focus:ring-purple-500 sm:text-sm",
 					{ "border-gray-300 ": !isError },
 					{
 						"border-red-500 outline-red-500 focus:ring-red-500": isError
@@ -128,7 +128,7 @@ const Textarea: React.FC<ITextareaProps> = ({
 					id={id}
 					cols={cols}
 					className={cn(
-						"block w-full rounded focus:border-purple-500 focus:ring-purple-500 sm:text-sm",
+						"block w-full rounded placeholder:text-gray-500 focus:border-purple-500 focus:ring-purple-500 sm:text-sm",
 						{ "border-gray-300 ": !isError },
 						{
 							"border-red-500 outline-red-500 focus:ring-red-500": isError
