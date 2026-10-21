@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.6.3
+
+### Fixed: `TextArea` placeholder colour
+
+`TextArea` set no placeholder colour on an enabled field, so the placeholder took the typed-text
+colour and looked like real content. It is now `gray-500`, matching `TextInput`, with or without a
+label. Disabled fields still show the placeholder in `gray-300`.
+
 ## 2.6.2
 
 ### Fixed: disabled text fields look disabled
