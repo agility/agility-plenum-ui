@@ -21,7 +21,7 @@ import DropdownWithMultiSelect from "@/stories/organisms/DropdownWithMultiSelect
 /**
  * Cross-component guard for the form-control consistency rules:
  *  - every single-line input-like control is a fixed 36px (h-9), matching the default Button;
- *  - text-like inputs and select triggers focus with a single 1px violet-700 border and no ring;
+ *  - text-like inputs and select triggers focus with a single 1px primary-600 border and no ring;
  *  - buttons and other non-text controls show a 1px focus ring for keyboard focus (focus-visible) only;
  *    filled buttons add a 1px white offset so the ring stays visible against the fill.
  */
@@ -126,19 +126,19 @@ describe("text-like inputs and select triggers focus with a single 1px violet bo
 	])("%s input: violet border, ring forced to 0", (_, renderControl) => {
 		const { container } = render(renderControl());
 		const input = container.querySelector("input");
-		expect(input).toHaveClass("focus:!ring-0", "focus:outline-none", "focus:!border-violet-700");
+		expect(input).toHaveClass("focus:!ring-0", "focus:outline-none", "focus:!border-primary-600");
 	});
 
 	it("TextInputSelect's native select: violet border, ring forced to 0", () => {
 		render(<TextInputSelect type="text" value="" inputOptions={selectOptions} />);
-		expect(screen.getByRole("combobox")).toHaveClass("focus:!ring-0", "focus:outline-none", "focus:!border-violet-700");
+		expect(screen.getByRole("combobox")).toHaveClass("focus:!ring-0", "focus:outline-none", "focus:!border-primary-600");
 	});
 
 	it("Select wrapper: focus-within violet border, no ring", () => {
 		render(<Select id="sel" options={selectOptions} />);
 		const input = screen.getByRole("combobox");
 		expect(input).toHaveClass("focus:!ring-0");
-		expect(input.parentElement).toHaveClass("focus-within:border-violet-700", "focus-within:ring-0");
+		expect(input.parentElement).toHaveClass("focus-within:border-primary-600", "focus-within:ring-0");
 		expect(input.parentElement).not.toHaveClass("focus-within:ring-1");
 	});
 
@@ -149,7 +149,7 @@ describe("text-like inputs and select triggers focus with a single 1px violet bo
 	])("%s in error keeps its red border on focus", (_, renderControl) => {
 		const { container } = render(renderControl());
 		const input = container.querySelector("input");
-		expect(input).not.toHaveClass("focus:!border-violet-700");
+		expect(input).not.toHaveClass("focus:!border-primary-600");
 	});
 
 	it("TextInput in error marks the input aria-invalid", () => {
@@ -161,7 +161,7 @@ describe("text-like inputs and select triggers focus with a single 1px violet bo
 		render(<Select id="sel" options={selectOptions} isError />);
 		const wrapper = screen.getByRole("combobox").parentElement;
 		expect(wrapper).toHaveClass("border-red-500");
-		expect(wrapper).not.toHaveClass("focus-within:border-violet-700");
+		expect(wrapper).not.toHaveClass("focus-within:border-primary-600");
 	});
 
 	it("NestedInputButton and the multi-select trigger use the violet border for keyboard focus", () => {
@@ -171,8 +171,8 @@ describe("text-like inputs and select triggers focus with a single 1px violet bo
 				<DropdownWithMultiSelect label="Filters" options={[]} />
 			</>
 		);
-		expect(screen.getByRole("button", { name: "Edit" })).toHaveClass("focus-visible:!border-violet-700");
-		expect(screen.getByRole("button", { name: /Filters/ })).toHaveClass("focus-visible:border-violet-700");
+		expect(screen.getByRole("button", { name: "Edit" })).toHaveClass("focus-visible:!border-primary-600");
+		expect(screen.getByRole("button", { name: /Filters/ })).toHaveClass("focus-visible:border-primary-600");
 	});
 });
 
@@ -182,7 +182,7 @@ describe("buttons and toggles ring on keyboard focus only", () => {
 		(actionType) => {
 			render(<Button label="Save" actionType={actionType} />);
 			const button = screen.getByRole("button");
-			expect(button).toHaveClass("focus-visible:ring-1", "focus-visible:ring-purple-600");
+			expect(button).toHaveClass("focus-visible:ring-1", "focus-visible:ring-primary-600");
 			expect(button.className.split(/\s+/).filter((c) => NON_KEYBOARD_RING.test(c))).toEqual([]);
 		}
 	);
@@ -235,7 +235,7 @@ describe("buttons and toggles ring on keyboard focus only", () => {
 		);
 		const [main, trigger] = screen.getAllByRole("button");
 		for (const half of [main, trigger]) {
-			expect(half).toHaveClass("focus-visible:ring-1", "focus-visible:ring-purple-600");
+			expect(half).toHaveClass("focus-visible:ring-1", "focus-visible:ring-primary-600");
 			expect(half.className.split(/\s+/).filter((c) => NON_KEYBOARD_RING.test(c))).toEqual([]);
 		}
 	});

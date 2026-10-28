@@ -144,10 +144,10 @@ const Select: React.FC<ISelectProps> = ({
 						as="div"
 						className={cn(
 							// The border lives on this wrapper, so it carries the 36px height (matching Button's h-9)
-							// and the focus style: a single 1px border, the same violet-700 as InputField.
+							// and the focus style: a single 1px border, the same primary-600 as InputField.
 							"relative h-9 w-full cursor-default overflow-hidden rounded border bg-white text-left shadow-sm",
 							"focus-within:ring-0",
-							{ "border-red-500": isError, "border-gray-300 focus-within:border-violet-700": !isError }
+							{ "border-red-500": isError, "border-gray-300 focus-within:border-primary-600": !isError }
 						)}
 					>
 						{({ open }) => (

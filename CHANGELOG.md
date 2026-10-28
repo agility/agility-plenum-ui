@@ -1,5 +1,35 @@
 # Changelog
 
+## 2.7.0
+
+### Changed: the primary colour is blue (PROD-2966)
+
+The primary colour changes from purple to blue-600 (`#1A56DB`). This is a visible change for every
+consumer.
+
+-   **Primary buttons** (`Button`, `Capsule`, `ButtonDropdown`): fill `primary-600`, hover
+    `primary-700`, pressed `primary-800`, disabled `primary-300`. The loader spinner is `primary-600`.
+-   **Secondary buttons**: `primary-50` fill, `primary-400` border, `primary-700` text, `primary-100`
+    hover.
+-   **Checked and selected states** (`Checkbox`, `Radio`, `ToggleSwitch`, `ComboBox` options):
+    `primary-600`.
+-   **Focus**: blue-600 everywhere. Rings are `primary-600` (`Radio` was `purple-500`), and text
+    inputs, selects and comboboxes focus with a `primary-600` border. `TextArea` now focuses with a
+    single border and no ring, like the other inputs.
+-   `Badge` with `color="primary"` is blue. `color="secondary"` stays violet.
+
+### Added: `primary-*` as CSS variables, and a Tailwind preset (PROD-2967)
+
+-   `primary-50` to `primary-950` are now CSS variables (`--primary-*`) in `dist/tailwind.css`, and
+    components use `primary-*` instead of raw `purple-*` and `violet-*` classes. `primary-50` was a
+    grey and `primary-950` didn't exist.
+-   The theme now lives in `tailwind.preset.js`, exported as `@agility/plenum-ui/tailwind.preset`, so
+    a consumer's own classes match Plenum's. See "Colours" in the README.
+
+### Fixed: `blue-300`
+
+`blue-300` was `#8FB2`, which browsers read as a nearly transparent green. It is now `#8FB2FB`.
+
 ## 2.6.3
 
 ### Fixed: `TextArea` placeholder colour

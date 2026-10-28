@@ -135,7 +135,7 @@ const TextInput = (
 					"w-full rounded border px-3 text-sm font-normal leading-5 hover:border-gray-500 placeholder:text-gray-500 ",
 					{ "border-gray-300": !isFocus && !isError && !isDisabled },
 					{
-						"!border-violet-700": isFocus && !isError && !isDisabled
+						"!border-primary-600": isFocus && !isError && !isDisabled
 					},
 					{
 						"!border-red-500": isError

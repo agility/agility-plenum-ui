@@ -112,7 +112,7 @@ const Combobox = <T extends Record<string, unknown>>({
 							"h-9 w-full rounded border py-0 pl-3 pr-10 text-sm leading-5",
 							// Same focus treatment as InputField: a single 1px violet border, no ring.
 							"focus:outline-none focus:!ring-0",
-							isError ? "!border-red-500" : "border-gray-300 focus:!border-violet-700",
+							isError ? "!border-red-500" : "border-gray-300 focus:!border-primary-600",
 							"disabled:cursor-not-allowed disabled:text-gray-400 disabled:placeholder:text-gray-300"
 						)}
 						onChange={(event) => setQuery(event.target.value)}
@@ -141,7 +141,7 @@ const Combobox = <T extends Record<string, unknown>>({
 								className={({ active }) =>
 									classNames(
 										"relative cursor-default select-none py-2 pl-3 pr-9",
-										active ? "bg-purple-600 text-white" : "text-gray-900"
+										active ? "bg-primary-600 text-white" : "text-gray-900"
 									)
 								}
 							>
@@ -155,7 +155,7 @@ const Combobox = <T extends Record<string, unknown>>({
 											<span
 												className={classNames(
 													"absolute inset-y-0 right-0 flex items-center pr-4",
-													active ? "text-white" : "text-purple-600"
+													active ? "text-white" : "text-primary-600"
 												)}
 											>
 												<DynamicIcon icon="IconCheck" className="h-5 w-5" aria-hidden="true" />
