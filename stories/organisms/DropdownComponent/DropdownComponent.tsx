@@ -66,7 +66,7 @@ export const defaultClassNames = {
 		"group flex font-sans  cursor-pointer items-center px-3 py-1 text-sm transition-all hover:bg-gray-100 hover:text-gray-900 justify-between gap-4 ",
 	activeItemClassname: "block px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 hover:text-gray-900",
 	buttonClassname:
-		"py-[2px] flex items-center  rounded outline-purple-500 transition-all text-gray-400 hover:text-gray-600 ",
+		"py-[2px] flex items-center  rounded outline-primary-600 transition-all text-gray-400 hover:text-gray-600 ",
 	iconClassname: "ml-1 h-5 w-6 stroke-1",
 	iconSpacingClassname: "flex items-center gap-x-2",
 	dividerClassname: "border-b border-b-gray-100"

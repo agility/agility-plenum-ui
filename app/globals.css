@@ -5,7 +5,7 @@
 @layer {
 	* {
 		/* set the default outline color on focus */
-		outline-color: #7933dd;
+		outline-color: rgb(var(--primary-600));
 	}
 	/* Thin - 100 */
 	@font-face {

@@ -19,14 +19,14 @@ describe("<Button>", () => {
 			render(<Button {...defaultProps} />);
 
 			const buttonElement = screen.getByRole("button");
-			expect(buttonElement).toHaveClass("bg-violet-800");
+			expect(buttonElement).toHaveClass("bg-primary-600");
 		});
 
 		it("renders with actionType as secondary", () => {
 			render(<Button {...defaultProps} actionType="secondary" />);
 
 			const buttonElement = screen.getByRole("button");
-			expect(buttonElement).toHaveClass("bg-purple-50");
+			expect(buttonElement).toHaveClass("bg-primary-50");
 		});
 
 		it("renders with actionType as alternative", () => {

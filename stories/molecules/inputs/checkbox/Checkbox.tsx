@@ -53,9 +53,9 @@ const Checkbox: FC<ICheckboxProps> = ({
 	if (!id) id = `cb-${uniqueID}`;
 
 	const checkboxStyles = cn(
-		"rounded-sm border-gray-300 text-sm font-normal leading-5 text-purple-600",
+		"rounded-sm border-gray-300 text-sm font-normal leading-5 text-primary-600",
 		// @tailwindcss/forms rings checkboxes on :focus (so also on click); show the ring for keyboard focus only.
-		"focus:outline-none focus:!ring-0 focus:!ring-offset-0 focus-visible:!ring-1 focus-visible:!ring-purple-600",
+		"focus:outline-none focus:!ring-0 focus:!ring-offset-0 focus-visible:!ring-1 focus-visible:!ring-primary-600",
 		{ "border-red-500 shadow-none": isError }
 	);
 	const wrapperStyles = cn(

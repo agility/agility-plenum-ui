@@ -33,9 +33,9 @@ describe("<InputField>", () => {
 			expect(getInput()).toHaveClass("focus:!ring-0", "focus:outline-none");
 		});
 
-		it("shows a violet-700 border on focus", () => {
+		it("shows a primary-600 border on focus", () => {
 			render(<InputField {...defaultProps} />);
-			expect(getInput()).toHaveClass("focus:!border-violet-700");
+			expect(getInput()).toHaveClass("focus:!border-primary-600");
 		});
 
 		it("never adds a focus ring width", () => {
@@ -46,19 +46,19 @@ describe("<InputField>", () => {
 		it("keeps the error border on focus", () => {
 			render(<InputField {...defaultProps} isError />);
 			expect(getInput()).toHaveClass("!border-red-600");
-			expect(getInput()).not.toHaveClass("focus:!border-violet-700");
+			expect(getInput()).not.toHaveClass("focus:!border-primary-600");
 			expect(getInput()).toHaveAttribute("aria-invalid", "true");
 		});
 
 		it("keeps the error border on focus when a wrapper signals the error with aria-invalid", () => {
 			render(<InputField {...defaultProps} aria-invalid />);
-			expect(getInput()).not.toHaveClass("focus:!border-violet-700");
+			expect(getInput()).not.toHaveClass("focus:!border-primary-600");
 		});
 
 		it("keeps the readonly border on focus", () => {
 			render(<InputField {...defaultProps} isReadonly />);
 			expect(getInput()).toHaveClass("!border-gray-400");
-			expect(getInput()).not.toHaveClass("focus:!border-violet-700");
+			expect(getInput()).not.toHaveClass("focus:!border-primary-600");
 		});
 	});
 });

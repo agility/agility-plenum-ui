@@ -27,8 +27,8 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 	className
 }) => {
 	const iconTextColours = {
-		primary: dropDown.disabled ? "text-gray-300" : "text-violet-100",
-		secondary: dropDown.disabled ? "text-gray-400" : "text-purple-700",
+		primary: dropDown.disabled ? "text-gray-300" : "text-primary-100",
+		secondary: dropDown.disabled ? "text-gray-400" : "text-primary-700",
 		alternative: dropDown.disabled ? "text-gray-500" : "text-gray-700"
 	};
 
@@ -62,9 +62,9 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 					className={cn(
 						"w-[1px] rt",
 						button.actionType === "primary"
-							? "bg-violet-700 text-violet-100 hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:focus-visible:ring-0"
+							? "bg-primary-700 text-primary-100 hover:border-primary-700 hover:bg-primary-700 disabled:bg-primary-300 disabled:focus-visible:ring-0"
 							: "",
-						button.actionType === "secondary" ? "bg-purple-200 " : "",
+						button.actionType === "secondary" ? "bg-primary-200 " : "",
 						button.actionType === "alternative" ? "bg-gray-300" : ""
 					)}
 				></div>
@@ -79,10 +79,10 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 									"h-5 w-5 stroke-1 disabled:!bg-gray-50 disabled:focus-visible:ring-0",
 									{
 										"text-white": button.actionType === "primary",
-										"text-purple-300": dropDown.disabled && button.actionType === "secondary",
+										"text-primary-300": dropDown.disabled && button.actionType === "secondary",
 										"text-gray-300": dropDown.disabled && button.actionType === "alternative",
 
-										"text-purple-700": !dropDown.disabled && button.actionType === "secondary",
+										"text-primary-700": !dropDown.disabled && button.actionType === "secondary",
 										"text-gray-700": !dropDown.disabled && button.actionType === "alternative"
 									},
 									dropDown.iconClassname
@@ -93,20 +93,20 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 					buttonClassname: cn(
 						"flex items-center justify-center rounded-l-none border !border-l-0 rounded-r  px-2 transition-all hover:!border-l-0",
 						// Focus ring for the trigger only, matching Button's ring style (1px, no offset). !outline-none
-						// beats the outline-purple-500 in the Dropdown's defaultClassNames (plain cn, no twMerge).
+						// beats the outline-primary-600 in the Dropdown's defaultClassNames (plain cn, no twMerge).
 						// relative keeps it in the same paint phase as the (relative) button, so its ring's
 						// left edge isn't painted under the button; z-10 on focus lifts it fully on top.
-						"!outline-none focus-visible:ring-1 focus-visible:ring-purple-600 relative focus-visible:z-10",
+						"!outline-none focus-visible:ring-1 focus-visible:ring-primary-600 relative focus-visible:z-10",
 						button.actionType === "primary"
 							? cn(
-									"border-violet-700 bg-violet-800 focus-visible:ring-offset-1 focus-visible:ring-offset-white !text-white  hover:border-violet-700 hover:bg-violet-700 active:!border-violet-800 active:bg-violet-800 fill-white",
-									"disabled:bg-violet-400 disabled:text-white disabled:hover:none disabled:active:bg-violet-400 disabled:border-violet-400"
+									"border-primary-600 bg-primary-600 focus-visible:ring-offset-1 focus-visible:ring-offset-white !text-white  hover:border-primary-700 hover:bg-primary-700 active:!border-primary-800 active:bg-primary-800 fill-white",
+									"disabled:bg-primary-300 disabled:text-white disabled:hover:none disabled:active:bg-primary-300 disabled:border-primary-300"
 							  )
 							: "",
 						button.actionType === "secondary"
 							? cn(
-									"border-purple-400 bg-purple-50 text-purple-700   hover:bg-purple-100 active:bg-purple-300 fill-purple-700",
-									"disabled:bg-purple-50 disabled:text-grey-50 disabled:hover:none disabled:active:bg-purple-50 "
+									"border-primary-400 bg-primary-50 text-primary-700   hover:bg-primary-100 active:bg-primary-300 fill-primary-700",
+									"disabled:bg-primary-50 disabled:text-grey-50 disabled:hover:none disabled:active:bg-primary-50 "
 							  )
 							: "",
 						button.actionType === "alternative"
@@ -126,7 +126,7 @@ const ButtonDropdown: FC<IButtonDropdownProps> = ({
 					...(dropDown as IDropdownProps)
 				}}
 			/>
-			<div className="hidden !bg-purple-100 !text-purple-600 transition-all hover:bg-purple-200 focus:bg-purple-300" />
+			<div className="hidden !bg-primary-100 !text-primary-600 transition-all hover:bg-primary-200 focus:bg-primary-300" />
 		</div>
 	);
 };

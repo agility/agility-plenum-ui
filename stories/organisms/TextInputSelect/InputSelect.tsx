@@ -41,7 +41,7 @@ export const InputSelect: FC<InputSelectProps> = ({
 				"relative z-10 inline-flex h-9 items-center space-x-2 border border-gray-300 bg-white px-4 py-0 pr-7 text-sm leading-5",
 				// Same focus treatment as InputField: a single 1px violet border, no ring.
 				"focus:outline-none focus:!ring-0",
-				isError ? "border-red-500" : "focus:!border-violet-700",
+				isError ? "border-red-500" : "focus:!border-primary-600",
 				align === "right"
 					? "-ml-px rounded-r border-l-white text-gray-700"
 					: align === "left"

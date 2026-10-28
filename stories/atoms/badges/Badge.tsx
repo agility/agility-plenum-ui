@@ -31,7 +31,7 @@ const Badge: React.FC<IBadgeProps> = ({
 	actionButton
 }) => {
 	const badgeStyles = cn(
-		"text-sm flex items-center py-[2px] focus:ring-1 focus:ring-purple-600 outline-0",
+		"text-sm flex items-center py-[2px] focus:ring-1 focus:ring-primary-600 outline-0",
 		{
 			"rounded-[3px]": variant === "rounded",
 			"rounded-full px-[6px]": variant === "pill",
@@ -43,7 +43,7 @@ const Badge: React.FC<IBadgeProps> = ({
 			"pr-3": !removeButton && size === "lg",
 			"pr-[10px]": !removeButton && size === "sm",
 			"gap-x-[6px]": statusDot || removeButton || loading,
-			"bg-purple-100 text-purple-800 ": color === "primary",
+			"bg-primary-100 text-primary-800 ": color === "primary",
 			"bg-violet-100 text-violet-800": color === "secondary",
 			"bg-pink-100 text-pink-800": color === "pink",
 			"bg-red-100 text-red-800": color === "danger",
@@ -54,7 +54,7 @@ const Badge: React.FC<IBadgeProps> = ({
 		}
 	)
 	const statusDotStyles = cn("rounded-full h-[6px] p-[1px] w-[6px]", {
-		"bg-purple-400 text-purple-400": color === "primary",
+		"bg-primary-400 text-primary-400": color === "primary",
 		"bg-violet-400 text-violet-400": color === "secondary",
 		"bg-pink-400 text-pink-400": color === "pink",
 		"bg-red-400 text-red-400": color === "danger",
@@ -64,9 +64,9 @@ const Badge: React.FC<IBadgeProps> = ({
 		"bg-gray-400 text-gray-400": color === "basic"
 	})
 	const removeButtonStyles: ClassNameWithAutocomplete = cn(
-		"h-4 w-4 group-focus-within:ring-1 group-focus-within:ring-purple-600 rounded-full outline-0",
+		"h-4 w-4 group-focus-within:ring-1 group-focus-within:ring-primary-600 rounded-full outline-0",
 		{
-			"text-purple-400": color === "primary",
+			"text-primary-400": color === "primary",
 			"text-violet-400": color === "secondary",
 			"text-pink-400": color === "pink",
 			"text-red-400": color === "danger",
@@ -78,7 +78,7 @@ const Badge: React.FC<IBadgeProps> = ({
 	)
 
 	const loaderStyles = cn("h-4 w-4 rounded-full border-2 animate-spin", {
-		"border-purple-400 !border-r-purple-200": color === "primary",
+		"border-primary-400 !border-r-primary-200": color === "primary",
 		"border-violet-400 !border-r-violet-200": color === "secondary",
 		"border-pink-400 !border-r-pink-200": color === "pink",
 		"border-red-400 !border-r-red-200": color === "danger",

@@ -18,7 +18,7 @@ import DropdownWithMultiSelect from "@/stories/organisms/DropdownWithMultiSelect
 /**
  * Every single-line form control side by side, to check that they share one 36px height and one
  * focus language:
- *  - text inputs, selects and triggers focus with a single 1px violet-700 border (keyboard and mouse);
+ *  - text inputs, selects and triggers focus with a single 1px primary-600 border (keyboard and mouse);
  *  - buttons, checkboxes, radios and toggles show a 1px ring for keyboard focus only
  *    (on the edge for outlined controls; with a 1px white offset on filled buttons).
  */
@@ -396,7 +396,7 @@ export const InputNextToButton: Story = {
 };
 
 /**
- * Keyboard focus on the control picked in Controls. Text inputs and selects get a 1px violet-700 border;
+ * Keyboard focus on the control picked in Controls. Text inputs and selects get a 1px primary-600 border;
  * buttons, checkboxes, radios and toggles get a 1px ring
  * (with a 1px white offset on filled buttons). You can also press Tab in the canvas.
  */
@@ -407,7 +407,7 @@ export const KeyboardFocus: Story = {
 };
 
 /**
- * Mouse focus on the control picked in Controls. Text inputs and selects still get the 1px violet-700
+ * Mouse focus on the control picked in Controls. Text inputs and selects still get the 1px primary-600
  * border; buttons, checkboxes, radios and toggles show no ring. You can also click a control in the canvas.
  */
 export const MouseFocus: Story = {

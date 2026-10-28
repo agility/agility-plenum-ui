@@ -62,7 +62,7 @@ const _Button = (
 	const applyMinWidth = !!label && size !== "xs" && size !== "sm";
 	let iconStyles = cn(
 		{ "text-white h-5 w-5 stroke-[1.5]": actionType === "primary" || actionType === "danger" },
-		{ "text-purple-700 h-5 w-5 stroke-[1.5]": actionType === "secondary" },
+		{ "text-primary-700 h-5 w-5 stroke-[1.5]": actionType === "secondary" },
 		{ "text-gray-400 h-5 w-5 stroke-[1.5]": actionType === "alternative" },
 		{ "text-transparent-black-40 h-5 w-5 stroke-[1.5]": actionType === "warning" }
 	);
@@ -73,7 +73,7 @@ const _Button = (
 
 	const loaderColors = cn(
 		{ "border-r-white": actionType === "primary" },
-		{ "border-purple-200 border-r-purple-700": actionType === "secondary" },
+		{ "border-primary-200 border-r-primary-700": actionType === "secondary" },
 		{ "border-gray-200 border-r-gray-700": actionType === "alternative" },
 		{ "border-red-800 border-r-white": actionType === "danger" },
 		{ "border-yellow-800 border-r-transparent-black-70": actionType === "warning" }
@@ -93,7 +93,7 @@ const _Button = (
 				title: asLink.title,
 				className: twMerge(
 					cn(
-						"inline-flex items-center justify-center gap-x-2  font rounded-[3px] outline-none focus-visible:ring-1 focus-visible:ring-purple-600 transition-all",
+						"inline-flex items-center justify-center gap-x-2  font rounded-[3px] outline-none focus-visible:ring-1 focus-visible:ring-primary-600 transition-all",
 						{ "min-w-[130px]": applyMinWidth },
 						{ "w-full": fullWidth },
 						{ "px-[11px] py-[7px] text-xs": resolvedSize === "xs" },
@@ -102,11 +102,11 @@ const _Button = (
 						{ "px-[17px] py-[9px] text-base": resolvedSize === "lg" },
 						{ "px-[25px] py-[13px] text-base": resolvedSize === "xl" },
 						{
-							"bg-violet-800 text-white focus-visible:ring-offset-1 focus-visible:ring-offset-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:hover:bg-violet-400 disabled:focus-visible:ring-0":
+							"bg-primary-600 text-white focus-visible:ring-offset-1 focus-visible:ring-offset-white hover:border-primary-700 hover:bg-primary-700 disabled:bg-primary-300 disabled:hover:bg-primary-300 disabled:focus-visible:ring-0":
 								actionType === "primary"
 						},
 						{
-							" bg-purple-50  border-purple-400 border hover:border-purple-500 text-purple-700 hover:bg-purple-100   focus-within:bg-purple-100  focus-visible:bg-purple-100 focus:bg-purple-100 active:bg-purple-100 disabled:bg-purple-50 disabled:hover:bg-purple-50 disabled:text-purple-300 disabled:focus-visible:ring-0":
+							" bg-primary-50  border-primary-400 border hover:border-primary-500 text-primary-700 hover:bg-primary-100   focus-within:bg-primary-100  focus-visible:bg-primary-100 focus:bg-primary-100 active:bg-primary-100 disabled:bg-primary-50 disabled:hover:bg-primary-50 disabled:text-primary-300 disabled:focus-visible:ring-0":
 								actionType === "secondary"
 						},
 						{
@@ -176,7 +176,7 @@ const _Button = (
 			type="button"
 			className={twMerge(
 				cn(
-					" px-4 py-2 inline-flex items-center justify-center gap-x-2 rounded outline-none focus-visible:ring-1 focus-visible:ring-purple-600 transition-all h-9",
+					" px-4 py-2 inline-flex items-center justify-center gap-x-2 rounded outline-none focus-visible:ring-1 focus-visible:ring-primary-600 transition-all h-9",
 					{ "min-w-[130px]": applyMinWidth },
 					{ "w-full": fullWidth },
 					{ "text-xs": resolvedSize === "xs" },
@@ -185,11 +185,11 @@ const _Button = (
 					{ "text-base": resolvedSize === "lg" },
 					{ "text-base": resolvedSize === "xl" },
 					{
-						"bg-violet-800 text-white focus-visible:ring-offset-1 focus-visible:ring-offset-white hover:border-violet-700 hover:bg-violet-700 disabled:bg-violet-400 disabled:hover:bg-violet-400 disabled:focus-visible:ring-0":
+						"bg-primary-600 text-white focus-visible:ring-offset-1 focus-visible:ring-offset-white hover:border-primary-700 hover:bg-primary-700 disabled:bg-primary-300 disabled:hover:bg-primary-300 disabled:focus-visible:ring-0":
 							actionType === "primary"
 					},
 					{
-						" bg-purple-50  border-purple-400 border hover:border-purple-500 text-purple-700 hover:bg-purple-100   focus-within:bg-purple-100  focus-visible:bg-purple-100 focus:bg-purple-100 active:bg-purple-100 disabled:bg-purple-50 disabled:hover:bg-purple-50 disabled:text-purple-300 disabled:focus-visible:ring-0":
+						" bg-primary-50  border-primary-400 border hover:border-primary-500 text-primary-700 hover:bg-primary-100   focus-within:bg-primary-100  focus-visible:bg-primary-100 focus:bg-primary-100 active:bg-primary-100 disabled:bg-primary-50 disabled:hover:bg-primary-50 disabled:text-primary-300 disabled:focus-visible:ring-0":
 							actionType === "secondary"
 					},
 					{

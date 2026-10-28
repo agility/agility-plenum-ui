@@ -31,6 +31,24 @@ import "@agility/plenum-ui/dist/lib/tailwind.css"
 
 Make sure to add any additional styles before these two import statements to prevent overwriting the Plenum styling.
 
+## Colours
+
+The primary colour is blue-600 (`#1A56DB`). Its scale, `primary-50` to `primary-950`, is a set of CSS
+variables (`--primary-50` … `--primary-950`) defined in `dist/tailwind.css`. Components use `primary-*`
+for anything that means "primary" (buttons, focus, checked and selected states), never a palette name
+such as `blue-*` or `purple-*`, so a future colour change is an edit to the preset, not to every
+component.
+
+To build your own Tailwind classes with the same colours, load Plenum's preset in your
+`tailwind.config.js`:
+
+```js
+module.exports = {
+	presets: [require("@agility/plenum-ui/tailwind.preset")],
+	content: ["./src/**/*.{js,ts,jsx,tsx}"]
+}
+```
+
 ## Installation
 
 You can install the Plenum library using npm or yarn:
